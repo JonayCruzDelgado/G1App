@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/content_dummy"
+    android:id="@+id/content_autor"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -102,7 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
         <LinearLayout
-            android:id="@+id/btnEscultura"
+            android:id="@+id/btnLiteratura"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
@@ -122,10 +122,10 @@
                 android:maxHeight="150dp"
                 android:maxWidth="150dp"
                 android:scaleType="fitCenter"
-                android:src="@mipmap/ic_escultura"/>
+                android:src="@mipmap/ic_libro"/>
 
             <TextView
-                android:id="@+id/textoBtnEscultura"
+                android:id="@+id/textoBtnLiteratura"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -133,7 +133,7 @@
                 android:paddingRight="30dp"
                 android:paddingLeft="30dp"
                 android:gravity="center"
-                android:text="Escutura" />
+                android:text="Literatura" />
         </LinearLayout>
 
         <Space
