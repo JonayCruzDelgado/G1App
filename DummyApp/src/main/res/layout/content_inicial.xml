@@ -37,13 +37,14 @@
             android:paddingRight="@dimen/activity_horizontal_margin"
             >
             <ImageView
+                android:id="@+id/iconoBtnPintura"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="5dp"
                 android:adjustViewBounds="true"
-                android:maxHeight="150dp"
-                android:maxWidth="150dp"
+                android:maxHeight="100dp"
+                android:maxWidth="100dp"
                 android:scaleType="fitCenter"
                 android:src="@mipmap/ic_cuadro"/>
 
@@ -75,13 +76,14 @@
             android:paddingRight="@dimen/activity_horizontal_margin">
 
             <ImageView
+                android:id="@+id/iconoBtnArquitectura"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="5dp"
                 android:adjustViewBounds="true"
-                android:maxHeight="150dp"
-                android:maxWidth="150dp"
+                android:maxHeight="100dp"
+                android:maxWidth="100dp"
                 android:scaleType="fitCenter"
                 android:src="@mipmap/ic_arqui"/>
 
@@ -114,13 +116,14 @@
             android:paddingRight="@dimen/activity_horizontal_margin">
 
             <ImageView
+                android:id="@+id/iconoBtnEscultura"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="5dp"
                 android:adjustViewBounds="true"
-                android:maxHeight="150dp"
-                android:maxWidth="150dp"
+                android:maxHeight="100dp"
+                android:maxWidth="100dp"
                 android:scaleType="fitCenter"
                 android:src="@mipmap/ic_escultura"/>
 
