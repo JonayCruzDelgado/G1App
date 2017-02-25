@@ -1,14 +1,14 @@
 package es.ulpgc.eite.clean.mvp.sample.inicial;
 
 import es.ulpgc.eite.clean.mvp.GenericModel;
-import es.ulpgc.eite.clean.mvp.sample.dummy.Dummy;
+import es.ulpgc.eite.clean.mvp.sample.inicial.Inicial;
 
 
-public class InicialModel extends GenericModel<Dummy.ModelToPresenter>
-    implements Dummy.PresenterToModel {
+public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
+    implements Inicial.PresenterToModel {
 
-  private String dummyText;
-  private String dummyLabel;
+  private String InicialText;
+  private String InicialLabel;
   private int numOfTimes;
   private String msgText;
 
@@ -19,11 +19,11 @@ public class InicialModel extends GenericModel<Dummy.ModelToPresenter>
    * @param presenter Presenter interface
    */
   @Override
-  public void onCreate(Dummy.ModelToPresenter presenter) {
+  public void onCreate(Inicial.ModelToPresenter presenter) {
     super.onCreate(presenter);
 
-    dummyLabel = "Click Me!";
-    dummyText = "Hello World!";
+    InicialLabel = "Click Me!";
+    InicialText = "Hello World!";
   }
 
   /**
@@ -41,14 +41,7 @@ public class InicialModel extends GenericModel<Dummy.ModelToPresenter>
   // Presenter To Model ////////////////////////////////////////////////////////////
 
 
-  @Override
-  public void onChangeMsgByBtnClicked() {
-    msgText = dummyText;
-    if(numOfTimes > 0) {
-      msgText += ", " + numOfTimes + " times";
-    }
-    numOfTimes++;
-  }
+
 
   @Override
   public String getText() {
@@ -57,6 +50,6 @@ public class InicialModel extends GenericModel<Dummy.ModelToPresenter>
 
   @Override
   public String getLabel() {
-    return dummyLabel;
+    return InicialLabel;
   }
 }

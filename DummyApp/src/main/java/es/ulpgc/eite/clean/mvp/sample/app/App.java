@@ -6,11 +6,13 @@ import android.content.Intent;
 
 import es.ulpgc.eite.clean.mvp.sample.dummy.Dummy;
 import es.ulpgc.eite.clean.mvp.sample.dummy.DummyView;
+import es.ulpgc.eite.clean.mvp.sample.inicial.Inicial;
 
 
 public class App extends Application implements Mediator, Navigator {
 
   private DummyState toDummyState, dummyToState;
+  private InicialState toInicialState;
 
   @Override
   public void onCreate() {
@@ -18,6 +20,8 @@ public class App extends Application implements Mediator, Navigator {
     toDummyState = new DummyState();
     toDummyState.toolbarVisibility = false;
     toDummyState.textVisibility = false;
+    toInicialState = new InicialState();
+    toInicialState.textVisibility = false;
   }
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -32,6 +36,11 @@ public class App extends Application implements Mediator, Navigator {
     presenter.onScreenStarted();
   }
 
+  @Override
+  public void startingInicialScreen(Inicial.ToInicial presenter){
+
+    presenter.onScreenStarted();
+  }
   ///////////////////////////////////////////////////////////////////////////////////
   // Navigator /////////////////////////////////////////////////////////////////////
 
@@ -55,6 +64,9 @@ public class App extends Application implements Mediator, Navigator {
 
   private class DummyState {
     boolean toolbarVisibility;
+    boolean textVisibility;
+  }
+  private class InicialState{
     boolean textVisibility;
   }
 

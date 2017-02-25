@@ -16,17 +16,18 @@ public interface Inicial {
   ///////////////////////////////////////////////////////////////////////////////////
   // State /////////////////////////////////////////////////////////////////////////
 
-  interface ToDummy {
+  interface ToInicial {
     void onScreenStarted();
     void setToolbarVisibility(boolean visible);
     void setTextVisibility(boolean visible);
   }
 
-  interface DummyTo {
+  interface InicialTo {
     Context getManagedContext();
     void destroyView();
     boolean isToolbarVisible();
     boolean isTextVisible();
+
   }
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -55,7 +56,6 @@ public interface Inicial {
    * Methods offered to MODEL to communicate with PRESENTER
    */
   interface PresenterToModel extends Model<ModelToPresenter> {
-    void onChangeMsgByBtnClicked();
     String getText();
     String getLabel();
   }

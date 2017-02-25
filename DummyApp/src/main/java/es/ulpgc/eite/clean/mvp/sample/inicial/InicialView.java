@@ -8,12 +8,12 @@ import android.widget.TextView;
 
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.sample.R;
-import es.ulpgc.eite.clean.mvp.sample.dummy.Dummy;
-import es.ulpgc.eite.clean.mvp.sample.dummy.DummyPresenter;
+import es.ulpgc.eite.clean.mvp.sample.inicial.Inicial;
+import es.ulpgc.eite.clean.mvp.sample.inicial.InicialPresenter;
 
 public class InicialView
-    extends GenericActivity<Dummy.PresenterToView, Dummy.ViewToPresenter, DummyPresenter>
-    implements Dummy.PresenterToView {
+    extends GenericActivity<Inicial.PresenterToView, Inicial.ViewToPresenter, InicialPresenter>
+    implements Inicial.PresenterToView {
 
   private Toolbar toolbar;
   private Button button;
@@ -44,14 +44,14 @@ public class InicialView
    */
   @Override
   protected void onResume() {
-    super.onResume(DummyPresenter.class, this);
+    super.onResume(InicialPresenter.class, this);
   }
 
   /*
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     // Inflate the menu; this adds items to the action bar if it is present.
-    getMenuInflater().inflate(R.menu.menu_dummy, menu);
+    getMenuInflater().inflate(R.menu.menu_Inicial, menu);
     return true;
   }
 

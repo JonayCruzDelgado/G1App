@@ -8,12 +8,12 @@ import es.ulpgc.eite.clean.mvp.ContextView;
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.GenericPresenter;
 import es.ulpgc.eite.clean.mvp.sample.app.Mediator;
-import es.ulpgc.eite.clean.mvp.sample.dummy.Dummy;
-import es.ulpgc.eite.clean.mvp.sample.dummy.DummyModel;
+import es.ulpgc.eite.clean.mvp.sample.inicial.Inicial;
+import es.ulpgc.eite.clean.mvp.sample.inicial.InicialModel;
 
-public class InivialPresenter extends GenericPresenter
-    <Dummy.PresenterToView, Dummy.PresenterToModel, Dummy.ModelToPresenter, DummyModel>
-    implements Dummy.ViewToPresenter, Dummy.ModelToPresenter, Dummy.DummyTo, Dummy.ToDummy {
+public class InicialPresenter extends GenericPresenter
+    <Inicial.PresenterToView, Inicial.PresenterToModel, Inicial.ModelToPresenter, InicialModel>
+    implements Inicial.ViewToPresenter, Inicial.ModelToPresenter, Inicial.InicialTo, Inicial.ToInicial {
 
 
   private boolean toolbarVisible;
@@ -29,14 +29,14 @@ public class InivialPresenter extends GenericPresenter
    * @param view The current VIEW instance
    */
   @Override
-  public void onCreate(Dummy.PresenterToView view) {
-    super.onCreate(DummyModel.class, this);
+  public void onCreate(Inicial.PresenterToView view) {
+    super.onCreate(InicialModel.class, this);
     setView(view);
     Log.d(TAG, "calling onCreate()");
 
-    Log.d(TAG, "calling startingDummyScreen()");
+    Log.d(TAG, "calling startingInicialScreen()");
     Mediator app = (Mediator) getView().getApplication();
-    app.startingDummyScreen(this);
+    app.startingInicialScreen(this);
   }
 
   /**
@@ -47,7 +47,7 @@ public class InivialPresenter extends GenericPresenter
    * @param view The current VIEW instance
    */
   @Override
-  public void onResume(Dummy.PresenterToView view) {
+  public void onResume(Inicial.PresenterToView view) {
     setView(view);
     Log.d(TAG, "calling onResume()");
 
@@ -94,7 +94,7 @@ public class InivialPresenter extends GenericPresenter
   public void onButtonClicked() {
     Log.d(TAG, "calling onButtonClicked()");
     if(isViewRunning()) {
-      getModel().onChangeMsgByBtnClicked();
+
       getView().setText(getModel().getText());
       textVisible = true;
       buttonClicked = true;
@@ -104,7 +104,7 @@ public class InivialPresenter extends GenericPresenter
 
 
   ///////////////////////////////////////////////////////////////////////////////////
-  // To Dummy //////////////////////////////////////////////////////////////////////
+  // To Inicial //////////////////////////////////////////////////////////////////////
 
   @Override
   public void onScreenStarted() {
@@ -128,7 +128,7 @@ public class InivialPresenter extends GenericPresenter
 
 
   ///////////////////////////////////////////////////////////////////////////////////
-  // Dummy To //////////////////////////////////////////////////////////////////////
+  // Inicial To //////////////////////////////////////////////////////////////////////
 
 
   @Override
