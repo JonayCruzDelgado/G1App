@@ -51,9 +51,9 @@ public class InicialPresenter extends GenericPresenter
     Log.d(TAG, "calling onResume()");
 
     if(configurationChangeOccurred()) {
-      getView().setLabel(getModel().getTextBtn1());
-      getView().setLabel(getModel().getTextBtn2());
-      getView().setLabel(getModel().getTextBtn3());
+      getView().setLabelPintura(getModel().getTextBtn1());
+      getView().setLabelArquitectura(getModel().getTextBtn2());
+      getView().setLabelEscultura(getModel().getTextBtn3());
       checkToolbarVisibility();
     }
   }
@@ -108,7 +108,9 @@ public class InicialPresenter extends GenericPresenter
   public void onScreenStarted() {
     Log.d(TAG, "calling onScreenStarted()");
     if(isViewRunning()) {
-      getView().setLabel(getModel().getTextBtn2());
+      getView().setLabelPintura(getModel().getTextBtn1());
+      getView().setLabelArquitectura(getModel().getTextBtn2());
+      getView().setLabelEscultura(getModel().getTextBtn3());
     }
     checkToolbarVisibility();
   }
