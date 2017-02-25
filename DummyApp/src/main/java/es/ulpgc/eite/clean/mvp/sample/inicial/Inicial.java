@@ -19,14 +19,13 @@ public interface Inicial {
   interface ToInicial {
     void onScreenStarted();
     void setToolbarVisibility(boolean visible);
-    void setTextVisibility(boolean visible);
   }
 
   interface InicialTo {
     Context getManagedContext();
     void destroyView();
     boolean isToolbarVisible();
-    boolean isTextVisible();
+
 
   }
 
@@ -37,7 +36,12 @@ public interface Inicial {
    * Methods offered to VIEW to communicate with PRESENTER
    */
   interface ViewToPresenter extends Presenter<PresenterToView> {
-    void onButtonClicked();
+
+    void onButtonClickedArquitectura();
+
+    void onButtonClickedPintura();
+
+    void onButtonClickedEscultura();
   }
 
   /**
