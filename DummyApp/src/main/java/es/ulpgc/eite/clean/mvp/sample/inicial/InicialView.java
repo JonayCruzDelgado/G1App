@@ -18,7 +18,6 @@ public class InicialView
     implements Inicial.PresenterToView {
 
   private Toolbar toolbar;
-  private Button button;
   private LinearLayout layoutPintura;
   private LinearLayout layoutArquitectura;
   private LinearLayout layoutEscultura;
@@ -42,6 +41,7 @@ public class InicialView
     layoutPintura.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
+        getPresenter().onButtonClickedPintura();
 
       }
     });
@@ -51,6 +51,7 @@ public class InicialView
     layoutArquitectura.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
+        getPresenter().onButtonClickedArquitectura();
 
       }
     });
@@ -59,18 +60,12 @@ public class InicialView
     layoutEscultura.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
+        getPresenter().onButtonClickedEscultura();
 
       }
     });
 
 
-    button = (Button) findViewById(R.id.button);
-    button.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        getPresenter().onButtonClicked();
-      }
-    });
   }
 
   /**
