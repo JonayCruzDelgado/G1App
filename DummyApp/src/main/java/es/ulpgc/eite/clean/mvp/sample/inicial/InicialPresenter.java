@@ -17,8 +17,7 @@ public class InicialPresenter extends GenericPresenter
 
 
   private boolean toolbarVisible;
-  private boolean buttonClicked;
-  private boolean textVisible;
+
 
   /**
    * Operation called during VIEW creation in {@link GenericActivity#onResume(Class, Object)}
@@ -52,14 +51,10 @@ public class InicialPresenter extends GenericPresenter
     Log.d(TAG, "calling onResume()");
 
     if(configurationChangeOccurred()) {
-      getView().setLabel(getModel().getLabel());
-
+      getView().setLabel(getModel().getTextBtn1());
+      getView().setLabel(getModel().getTextBtn2());
+      getView().setLabel(getModel().getTextBtn3());
       checkToolbarVisibility();
-      checkTextVisibility();
-
-      if (buttonClicked) {
-        getView().setText(getModel().getText());
-      }
     }
   }
 
@@ -91,15 +86,18 @@ public class InicialPresenter extends GenericPresenter
   // View To Presenter /////////////////////////////////////////////////////////////
 
   @Override
-  public void onButtonClicked() {
-    Log.d(TAG, "calling onButtonClicked()");
-    if(isViewRunning()) {
+  public void onButtonClickedArquitectura() {
+    Log.d(TAG, "calling onButtonClickedArquitectura()");
 
-      getView().setText(getModel().getText());
-      textVisible = true;
-      buttonClicked = true;
-    }
-    checkTextVisibility();
+  }
+  @Override
+  public void onButtonClickedPintura() {
+    Log.d(TAG, "calling onButtonClickedPintura()");
+  }
+
+  @Override
+  public void onButtonClickedEscultura() {
+    Log.d(TAG, "calling onButtonClickedEscultura()");
   }
 
 
@@ -110,10 +108,9 @@ public class InicialPresenter extends GenericPresenter
   public void onScreenStarted() {
     Log.d(TAG, "calling onScreenStarted()");
     if(isViewRunning()) {
-      getView().setLabel(getModel().getLabel());
+      getView().setLabel(getModel().getTextBtn2());
     }
     checkToolbarVisibility();
-    checkTextVisibility();
   }
 
   @Override
@@ -121,10 +118,6 @@ public class InicialPresenter extends GenericPresenter
     toolbarVisible = visible;
   }
 
-  @Override
-  public void setTextVisibility(boolean visible) {
-    textVisible = visible;
-  }
 
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -147,10 +140,6 @@ public class InicialPresenter extends GenericPresenter
     return toolbarVisible;
   }
 
-  @Override
-  public boolean isTextVisible() {
-    return textVisible;
-  }
 
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -164,15 +153,6 @@ public class InicialPresenter extends GenericPresenter
     }
   }
 
-  private void checkTextVisibility(){
-    Log.d(TAG, "calling checkTextVisibility()");
-    if(isViewRunning()) {
-      if(!textVisible) {
-        getView().hideText();
-      } else {
-        getView().showText();
-      }
-    }
-  }
+
 
 }
