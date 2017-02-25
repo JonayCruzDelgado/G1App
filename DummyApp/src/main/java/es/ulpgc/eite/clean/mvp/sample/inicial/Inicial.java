@@ -56,8 +56,9 @@ public interface Inicial {
    * Methods offered to MODEL to communicate with PRESENTER
    */
   interface PresenterToModel extends Model<ModelToPresenter> {
-    String getText();
-    String getLabel();
+    String getTextBtn1();
+    String getTextBtn2();
+    String getTextBtn3();
   }
 
   /**

@@ -1,16 +1,14 @@
 package es.ulpgc.eite.clean.mvp.sample.inicial;
 
 import es.ulpgc.eite.clean.mvp.GenericModel;
-import es.ulpgc.eite.clean.mvp.sample.inicial.Inicial;
 
 
 public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
     implements Inicial.PresenterToModel {
 
-  private String InicialText;
-  private String InicialLabel;
-  private int numOfTimes;
-  private String msgText;
+  private String inicialTextBtn1;
+  private String inicialTextBtn2;
+  private String inicialTextBtn3;
 
   /**
    * Method that recovers a reference to the PRESENTER
@@ -22,8 +20,10 @@ public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
   public void onCreate(Inicial.ModelToPresenter presenter) {
     super.onCreate(presenter);
 
-    InicialLabel = "Click Me!";
-    InicialText = "Hello World!";
+    inicialTextBtn1 = "Pintura";
+    inicialTextBtn2 = "Arquitectura";
+    inicialTextBtn3 = "Esculturas";
+
   }
 
   /**
@@ -37,19 +37,25 @@ public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
 
   }
 
+
+
   ///////////////////////////////////////////////////////////////////////////////////
   // Presenter To Model ////////////////////////////////////////////////////////////
 
-
-
-
   @Override
-  public String getText() {
-    return msgText;
+  public String getTextBtn1() {
+    return inicialTextBtn1;
   }
 
   @Override
-  public String getLabel() {
-    return InicialLabel;
+  public String getTextBtn2() {
+    return inicialTextBtn2;
   }
+
+  @Override
+  public String getTextBtn3() {
+    return inicialTextBtn3;
+  }
+
+
 }
