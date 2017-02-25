@@ -2,8 +2,10 @@ package es.ulpgc.eite.clean.mvp.sample.inicial;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import es.ulpgc.eite.clean.mvp.GenericActivity;
@@ -17,17 +19,50 @@ public class InicialView
 
   private Toolbar toolbar;
   private Button button;
-  private TextView text;
+  private LinearLayout layoutPintura;
+  private LinearLayout layoutArquitectura;
+  private LinearLayout layoutEscultura;
+  private TextView labelPintura;
+  private TextView labelArquitectura;
+  private TextView labelEscultura;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_dummy);
-
-    text = (TextView) findViewById(R.id.text);
+    setContentView(R.layout.activity_inicial);
 
     toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
+
+    labelPintura = (TextView) findViewById(R.id.textoBtnPintura);
+    labelArquitectura = (TextView) findViewById(R.id.textoBtnArquitectura);
+    labelEscultura = (TextView) findViewById(R.id.textoBtnEscultura);
+
+    layoutPintura =(LinearLayout) findViewById(R.id.btnPintura);
+    layoutPintura.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+
+      }
+    });
+
+    layoutArquitectura =(LinearLayout) findViewById(R.id.btnArquitectura);
+
+    layoutArquitectura.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+
+      }
+    });
+
+    layoutEscultura =(LinearLayout) findViewById(R.id.btnEscultura);
+    layoutEscultura.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+
+      }
+    });
+
 
     button = (Button) findViewById(R.id.button);
     button.setOnClickListener(new View.OnClickListener() {
@@ -85,23 +120,19 @@ public class InicialView
     toolbar.setVisibility(View.GONE);
   }
 
-  @Override
-  public void hideText() {
-    text.setVisibility(View.GONE);
-  }
+
 
   @Override
-  public void showText() {
-    text.setVisibility(View.VISIBLE);
+  public void setLabelPintura(String txt) {
+    labelPintura.setText(txt);
+  }
+  @Override
+  public void setLabelEscultura(String txt) {
+    labelEscultura.setText(txt);
+  }
+  @Override
+  public void setLabelArquitectura(String txt) {
+    labelArquitectura.setText(txt);
   }
 
-  @Override
-  public void setText(String txt) {
-    text.setText(txt);
-  }
-
-  @Override
-  public void setLabel(String txt) {
-    button.setText(txt);
-  }
 }
