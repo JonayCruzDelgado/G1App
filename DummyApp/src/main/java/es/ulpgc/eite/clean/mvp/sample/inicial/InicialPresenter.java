@@ -51,12 +51,7 @@ public class InicialPresenter extends GenericPresenter
     Log.d(TAG, "calling onResume()");
 
     if(configurationChangeOccurred()) {
-      getView().setLabelPintura(getModel().getTextBtn1());
-      getView().setLabelArquitectura(getModel().getTextBtn2());
-      getView().setLabelEscultura(getModel().getTextBtn3());
-      getView().setIconoPintura(getModel().getIconoPintura());
-      getView().setIconoArquitectura(getModel().getIconoArquitectura());
-      getView().setIconoEscultura(getModel().getIconoEscultura());
+      cargarEtiquetasPantalla();
       checkToolbarVisibility();
     }
   }
@@ -111,9 +106,7 @@ public class InicialPresenter extends GenericPresenter
   public void onScreenStarted() {
     Log.d(TAG, "calling onScreenStarted()");
     if(isViewRunning()) {
-      getView().setLabelPintura(getModel().getTextBtn1());
-      getView().setLabelArquitectura(getModel().getTextBtn2());
-      getView().setLabelEscultura(getModel().getTextBtn3());
+      cargarEtiquetasPantalla();
     }
     checkToolbarVisibility();
   }
@@ -156,6 +149,14 @@ public class InicialPresenter extends GenericPresenter
         getView().hideToolbar();
       }
     }
+  }
+  private void cargarEtiquetasPantalla(){
+    getView().setLabelPintura(getModel().getTextBtn1());
+    getView().setLabelArquitectura(getModel().getTextBtn2());
+    getView().setLabelEscultura(getModel().getTextBtn3());
+    getView().setIconoPintura(getModel().getIconoPintura());
+    getView().setIconoArquitectura(getModel().getIconoArquitectura());
+    getView().setIconoEscultura(getModel().getIconoEscultura());
   }
 
 
