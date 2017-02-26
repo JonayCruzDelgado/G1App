@@ -1,10 +1,12 @@
 package es.ulpgc.eite.clean.mvp.sample.inicial;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -24,6 +26,9 @@ public class InicialView
   private TextView labelPintura;
   private TextView labelArquitectura;
   private TextView labelEscultura;
+  private ImageView iconoPintura;
+  private ImageView iconoArquitectura;
+  private ImageView iconoEscultura;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,10 @@ public class InicialView
 
     toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
+
+    iconoPintura =(ImageView)  findViewById(R.id.iconoBtnPintura);
+    iconoArquitectura =(ImageView)  findViewById(R.id.iconoBtnArquitectura);
+    iconoEscultura =(ImageView)  findViewById(R.id.iconoBtnEscultura);
 
     labelPintura = (TextView) findViewById(R.id.textoBtnPintura);
     labelArquitectura = (TextView) findViewById(R.id.textoBtnArquitectura);
@@ -47,7 +56,6 @@ public class InicialView
     });
 
     layoutArquitectura =(LinearLayout) findViewById(R.id.btnArquitectura);
-
     layoutArquitectura.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -128,6 +136,19 @@ public class InicialView
   @Override
   public void setLabelArquitectura(String txt) {
     labelArquitectura.setText(txt);
+  }
+
+  @Override
+  public void setIconoPintura(Bitmap bp) {
+    iconoPintura.setImageBitmap(bp);
+  }
+  @Override
+  public void setIconoArquitectura(Bitmap bp) {
+    iconoArquitectura.setImageBitmap(bp);
+  }
+  @Override
+  public void setIconoEscultura(Bitmap bp) {
+    iconoEscultura.setImageBitmap(bp);
   }
 
 }

@@ -1,6 +1,8 @@
 package es.ulpgc.eite.clean.mvp.sample.inicial;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 
 import es.ulpgc.eite.clean.mvp.ContextView;
 import es.ulpgc.eite.clean.mvp.Model;
@@ -58,6 +60,12 @@ public interface Inicial {
     void setLabelEscultura(String txt);
 
     void setLabelArquitectura(String txt);
+
+    void setIconoPintura(Bitmap bp);
+
+    void setIconoArquitectura(Bitmap bp);
+
+    void setIconoEscultura(Bitmap bp);
   }
 
   /**
@@ -67,6 +75,13 @@ public interface Inicial {
     String getTextBtn1();
     String getTextBtn2();
     String getTextBtn3();
+
+
+    Bitmap getIconoPintura();
+
+    Bitmap getIconoArquitectura();
+
+    Bitmap getIconoEscultura();
   }
 
   /**

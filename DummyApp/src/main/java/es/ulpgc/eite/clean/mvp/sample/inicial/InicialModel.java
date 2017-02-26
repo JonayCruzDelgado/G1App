@@ -1,6 +1,11 @@
 package es.ulpgc.eite.clean.mvp.sample.inicial;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+
 import es.ulpgc.eite.clean.mvp.GenericModel;
+import es.ulpgc.eite.clean.mvp.sample.R;
 
 
 public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
@@ -22,7 +27,7 @@ public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
 
     inicialTextBtn1 = "Pintura";
     inicialTextBtn2 = "Arquitectura";
-    inicialTextBtn3 = "Esculturas";
+    inicialTextBtn3 = "Escultura";
 
   }
 
@@ -57,5 +62,21 @@ public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
     return inicialTextBtn3;
   }
 
+  @Override
+  public Bitmap getIconoPintura() {
+    Bitmap icon = BitmapFactory.decodeFile("/res/mipmap/ic_cuadro");
+    return icon;
+  }
 
+  @Override
+  public Bitmap getIconoArquitectura() {
+      Bitmap icon = BitmapFactory.decodeFile("/res/mipmap/ic_arqui");
+      return icon;
+  }
+
+  @Override
+  public Bitmap getIconoEscultura() {
+      Bitmap icon = BitmapFactory.decodeFile("/res/mipmap/ic_escultura");
+      return icon;
+  }
 }

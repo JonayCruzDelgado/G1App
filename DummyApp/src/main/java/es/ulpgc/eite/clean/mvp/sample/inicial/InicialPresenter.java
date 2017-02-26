@@ -54,6 +54,9 @@ public class InicialPresenter extends GenericPresenter
       getView().setLabelPintura(getModel().getTextBtn1());
       getView().setLabelArquitectura(getModel().getTextBtn2());
       getView().setLabelEscultura(getModel().getTextBtn3());
+      getView().setIconoPintura(getModel().getIconoPintura());
+      getView().setIconoArquitectura(getModel().getIconoArquitectura());
+      getView().setIconoEscultura(getModel().getIconoEscultura());
       checkToolbarVisibility();
     }
   }
