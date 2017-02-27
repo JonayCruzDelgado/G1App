@@ -29,6 +29,7 @@ public interface Inicial {
     boolean isToolbarVisible();
 
 
+    String getLayoutClicked();
   }
 
   ///////////////////////////////////////////////////////////////////////////////////

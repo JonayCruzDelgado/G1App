@@ -8,6 +8,7 @@ import es.ulpgc.eite.clean.mvp.ContextView;
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.GenericPresenter;
 import es.ulpgc.eite.clean.mvp.sample.app.Mediator;
+import es.ulpgc.eite.clean.mvp.sample.app.Navigator;
 import es.ulpgc.eite.clean.mvp.sample.inicial.Inicial;
 import es.ulpgc.eite.clean.mvp.sample.inicial.InicialModel;
 
@@ -17,7 +18,7 @@ public class InicialPresenter extends GenericPresenter
 
 
   private boolean toolbarVisible;
-
+  private String layoutClicked;
 
   /**
    * Operation called during VIEW creation in {@link GenericActivity#onResume(Class, Object)}
@@ -86,16 +87,25 @@ public class InicialPresenter extends GenericPresenter
   @Override
   public void onButtonClickedArquitectura() {
     Log.d(TAG, "calling onButtonClickedArquitectura()");
+    layoutClicked = "Arquitectura";
+    Navigator app = (Navigator) getView().getApplication();
+    app.goToAutoresScreen(this);
 
   }
   @Override
   public void onButtonClickedPintura() {
     Log.d(TAG, "calling onButtonClickedPintura()");
+    layoutClicked = "Pintura";
+    Navigator app = (Navigator) getView().getApplication();
+    app.goToAutoresScreen(this);
   }
 
   @Override
   public void onButtonClickedEscultura() {
     Log.d(TAG, "calling onButtonClickedEscultura()");
+    layoutClicked = "Escultura";
+    Navigator app = (Navigator) getView().getApplication();
+    app.goToAutoresScreen(this);
   }
 
 
@@ -137,8 +147,10 @@ public class InicialPresenter extends GenericPresenter
   public boolean isToolbarVisible() {
     return toolbarVisible;
   }
-
-
+  @Override
+  public String getLayoutClicked(){
+    return layoutClicked;
+  }
 
   ///////////////////////////////////////////////////////////////////////////////////
 

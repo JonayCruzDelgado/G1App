@@ -16,13 +16,13 @@ public interface Autores {
   ///////////////////////////////////////////////////////////////////////////////////
   // State /////////////////////////////////////////////////////////////////////////
 
-  interface ToDummy {
+  interface ToAutores {
     void onScreenStarted();
     void setToolbarVisibility(boolean visible);
     void setTextVisibility(boolean visible);
   }
 
-  interface DummyTo {
+  interface AutoresTo {
     Context getManagedContext();
     void destroyView();
     boolean isToolbarVisible();

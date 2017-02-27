@@ -3,7 +3,11 @@ package es.ulpgc.eite.clean.mvp.sample.app;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
+import es.ulpgc.eite.clean.mvp.sample.autor.Autor;
+import es.ulpgc.eite.clean.mvp.sample.autores.Autores;
+import es.ulpgc.eite.clean.mvp.sample.autores.AutoresView;
 import es.ulpgc.eite.clean.mvp.sample.dummy.Dummy;
 import es.ulpgc.eite.clean.mvp.sample.dummy.DummyView;
 import es.ulpgc.eite.clean.mvp.sample.inicial.Inicial;
@@ -12,7 +16,7 @@ import es.ulpgc.eite.clean.mvp.sample.inicial.Inicial;
 public class App extends Application implements Mediator, Navigator {
 
   private DummyState toDummyState, dummyToState;
-  private InicialState toInicialState;
+  private InicialState toInicialState, inicialToState;
 
   @Override
   public void onCreate() {
@@ -35,6 +39,12 @@ public class App extends Application implements Mediator, Navigator {
     }
     presenter.onScreenStarted();
   }
+  @Override
+  public void startingAutoresScreen(Autores.ToAutores presenter){
+
+    presenter.onScreenStarted();
+  }
+
 
   @Override
   public void startingInicialScreen(Inicial.ToInicial presenter){
@@ -58,7 +68,19 @@ public class App extends Application implements Mediator, Navigator {
     }
 
   }
+  @Override
+  public void goToAutoresScreen(Inicial.InicialTo presenter) {
+    Log.d("APP", "goToAutoresScreen() has pulsado: "+ presenter.getLayoutClicked());
+    inicialToState = new InicialState();
+    inicialToState.layaoutClicked= presenter.getLayoutClicked();
+    Context view = presenter.getManagedContext();
 
+    if (view != null) {
+      view.startActivity(new Intent(view, AutoresView.class));
+      presenter.destroyView();
+    }
+
+  }
   ///////////////////////////////////////////////////////////////////////////////////
   // State /////////////////////////////////////////////////////////////////////////
 
@@ -68,6 +90,7 @@ public class App extends Application implements Mediator, Navigator {
   }
   private class InicialState{
     boolean textVisibility;
+    String layaoutClicked;
   }
 
 }

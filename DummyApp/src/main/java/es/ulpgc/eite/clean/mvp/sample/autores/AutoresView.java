@@ -8,12 +8,12 @@ import android.widget.TextView;
 
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.sample.R;
-import es.ulpgc.eite.clean.mvp.sample.dummy.Dummy;
-import es.ulpgc.eite.clean.mvp.sample.dummy.DummyPresenter;
+import es.ulpgc.eite.clean.mvp.sample.autores.Autores;
+import es.ulpgc.eite.clean.mvp.sample.autores.AutoresPresenter;
 
 public class AutoresView
-    extends GenericActivity<Dummy.PresenterToView, Dummy.ViewToPresenter, DummyPresenter>
-    implements Dummy.PresenterToView {
+    extends GenericActivity<Autores.PresenterToView, Autores.ViewToPresenter, AutoresPresenter>
+    implements Autores.PresenterToView {
 
   private Toolbar toolbar;
   private Button button;
@@ -22,20 +22,8 @@ public class AutoresView
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_dummy);
+    setContentView(R.layout.activity_autores);
 
-    text = (TextView) findViewById(R.id.text);
-
-    toolbar = (Toolbar) findViewById(R.id.toolbar);
-    setSupportActionBar(toolbar);
-
-    button = (Button) findViewById(R.id.button);
-    button.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        getPresenter().onButtonClicked();
-      }
-    });
   }
 
   /**
@@ -44,14 +32,14 @@ public class AutoresView
    */
   @Override
   protected void onResume() {
-    super.onResume(DummyPresenter.class, this);
+    super.onResume(AutoresPresenter.class, this);
   }
 
   /*
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     // Inflate the menu; this adds items to the action bar if it is present.
-    getMenuInflater().inflate(R.menu.menu_dummy, menu);
+    getMenuInflater().inflate(R.menu.menu_Autores, menu);
     return true;
   }
 

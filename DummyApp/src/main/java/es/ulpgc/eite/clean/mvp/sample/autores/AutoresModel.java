@@ -1,14 +1,14 @@
 package es.ulpgc.eite.clean.mvp.sample.autores;
 
 import es.ulpgc.eite.clean.mvp.GenericModel;
-import es.ulpgc.eite.clean.mvp.sample.dummy.Dummy;
+import es.ulpgc.eite.clean.mvp.sample.autores.Autores;
 
 
-public class AutoresModel extends GenericModel<Dummy.ModelToPresenter>
-    implements Dummy.PresenterToModel {
+public class AutoresModel extends GenericModel<Autores.ModelToPresenter>
+    implements Autores.PresenterToModel {
 
-  private String dummyText;
-  private String dummyLabel;
+  private String autoresText;
+  private String autoresLabel;
   private int numOfTimes;
   private String msgText;
 
@@ -19,11 +19,11 @@ public class AutoresModel extends GenericModel<Dummy.ModelToPresenter>
    * @param presenter Presenter interface
    */
   @Override
-  public void onCreate(Dummy.ModelToPresenter presenter) {
+  public void onCreate(Autores.ModelToPresenter presenter) {
     super.onCreate(presenter);
 
-    dummyLabel = "Click Me!";
-    dummyText = "Hello World!";
+    autoresLabel = "Click Me!";
+    autoresText = "Hello World!";
   }
 
   /**
@@ -43,7 +43,7 @@ public class AutoresModel extends GenericModel<Dummy.ModelToPresenter>
 
   @Override
   public void onChangeMsgByBtnClicked() {
-    msgText = dummyText;
+    msgText = autoresText;
     if(numOfTimes > 0) {
       msgText += ", " + numOfTimes + " times";
     }
@@ -57,6 +57,6 @@ public class AutoresModel extends GenericModel<Dummy.ModelToPresenter>
 
   @Override
   public String getLabel() {
-    return dummyLabel;
+    return autoresLabel;
   }
 }

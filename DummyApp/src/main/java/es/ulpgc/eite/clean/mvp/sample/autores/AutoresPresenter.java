@@ -8,12 +8,12 @@ import es.ulpgc.eite.clean.mvp.ContextView;
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.GenericPresenter;
 import es.ulpgc.eite.clean.mvp.sample.app.Mediator;
-import es.ulpgc.eite.clean.mvp.sample.dummy.Dummy;
-import es.ulpgc.eite.clean.mvp.sample.dummy.DummyModel;
+import es.ulpgc.eite.clean.mvp.sample.autores.Autores;
+import es.ulpgc.eite.clean.mvp.sample.autores.AutoresModel;
 
 public class AutoresPresenter extends GenericPresenter
-    <Dummy.PresenterToView, Dummy.PresenterToModel, Dummy.ModelToPresenter, DummyModel>
-    implements Dummy.ViewToPresenter, Dummy.ModelToPresenter, Dummy.DummyTo, Dummy.ToDummy {
+    <Autores.PresenterToView, Autores.PresenterToModel, Autores.ModelToPresenter, AutoresModel>
+    implements Autores.ViewToPresenter, Autores.ModelToPresenter, Autores.AutoresTo, Autores.ToAutores {
 
 
   private boolean toolbarVisible;
@@ -29,14 +29,14 @@ public class AutoresPresenter extends GenericPresenter
    * @param view The current VIEW instance
    */
   @Override
-  public void onCreate(Dummy.PresenterToView view) {
-    super.onCreate(DummyModel.class, this);
+  public void onCreate(Autores.PresenterToView view) {
+    super.onCreate(AutoresModel.class, this);
     setView(view);
     Log.d(TAG, "calling onCreate()");
 
-    Log.d(TAG, "calling startingDummyScreen()");
+    Log.d(TAG, "calling startingautoresScreen()");
     Mediator app = (Mediator) getView().getApplication();
-    app.startingDummyScreen(this);
+    app.startingAutoresScreen(this);
   }
 
   /**
@@ -47,9 +47,9 @@ public class AutoresPresenter extends GenericPresenter
    * @param view The current VIEW instance
    */
   @Override
-  public void onResume(Dummy.PresenterToView view) {
+  public void onResume(Autores.PresenterToView view) {
     setView(view);
-    Log.d(TAG, "calling onResume()");
+  /*  Log.d(TAG, "calling onResume()");
 
     if(configurationChangeOccurred()) {
       getView().setLabel(getModel().getLabel());
@@ -60,7 +60,7 @@ public class AutoresPresenter extends GenericPresenter
       if (buttonClicked) {
         getView().setText(getModel().getText());
       }
-    }
+    }*/
   }
 
   /**
@@ -93,27 +93,27 @@ public class AutoresPresenter extends GenericPresenter
   @Override
   public void onButtonClicked() {
     Log.d(TAG, "calling onButtonClicked()");
-    if(isViewRunning()) {
+   /* if(isViewRunning()) {
       getModel().onChangeMsgByBtnClicked();
       getView().setText(getModel().getText());
       textVisible = true;
       buttonClicked = true;
-    }
+    }*/
     checkTextVisibility();
   }
 
 
   ///////////////////////////////////////////////////////////////////////////////////
-  // To Dummy //////////////////////////////////////////////////////////////////////
+  // To autores //////////////////////////////////////////////////////////////////////
 
   @Override
   public void onScreenStarted() {
     Log.d(TAG, "calling onScreenStarted()");
-    if(isViewRunning()) {
+/*    if(isViewRunning()) {
       getView().setLabel(getModel().getLabel());
     }
     checkToolbarVisibility();
-    checkTextVisibility();
+    checkTextVisibility();*/
   }
 
   @Override
@@ -128,7 +128,7 @@ public class AutoresPresenter extends GenericPresenter
 
 
   ///////////////////////////////////////////////////////////////////////////////////
-  // Dummy To //////////////////////////////////////////////////////////////////////
+  // autores To //////////////////////////////////////////////////////////////////////
 
 
   @Override
