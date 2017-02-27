@@ -77,7 +77,7 @@ public class App extends Application implements Mediator, Navigator {
 
     if (view != null) {
       view.startActivity(new Intent(view, AutoresView.class));
-      presenter.destroyView();
+
     }
 
   }
