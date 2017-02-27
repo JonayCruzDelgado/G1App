@@ -1,5 +1,6 @@
 package es.ulpgc.eite.clean.mvp.sample.inicial;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -63,20 +64,22 @@ public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
   }
 
   @Override
-  public Bitmap getIconoPintura() {
-    Bitmap icon = BitmapFactory.decodeFile("/res/mipmap/ic_cuadro");
+  public Bitmap getIconoPintura(Context context) {
+    Bitmap icon = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_cuadro);
     return icon;
   }
 
   @Override
-  public Bitmap getIconoArquitectura() {
-      Bitmap icon = BitmapFactory.decodeFile("/res/mipmap/ic_arqui");
-      return icon;
+  public Bitmap getIconoArquitectura(Context context) {
+    Bitmap icon = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_arqui);
+
+    return icon;
   }
 
   @Override
-  public Bitmap getIconoEscultura() {
-      Bitmap icon = BitmapFactory.decodeFile("/res/mipmap/ic_escultura");
+  public Bitmap getIconoEscultura(Context context) {
+      Bitmap icon = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_escultura);
+
       return icon;
   }
 }

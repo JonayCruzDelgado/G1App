@@ -77,12 +77,11 @@ public interface Inicial {
     String getTextBtn2();
     String getTextBtn3();
 
+    Bitmap getIconoPintura(Context context);
 
-    Bitmap getIconoPintura();
+    Bitmap getIconoArquitectura(Context context);
 
-    Bitmap getIconoArquitectura();
-
-    Bitmap getIconoEscultura();
+    Bitmap getIconoEscultura(Context context);
   }
 
   /**
