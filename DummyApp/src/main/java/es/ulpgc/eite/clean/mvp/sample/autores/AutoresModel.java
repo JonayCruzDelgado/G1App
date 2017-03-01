@@ -1,39 +1,21 @@
 package es.ulpgc.eite.clean.mvp.sample.autores;
 
 import es.ulpgc.eite.clean.mvp.GenericModel;
-import es.ulpgc.eite.clean.mvp.sample.autor.Autor;
-import es.ulpgc.eite.clean.mvp.sample.autores.Autores;
 
 
 public class AutoresModel extends GenericModel<Autores.ModelToPresenter>
         implements Autores.PresenterToModel {
-  private autores arquitectura, pintura, escultura;
+  private AutoresDB arquitectura, pintura, escultura;
   private String autoresText;
   private String autoresLabel;
   private int numOfTimes;
   private String msgText;
-//crear objeto autores con dos atributos, uno tipo especialidad (esculturua, pintura...) y otro de array de string con los nombre de los autores
+//crear objeto AutoresDB con dos atributos, uno tipo especialidad (esculturua, pintura...) y otro de array de string con los nombre de los AutoresDB
 
-  private class autores{
+  private class AutoresDB {
     private String especialidad;
     private String[] nombre;
 
-
-    public String getEspecialidad() {
-      return especialidad;
-    }
-
-    public void setEspecialidad(String especialidad) {
-      this.especialidad = especialidad;
-    }
-
-    public String[] getNombre() {
-      return nombre;
-    }
-
-    public void setNombre(String[] nombre) {
-      this.nombre = nombre;
-    }
   }
 
 
@@ -47,16 +29,16 @@ public class AutoresModel extends GenericModel<Autores.ModelToPresenter>
   public void onCreate(Autores.ModelToPresenter presenter) {
     super.onCreate(presenter);
 
-    escultura = new autores();
-    arquitectura= new autores();
-    pintura= new autores();
+    escultura = new AutoresDB();
+    arquitectura= new AutoresDB();
+    pintura= new AutoresDB();
 
     //emulacion de la BD
-    arquitectura.especialidad= "arquitectura";
+    arquitectura.especialidad= "Arquitectura";
     arquitectura.nombre = new String[]{"Le Corbusier", "Ludwig Mies van der Rohe", "Alexandre Gustave Eiffel", "Santiago Calatrava", "Antoni Gaudi"};
-    pintura.especialidad="pintura";
+    pintura.especialidad="Pintura";
     pintura.nombre= new String[]{"Leonardo da Vinci", "Salvador Dali", "Caravaggio", "Vincent van Gogh", "Francisco de Goya"};
-    escultura.especialidad="escultura";
+    escultura.especialidad="Escultura";
     escultura.nombre = new String[] {"Miguel Angel", "Miron", "Gian Lorenzo Bernini", "Auguste Rodin", "Donatello"};
 
 
@@ -73,6 +55,16 @@ public class AutoresModel extends GenericModel<Autores.ModelToPresenter>
   @Override
   public void onDestroy(boolean isChangingConfiguration) {
 
+  }
+  private Object listaSeleccionada(String generoSeleccionado){
+    if (arquitectura.especialidad.equals(generoSeleccionado)){
+      return  arquitectura;
+    }else if (escultura.especialidad.equals(generoSeleccionado)){
+      return escultura;
+    }else if (pintura.especialidad.equals(generoSeleccionado)){
+      return pintura;
+    }
+    return null;
   }
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -96,5 +88,14 @@ public class AutoresModel extends GenericModel<Autores.ModelToPresenter>
   @Override
   public String getLabel() {
     return autoresLabel;
+  }
+  @Override
+  public String [] obtenerAutores(String generoSeleccionado){
+    AutoresDB autore = (AutoresDB) listaSeleccionada(generoSeleccionado);
+    return autore.nombre;
+  }
+  @Override
+  public String obtenerEspecialidad(String generoSeleccionado){
+    AutoresDB autore = (AutoresDB) listaSeleccionada(generoSeleccionado);    return  autore.especialidad;
   }
 }
