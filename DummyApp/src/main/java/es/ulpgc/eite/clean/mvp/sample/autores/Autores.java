@@ -19,14 +19,14 @@ public interface Autores {
   interface ToAutores {
     void onScreenStarted();
     void setToolbarVisibility(boolean visible);
-    void setTextVisibility(boolean visible);
+
   }
 
   interface AutoresTo {
     Context getManagedContext();
     void destroyView();
     boolean isToolbarVisible();
-    boolean isTextVisible();
+
   }
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -37,6 +37,8 @@ public interface Autores {
    */
   interface ViewToPresenter extends Presenter<PresenterToView> {
     void onButtonClicked();
+
+    void inicializarVista();
   }
 
   /**
@@ -46,6 +48,9 @@ public interface Autores {
     void finishScreen();
     void hideToolbar();
     void hideText();
+
+    void actualizarLista(String[] nombresAutores);
+
     void showText();
     void setText(String txt);
     void setLabel(String txt);
@@ -58,6 +63,10 @@ public interface Autores {
     void onChangeMsgByBtnClicked();
     String getText();
     String getLabel();
+
+    String [] obtenerAutores(String generoSeleccionado);
+
+    String obtenerEspecialidad(String generoSeleccionado);
   }
 
   /**

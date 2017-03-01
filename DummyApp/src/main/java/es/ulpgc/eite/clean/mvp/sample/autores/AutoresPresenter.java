@@ -102,6 +102,13 @@ public class AutoresPresenter extends GenericPresenter
     checkTextVisibility();
   }
 
+  @Override
+  public void inicializarVista() {
+      Mediator app = (Mediator) getApplication();
+      getView().actualizarLista(getModel().obtenerAutores(app.getLayaoutClicked()));
+      getView().setText(getModel().obtenerEspecialidad(app.getLayaoutClicked()));
+  }
+
 
   ///////////////////////////////////////////////////////////////////////////////////
   // To autores //////////////////////////////////////////////////////////////////////
@@ -121,10 +128,6 @@ public class AutoresPresenter extends GenericPresenter
     toolbarVisible = visible;
   }
 
-  @Override
-  public void setTextVisibility(boolean visible) {
-    textVisible = visible;
-  }
 
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -147,10 +150,7 @@ public class AutoresPresenter extends GenericPresenter
     return toolbarVisible;
   }
 
-  @Override
-  public boolean isTextVisible() {
-    return textVisible;
-  }
+
 
 
   ///////////////////////////////////////////////////////////////////////////////////

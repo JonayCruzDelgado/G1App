@@ -92,5 +92,8 @@ public class App extends Application implements Mediator, Navigator {
     boolean textVisibility;
     String layaoutClicked;
   }
-
+  @Override
+  public String getLayaoutClicked(){
+    return inicialToState.layaoutClicked;
+  }
 }

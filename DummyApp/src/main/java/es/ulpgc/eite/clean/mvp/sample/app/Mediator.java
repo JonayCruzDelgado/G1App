@@ -10,4 +10,6 @@ public interface Mediator {
   void startingAutoresScreen(Autores.ToAutores presenter);
 
   void startingInicialScreen(Inicial.ToInicial presenter);
+
+  String getLayaoutClicked();
 }

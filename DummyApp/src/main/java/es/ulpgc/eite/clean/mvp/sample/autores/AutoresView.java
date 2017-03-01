@@ -3,7 +3,9 @@ package es.ulpgc.eite.clean.mvp.sample.autores;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import es.ulpgc.eite.clean.mvp.GenericActivity;
@@ -17,13 +19,15 @@ public class AutoresView
 
   private Toolbar toolbar;
   private Button button;
-  private TextView text;
+  private TextView generoSelecionado;
+  private ListView listaAutores;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_autores);
-
+    listaAutores = (ListView) findViewById(R.id.listaAutores);
+    generoSelecionado = (TextView) findViewById(R.id.generoSelecionado);
   }
 
   /**
@@ -33,6 +37,8 @@ public class AutoresView
   @Override
   protected void onResume() {
     super.onResume(AutoresPresenter.class, this);
+    getPresenter().inicializarVista();
+
   }
 
   /*
@@ -75,18 +81,29 @@ public class AutoresView
 
   @Override
   public void hideText() {
-    text.setVisibility(View.GONE);
-  }
 
+  }
   @Override
-  public void showText() {
-    text.setVisibility(View.VISIBLE);
+  public void actualizarLista(String[] nombresAutores){
+    ArrayAdapter<String> arrayAdapter = new
+            ArrayAdapter<String>(
+            this,
+            android.R.layout.simple_expandable_list_item_1,
+            nombresAutores
+    );
+    listaAutores.setAdapter(arrayAdapter);
   }
-
   @Override
   public void setText(String txt) {
-    text.setText(txt);
+    generoSelecionado.setText(txt);
   }
+  @Override
+  public void showText() {
+
+  }
+
+
+
 
   @Override
   public void setLabel(String txt) {
