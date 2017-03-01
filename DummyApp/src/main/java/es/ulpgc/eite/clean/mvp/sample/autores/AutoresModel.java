@@ -1,16 +1,41 @@
 package es.ulpgc.eite.clean.mvp.sample.autores;
 
 import es.ulpgc.eite.clean.mvp.GenericModel;
+import es.ulpgc.eite.clean.mvp.sample.autor.Autor;
 import es.ulpgc.eite.clean.mvp.sample.autores.Autores;
 
 
 public class AutoresModel extends GenericModel<Autores.ModelToPresenter>
     implements Autores.PresenterToModel {
-
+  private autores arquitectura, pintura, escultura;
   private String autoresText;
   private String autoresLabel;
   private int numOfTimes;
   private String msgText;
+//crear objeto autores con dos atributos, uno tipo especialidad (esculturua, pintura...) y otro de array de string con los nombre de los autores
+
+  private class autores{
+    private String especialidad;
+    private String[] nombre;
+
+
+    public String getEspecialidad() {
+      return especialidad;
+    }
+
+    public void setEspecialidad(String especialidad) {
+      this.especialidad = especialidad;
+    }
+
+    public String[] getNombre() {
+      return nombre;
+    }
+
+    public void setNombre(String[] nombre) {
+      this.nombre = nombre;
+    }
+  }
+
 
   /**
    * Method that recovers a reference to the PRESENTER
@@ -21,6 +46,14 @@ public class AutoresModel extends GenericModel<Autores.ModelToPresenter>
   @Override
   public void onCreate(Autores.ModelToPresenter presenter) {
     super.onCreate(presenter);
+
+    escultura = new autores();
+    arquitectura= new autores();
+    pintura= new autores();
+    arquitectura.especialidad= "arquitectura";
+    arquitectura.nombre = new String[]{""};
+    pintura.especialidad="pintura";
+    escultura.especialidad="escultura";
 
     autoresLabel = "Click Me!";
     autoresText = "Hello World!";
