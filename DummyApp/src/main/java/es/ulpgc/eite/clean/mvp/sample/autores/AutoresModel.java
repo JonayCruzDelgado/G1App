@@ -50,10 +50,15 @@ public class AutoresModel extends GenericModel<Autores.ModelToPresenter>
     escultura = new autores();
     arquitectura= new autores();
     pintura= new autores();
+
+    //emulacion de la BD
     arquitectura.especialidad= "arquitectura";
-    arquitectura.nombre = new String[]{""};
+    arquitectura.nombre = new String[]{"Le Corbusier", "Ludwig Mies van der Rohe", "Alexandre Gustave Eiffel", "Santiago Calatrava", "Antoni Gaudi"};
     pintura.especialidad="pintura";
+    pintura.nombre= new String[]{"Leonardo da Vinci", "Salvador Dali", "Caravaggio", "Vincent van Gogh", "Francisco de Goya"};
     escultura.especialidad="escultura";
+    escultura.nombre = new String[] {"Miguel Angel", "Miron", "Gian Lorenzo Bernini", "Auguste Rodin", "Donatello"};
+
 
     autoresLabel = "Click Me!";
     autoresText = "Hello World!";
