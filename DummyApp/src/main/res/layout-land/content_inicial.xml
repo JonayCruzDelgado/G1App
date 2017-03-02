@@ -44,8 +44,7 @@
                         android:padding="5dp"
                         android:orientation="horizontal"
                         android:layout_weight="1"
-                        android:paddingLeft="40dp"
-                        android:paddingRight="@dimen/activity_horizontal_margin">
+                        >
 
                         <ImageView
                             android:id="@+id/iconoBtnPintura"
@@ -65,8 +64,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:textSize="24sp"
-                            android:paddingRight="30dp"
-                            android:paddingLeft="30dp"
+                            android:paddingRight="15dp"
+                            android:paddingLeft="15dp"
                             android:gravity="center"
                             android:text="Pintura" />
                     </LinearLayout>
@@ -105,8 +104,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:textSize="24sp"
-                            android:paddingRight="30dp"
-                            android:paddingLeft="30dp"
+                            android:paddingRight="15dp"
+                            android:paddingLeft="15dp"
                             android:gravity="center"
                             android:text="Escutura" />
                     </LinearLayout>
@@ -162,8 +161,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:textSize="24sp"
-                android:paddingRight="30dp"
-                android:paddingLeft="30dp"
+                android:paddingRight="15dp"
+                android:paddingLeft="15dp"
                 android:gravity="center"
                 android:text="Arquitectura" />
         </LinearLayout>
