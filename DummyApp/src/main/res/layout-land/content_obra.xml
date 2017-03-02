@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_obra"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="es.ulpgc.eite.clean.mvp.sample.obra.ObraView"
+    tools:showIn="@layout/activity_obra">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:background="#3D9964"
+        android:paddingTop="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:adjustViewBounds="true"
+            android:maxHeight="200dp"
+            android:layout_weight="0.75"
+            android:src="@mipmap/ic_cuadro"
+            />
+
+
+        <TextView
+            android:id="@+id/descripcionObra"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textAlignment="textStart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="texttexttexttexttexttexttexttexttexttexttexttexttexttext
+            texttexttexttexttexttexttexttext     texttexttexttexttexttexttexttexttexttexttext   texttexttexttexttexttexttext
+            texttexttexttexttexttexttexttexttexttexttexttexttexttext
+            texttexttexttexttexttexttexttext     texttexttexttexttexttexttexttexttexttexttext
+            texttexttexttexttexttexttext"
+            android:layout_weight="0.25"
+            android:textSize="14sp"
+            />
+
+    </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/btnMapa"
+            android:clickable="true"
+            android:paddingTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@mipmap/ic_map"
+            android:maxHeight="50dp"
+            android:maxWidth="50dp"
+            />
+
+    </LinearLayout>
+</RelativeLayout>
