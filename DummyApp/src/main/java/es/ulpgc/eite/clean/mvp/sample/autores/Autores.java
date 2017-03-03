@@ -50,12 +50,9 @@ public interface Autores {
     void finishScreen();
     void hideToolbar();
     void hideText();
-
     void actualizarLista(String[] nombresAutores);
-
     void showText();
     void setText(String txt);
-    void setLabel(String txt);
   }
 
   /**

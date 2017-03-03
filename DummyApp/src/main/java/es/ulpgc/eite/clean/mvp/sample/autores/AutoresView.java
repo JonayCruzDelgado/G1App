@@ -5,21 +5,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+
 import android.widget.ListView;
 import android.widget.TextView;
 
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.sample.R;
-import es.ulpgc.eite.clean.mvp.sample.autores.Autores;
-import es.ulpgc.eite.clean.mvp.sample.autores.AutoresPresenter;
 
 public class AutoresView
     extends GenericActivity<Autores.PresenterToView, Autores.ViewToPresenter, AutoresPresenter>
     implements Autores.PresenterToView {
 
   private Toolbar toolbar;
-  private Button button;
   private TextView generoSelecionado;
   private ListView listaAutores;
 
@@ -115,11 +112,4 @@ public class AutoresView
 
   }
 
-
-
-
-  @Override
-  public void setLabel(String txt) {
-    button.setText(txt);
-  }
 }
