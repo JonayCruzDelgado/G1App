@@ -39,6 +39,8 @@ public interface Autores {
     void onButtonClicked();
 
     void inicializarVista();
+
+    void onItemClickSelected(int pos);
   }
 
   /**

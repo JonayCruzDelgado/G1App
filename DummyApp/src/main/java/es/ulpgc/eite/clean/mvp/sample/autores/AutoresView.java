@@ -3,6 +3,7 @@ package es.ulpgc.eite.clean.mvp.sample.autores;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -28,7 +29,19 @@ public class AutoresView
     setContentView(R.layout.activity_autores);
     listaAutores = (ListView) findViewById(R.id.listaAutores);
     generoSelecionado = (TextView) findViewById(R.id.generoSelecionado);
+    toolbar = (Toolbar) findViewById(R.id.toolbar);
+    listaAutores.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      @Override
+      public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        onItemClickSelected(i);
+      }
+    });
   }
+
+    private void onItemClickSelected(int pos) {
+      getPresenter().onItemClickSelected (pos);
+  }
+
 
   /**
    * Method that initialized MVP objects
@@ -81,7 +94,7 @@ public class AutoresView
 
   @Override
   public void hideText() {
-
+    generoSelecionado.setVisibility(View.GONE);
   }
   @Override
   public void actualizarLista(String[] nombresAutores){
@@ -95,7 +108,7 @@ public class AutoresView
   }
   @Override
   public void setText(String txt) {
-    generoSelecionado.setText(txt);
+    toolbar.setTitle(txt);
   }
   @Override
   public void showText() {
