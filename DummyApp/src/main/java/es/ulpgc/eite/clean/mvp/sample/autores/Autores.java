@@ -27,6 +27,7 @@ public interface Autores {
     void destroyView();
     boolean isToolbarVisible();
 
+    int getPosicionListaPulsada();
   }
 
   ///////////////////////////////////////////////////////////////////////////////////

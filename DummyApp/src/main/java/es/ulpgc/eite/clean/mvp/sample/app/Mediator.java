@@ -12,4 +12,6 @@ public interface Mediator {
   void startingInicialScreen(Inicial.ToInicial presenter);
 
   String getLayaoutClicked();
+
+  int getPosicion();
 }

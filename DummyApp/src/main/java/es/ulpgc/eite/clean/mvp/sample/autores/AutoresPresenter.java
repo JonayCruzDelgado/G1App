@@ -8,6 +8,7 @@ import es.ulpgc.eite.clean.mvp.ContextView;
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.GenericPresenter;
 import es.ulpgc.eite.clean.mvp.sample.app.Mediator;
+import es.ulpgc.eite.clean.mvp.sample.app.Navigator;
 import es.ulpgc.eite.clean.mvp.sample.autores.Autores;
 import es.ulpgc.eite.clean.mvp.sample.autores.AutoresModel;
 
@@ -19,7 +20,7 @@ public class AutoresPresenter extends GenericPresenter
   private boolean toolbarVisible;
   private boolean buttonClicked;
   private boolean textVisible;
-
+  private int posicionListaPulsada;
   /**
    * Operation called during VIEW creation in {@link GenericActivity#onResume(Class, Object)}
    * Responsible to initialize MODEL.
@@ -114,6 +115,9 @@ public class AutoresPresenter extends GenericPresenter
   @Override
   public void onItemClickSelected(int pos) {
     Log.d(TAG,"posicion pulsada" + pos);
+    setPosicionListaPulsada(pos);
+    Navigator app = (Navigator) getView().getApplication();
+    app.goToAutorScreen(this);
   }
 
 
@@ -181,5 +185,14 @@ public class AutoresPresenter extends GenericPresenter
       }
     }
   }
+  @Override
+  public int getPosicionListaPulsada() {
+    return posicionListaPulsada;
 
+
+  }
+
+  private void setPosicionListaPulsada(int posicionListaPulsada) {
+    this.posicionListaPulsada = posicionListaPulsada;
+  }
 }

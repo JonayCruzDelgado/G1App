@@ -1,41 +1,41 @@
 package es.ulpgc.eite.clean.mvp.sample.autor;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.sample.R;
-import es.ulpgc.eite.clean.mvp.sample.dummy.Dummy;
-import es.ulpgc.eite.clean.mvp.sample.dummy.DummyPresenter;
+import es.ulpgc.eite.clean.mvp.sample.autor.Autor;
+import es.ulpgc.eite.clean.mvp.sample.autor.AutorPresenter;
 
 public class AutorView
-    extends GenericActivity<Dummy.PresenterToView, Dummy.ViewToPresenter, DummyPresenter>
-    implements Dummy.PresenterToView {
+    extends GenericActivity<Autor.PresenterToView, Autor.ViewToPresenter, AutorPresenter>
+    implements Autor.PresenterToView {
 
   private Toolbar toolbar;
-  private Button button;
   private TextView text;
-
+  private ListView listaObras;
+  private ImageView iconoObra;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_dummy);
+    setContentView(R.layout.activity_autor);
 
-    text = (TextView) findViewById(R.id.text);
+    text = (TextView) findViewById(R.id.descripcionAutor);
 
     toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
-    button = (Button) findViewById(R.id.button);
-    button.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        getPresenter().onButtonClicked();
-      }
-    });
+    listaObras = (ListView) findViewById(R.id.listaObras);
+
+    iconoObra = (ImageView) findViewById(R.id.imagenObra);
   }
 
   /**
@@ -44,14 +44,15 @@ public class AutorView
    */
   @Override
   protected void onResume() {
-    super.onResume(DummyPresenter.class, this);
+    super.onResume(AutorPresenter.class, this);
+    getPresenter().inicializarVista();
   }
 
   /*
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     // Inflate the menu; this adds items to the action bar if it is present.
-    getMenuInflater().inflate(R.menu.menu_dummy, menu);
+    getMenuInflater().inflate(R.menu.menu_Autor, menu);
     return true;
   }
 
@@ -101,7 +102,21 @@ public class AutorView
   }
 
   @Override
-  public void setLabel(String txt) {
-    button.setText(txt);
+  public void setIconoObra(Bitmap bp) {
+    iconoObra.setImageBitmap(bp);
+  }
+  @Override
+  public void actualizarLista(String[] nombresObras){
+    ArrayAdapter<String> arrayAdapter = new
+            ArrayAdapter<String>(
+            this,
+            android.R.layout.simple_expandable_list_item_1,
+            nombresObras
+    );
+    listaObras.setAdapter(arrayAdapter);
+  }
+  @Override
+  public void setNombreAutor(String txt) {
+    toolbar.setTitle(txt);
   }
 }

@@ -1,6 +1,7 @@
 package es.ulpgc.eite.clean.mvp.sample.autor;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 
 import es.ulpgc.eite.clean.mvp.ContextView;
 import es.ulpgc.eite.clean.mvp.Model;
@@ -16,13 +17,13 @@ public interface Autor {
   ///////////////////////////////////////////////////////////////////////////////////
   // State /////////////////////////////////////////////////////////////////////////
 
-  interface ToDummy {
+  interface ToAutor {
     void onScreenStarted();
     void setToolbarVisibility(boolean visible);
     void setTextVisibility(boolean visible);
   }
 
-  interface DummyTo {
+  interface AutorTo {
     Context getManagedContext();
     void destroyView();
     boolean isToolbarVisible();
@@ -37,6 +38,8 @@ public interface Autor {
    */
   interface ViewToPresenter extends Presenter<PresenterToView> {
     void onButtonClicked();
+
+    void inicializarVista();
   }
 
   /**
@@ -48,22 +51,34 @@ public interface Autor {
     void hideText();
     void showText();
     void setText(String txt);
-    void setLabel(String txt);
+
+    void setIconoObra(Bitmap bp);
+
+    void actualizarLista(String[] nombresObras);
+
+    void setNombreAutor(String txt);
   }
 
   /**
    * Methods offered to MODEL to communicate with PRESENTER
    */
   interface PresenterToModel extends Model<ModelToPresenter> {
+
     void onChangeMsgByBtnClicked();
     String getText();
     String getLabel();
+
+    String [] getObras(int posicion);
+
+    String getNombre(int posicion);
+
+    String getDescripcion(int posicion);
   }
 
   /**
    * Required PRESENTER methods available to MODEL
    */
   interface ModelToPresenter {
-
+    String getCategoria();
   }
 }

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.util.Log;
 
 import es.ulpgc.eite.clean.mvp.sample.autor.Autor;
+import es.ulpgc.eite.clean.mvp.sample.autor.AutorView;
 import es.ulpgc.eite.clean.mvp.sample.autores.Autores;
 import es.ulpgc.eite.clean.mvp.sample.autores.AutoresView;
 import es.ulpgc.eite.clean.mvp.sample.dummy.Dummy;
@@ -17,6 +18,7 @@ public class App extends Application implements Mediator, Navigator {
 
   private DummyState toDummyState, dummyToState;
   private InicialState toInicialState, inicialToState;
+  private AutoresState autoresToState;
 
   @Override
   public void onCreate() {
@@ -81,6 +83,21 @@ public class App extends Application implements Mediator, Navigator {
     }
 
   }
+  @Override
+  public void goToAutorScreen(Autores.AutoresTo presenter) {
+    Log.d("APP", "goToAutorScreen() has pulsado: "+ presenter.getPosicionListaPulsada());
+    autoresToState = new AutoresState();
+    autoresToState.posicionListaPulsada = presenter.getPosicionListaPulsada();
+    autoresToState.categoriaSeleccionada = inicialToState.layaoutClicked;
+    Log.d("APP", "goToAutorScreen() categoria seleccionada: "+ autoresToState.categoriaSeleccionada);
+    Context view = presenter.getManagedContext();
+
+    if (view != null) {
+      view.startActivity(new Intent(view, AutorView.class));
+
+    }
+
+  }
   ///////////////////////////////////////////////////////////////////////////////////
   // State /////////////////////////////////////////////////////////////////////////
 
@@ -92,8 +109,16 @@ public class App extends Application implements Mediator, Navigator {
     boolean textVisibility;
     String layaoutClicked;
   }
+  private class AutoresState{
+    int posicionListaPulsada;
+    String categoriaSeleccionada;
+  }
   @Override
   public String getLayaoutClicked(){
     return inicialToState.layaoutClicked;
+  }
+  @Override
+  public int getPosicion(){
+    return autoresToState.posicionListaPulsada;
   }
 }

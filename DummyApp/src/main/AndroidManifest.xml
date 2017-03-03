@@ -14,7 +14,11 @@
         android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-
+        <activity
+            android:name=".autor.AutorView"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
         <activity
             android:name=".inicial.InicialView"
             android:label="@string/app_name"

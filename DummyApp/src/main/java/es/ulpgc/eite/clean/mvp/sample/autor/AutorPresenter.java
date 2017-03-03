@@ -8,17 +8,18 @@ import es.ulpgc.eite.clean.mvp.ContextView;
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.GenericPresenter;
 import es.ulpgc.eite.clean.mvp.sample.app.Mediator;
-import es.ulpgc.eite.clean.mvp.sample.dummy.Dummy;
-import es.ulpgc.eite.clean.mvp.sample.dummy.DummyModel;
+import es.ulpgc.eite.clean.mvp.sample.autor.Autor;
+import es.ulpgc.eite.clean.mvp.sample.autor.AutorModel;
 
 public class AutorPresenter extends GenericPresenter
-    <Dummy.PresenterToView, Dummy.PresenterToModel, Dummy.ModelToPresenter, DummyModel>
-    implements Dummy.ViewToPresenter, Dummy.ModelToPresenter, Dummy.DummyTo, Dummy.ToDummy {
+    <Autor.PresenterToView, Autor.PresenterToModel, Autor.ModelToPresenter, AutorModel>
+    implements Autor.ViewToPresenter, Autor.ModelToPresenter, Autor.AutorTo, Autor.ToAutor {
 
 
   private boolean toolbarVisible;
   private boolean buttonClicked;
   private boolean textVisible;
+  private String categoria;
 
   /**
    * Operation called during VIEW creation in {@link GenericActivity#onResume(Class, Object)}
@@ -29,14 +30,16 @@ public class AutorPresenter extends GenericPresenter
    * @param view The current VIEW instance
    */
   @Override
-  public void onCreate(Dummy.PresenterToView view) {
-    super.onCreate(DummyModel.class, this);
+  public void onCreate(Autor.PresenterToView view) {
+    super.onCreate(AutorModel.class, this);
     setView(view);
     Log.d(TAG, "calling onCreate()");
 
-    Log.d(TAG, "calling startingDummyScreen()");
     Mediator app = (Mediator) getView().getApplication();
-    app.startingDummyScreen(this);
+    Log.d(TAG, "categoria seleccionada "+ app.getLayaoutClicked());
+    categoria = app.getLayaoutClicked();
+
+
   }
 
   /**
@@ -47,21 +50,19 @@ public class AutorPresenter extends GenericPresenter
    * @param view The current VIEW instance
    */
   @Override
-  public void onResume(Dummy.PresenterToView view) {
+  public void onResume(Autor.PresenterToView view) {
     setView(view);
     Log.d(TAG, "calling onResume()");
 
+
     if(configurationChangeOccurred()) {
-      getView().setLabel(getModel().getLabel());
 
       checkToolbarVisibility();
       checkTextVisibility();
 
-      if (buttonClicked) {
-        getView().setText(getModel().getText());
       }
     }
-  }
+
 
   /**
    * Helper method to inform Presenter that a onBackPressed event occurred
@@ -101,16 +102,22 @@ public class AutorPresenter extends GenericPresenter
     }
     checkTextVisibility();
   }
+  @Override
+  public void inicializarVista(){
+    Mediator app = (Mediator) getView().getApplication();
+    checkToolbarVisibility();
+
+  }
 
 
   ///////////////////////////////////////////////////////////////////////////////////
-  // To Dummy //////////////////////////////////////////////////////////////////////
+  // To Autor //////////////////////////////////////////////////////////////////////
 
   @Override
   public void onScreenStarted() {
     Log.d(TAG, "calling onScreenStarted()");
     if(isViewRunning()) {
-      getView().setLabel(getModel().getLabel());
+
     }
     checkToolbarVisibility();
     checkTextVisibility();
@@ -128,7 +135,7 @@ public class AutorPresenter extends GenericPresenter
 
 
   ///////////////////////////////////////////////////////////////////////////////////
-  // Dummy To //////////////////////////////////////////////////////////////////////
+  // Autor To //////////////////////////////////////////////////////////////////////
 
 
   @Override
@@ -175,4 +182,8 @@ public class AutorPresenter extends GenericPresenter
     }
   }
 
+  @Override
+  public String getCategoria() {
+    return categoria;
+  }
 }
