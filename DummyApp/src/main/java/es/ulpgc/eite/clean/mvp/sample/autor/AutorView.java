@@ -5,15 +5,12 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.sample.R;
-import es.ulpgc.eite.clean.mvp.sample.autor.Autor;
-import es.ulpgc.eite.clean.mvp.sample.autor.AutorPresenter;
 
 public class AutorView
     extends GenericActivity<Autor.PresenterToView, Autor.ViewToPresenter, AutorPresenter>
@@ -22,7 +19,7 @@ public class AutorView
   private Toolbar toolbar;
   private TextView text;
   private ListView listaObras;
-  private ImageView iconoObra;
+  private ImageView iconoAutor;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -35,7 +32,7 @@ public class AutorView
 
     listaObras = (ListView) findViewById(R.id.listaObras);
 
-    iconoObra = (ImageView) findViewById(R.id.imagenObra);
+    iconoAutor = (ImageView) findViewById(R.id.imagenAutor);
   }
 
   /**
@@ -101,9 +98,8 @@ public class AutorView
     text.setText(txt);
   }
 
-  @Override
-  public void setIconoObra(Bitmap bp) {
-    iconoObra.setImageBitmap(bp);
+  public void setIconoAutor(Bitmap bp) {
+    iconoAutor.setImageBitmap(bp);
   }
   @Override
   public void actualizarLista(String[] nombresObras){

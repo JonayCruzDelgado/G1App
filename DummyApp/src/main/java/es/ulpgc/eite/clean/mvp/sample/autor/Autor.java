@@ -52,7 +52,7 @@ public interface Autor {
     void showText();
     void setText(String txt);
 
-    void setIconoObra(Bitmap bp);
+    void setIconoAutor(Bitmap bp);
 
     void actualizarLista(String[] nombresObras);
 
