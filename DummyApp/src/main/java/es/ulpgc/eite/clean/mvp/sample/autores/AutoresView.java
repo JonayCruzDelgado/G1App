@@ -1,5 +1,6 @@
 package es.ulpgc.eite.clean.mvp.sample.autores;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -44,6 +45,7 @@ public class AutoresView
    * Method that initialized MVP objects
    * {@link super#onResume(Class, Object)} should always be called
    */
+  @SuppressLint("MissingSuperCall")
   @Override
   protected void onResume() {
     super.onResume(AutoresPresenter.class, this);

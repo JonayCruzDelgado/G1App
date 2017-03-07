@@ -55,7 +55,6 @@ public class ObraPresenter extends GenericPresenter
       getView().setLabel(getModel().getLabel());
 
       checkToolbarVisibility();
-      checkTextVisibility();
 
       if (buttonClicked) {
         getView().setText(getModel().getText());

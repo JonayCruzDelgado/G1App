@@ -58,7 +58,6 @@ public class AutorPresenter extends GenericPresenter
     if(configurationChangeOccurred()) {
 
       checkToolbarVisibility();
-      checkTextVisibility();
 
       }
     }

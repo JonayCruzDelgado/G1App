@@ -1,11 +1,10 @@
 package es.ulpgc.eite.clean.mvp.sample.inicial;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.Layout;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -80,9 +79,11 @@ public class InicialView
    * Method that initialized MVP objects
    * {@link super#onResume(Class, Object)} should always be called
    */
+  @SuppressLint("MissingSuperCall")
   @Override
   protected void onResume() {
     super.onResume(InicialPresenter.class, this);
+
   }
 
   /*
