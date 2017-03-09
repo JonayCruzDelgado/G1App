@@ -2,7 +2,11 @@ package es.ulpgc.eite.clean.mvp.sample.dummy;
 
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
+
+import java.util.Locale;
 
 import es.ulpgc.eite.clean.mvp.ContextView;
 import es.ulpgc.eite.clean.mvp.GenericActivity;
@@ -91,13 +95,20 @@ public class DummyPresenter extends GenericPresenter
   @Override
   public void onButtonClicked() {
     Log.d(TAG, "calling onButtonClicked()");
-    if(isViewRunning()) {
+    /*if(isViewRunning()) {
       getModel().onChangeMsgByBtnClicked();
       getView().setText(getModel().getText());
       textVisible = true;
       buttonClicked = true;
     }
-    checkTextVisibility();
+    checkTextVisibility();*/
+
+    double latitude =20;
+    double longitude = -15;
+    String uri = String.format(Locale.ENGLISH, "geo:%f,%f", latitude, longitude);
+
+    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+    getManagedContext().startActivity(intent);
   }
 
 
