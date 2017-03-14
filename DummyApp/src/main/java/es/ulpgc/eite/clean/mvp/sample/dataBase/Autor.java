@@ -16,7 +16,7 @@ public class Autor extends RealmObject {
     private String id;
     private String nombre;
     private String descripcion;
-    private Bitmap imagen;
+    private Byte[] imagen;
     private RealmList<Obra> obras;
 
     public String getId() {
@@ -43,11 +43,11 @@ public class Autor extends RealmObject {
         this.descripcion = descripcion;
     }
 
-    public Bitmap getImagen() {
+    public Byte[] getImagen() {
         return imagen;
     }
 
-    public void setImagen(Bitmap imagen) {
+    public void setImagen(Byte[] imagen) {
         this.imagen = imagen;
     }
 
