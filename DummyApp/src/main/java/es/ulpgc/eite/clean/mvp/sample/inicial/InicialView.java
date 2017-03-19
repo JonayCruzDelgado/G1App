@@ -13,6 +13,7 @@ import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.sample.R;
 import es.ulpgc.eite.clean.mvp.sample.inicial.Inicial;
 import es.ulpgc.eite.clean.mvp.sample.inicial.InicialPresenter;
+import io.realm.Realm;
 
 public class InicialView
     extends GenericActivity<Inicial.PresenterToView, Inicial.ViewToPresenter, InicialPresenter>
@@ -71,6 +72,8 @@ public class InicialView
 
       }
     });
+
+
 
 
   }
