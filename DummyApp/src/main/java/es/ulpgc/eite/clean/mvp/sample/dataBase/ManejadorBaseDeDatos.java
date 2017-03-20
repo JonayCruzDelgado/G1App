@@ -88,6 +88,7 @@ class ManejadorBaseDeDatos {
 
     public void initBaseDeDatos(){
         realm.beginTransaction();
+        // toca rellener a saco aqui
 
         realm.commitTransaction();
     }
