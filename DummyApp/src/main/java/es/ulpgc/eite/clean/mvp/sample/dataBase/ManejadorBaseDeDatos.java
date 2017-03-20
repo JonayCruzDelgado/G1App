@@ -25,6 +25,7 @@ class ManejadorBaseDeDatos {
 
     private ManejadorBaseDeDatos() {
         realm = Realm.getDefaultInstance();
+        initBaseDeDatos();
     }
 
     public String getNombreCategoria(int idCategoria){
@@ -89,6 +90,10 @@ class ManejadorBaseDeDatos {
     public void initBaseDeDatos(){
         realm.beginTransaction();
         // toca rellener a saco aqui
+        addCategoria("Escultura");
+        addCategoria("Arquitectura");
+        addCategoria("Pintura");
+
 
         realm.commitTransaction();
     }
