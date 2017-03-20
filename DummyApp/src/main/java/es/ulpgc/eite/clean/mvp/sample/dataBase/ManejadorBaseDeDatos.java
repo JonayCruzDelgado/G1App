@@ -3,6 +3,7 @@ package es.ulpgc.eite.clean.mvp.sample.dataBase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import java.io.File;
 import java.nio.ByteBuffer;
 
 import io.realm.Realm;
@@ -93,6 +94,20 @@ class ManejadorBaseDeDatos {
         addCategoria("Escultura");
         addCategoria("Arquitectura");
         addCategoria("Pintura");
+
+        String nombreAutor1 ="Miguel Ángel";
+        String categoriaAutor1 ="Escultura";
+        String descripcionAutor1 ="Michelangelo Buonarroti (Caprese, 6 de marzo de 1475-Roma, " +
+                "18 de febrero de 1564), conocido en español como Miguel Ángel, fue un arquitecto, " +
+                "escultor y pintor italiano renacentista, considerado uno de los más grandes artistas de la historia tanto por " +
+                "sus esculturas como por sus pinturas y obra arquitectónica. Desarrolló su labor artística a lo largo de más de " +
+                "setenta años entre Florencia y Roma, que era donde vivían sus grandes mecenas, la familia Médici de Florencia y " +
+                "los diferentes papas romanos.";
+        String fileName = "/miguel_anguel.jpg";
+        File file1 = new File(fileName);
+        Bitmap imagenAutor1 = BitmapFactory.decodeFile(file1.getAbsolutePath());
+
+        addAutor(nombreAutor1,descripcionAutor1,categoriaAutor1,imagenAutor1);
 
 
         realm.commitTransaction();
