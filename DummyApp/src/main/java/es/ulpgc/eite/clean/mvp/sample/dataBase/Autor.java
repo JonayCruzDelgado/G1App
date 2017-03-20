@@ -13,17 +13,18 @@ import io.realm.annotations.PrimaryKey;
 public class Autor extends RealmObject {
 
     @PrimaryKey
-    private String id;
+    private int id;
     private String nombre;
     private String descripcion;
     private byte[] imagen;
     private RealmList<Obra> obras;
+    private String categoria;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -57,5 +58,12 @@ public class Autor extends RealmObject {
 
     public void setObras(RealmList<Obra> obras) {
         this.obras = obras;
+    }
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 }

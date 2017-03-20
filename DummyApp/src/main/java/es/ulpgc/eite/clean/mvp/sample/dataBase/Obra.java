@@ -12,18 +12,19 @@ import io.realm.annotations.PrimaryKey;
 public class Obra extends RealmObject {
 
     @PrimaryKey
-    private String id;
+    private int id;
     private String nombre;
     private String descripcion;
     private byte[] imagen;
     private Double latitud;
     private Double longitud;
+    private String Autor;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -65,5 +66,13 @@ public class Obra extends RealmObject {
     public void setLongitud(Double longitud) {
         this.longitud = longitud;
     }
+    public String getAutor() {
+        return Autor;
+    }
+
+    public void setAutor(String autor) {
+        Autor = autor;
+    }
+
 
 }
