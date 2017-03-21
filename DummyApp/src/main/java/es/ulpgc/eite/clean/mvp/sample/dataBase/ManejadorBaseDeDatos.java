@@ -103,15 +103,23 @@ class ManejadorBaseDeDatos {
                 "sus esculturas como por sus pinturas y obra arquitectónica. Desarrolló su labor artística a lo largo de más de " +
                 "setenta años entre Florencia y Roma, que era donde vivían sus grandes mecenas, la familia Médici de Florencia y " +
                 "los diferentes papas romanos.";
-        String fileName = "/miguel_anguel.jpg";
-        File file1 = new File(fileName);
-        Bitmap imagenAutor1 = BitmapFactory.decodeFile(file1.getAbsolutePath());
+
+        Bitmap imagenAutor1 = getImagenToBitmap("/miguel_angel.jpg");
 
         addAutor(nombreAutor1,descripcionAutor1,categoriaAutor1,imagenAutor1);
 
 
         realm.commitTransaction();
     }
+
+    public  Bitmap getImagenToBitmap (String fileName){
+        File file1 = new File(fileName);
+        Bitmap imagen = BitmapFactory.decodeFile(file1.getAbsolutePath());
+        return imagen;
+    }
+
+
+
 // crear categoria, no se añaden autores por que voy a hacer que un autor solo pueda pertenecer a una categoria
 // por lo que se especifica al crear el autor, es mucho mas simple asi, si lo quieren hacer que un autor pertenezca a varias categoria es mas lio
     public void addCategoria(String nombre){
