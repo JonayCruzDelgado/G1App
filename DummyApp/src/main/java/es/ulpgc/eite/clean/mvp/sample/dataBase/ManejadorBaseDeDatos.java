@@ -54,6 +54,24 @@ class ManejadorBaseDeDatos {
         }
         return array;
     }
+
+    public String [] getNombresByArrayIdsAutores(int[] ids){
+        String[] nombres={""};
+        int i;
+        for(i=0;i<= ids.length;i++){
+            nombres[i] =getNombreAutor(ids[i]);
+        }
+        return nombres;
+    }
+
+    public String [] getNombresByArrayIdsObras(int[] ids){
+        String[] nombres={""};
+        int i;
+        for(i=0;i<= ids.length;i++){
+            nombres[i] =getNombreObra(ids[i]);
+        }
+        return nombres;
+    }
     public String getDescripcionAutor(int idAutor){
         RealmResults<Autor> result= realm.where(Autor.class).equalTo("id",idAutor).findAll();
         return result.get(0).getDescripcion();
