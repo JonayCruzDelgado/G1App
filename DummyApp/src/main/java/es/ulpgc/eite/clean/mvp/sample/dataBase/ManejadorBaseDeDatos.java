@@ -104,6 +104,7 @@ class ManejadorBaseDeDatos {
                 "setenta años entre Florencia y Roma, que era donde vivían sus grandes mecenas, la familia Médici de Florencia y " +
                 "los diferentes papas romanos.";
 
+
         Bitmap imagenAutor1 = getImagenToBitmap("/miguel_angel.jpg");
 
         addAutor(nombreAutor1,descripcionAutor1,categoriaAutor1,imagenAutor1);
