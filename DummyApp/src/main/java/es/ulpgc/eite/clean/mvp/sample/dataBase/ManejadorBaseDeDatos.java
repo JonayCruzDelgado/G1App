@@ -134,12 +134,36 @@ class ManejadorBaseDeDatos {
                 "Trabajó en el estilo serenamente clásico del primer renacimiento florentino.";
         addAutor(nombreAutor,descripcionAutor,categoriaAutor,imagenToBitmap("/verrocchio.jpg"));
 
+        nombreAutor ="Gian Lorenzo Bernini";
+        categoriaAutor="Escultor";
+        descripcionAutor="Gian Lorenzo Bernini (Nápoles, 7 de diciembre de 1598 - Roma, 28 de noviembre de 1680) fue un escultor, arquitecto " +
+                "y pintor italiano. Trabajó principalmente en Roma " +
+                "y es considerado el más destacado escultor de su generación, creador del estilo escultórico barroco.";
+        addAutor(nombreAutor,descripcionAutor,categoriaAutor,imagenToBitmap("/gian_lorenzo_bernini.jpg"));
+
+        nombreAutor ="Auguste Rodin";
+        categoriaAutor="Escultura";
+        descripcionAutor="François-Auguste-René Rodin (París, 12 de noviembre de 1840 - Meudon, 17 de noviembre de 1917) fue un escultor " +
+                "francés contemporáneo del impresionismo, y considerado como uno de los \"padres de la escultura moderna\".";
+        addAutor(nombreAutor,descripcionAutor,categoriaAutor,imagenToBitmap("/auguste_rodin.png"));
+
+        nombreAutor ="Donatello";
+        categoriaAutor="Escultura";
+        descripcionAutor="Donato di Niccolò di Betto Bardi, conocido como Donatello (Florencia, Italia, 1386-Ibídem, 13 de diciembre de 1466), " +
+                "fue un artista y escultor italiano de principios del Renacimiento, uno de los padres del periodo junto con Leon Battista " +
+                "Alberti, Brunelleschi y Masaccio. Donatello se convirtió en una fuerza innovadora en el campo de la escultura monumental y " +
+                "en el tratamiento de los relieves, donde logró representar una gran profundidad " +
+                "dentro de un mínimo plano, denominándose con el nombre de stiacciato, es decir «relieve aplanado o aplastado».";
+        addAutor(nombreAutor,descripcionAutor,categoriaAutor,imagenToBitmap("/donatello.jpg"));
+
         nombreAutor ="";
         categoriaAutor="";
         descripcionAutor="";
         //addAutor(nombreAutor,descripcionAutor,categoriaAutor,imagenToBitmap());
-    }
 
+
+    }
+    //pasar el archivo que entra ha un bitmap
     public Bitmap imagenToBitmap( String fileName){
         File file1 = new File(fileName);
         Bitmap imagen = BitmapFactory.decodeFile(file1.getAbsolutePath());
