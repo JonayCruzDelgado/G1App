@@ -156,10 +156,87 @@ class ManejadorBaseDeDatos {
                 "dentro de un mínimo plano, denominándose con el nombre de stiacciato, es decir «relieve aplanado o aplastado».";
         addAutor(nombreAutor,descripcionAutor,categoriaAutor,imagenToBitmap("/donatello.jpg"));
 
-        nombreAutor ="";
-        categoriaAutor="";
-        descripcionAutor="";
-        //addAutor(nombreAutor,descripcionAutor,categoriaAutor,imagenToBitmap());
+        nombreAutor ="Leonardo Da Vinci";
+        categoriaAutor="Pintura";
+        descripcionAutor="Leonardo da Vinci (Leonardo di ser Piero da Vinci) (Vinci, 15 de abril de 14522 -Amboise, 2 de mayo de 1519) fue " +
+                "un polímata florentino del Renacimiento italiano. Fue a la vez pintor, anatomista, arquitecto, paleontólogo, artista, botánico, " +
+                "científico, escritor, escultor, filósofo, ingeniero, inventor, músico, poeta y urbanista. Murió acompañado de su fiel Francesco" +
+                " Melzi, a quien legó sus proyectos, diseños y pinturas. Tras pasar su infancia en su ciudad natal, Leonardo estudió con el " +
+                "célebre pintor florentino Andrea de Verrocchio. Sus primeros trabajos de importancia fueron creados en Milán al servicio del" +
+                " duque Ludovico Sforza. Trabajó a continuación en Roma, Bolonia y Venecia, y pasó los últimos años de su vida en Francia, " +
+                "por invitación del rey Francisco I.";
+        addAutor(nombreAutor,descripcionAutor,categoriaAutor,imagenToBitmap("/leonardo_davinci"));
+
+        nombreAutor ="Salvador Dali";
+        categoriaAutor="Pintura";
+        descripcionAutor="Salvador Felipe Jacinto Dalí i Domènech,1 marqués de Dalí de Púbol (Figueras, 11 de mayo de 1904, 23 de enero de 1989), " +
+                "fue un pintor, escultor, grabador, escenógrafo y escritor español del siglo XX. Se le considera uno de los máximos " +
+                "representantes del surrealismo.";
+        addAutor(nombreAutor,descripcionAutor,categoriaAutor,imagenToBitmap("/salvador_dali.jpg"));
+
+
+
+        nombreAutor ="Caravaggio";
+        categoriaAutor="Pintura";
+        descripcionAutor="Michelangelo Merisi da Caravaggio (Milán, 29 de septiembre de 1571-Porto Ércole, 18 de julio de 1610) fue un pintor italiano " +
+                "activo en Roma, Nápoles, Malta y Sicilia entre los años de 1593 y 1610. Es considerado como el primer gran exponente de la pintura del Barroco.";
+        addAutor(nombreAutor,descripcionAutor,categoriaAutor,imagenToBitmap("/caravaggio.jpg"));
+
+
+
+        nombreAutor ="Vincent van Gogh";
+        categoriaAutor="Pintura";
+        descripcionAutor="Vincent Willem van Gogh (Vincent van Gogh) (Zundert, Países Bajos, 30 de marzo de 1853-Auvers-sur-Oise, Francia, 29 de julio de 1890) " +
+                "fue un pintor neerlandés, uno de los principales exponentes del postimpresionismo.";
+        addAutor(nombreAutor,descripcionAutor,categoriaAutor,imagenToBitmap("/vicent_van_gogh.jpg"));
+
+        nombreAutor ="Francisco de Goya";
+        categoriaAutor="Pintura";
+        descripcionAutor="Francisco de Goya y Lucientes (Fuendetodos, provincia de Zaragoza, 30 de marzo de 1746-Burdeos, Francia, 16 de abril de 1828) fue " +
+                "un pintor y grabador español. Su obra abarca la pintura de caballete y mural, el grabado y el dibujo. En todas estas facetas desarrolló un " +
+                "estilo que inaugura el Romanticismo. El arte goyesco supone, asimismo, el comienzo de la pintura contemporánea y es precursor de las " +
+                "vanguardias pictóricas del siglo XX; por todo ello, se le considera uno de los artistas españoles más relevantes y uno de los grandes " +
+                "maestros de la historia del arte.";
+        addAutor(nombreAutor,descripcionAutor,categoriaAutor,imagenToBitmap("/francisco_de_goya.jpg"));
+
+        nombreAutor ="Le Corbusier";
+        categoriaAutor="Arquitectura";
+        descripcionAutor="Charles-Édouard Jeanneret-Gris, más conocido, a partir de la década de 1920,1 como Le Corbusier (La Chaux-de-Fonds, Cantón " +
+                "de Neuchâtel, Suiza, 6 de octubre de 1887-Roquebrune-Cap-Martin, Provenza-Alpes-Costa Azul, Francia, 27 de agosto de 1965), " +
+                "fue un arquitecto y teórico de la arquitectura, urbanista, decorador de interiores, pintor, escultor y hombre de letras suizo " +
+                "nacionalizado francés en 1930.";
+        addAutor(nombreAutor,descripcionAutor,categoriaAutor,imagenToBitmap("/le_corbusier.jpg"));
+
+
+
+        nombreAutor ="Ludwig Mies van der Rohe";
+        categoriaAutor="Arquitectura";
+        descripcionAutor="Ludwig Mies van der Rohe (Aquisgrán, Alemania, 27 de marzo de 1886 – Chicago, Illinois, 17 de agosto de 1969) " +
+                "fue un arquitecto y diseñador industrial. Dirigió la escuela Bauhaus entre 1930 y 1933, año en que fue clausurada.  ";
+        addAutor(nombreAutor,descripcionAutor,categoriaAutor,imagenToBitmap("/ludwig_mies_van_der_rohe.jpg"));
+
+        nombreAutor ="Alexandre Gustave Eiffel";
+        categoriaAutor="Arquitectura";
+        descripcionAutor="Alexandre Gustave Eiffel (Dijon, 15 de diciembre de 1832-París, 27 de diciembre de 1923) fue un ingeniero " +
+                "civil francés. Se graduó en la École centrale des arts et manufactures de París y adquirió renombre diseñando " +
+                "varios puentes para la red francesa de ferrocarriles, de los cuales es especialmente notable el viaducto de " +
+                "Garabit. Su fama actual se debe a su proyecto estrella, la mundialmente conocida torre Eiffel, construida para " +
+                "la Exposición Universal de París de 1889.";
+        addAutor(nombreAutor,descripcionAutor,categoriaAutor,imagenToBitmap("/alexandre_gustave_eiffel.jpg"));
+
+        nombreAutor ="Santiago Calatrava";
+        categoriaAutor="Arquitectura";
+        descripcionAutor="Santiago Calatrava Valls (Benimámet, 28 de julio de 1951) es un arquitecto, ingeniero civil y escultor " +
+                "español. Entre los premios y reconocimientos que ha recibido destaca el Premio Príncipe de Asturias de las Artes " +
+                "de 1999, el Premio Nacional de Arquitectura de 2005 y el Premio Europeo de Arquitectura de 2015. Actualmente, " +
+                "cuenta con oficinas en Nueva York, Doha y Zúrich.";
+        addAutor(nombreAutor,descripcionAutor,categoriaAutor,imagenToBitmap("/calatrava.jpg"));
+
+        nombreAutor ="Antoni Gaudí";
+        categoriaAutor="Arquitectura";
+        descripcionAutor="Antoni Gaudí i Cornet, también conocido en español como Antonio Gaudí1 (Reus o Riudoms, 25 de junio de " +
+                "1852-Barcelona, 10 de junio de 1926) fue un arquitecto español, máximo representante del modernismo catalán.";
+        addAutor(nombreAutor,descripcionAutor,categoriaAutor,imagenToBitmap("/antoni_gaudi.jpg"));
 
 
     }
