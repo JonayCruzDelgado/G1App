@@ -121,20 +121,29 @@ class ManejadorBaseDeDatos {
                 "sus esculturas como por sus pinturas y obra arquitectónica. Desarrolló su labor artística a lo largo de más de " +
                 "setenta años entre Florencia y Roma, que era donde vivían sus grandes mecenas, la familia Médici de Florencia y " +
                 "los diferentes papas romanos.";
-        String fileName = "/miguel_anguel.jpg";
-        File file1 = new File(fileName);
-        Bitmap imagenAutor = BitmapFactory.decodeFile(file1.getAbsolutePath());
 
-        addAutor(nombreAutor,descripcionAutor,categoriaAutor,imagenAutor);
+
+        addAutor(nombreAutor,descripcionAutor,categoriaAutor,imagenToBitmap("/miguel_angel.jpg"));
+
+        nombreAutor ="Verrocchio";
+        categoriaAutor="Escultura";
+        descripcionAutor="Andrea del Verrocchio, nacido Andrea di Michele di Francesco de Cioni, " +
+                "conocido simplemente como Verrocchio (Florencia 1435 - Venecia 1488) fue un pintor, escultor " +
+                "y orfebre cuatrocentista italiano. Trabajó en la corte de Lorenzo de' Medici en Florencia. Entre sus " +
+                "alumnos estuvieron Leonardo da Vinci, Perugino, Ghirlandaio y Sandro Botticelli, pero también influyó en Miguel Ángel. " +
+                "Trabajó en el estilo serenamente clásico del primer renacimiento florentino.";
+        addAutor(nombreAutor,descripcionAutor,categoriaAutor,imagenToBitmap("/verrocchio.jpg"));
 
         nombreAutor ="";
         categoriaAutor="";
         descripcionAutor="";
-        fileName = "/miguel_anguel.jpg";
-        File file2 = new File(fileName);
-        imagenAutor = BitmapFactory.decodeFile(file2.getAbsolutePath());
+        //addAutor(nombreAutor,descripcionAutor,categoriaAutor,imagenToBitmap());
+    }
 
-        addAutor(nombreAutor,descripcionAutor,categoriaAutor,imagenAutor);
+    public Bitmap imagenToBitmap( String fileName){
+        File file1 = new File(fileName);
+        Bitmap imagen = BitmapFactory.decodeFile(file1.getAbsolutePath());
+        return imagen;
 
     }
 // crear categoria, no se añaden autores por que voy a hacer que un autor solo pueda pertenecer a una categoria
