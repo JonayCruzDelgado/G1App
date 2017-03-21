@@ -44,7 +44,7 @@ class ManejadorBaseDeDatos {
         }
         return array;
     }
-    public int[] getListaidObras(int nombreAutor){
+    public int[] getListaidObras(String nombreAutor){
         RealmResults<Obra> result =realm.where(Obra.class).equalTo("nombre",nombreAutor).findAll();
 
         int[] array={-1};
