@@ -34,23 +34,23 @@ class ManejadorBaseDeDatos {
         return result.get(0).getCategoria();
     }
 
-    public String[] getListaAutores(String nombreCategoria){
+    public int[] getListaIdAutores(String nombreCategoria){
         RealmResults<Autor> result =realm.where(Autor.class).equalTo("categoria",nombreCategoria).findAll(); //encuentra los autores de esa categoria
 
-        String[] array={""};
+        int[] array={-1};
         int i;
         for(i=0;i<= result.size();i++){
-            array[i] =result.get(i).getNombre();
+            array[i] =result.get(i).getId();
         }
         return array;
     }
-    public String[] getListaObras(int nombreAutor){
+    public int[] getListaidObras(int nombreAutor){
         RealmResults<Obra> result =realm.where(Obra.class).equalTo("nombre",nombreAutor).findAll();
 
-        String[] array={""};
+        int[] array={-1};
         int i;
         for(i=0; i<=result.size();i++){
-            array[i] =result.get(i).getNombre();
+            array[i] =result.get(i).getId();
         }
         return array;
     }
