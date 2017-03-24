@@ -13,7 +13,7 @@ import io.realm.RealmResults;
  * Created by Marta on 14/03/2017.
  */
 
-class ManejadorBaseDeDatos {
+public class ManejadorBaseDeDatos {
     private static ManejadorBaseDeDatos ourInstance;
     private Realm realm;
 
@@ -26,6 +26,7 @@ class ManejadorBaseDeDatos {
 
     private ManejadorBaseDeDatos() {
         realm = Realm.getDefaultInstance();
+
         initBaseDeDatos();
     }
 
@@ -251,7 +252,15 @@ class ManejadorBaseDeDatos {
 // por lo que se especifica al crear el autor, es mucho mas simple asi, si lo quieren hacer que un autor pertenezca a varias categoria es mas lio
     public void addCategoria(String nombre){
         realm.beginTransaction();
-        Categoria categoria= realm.createObject(Categoria.class);
+        // increment index
+        Number num = realm.where(Categoria.class).max("id");
+        int nextID;
+        if(num == null) {
+            nextID = 1;
+        } else {
+            nextID = num.intValue() + 1;
+        }
+        Categoria categoria= realm.createObject(Categoria.class,nextID);
         categoria.setCategoria(nombre);
         realm.commitTransaction();
     }
@@ -259,7 +268,14 @@ class ManejadorBaseDeDatos {
 // crear autor nombre, descripcion, idem que en lo anterior para las obras
     public void addAutor(String nombre,String descripcion,String categoria, Bitmap imagen){
         realm.beginTransaction();
-        Autor autor= realm.createObject(Autor.class);
+        Number num = realm.where(Autor.class).max("id");
+        int nextID;
+        if(num == null) {
+            nextID = 1;
+        } else {
+            nextID = num.intValue() + 1;
+        }
+        Autor autor= realm.createObject(Autor.class,nextID);
         autor.setNombre(nombre);
         autor.setDescripcion(descripcion);
         autor.setCategoria(categoria);
@@ -269,7 +285,14 @@ class ManejadorBaseDeDatos {
 // crear obra
     public void addObra(String nombre,String descripcion,String autor,Double latitud, Double longitud,Bitmap imagen){
         realm.beginTransaction();
-        Obra obra= realm.createObject(Obra.class);
+        Number num = realm.where(Obra.class).max("id");
+        int nextID;
+        if(num == null) {
+            nextID = 1;
+        } else {
+            nextID = num.intValue() + 1;
+        }
+        Obra obra= realm.createObject(Obra.class,nextID);
         obra.setNombre(nombre);
         obra.setDescripcion(descripcion);
         obra.setAutor(autor);

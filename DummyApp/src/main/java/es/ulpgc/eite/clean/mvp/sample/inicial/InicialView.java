@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -72,6 +73,11 @@ public class InicialView
 
       }
     });
+    /*Log.d(TAG, "antes init realm");
+
+    Realm.init(this);
+
+    Log.d(TAG, "despues init realm");*/
 
 
 

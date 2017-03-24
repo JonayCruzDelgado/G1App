@@ -7,6 +7,7 @@ import android.graphics.drawable.BitmapDrawable;
 
 import es.ulpgc.eite.clean.mvp.GenericModel;
 import es.ulpgc.eite.clean.mvp.sample.R;
+import es.ulpgc.eite.clean.mvp.sample.dataBase.ManejadorBaseDeDatos;
 
 
 public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
@@ -50,16 +51,19 @@ public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
 
   @Override
   public String getTextBtn1() {
+    //return ManejadorBaseDeDatos.getInstance().getNombreCategoria(0);
     return inicialTextBtn1;
   }
 
   @Override
   public String getTextBtn2() {
+    //return ManejadorBaseDeDatos.getInstance().getNombreCategoria(1);
     return inicialTextBtn2;
   }
 
   @Override
   public String getTextBtn3() {
+    //return ManejadorBaseDeDatos.getInstance().getNombreCategoria(2);
     return inicialTextBtn3;
   }
 
