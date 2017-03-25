@@ -241,7 +241,7 @@ public class ManejadorBaseDeDatos {
 
 
     }
-    //pasar el archivo que entra ha un bitmap
+    //pasar el archivo que entra a un bitmap
     public Bitmap imagenToBitmap( String fileName){
         File file1 = new File(fileName);
         Bitmap imagen = BitmapFactory.decodeFile(file1.getAbsolutePath());
@@ -252,7 +252,7 @@ public class ManejadorBaseDeDatos {
 // por lo que se especifica al crear el autor, es mucho mas simple asi, si lo quieren hacer que un autor pertenezca a varias categoria es mas lio
     public void addCategoria(String nombre){
         realm.beginTransaction();
-        // increment index
+        // bucle para autoincrementar el id
         Number num = realm.where(Categoria.class).max("id");
         int nextID;
         if(num == null) {
