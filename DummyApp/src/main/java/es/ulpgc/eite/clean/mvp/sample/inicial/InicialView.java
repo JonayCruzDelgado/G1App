@@ -79,8 +79,6 @@ public class InicialView
 
     Log.d(TAG, "despues init realm");*/
 
-
-
   }
 
   /**

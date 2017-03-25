@@ -10,7 +10,7 @@ public class ObraSim {
     private int id;
     private String nombre;
     private String descripcion;
-    private String uriImagen;
+    private int idResImagen;
     private String autor;
     private Double latidud;
     private Double longitud;
@@ -42,12 +42,12 @@ public class ObraSim {
         this.descripcion = descripcion;
     }
 
-    public String getUriImagen() {
-        return uriImagen;
+    public int getIdResImagen() {
+        return idResImagen;
     }
 
-    public void setUriImagen(String uriImagen) {
-        this.uriImagen = uriImagen;
+    public void setIdResImagen(int idResImagen) {
+        this.idResImagen = idResImagen;
     }
 
     public String getAutor() {

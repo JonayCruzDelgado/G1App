@@ -8,6 +8,7 @@ public class CategoriaSim {
 
     private int id;
     private String Categoria;
+    private int idResImagen;
 
     public CategoriaSim(){}
 
@@ -25,5 +26,12 @@ public class CategoriaSim {
 
     public void setCategoria(String categoria) {
         Categoria = categoria;
+    }
+    public int getIdResImagen() {
+        return idResImagen;
+    }
+
+    public void setIdResImagen(int idResImagen) {
+        this.idResImagen = idResImagen;
     }
 }

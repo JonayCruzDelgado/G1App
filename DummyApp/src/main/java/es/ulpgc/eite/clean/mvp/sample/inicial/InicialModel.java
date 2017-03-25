@@ -16,7 +16,7 @@ public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
   private String inicialTextBtn1;
   private String inicialTextBtn2;
   private String inicialTextBtn3;
-  ManejadorBaseDeDatosSim manejador;
+  ManejadorBaseDeDatosSim manejador = ManejadorBaseDeDatosSim.getInstance();
 
   /**
    * Method that recovers a reference to the PRESENTER
@@ -31,7 +31,7 @@ public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
     inicialTextBtn1 = "Pintura";
     inicialTextBtn2 = "Arquitectura";
     inicialTextBtn3 = "Escultura";
-    //manejador.getInstance().initBaseDeDatos();
+    manejador.initBaseDeDatos();
 
   }
 
@@ -53,38 +53,38 @@ public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
 
   @Override
   public String getTextBtn1() {
-    //return manejador.getNombreCategoria(1);
-    return inicialTextBtn1;
+    return manejador.NombreCategoria(0);
+    //return inicialTextBtn1;
   }
 
   @Override
   public String getTextBtn2() {
-    //return manejador.getNombreCategoria(2);
-    return inicialTextBtn2;
+    return manejador.NombreCategoria(1);
+    //return inicialTextBtn2;
   }
 
   @Override
   public String getTextBtn3() {
-    //return manejador.getNombreCategoria(3);
-    return inicialTextBtn3;
+    return manejador.NombreCategoria(2);
+    //return inicialTextBtn3;
   }
 
   @Override
   public Bitmap getIconoPintura(Context context) {
-    Bitmap icon = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_cuadro);
+    Bitmap icon = BitmapFactory.decodeResource(context.getResources(), manejador.idImagenCategoria(0));
     return icon;
   }
 
   @Override
   public Bitmap getIconoArquitectura(Context context) {
-    Bitmap icon = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_arqui);
+    Bitmap icon = BitmapFactory.decodeResource(context.getResources(),manejador.idImagenCategoria(1));
 
     return icon;
   }
 
   @Override
   public Bitmap getIconoEscultura(Context context) {
-      Bitmap icon = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_escultura);
+      Bitmap icon = BitmapFactory.decodeResource(context.getResources(),manejador.idImagenCategoria(2));
 
       return icon;
   }

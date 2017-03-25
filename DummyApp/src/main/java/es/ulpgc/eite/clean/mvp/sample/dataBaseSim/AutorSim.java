@@ -1,8 +1,5 @@
 package es.ulpgc.eite.clean.mvp.sample.dataBaseSim;
 
-import es.ulpgc.eite.clean.mvp.sample.dataBase.Obra;
-import io.realm.RealmList;
-
 /**
  * Created by Marta on 24/03/2017.
  */
@@ -12,7 +9,7 @@ public class AutorSim {
     private int id;
     private String nombre;
     private String descripcion;
-    private String uriImagen;
+    private int idResImagen;
     private String categoria;
 
     public AutorSim(){}
@@ -41,12 +38,12 @@ public class AutorSim {
         this.descripcion = descripcion;
     }
 
-    public String getUriImagen() {
-        return uriImagen;
+    public int getIdResImagen() {
+        return idResImagen;
     }
 
-    public void setUriImagen(String uriImagen) {
-        this.uriImagen = uriImagen;
+    public void setIdResImagen(int idResImagen) {
+        this.idResImagen = idResImagen;
     }
 
     public String getCategoria() {
