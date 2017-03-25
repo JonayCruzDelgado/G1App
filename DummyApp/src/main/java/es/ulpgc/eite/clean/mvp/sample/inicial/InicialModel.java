@@ -7,7 +7,6 @@ import android.graphics.drawable.BitmapDrawable;
 
 import es.ulpgc.eite.clean.mvp.GenericModel;
 import es.ulpgc.eite.clean.mvp.sample.R;
-import es.ulpgc.eite.clean.mvp.sample.dataBase.ManejadorBaseDeDatos;
 import es.ulpgc.eite.clean.mvp.sample.dataBaseSim.ManejadorBaseDeDatosSim;
 
 
@@ -17,6 +16,7 @@ public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
   private String inicialTextBtn1;
   private String inicialTextBtn2;
   private String inicialTextBtn3;
+  ManejadorBaseDeDatosSim manejador;
 
   /**
    * Method that recovers a reference to the PRESENTER
@@ -31,7 +31,7 @@ public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
     inicialTextBtn1 = "Pintura";
     inicialTextBtn2 = "Arquitectura";
     inicialTextBtn3 = "Escultura";
-    ManejadorBaseDeDatosSim.getInstance().initBaseDeDatos();
+    //manejador.getInstance().initBaseDeDatos();
 
   }
 
@@ -53,20 +53,20 @@ public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
 
   @Override
   public String getTextBtn1() {
-   return ManejadorBaseDeDatosSim.getInstance().getNombreCategoria(1);
-    //return inicialTextBtn1;
+    //return manejador.getNombreCategoria(1);
+    return inicialTextBtn1;
   }
 
   @Override
   public String getTextBtn2() {
-    return ManejadorBaseDeDatosSim.getInstance().getNombreCategoria(2);
-    //return inicialTextBtn2;
+    //return manejador.getNombreCategoria(2);
+    return inicialTextBtn2;
   }
 
   @Override
   public String getTextBtn3() {
-    return ManejadorBaseDeDatosSim.getInstance().getNombreCategoria(3);
-    //return inicialTextBtn3;
+    //return manejador.getNombreCategoria(3);
+    return inicialTextBtn3;
   }
 
   @Override

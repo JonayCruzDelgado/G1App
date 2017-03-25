@@ -13,7 +13,7 @@ import io.realm.RealmResults;
  * Created by Marta on 14/03/2017.
  */
 
-public class ManejadorBaseDeDatos {
+class ManejadorBaseDeDatos {
     private static ManejadorBaseDeDatos ourInstance;
     private Realm realm;
 
@@ -26,7 +26,6 @@ public class ManejadorBaseDeDatos {
 
     private ManejadorBaseDeDatos() {
         realm = Realm.getDefaultInstance();
-
         initBaseDeDatos();
     }
 
@@ -241,7 +240,7 @@ public class ManejadorBaseDeDatos {
 
 
     }
-    //pasar el archivo que entra a un bitmap
+    //pasar el archivo que entra ha un bitmap
     public Bitmap imagenToBitmap( String fileName){
         File file1 = new File(fileName);
         Bitmap imagen = BitmapFactory.decodeFile(file1.getAbsolutePath());
@@ -252,15 +251,14 @@ public class ManejadorBaseDeDatos {
 // por lo que se especifica al crear el autor, es mucho mas simple asi, si lo quieren hacer que un autor pertenezca a varias categoria es mas lio
     public void addCategoria(String nombre){
         realm.beginTransaction();
-        // bucle para autoincrementar el id
-        Number num = realm.where(Categoria.class).max("id");
-        int nextID;
-        if(num == null) {
-            nextID = 1;
+        Number currentIdNum = realm.where(Categoria.class).max("id");
+        int nextId;
+        if(currentIdNum == null) {
+            nextId = 1;
         } else {
-            nextID = num.intValue() + 1;
+            nextId = currentIdNum.intValue() + 1;
         }
-        Categoria categoria= realm.createObject(Categoria.class,nextID);
+        Categoria categoria= realm.createObject(Categoria.class,nextId);
         categoria.setCategoria(nombre);
         realm.commitTransaction();
     }
@@ -268,14 +266,14 @@ public class ManejadorBaseDeDatos {
 // crear autor nombre, descripcion, idem que en lo anterior para las obras
     public void addAutor(String nombre,String descripcion,String categoria, Bitmap imagen){
         realm.beginTransaction();
-        Number num = realm.where(Autor.class).max("id");
-        int nextID;
-        if(num == null) {
-            nextID = 1;
+        Number currentIdNum = realm.where(Autor.class).max("id");
+        int nextId;
+        if(currentIdNum == null) {
+            nextId = 1;
         } else {
-            nextID = num.intValue() + 1;
+            nextId = currentIdNum.intValue() + 1;
         }
-        Autor autor= realm.createObject(Autor.class,nextID);
+        Autor autor= realm.createObject(Autor.class,nextId);
         autor.setNombre(nombre);
         autor.setDescripcion(descripcion);
         autor.setCategoria(categoria);
@@ -285,14 +283,15 @@ public class ManejadorBaseDeDatos {
 // crear obra
     public void addObra(String nombre,String descripcion,String autor,Double latitud, Double longitud,Bitmap imagen){
         realm.beginTransaction();
-        Number num = realm.where(Obra.class).max("id");
-        int nextID;
-        if(num == null) {
-            nextID = 1;
+
+        Number currentIdNum = realm.where(Obra.class).max("id");
+        int nextId;
+        if(currentIdNum == null) {
+            nextId = 1;
         } else {
-            nextID = num.intValue() + 1;
+            nextId = currentIdNum.intValue() + 1;
         }
-        Obra obra= realm.createObject(Obra.class,nextID);
+        Obra obra= realm.createObject(Obra.class,nextId);
         obra.setNombre(nombre);
         obra.setDescripcion(descripcion);
         obra.setAutor(autor);
