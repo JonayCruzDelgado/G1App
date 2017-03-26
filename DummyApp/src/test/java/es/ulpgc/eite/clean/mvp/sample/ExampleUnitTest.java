@@ -14,7 +14,15 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
   @Test
   public void getnombreAutor() throws Exception {
-    ManejadorBaseDeDatosSim.getInstance().nombreAutor(0).equals("Miguel Ángel");
+   assertTrue(ManejadorBaseDeDatosSim.getInstance().nombreAutor(0).equals("Miguel Ángel"));
 
   }
+
+  @Test
+  public void getNombresCategoria() throws Exception {
+    String[] array={"Pintura","Escultura","Arquitectura"};
+    assertTrue(ManejadorBaseDeDatosSim.getInstance().arrayNombresCategorias().equals(array));
+
+  }
+
 }

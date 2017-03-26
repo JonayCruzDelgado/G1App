@@ -100,6 +100,7 @@ public class AutoresModel extends GenericModel<Autores.ModelToPresenter>
     return autoresNombres.nombre;
     //int[] ids = manejador.arrayIdsAutorByCategoria(generoSeleccionado);
     //return manejador.arrayNombresByIdsAutores(ids);
+
   }
   @Override
   public String obtenerEspecialidad(String generoSeleccionado){

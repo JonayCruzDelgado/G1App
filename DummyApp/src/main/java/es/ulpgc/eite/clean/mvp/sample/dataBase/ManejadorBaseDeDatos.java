@@ -135,7 +135,7 @@ class ManejadorBaseDeDatos {
         addAutor(nombreAutor,descripcionAutor,categoriaAutor,imagenToBitmap("/verrocchio.jpg"));
 
         nombreAutor ="Gian Lorenzo Bernini";
-        categoriaAutor="Escultor";
+        categoriaAutor="Escultura";
         descripcionAutor="Gian Lorenzo Bernini (Nápoles, 7 de diciembre de 1598 - Roma, 28 de noviembre de 1680) fue un escultor, arquitecto " +
                 "y pintor italiano. Trabajó principalmente en Roma " +
                 "y es considerado el más destacado escultor de su generación, creador del estilo escultórico barroco.";
