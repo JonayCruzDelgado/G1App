@@ -96,10 +96,10 @@ public class AutoresModel extends GenericModel<Autores.ModelToPresenter>
   }
   @Override
   public String [] obtenerAutores(String generoSeleccionado){
-    AutoresDB autoresNombres = (AutoresDB) listaSeleccionada(generoSeleccionado);
-    return autoresNombres.nombre;
-    //int[] ids = manejador.arrayIdsAutorByCategoria(generoSeleccionado);
-    //return manejador.arrayNombresByIdsAutores(ids);
+    //AutoresDB autoresNombres = (AutoresDB) listaSeleccionada(generoSeleccionado);
+    //return autoresNombres.nombre;
+    int[] ids = manejador.arrayIdsAutorByCategoria(generoSeleccionado);
+    return manejador.arrayNombresByIdsAutores(ids);
 
   }
   @Override

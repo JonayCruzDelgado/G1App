@@ -196,18 +196,18 @@ public class ManejadorBaseDeDatosSim {
     }
 
     public String[] arrayNombresCategorias(){
-        String[] array={""};
+        String[] array= new String[listaCategorias.size()];
         int i;
-        for(i=0;i<= listaCategorias.size();i++){
+        for(i=0;i< listaCategorias.size();i++){
             array[i] =listaCategorias.get(i).getCategoria();
         }
         return array;
     }
 
     public int[] arrayIdsAutorByCategoria (String categoria){
-        int[] array={-1};
+        int[] array= new int[listaAutores.size()];
         int i;
-        for (i=0; i<= listaAutores.size();i++){
+        for (i=0; i< listaAutores.size();i++){
             if(listaAutores.get(i).getCategoria().equals(categoria)){
                 array[i] = listaAutores.get(i).getId();
             }
@@ -216,9 +216,9 @@ public class ManejadorBaseDeDatosSim {
     }
 
     public int[] arrayIdsObraByAutor (String autor){
-        int[] array={-1};
+        int[] array= new int[listaObras.size()];
         int i;
-        for (i=0; i<= listaObras.size();i++){
+        for (i=0; i< listaObras.size();i++){
             if(listaObras.get(i).getAutor().equals(autor)){
                 array[i] = listaObras.get(i).getId();
             }
@@ -227,18 +227,18 @@ public class ManejadorBaseDeDatosSim {
     }
 
     public String[] arrayNombresByIdsAutores(int[] ids){
-        String[] array ={""};
+        String[] array= new String[listaAutores.size()];
         int i;
-        for (i=0; i<= ids.length;i++){
+        for (i=0; i< ids.length;i++){
             array[i]= nombreAutor(i);
         }
         return array;
     }
 
     public String[] arrayNombresByIdsObras(int[] ids){
-        String[] array ={""};
+        String[] array= new String[listaObras.size()];
         int i;
-        for (i=0; i<= ids.length;i++){
+        for (i=0; i< ids.length;i++){
             array[i]= nombreObra(i);
         }
         return array;
