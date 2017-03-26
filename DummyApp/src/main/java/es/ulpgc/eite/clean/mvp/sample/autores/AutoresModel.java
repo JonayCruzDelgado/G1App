@@ -1,6 +1,7 @@
 package es.ulpgc.eite.clean.mvp.sample.autores;
 
 import es.ulpgc.eite.clean.mvp.GenericModel;
+import es.ulpgc.eite.clean.mvp.sample.dataBaseSim.ManejadorBaseDeDatosSim;
 
 
 public class AutoresModel extends GenericModel<Autores.ModelToPresenter>
@@ -10,6 +11,7 @@ public class AutoresModel extends GenericModel<Autores.ModelToPresenter>
   private String autoresLabel;
   private int numOfTimes;
   private String msgText;
+  ManejadorBaseDeDatosSim manejador;
 //crear objeto AutoresDB con dos atributos, uno tipo especialidad (esculturua, pintura...) y otro de array de string con los nombre de los AutoresDB
 
   private class AutoresDB {
@@ -44,6 +46,9 @@ public class AutoresModel extends GenericModel<Autores.ModelToPresenter>
 
     autoresLabel = "Click Me!";
     autoresText = "Hello World!";
+
+    manejador = ManejadorBaseDeDatosSim.getInstance();
+    manejador.initBaseDeDatos();
   }
 
   /**
@@ -93,9 +98,13 @@ public class AutoresModel extends GenericModel<Autores.ModelToPresenter>
   public String [] obtenerAutores(String generoSeleccionado){
     AutoresDB autoresNombres = (AutoresDB) listaSeleccionada(generoSeleccionado);
     return autoresNombres.nombre;
+    //int[] ids = manejador.arrayIdsAutorByCategoria(generoSeleccionado);
+    //return manejador.arrayNombresByIdsAutores(ids);
   }
   @Override
   public String obtenerEspecialidad(String generoSeleccionado){
-    AutoresDB autoresNombres = (AutoresDB) listaSeleccionada(generoSeleccionado);    return  autoresNombres.especialidad;
+    /*AutoresDB autoresNombres = (AutoresDB) listaSeleccionada(generoSeleccionado);
+    return  autoresNombres.especialidad;*/
+   return generoSeleccionado;
   }
 }

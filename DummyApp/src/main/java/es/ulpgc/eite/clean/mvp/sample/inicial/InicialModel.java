@@ -53,19 +53,19 @@ public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
 
   @Override
   public String getTextBtn1() {
-    return manejador.NombreCategoria(0);
+    return manejador.nombreCategoria(0);
     //return inicialTextBtn1;
   }
 
   @Override
   public String getTextBtn2() {
-    return manejador.NombreCategoria(1);
+    return manejador.nombreCategoria(1);
     //return inicialTextBtn2;
   }
 
   @Override
   public String getTextBtn3() {
-    return manejador.NombreCategoria(2);
+    return manejador.nombreCategoria(2);
     //return inicialTextBtn3;
   }
 

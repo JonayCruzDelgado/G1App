@@ -228,7 +228,7 @@ public class ManejadorBaseDeDatosSim {
         String[] array ={""};
         int i;
         for (i=0; i<= ids.length;i++){
-            array[i]= listaAutores.get(i).getNombre();
+            array[i]= nombreAutor(i);
         }
         return array;
     }
@@ -237,12 +237,12 @@ public class ManejadorBaseDeDatosSim {
         String[] array ={""};
         int i;
         for (i=0; i<= ids.length;i++){
-            array[i]= listaObras.get(i).getNombre();
+            array[i]= nombreObra(i);
         }
         return array;
     }
 
-    public  String NombreCategoria(int id){
+    public  String nombreCategoria(int id){
         return listaCategorias.get(id).getCategoria();
     }
     public  int idImagenCategoria(int id){
@@ -251,7 +251,7 @@ public class ManejadorBaseDeDatosSim {
     public String nombreAutor(int id){
         return listaAutores.get(id).getNombre();
     }
-    public String nombreIbra(int id){
+    public String nombreObra(int id){
         return listaObras.get(id).getNombre();
     }
     public String descripcionAutor(int id){
