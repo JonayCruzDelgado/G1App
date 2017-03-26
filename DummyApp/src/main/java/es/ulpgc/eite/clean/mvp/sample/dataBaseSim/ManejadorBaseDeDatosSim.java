@@ -29,6 +29,8 @@ public class ManejadorBaseDeDatosSim {
         listaAutores =new ArrayList<AutorSim>();
         listaObras =new ArrayList<ObraSim>();
 
+        initBaseDeDatos();
+
     }
 
 
@@ -60,7 +62,7 @@ public class ManejadorBaseDeDatosSim {
         addAutor(nombreAutor,descripcionAutor,categoriaAutor,R.mipmap.verrocchio);
 
         nombreAutor ="Gian Lorenzo Bernini";
-        categoriaAutor="Escultor";
+        categoriaAutor="Escultura";
         descripcionAutor="Gian Lorenzo Bernini (Nápoles, 7 de diciembre de 1598 - Roma, 28 de noviembre de 1680) fue un escultor, arquitecto " +
                 "y pintor italiano. Trabajó principalmente en Roma " +
                 "y es considerado el más destacado escultor de su generación, creador del estilo escultórico barroco.";
@@ -193,13 +195,13 @@ public class ManejadorBaseDeDatosSim {
         obra.setId(listaObras.indexOf(obra));
     }
 
-    public String[] getArrayNombresCategorias(){
-        String[] nombres={""};
+    public String[] arrayNombresCategorias(){
+        String[] array={""};
         int i;
         for(i=0;i<= listaCategorias.size();i++){
-            nombres[i] =listaCategorias.get(i).getCategoria();
+            array[i] =listaCategorias.get(i).getCategoria();
         }
-        return nombres;
+        return array;
     }
 
     public int[] arrayIdsAutorByCategoria (String categoria){
