@@ -48,7 +48,7 @@ public class AutoresModel extends GenericModel<Autores.ModelToPresenter>
     autoresText = "Hello World!";
 
     manejador = ManejadorBaseDeDatosSim.getInstance();
-    manejador.initBaseDeDatos();
+    //manejador.initBaseDeDatos();
   }
 
   /**

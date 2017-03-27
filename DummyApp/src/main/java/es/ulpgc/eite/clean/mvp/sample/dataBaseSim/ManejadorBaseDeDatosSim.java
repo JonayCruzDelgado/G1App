@@ -1,6 +1,8 @@
 package es.ulpgc.eite.clean.mvp.sample.dataBaseSim;
 
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 import es.ulpgc.eite.clean.mvp.sample.R;
@@ -179,8 +181,9 @@ public class ManejadorBaseDeDatosSim {
         autor.setCategoria(categoria);
         autor.setDescripcion(descripcion);
         autor.setIdResImagen(idResImagen);
+        autor.setId(listaAutores.size());
         listaAutores.add(autor);
-        autor.setId(listaAutores.indexOf(autor));
+
     }
 
     public void addObra(String nombreObra, String descripcion, String autor,int idResImagen, Double latitud, Double longitud){
@@ -205,41 +208,57 @@ public class ManejadorBaseDeDatosSim {
     }
 
     public int[] arrayIdsAutorByCategoria (String categoria){
-        int[] array= new int[listaAutores.size()];
+        int[] array= new int[listaAutores.size()];//se crea un string donde sobran valores, pues
+        //tiene el tamaño completo de la lista de autores
         int i;
+        int k=0;
+        Log.v("arrayIdsAutorByCat",categoria);
+
         for (i=0; i< listaAutores.size();i++){
             if(listaAutores.get(i).getCategoria().equals(categoria)){
-                array[i] = listaAutores.get(i).getId();
+                array[k] = listaAutores.get(i).getId();
+                k++;
             }
         }
-        return array;
+        int[] result= new int[k];
+        for(i=0; i<k;i++){// se crea un string con las obras correctas y se eliminan los valores sobrantes.
+            result[i]=array[i];
+        }
+        return result;
     }
 
     public int[] arrayIdsObraByAutor (String autor){
-        int[] array= new int[listaObras.size()];
+        int[] array= new int[listaObras.size()];//se crea un string donde sobran valores, pues t
+        //tiene el tamaño completo de la lista de obras
         int i;
+        int k = 0;
         for (i=0; i< listaObras.size();i++){
             if(listaObras.get(i).getAutor().equals(autor)){
-                array[i] = listaObras.get(i).getId();
+                array[k] = listaObras.get(i).getId();
+                k++;
             }
         }
-        return array;
+        int[] result= new int[k];
+        for(i=0; i<k;i++){ // se crea un string con las obras correctas y se eliminan los valores sobrantes.
+            result[i]=array[i];
+        }
+        return result;
     }
 
     public String[] arrayNombresByIdsAutores(int[] ids){
-        String[] array= new String[listaAutores.size()];
+        String[] array= new String[ids.length];
         int i;
         for (i=0; i< ids.length;i++){
-            array[i]= nombreAutor(i);
+            array[i]= nombreAutor(ids[i]);//error
         }
         return array;
     }
 
     public String[] arrayNombresByIdsObras(int[] ids){
-        String[] array= new String[listaObras.size()];
+        String[] array= new String[ids.length];
         int i;
         for (i=0; i< ids.length;i++){
-            array[i]= nombreObra(i);
+            array[i]= nombreObra(ids[i]);
         }
         return array;
     }
