@@ -8,7 +8,7 @@ import es.ulpgc.eite.clean.mvp.sample.dataBaseSim.ManejadorBaseDeDatosSim;
 public class AutoresModel extends GenericModel<Autores.ModelToPresenter>
         implements Autores.PresenterToModel {
 
-  //ManejadorBaseDeDatosSim manejadorSim;
+  ManejadorBaseDeDatosSim manejadorSim;
   ManejadorBaseDeDatos manejador;
 
   /**
@@ -21,8 +21,8 @@ public class AutoresModel extends GenericModel<Autores.ModelToPresenter>
   public void onCreate(Autores.ModelToPresenter presenter) {
     super.onCreate(presenter);
 
-    //manejadorSim = ManejadorBaseDeDatosSim.getInstance();
-    manejador = ManejadorBaseDeDatos.getInstance();
+    manejadorSim = ManejadorBaseDeDatosSim.getInstance();
+    //manejador = ManejadorBaseDeDatos.getInstance();
   }
 
   /**
@@ -40,10 +40,10 @@ public class AutoresModel extends GenericModel<Autores.ModelToPresenter>
 
   @Override
   public String [] obtenerAutores(String categoriaSeleccionada){
-    /*int[] ids = manejadorSim.arrayIdsAutorByCategoria(generoSeleccionado);
-    return manejadorSim.arrayNombresByIdsAutores(ids);*/
-    int[] ids =manejador.getListaIdAutores(categoriaSeleccionada);
-    return manejador.getNombresByArrayIdsAutores(ids);
+    int[] ids = manejadorSim.arrayIdsAutorByCategoria(categoriaSeleccionada);
+    return manejadorSim.arrayNombresByIdsAutores(ids);
+   /* int[] ids =manejador.getListaIdAutores(categoriaSeleccionada);
+    return manejador.getNombresByArrayIdsAutores(ids);*/
 
   }
   @Override

@@ -114,9 +114,6 @@ public class ManejadorBaseDeDatos {
 
     public void initBaseDeDatos(){
 
-        RealmResults<Categoria> result =realm.where(Categoria.class).equalTo("categoria","Pintura").findAll();//encuentra el 1º elemento que metemos en laDB
-        if(result== null) { //si no se encuentra ese elemento  se inicializa la DB, pero si se encuentra no se vuelven a introducir todos los elementos
-
             // toca rellener a saco aqui
             addCategoria("Pintura", R.mipmap.ic_cuadro);
             addCategoria("Escultura", R.mipmap.ic_escultura);
@@ -245,7 +242,7 @@ public class ManejadorBaseDeDatos {
                     "1852-Barcelona, 10 de junio de 1926) fue un arquitecto español, máximo representante del modernismo catalán.";
             addAutor(nombreAutor, descripcionAutor, categoriaAutor, R.mipmap.antoni_gaudi);
 
-        }
+
 
 
     }
