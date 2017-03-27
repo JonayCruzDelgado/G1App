@@ -71,6 +71,7 @@ public class AutorModel extends GenericModel<Autor.ModelToPresenter>
   @Override
   public Bitmap getImagen(Context context, int id){
     Bitmap icon = BitmapFactory.decodeResource(context.getResources(), manejadorSim.idImagenAutor(id));
-    return  null;
+   // return  null; estas retornando un null.
+    return icon;
   }
 }

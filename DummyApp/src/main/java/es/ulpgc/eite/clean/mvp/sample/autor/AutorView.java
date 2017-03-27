@@ -112,6 +112,7 @@ public class AutorView
   }
 
   public void setIconoAutor(Bitmap bp) {
+    Bitmap ejemp = bp;
     iconoAutor.setImageBitmap(bp);
   }
   @Override
