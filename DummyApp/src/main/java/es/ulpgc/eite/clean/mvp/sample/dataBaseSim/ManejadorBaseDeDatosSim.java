@@ -31,7 +31,8 @@ public class ManejadorBaseDeDatosSim {
         listaAutores =new ArrayList<AutorSim>();
         listaObras =new ArrayList<ObraSim>();
 
-        initBaseDeDatos();
+        initBaseDeDatos();//inicializabas la base de datos dos veces una aqui y otra en el modelos de autores
+        //tras pedir el getinstance.
 
     }
 
@@ -221,7 +222,7 @@ public class ManejadorBaseDeDatosSim {
             }
         }
         int[] result= new int[k];
-        for(i=0; i<k;i++){// se crea un string con las obras correctas y se eliminan los valores sobrantes.
+        for(i=0; i<k;i++){// se crea un string con los autores correctos y se eliminan los valores sobrantes.
             result[i]=array[i];
         }
         return result;
@@ -246,10 +247,13 @@ public class ManejadorBaseDeDatosSim {
     }
 
     public String[] arrayNombresByIdsAutores(int[] ids){
-        String[] array= new String[ids.length];
+        String[] array= new String[ids.length];//tamaño necesario el valor del vector ids
         int i;
-        for (i=0; i< ids.length;i++){
-            array[i]= nombreAutor(ids[i]);//error
+        for (i=0; i< ids.length;i++){//estaba puesto listaAutor.lenght, el tamaño del bucle debe de ser
+            //del tamaño del vector ids de los autores de la categoria seleccionada.
+            array[i]= nombreAutor(ids[i]);//estaba puesto nombreAutor(i), con esto rellenas con los
+            //primeros autores del array se debe poner nombreAutor(ids[i]) para rellenar con los que pasa el
+            //parametro
         }
         return array;
     }
