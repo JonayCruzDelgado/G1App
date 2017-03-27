@@ -39,8 +39,10 @@ public class ManejadorBaseDeDatosSim {
 
     public void initBaseDeDatos() {
         addCategoria("Pintura",R.mipmap.ic_cuadro);
+        addCategoria("Arquitectura",R.mipmap.ic_arqui);//error cuidado con el orden.
+        //estaba escultura antes que arquitectura y provocaba que se cargara mal la imagen y el texto
+        //en el layaout.
         addCategoria("Escultura",R.mipmap.ic_escultura);
-        addCategoria("Arquitectura",R.mipmap.ic_arqui);
 
 
         String nombreAutor ="Miguel Ángel";
