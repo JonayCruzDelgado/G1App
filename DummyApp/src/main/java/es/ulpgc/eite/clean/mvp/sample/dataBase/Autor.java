@@ -2,6 +2,7 @@ package es.ulpgc.eite.clean.mvp.sample.dataBase;
 
 import android.graphics.Bitmap;
 
+import es.ulpgc.eite.clean.mvp.sample.obra.*;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -16,9 +17,9 @@ public class Autor extends RealmObject {
     private int id;
     private String nombre;
     private String descripcion;
-    private byte[] imagen;
-    private RealmList<Obra> obras;
+    private int idImagen;
     private String categoria;
+    private RealmList<Obra> obras;
 
     public int getId() {
         return id;
@@ -44,26 +45,23 @@ public class Autor extends RealmObject {
         this.descripcion = descripcion;
     }
 
-    public byte[] getImagen() {
-        return imagen;
+    public int getImagen() {
+        return idImagen;
     }
 
-    public void setImagen(byte[] imagen) {
-        this.imagen = imagen;
+    public void setImagen(int idImagen) {
+        this.idImagen = idImagen;
     }
 
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
     public RealmList<Obra> getObras() {
         return obras;
     }
 
     public void setObras(RealmList<Obra> obras) {
         this.obras = obras;
-    }
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
     }
 }

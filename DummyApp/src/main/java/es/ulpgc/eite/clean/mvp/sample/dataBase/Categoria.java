@@ -13,6 +13,7 @@ public class Categoria extends RealmObject {
     @PrimaryKey
     private int id;
     private String categoria;
+    private int idImagen;
     private RealmList<Autor> autores;
 
 
@@ -32,6 +33,13 @@ public class Categoria extends RealmObject {
         this.categoria = categoria;
     }
 
+    public int getIdImagen() {
+        return idImagen;
+    }
+
+    public void setIdImagen(int idImagen) {
+        this.idImagen = idImagen;
+    }
     public RealmList<Autor> getAutores() {
         return autores;
     }

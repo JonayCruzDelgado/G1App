@@ -73,11 +73,11 @@ public class InicialView
 
       }
     });
-    /*Log.d(TAG, "antes init realm");
+    Log.d(TAG, " init realm");
 
     Realm.init(this);
 
-    Log.d(TAG, "despues init realm");*/
+
 
   }
 
