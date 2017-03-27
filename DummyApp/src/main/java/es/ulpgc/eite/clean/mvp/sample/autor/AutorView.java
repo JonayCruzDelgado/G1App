@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -18,7 +19,7 @@ public class AutorView
     implements Autor.PresenterToView {
 
   private Toolbar toolbar;
-  private TextView text;
+  private TextView descripcionAutor;
   private ListView listaObras;
   private ImageView iconoAutor;
   @Override
@@ -26,7 +27,7 @@ public class AutorView
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_autor);
 
-    text = (TextView) findViewById(R.id.descripcionAutor);
+    descripcionAutor = (TextView) findViewById(R.id.descripcionAutor);
 
     toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
@@ -34,7 +35,18 @@ public class AutorView
     listaObras = (ListView) findViewById(R.id.listaObras);
 
     iconoAutor = (ImageView) findViewById(R.id.imagenAutor);
+    listaObras.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      @Override
+      public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        onItemClickSelected(i);
+      }
+    });
   }
+
+  private void onItemClickSelected(int pos) {
+    getPresenter().onItemClickSelected (pos);
+  }
+
 
   /**
    * Method that initialized MVP objects
@@ -87,24 +99,23 @@ public class AutorView
 
   @Override
   public void hideText() {
-    text.setVisibility(View.GONE);
+    descripcionAutor.setVisibility(View.GONE);
   }
 
   @Override
   public void showText() {
-    text.setVisibility(View.VISIBLE);
+    descripcionAutor.setVisibility(View.VISIBLE);
   }
 
-  @Override
-  public void setText(String txt) {
-    text.setText(txt);
+  public void setDescripcionAutor(String txt) {
+    descripcionAutor.setText(txt);
   }
 
   public void setIconoAutor(Bitmap bp) {
     iconoAutor.setImageBitmap(bp);
   }
   @Override
-  public void actualizarLista(String[] nombresObras){
+  public void actualizarListaObras(String[] nombresObras){
     ArrayAdapter<String> arrayAdapter = new
             ArrayAdapter<String>(
             this,

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
+import es.ulpgc.eite.clean.mvp.sample.autor.Autor;
 import es.ulpgc.eite.clean.mvp.sample.autor.AutorView;
 import es.ulpgc.eite.clean.mvp.sample.autores.Autores;
 import es.ulpgc.eite.clean.mvp.sample.autores.AutoresView;
@@ -17,7 +18,9 @@ public class App extends Application implements Mediator, Navigator {
 
   private DummyState toDummyState, dummyToState;
   private InicialState toInicialState, inicialToState;
-  private AutoresState toAuotoresState, autoresToState;
+  private AutoresState toAutoresState, autoresToState;
+  private AutorState toAutorState, autorToState;
+  private ObraState toObrastate, obraToState;
 
   @Override
   public void onCreate() {
@@ -49,6 +52,18 @@ public class App extends Application implements Mediator, Navigator {
 
   @Override
   public void startingInicialScreen(Inicial.ToInicial presenter){
+
+    presenter.onScreenStarted();
+  }
+
+  @Override
+  public void startingAutorScreen(Inicial.ToInicial presenter){
+
+    presenter.onScreenStarted();
+  }
+
+  @Override
+  public void startingObraScreen(Inicial.ToInicial presenter){
 
     presenter.onScreenStarted();
   }
@@ -86,7 +101,7 @@ public class App extends Application implements Mediator, Navigator {
   public void goToAutorScreen(Autores.AutoresTo presenter) {
     Log.d("APP", "goToAutorScreen() has pulsado: "+ presenter.getPosicionListaAutoresPulsada());
     autoresToState = new AutoresState();
-    autoresToState.posicionListaPulsada = presenter.getPosicionListaAutoresPulsada();
+    autoresToState.posicionListaAutoresPulsada = presenter.getPosicionListaAutoresPulsada();
     autoresToState.categoriaSeleccionada = inicialToState.layaoutClicked;
     Log.d("APP", "goToAutorScreen() categoria seleccionada: "+ autoresToState.categoriaSeleccionada);
     Context view = presenter.getManagedContext();
@@ -95,6 +110,11 @@ public class App extends Application implements Mediator, Navigator {
       view.startActivity(new Intent(view, AutorView.class));
 
     }
+  }
+
+  @Override
+  public void goToObraScreen(Autor.AutorTo presenter){
+    Log.d("APP", "goToAutorScreen() has pulsado: ");
 
   }
   ///////////////////////////////////////////////////////////////////////////////////
@@ -109,11 +129,12 @@ public class App extends Application implements Mediator, Navigator {
     String layaoutClicked;
   }
   private class AutoresState{
-    int posicionListaPulsada;
+    int posicionListaAutoresPulsada;
     String categoriaSeleccionada;
   }
   private class AutorState{
-
+    String autorSelecionado;
+    int posicionListaObrasPulsada;
   }
   private class ObraState{
 
@@ -124,7 +145,15 @@ public class App extends Application implements Mediator, Navigator {
     return inicialToState.layaoutClicked;
   }
   @Override
-  public int getPosicion(){
-    return autoresToState.posicionListaPulsada;
+  public int getPosicionAutores(){
+    return autoresToState.posicionListaAutoresPulsada;
+  }
+  @Override
+  public int getPosicionObras(){
+    return autorToState.posicionListaObrasPulsada;
+  }
+  @Override
+  public String getAutorSelecionado(){
+    return autorToState.autorSelecionado;
   }
 }

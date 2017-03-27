@@ -37,7 +37,9 @@ public interface Autor {
    * Methods offered to VIEW to communicate with PRESENTER
    */
   interface ViewToPresenter extends Presenter<PresenterToView> {
-    void onButtonClicked();
+
+
+    void onItemClickSelected(int pos);
 
     void inicializarVista();
   }
@@ -50,12 +52,9 @@ public interface Autor {
     void hideToolbar();
     void hideText();
     void showText();
-    void setText(String txt);
-
+    void setDescripcionAutor(String txt);
     void setIconoAutor(Bitmap bp);
-
-    void actualizarLista(String[] nombresObras);
-
+    void actualizarListaObras(String[] nombresObras);
     void setNombreAutor(String txt);
   }
 
@@ -64,15 +63,15 @@ public interface Autor {
    */
   interface PresenterToModel extends Model<ModelToPresenter> {
 
-    void onChangeMsgByBtnClicked();
-    String getText();
-    String getLabel();
+    ///////////////////////////////////////////////////////////////////////////////////
+    // Presenter To Model ////////////////////////////////////////////////////////////
+    int idAutor(String categoria, int pos);
 
-    String [] getObras(int posicion);
+    String[] getObras(String autor);
 
     String getNombre(int posicion);
-
     String getDescripcion(int posicion);
+    Bitmap getImagen(Context context, int id);
   }
 
   /**

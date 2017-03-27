@@ -48,7 +48,7 @@ public interface Autores {
     void finishScreen();
     void hideToolbar();
     void hideText();
-    void actualizarLista(String[] nombresAutores);
+    void actualizarListaAutores(String[] nombresAutores);
     void showText();
     void setTituloToolbar(String txt);
   }

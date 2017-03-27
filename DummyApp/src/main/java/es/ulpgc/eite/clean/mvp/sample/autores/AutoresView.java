@@ -93,7 +93,7 @@ public class AutoresView
     categoriaSelecionada.setVisibility(View.GONE);
   }
   @Override
-  public void actualizarLista(String[] nombresAutores){
+  public void actualizarListaAutores(String[] nombresAutores){
     ArrayAdapter<String> arrayAdapter = new
             ArrayAdapter<String>(
             this,

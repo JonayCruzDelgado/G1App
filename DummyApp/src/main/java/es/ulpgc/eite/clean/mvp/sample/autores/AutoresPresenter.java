@@ -92,7 +92,7 @@ public class AutoresPresenter extends GenericPresenter
   @Override
   public void inicializarVista() {
       Mediator app = (Mediator) getApplication();
-      getView().actualizarLista(getModel().obtenerAutores(app.getLayaoutClicked()));
+      getView().actualizarListaAutores(getModel().obtenerAutores(app.getLayaoutClicked()));
       getView().setTituloToolbar(getModel().obtenerEspecialidad(app.getLayaoutClicked()));
       getView().hideText();
 

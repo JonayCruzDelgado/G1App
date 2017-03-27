@@ -10,32 +10,15 @@ import java.util.ArrayList;
 import es.ulpgc.eite.clean.mvp.GenericModel;
 import es.ulpgc.eite.clean.mvp.sample.R;
 import es.ulpgc.eite.clean.mvp.sample.autor.Autor;
+import es.ulpgc.eite.clean.mvp.sample.dataBase.ManejadorBaseDeDatos;
+import es.ulpgc.eite.clean.mvp.sample.dataBaseSim.ManejadorBaseDeDatosSim;
 
 
 public class AutorModel extends GenericModel<Autor.ModelToPresenter>
     implements Autor.PresenterToModel {
 
-  private String autorText;
-  private String autorLabel;
-  private int numOfTimes;
-  private String msgText;
-
-  private ArrayList<AutorDB> arquitectura, escultura, pintura;
-
-  public class AutorDB{
-    private String descripcion;
-    private String[] obras;
-    private Bitmap fotoAutor;
-    private String nombre;
-
-    private AutorDB(String descripcion, String[] obras, String nombre) {
-      this.descripcion = descripcion;
-      this.obras = obras;
-      this.nombre = nombre;
-
-    }
-  }
-
+  ManejadorBaseDeDatosSim manejadorSim;
+  ManejadorBaseDeDatos manejador;
 
   /**
    * Method that recovers a reference to the PRESENTER
@@ -47,11 +30,10 @@ public class AutorModel extends GenericModel<Autor.ModelToPresenter>
   public void onCreate(Autor.ModelToPresenter presenter) {
     super.onCreate(presenter);
 
-    autorLabel = "Click Me!";
-    autorText = "Hello World!";
+    manejadorSim = ManejadorBaseDeDatosSim.getInstance();
+    //manejador = ManejadorBaseDeDatos.getInstance();
 
   }
-
 
   /**
    * Called by layer PRESENTER when VIEW pass for a reconstruction/destruction.
@@ -66,37 +48,29 @@ public class AutorModel extends GenericModel<Autor.ModelToPresenter>
 
   ///////////////////////////////////////////////////////////////////////////////////
   // Presenter To Model ////////////////////////////////////////////////////////////
-
-
   @Override
-  public void onChangeMsgByBtnClicked() {
-    msgText = autorText;
-    if(numOfTimes > 0) {
-      msgText += ", " + numOfTimes + " times";
-    }
-    numOfTimes++;
+  public int idAutor(String categoria, int pos){
+    int[] ids = manejadorSim.arrayIdsAutorByCategoria(categoria);
+    return  ids[pos];
   }
 
-  @Override
-  public String getText() {
-    return msgText;
-  }
 
   @Override
-  public String getLabel() {
-    return autorLabel;
-  }
-
-  @Override
-  public String[] getObras(int posicion){
-    return null;
+  public String[] getObras(String autor){
+    int[] ids=manejadorSim.arrayIdsObraByAutor(autor);
+    return manejadorSim.arrayNombresByIdsObras(ids);
   }
   @Override
-  public String getNombre(int posicion){
-    return  null;
+  public String getNombre(int id){
+    return  manejadorSim.nombreAutor(id);
   }
   @Override
-  public String getDescripcion(int posicion){
+  public String getDescripcion(int id){
+    return  manejadorSim.descripcionAutor(id);
+  }
+  @Override
+  public Bitmap getImagen(Context context, int id){
+    Bitmap icon = BitmapFactory.decodeResource(context.getResources(), manejadorSim.idImagenAutor(id));
     return  null;
   }
 }

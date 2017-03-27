@@ -8,8 +8,7 @@ import es.ulpgc.eite.clean.mvp.ContextView;
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.GenericPresenter;
 import es.ulpgc.eite.clean.mvp.sample.app.Mediator;
-import es.ulpgc.eite.clean.mvp.sample.autor.Autor;
-import es.ulpgc.eite.clean.mvp.sample.autor.AutorModel;
+import es.ulpgc.eite.clean.mvp.sample.app.Navigator;
 
 public class AutorPresenter extends GenericPresenter
     <Autor.PresenterToView, Autor.PresenterToModel, Autor.ModelToPresenter, AutorModel>
@@ -17,9 +16,11 @@ public class AutorPresenter extends GenericPresenter
 
 
   private boolean toolbarVisible;
-  private boolean buttonClicked;
   private boolean textVisible;
   private String categoria;
+
+
+  private int PosicionListaObrasPulsada;
 
   /**
    * Operation called during VIEW creation in {@link GenericActivity#onResume(Class, Object)}
@@ -91,20 +92,21 @@ public class AutorPresenter extends GenericPresenter
   // View To Presenter /////////////////////////////////////////////////////////////
 
   @Override
-  public void onButtonClicked() {
-    Log.d(TAG, "calling onButtonClicked()");
-    if(isViewRunning()) {
-      getModel().onChangeMsgByBtnClicked();
-      getView().setText(getModel().getText());
-      textVisible = true;
-      buttonClicked = true;
-    }
-    checkTextVisibility();
+  public void onItemClickSelected(int pos){
+    Log.d(TAG,"posicion pulsada" + pos);
+    setPosicionListaObrasPulsada(pos);
+    Navigator app = (Navigator) getView().getApplication();
+    app.goToObraScreen(this);
+
   }
   @Override
   public void inicializarVista(){
     Mediator app = (Mediator) getView().getApplication();
-    checkToolbarVisibility();
+    int id=getModel().idAutor(app.getLayaoutClicked(),app.getPosicionAutores());
+    getView().setDescripcionAutor(getModel().getDescripcion(id));
+    getView().setIconoAutor(getModel().getImagen(getManagedContext(),id));
+    getView().setNombreAutor(getModel().getNombre(id));
+    getView().actualizarListaObras(getModel().getObras(getModel().getNombre(id)));
 
   }
 
@@ -184,5 +186,8 @@ public class AutorPresenter extends GenericPresenter
   @Override
   public String getCategoria() {
     return categoria;
+  }
+  public void setPosicionListaObrasPulsada(int posicionListaObrasPulsada) {
+    PosicionListaObrasPulsada = posicionListaObrasPulsada;
   }
 }
