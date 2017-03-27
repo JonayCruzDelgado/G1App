@@ -27,8 +27,8 @@ public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
   public void onCreate(Inicial.ModelToPresenter presenter) {
     super.onCreate(presenter);
 
-    //manejadorSim = ManejadorBaseDeDatosSim.getInstance();
-    manejador = ManejadorBaseDeDatos.getInstance();
+    manejadorSim = ManejadorBaseDeDatosSim.getInstance();
+    //manejador = ManejadorBaseDeDatos.getInstance();
 
   }
 
@@ -48,40 +48,40 @@ public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
 
   @Override
   public String getTextBtn1() {
-    //return manejadorSim.nombreCategoria(0);
-   return manejador.getNombreCategoria(1);
+    return manejadorSim.nombreCategoria(0);
+   //return manejador.getNombreCategoria(1);
   }
 
   @Override
   public String getTextBtn2() {
-    //return manejadorSim.nombreCategoria(1);
-    return manejador.getNombreCategoria(2);
+    return manejadorSim.nombreCategoria(1);
+    //return manejador.getNombreCategoria(2);
   }
 
   @Override
   public String getTextBtn3() {
-    //return manejadorSim.nombreCategoria(2);
-    return manejador.getNombreCategoria(3);
+    return manejadorSim.nombreCategoria(2);
+    //return manejador.getNombreCategoria(3);
   }
 
   @Override
   public Bitmap getIconoPintura(Context context) {
-    //Bitmap icon = BitmapFactory.decodeResource(context.getResources(), manejadorSim.idImagenCategoria(0));
-    Bitmap icon = BitmapFactory.decodeResource(context.getResources(), manejador.getIdImagen(1));
+    Bitmap icon = BitmapFactory.decodeResource(context.getResources(), manejadorSim.idImagenCategoria(0));
+    //Bitmap icon = BitmapFactory.decodeResource(context.getResources(), manejador.getIdImagen(1));
     return icon;
   }
 
   @Override
   public Bitmap getIconoArquitectura(Context context) {
-    //Bitmap icon = BitmapFactory.decodeResource(context.getResources(),manejadorSim.idImagenCategoria(1));
-    Bitmap icon = BitmapFactory.decodeResource(context.getResources(), manejador.getIdImagen(2));
+    Bitmap icon = BitmapFactory.decodeResource(context.getResources(),manejadorSim.idImagenCategoria(1));
+    //Bitmap icon = BitmapFactory.decodeResource(context.getResources(), manejador.getIdImagen(2));
     return icon;
   }
 
   @Override
   public Bitmap getIconoEscultura(Context context) {
-      //Bitmap icon = BitmapFactory.decodeResource(context.getResources(),manejadorSim.idImagenCategoria(2));
-      Bitmap icon = BitmapFactory.decodeResource(context.getResources(), manejador.getIdImagen(3));
+      Bitmap icon = BitmapFactory.decodeResource(context.getResources(),manejadorSim.idImagenCategoria(2));
+      //Bitmap icon = BitmapFactory.decodeResource(context.getResources(), manejador.getIdImagen(3));
       return icon;
   }
 }

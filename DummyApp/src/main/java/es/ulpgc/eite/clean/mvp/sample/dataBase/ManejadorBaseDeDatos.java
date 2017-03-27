@@ -27,6 +27,7 @@ public class ManejadorBaseDeDatos {
 
     private ManejadorBaseDeDatos() {
         realm = Realm.getDefaultInstance();
+        realm.deleteAll();
         initBaseDeDatos();
     }
 
@@ -115,7 +116,7 @@ public class ManejadorBaseDeDatos {
     public void initBaseDeDatos(){
 
         RealmResults<Categoria> result =realm.where(Categoria.class).equalTo("categoria","Pintura").findAll();//encuentra el 1º elemento que metemos en laDB
-        if(result== null) { //si no se encuentra ese elemento  se inicializa la DB, pero si se encuentra no se vuelven a introducir todos los elementos
+        //if(result== null) { //si no se encuentra ese elemento  se inicializa la DB, pero si se encuentra no se vuelven a introducir todos los elementos
 
             // toca rellener a saco aqui
             addCategoria("Pintura", R.mipmap.ic_cuadro);
@@ -248,7 +249,7 @@ public class ManejadorBaseDeDatos {
         }
 
 
-    }
+  //  }
     //pasar el archivo que entra ha un bitmap
     public Bitmap imagenToBitmap( String fileName){
         File file1 = new File(fileName);
