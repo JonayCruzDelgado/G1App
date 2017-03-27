@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import es.ulpgc.eite.clean.mvp.sample.autor.Autor;
 import es.ulpgc.eite.clean.mvp.sample.autor.AutorView;
 import es.ulpgc.eite.clean.mvp.sample.autores.Autores;
 import es.ulpgc.eite.clean.mvp.sample.autores.AutoresView;
@@ -18,7 +17,7 @@ public class App extends Application implements Mediator, Navigator {
 
   private DummyState toDummyState, dummyToState;
   private InicialState toInicialState, inicialToState;
-  private AutoresState autoresToState;
+  private AutoresState toAuotoresState, autoresToState;
 
   @Override
   public void onCreate() {
@@ -85,9 +84,9 @@ public class App extends Application implements Mediator, Navigator {
   }
   @Override
   public void goToAutorScreen(Autores.AutoresTo presenter) {
-    Log.d("APP", "goToAutorScreen() has pulsado: "+ presenter.getPosicionListaPulsada());
+    Log.d("APP", "goToAutorScreen() has pulsado: "+ presenter.getPosicionListaAutoresPulsada());
     autoresToState = new AutoresState();
-    autoresToState.posicionListaPulsada = presenter.getPosicionListaPulsada();
+    autoresToState.posicionListaPulsada = presenter.getPosicionListaAutoresPulsada();
     autoresToState.categoriaSeleccionada = inicialToState.layaoutClicked;
     Log.d("APP", "goToAutorScreen() categoria seleccionada: "+ autoresToState.categoriaSeleccionada);
     Context view = presenter.getManagedContext();
@@ -113,6 +112,13 @@ public class App extends Application implements Mediator, Navigator {
     int posicionListaPulsada;
     String categoriaSeleccionada;
   }
+  private class AutorState{
+
+  }
+  private class ObraState{
+
+  }
+
   @Override
   public String getLayaoutClicked(){
     return inicialToState.layaoutClicked;

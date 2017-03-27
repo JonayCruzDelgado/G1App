@@ -18,7 +18,7 @@ public class AutoresView
     implements Autores.PresenterToView {
 
   private Toolbar toolbar;
-  private TextView generoSelecionado;
+  private TextView categoriaSelecionada;
   private ListView listaAutores;
 
   @Override
@@ -26,7 +26,7 @@ public class AutoresView
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_autores);
     listaAutores = (ListView) findViewById(R.id.listaAutores);
-    generoSelecionado = (TextView) findViewById(R.id.generoSelecionado);
+    categoriaSelecionada = (TextView) findViewById(R.id.categoriaSelecionada);
     toolbar = (Toolbar) findViewById(R.id.toolbar);
     listaAutores.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       @Override
@@ -40,7 +40,6 @@ public class AutoresView
       getPresenter().onItemClickSelected (pos);
   }
 
-
   /**
    * Method that initialized MVP objects
    * {@link super#onResume(Class, Object)} should always be called
@@ -50,9 +49,7 @@ public class AutoresView
   protected void onResume() {
     super.onResume(AutoresPresenter.class, this);
     getPresenter().inicializarVista();
-
   }
-
   /*
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
@@ -93,7 +90,7 @@ public class AutoresView
 
   @Override
   public void hideText() {
-    generoSelecionado.setVisibility(View.GONE);
+    categoriaSelecionada.setVisibility(View.GONE);
   }
   @Override
   public void actualizarLista(String[] nombresAutores){
@@ -106,12 +103,11 @@ public class AutoresView
     listaAutores.setAdapter(arrayAdapter);
   }
   @Override
-  public void setText(String txt) {
+  public void setTituloToolbar(String txt) {
     toolbar.setTitle(txt);
   }
   @Override
   public void showText() {
-
   }
 
 }

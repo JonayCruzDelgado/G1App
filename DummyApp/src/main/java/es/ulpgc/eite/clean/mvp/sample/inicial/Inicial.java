@@ -27,8 +27,6 @@ public interface Inicial {
     Context getManagedContext();
     void destroyView();
     boolean isToolbarVisible();
-
-
     String getLayoutClicked();
   }
 
@@ -41,9 +39,7 @@ public interface Inicial {
   interface ViewToPresenter extends Presenter<PresenterToView> {
 
     void onButtonClickedArquitectura();
-
     void onButtonClickedPintura();
-
     void onButtonClickedEscultura();
   }
 
@@ -53,19 +49,11 @@ public interface Inicial {
   interface PresenterToView extends ContextView {
     void finishScreen();
     void hideToolbar();
-
-
-
     void setLabelPintura(String txt);
-
     void setLabelEscultura(String txt);
-
     void setLabelArquitectura(String txt);
-
     void setIconoPintura(Bitmap bp);
-
     void setIconoArquitectura(Bitmap bp);
-
     void setIconoEscultura(Bitmap bp);
   }
 
@@ -76,11 +64,8 @@ public interface Inicial {
     String getTextBtn1();
     String getTextBtn2();
     String getTextBtn3();
-
     Bitmap getIconoPintura(Context context);
-
     Bitmap getIconoArquitectura(Context context);
-
     Bitmap getIconoEscultura(Context context);
   }
 

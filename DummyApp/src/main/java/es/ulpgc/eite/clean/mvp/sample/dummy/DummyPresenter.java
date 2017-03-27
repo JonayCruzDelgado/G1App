@@ -97,7 +97,7 @@ public class DummyPresenter extends GenericPresenter
     Log.d(TAG, "calling onButtonClicked()");
     /*if(isViewRunning()) {
       getModel().onChangeMsgByBtnClicked();
-      getView().setText(getModel().getText());
+      getView().setTituloToolbar(getModel().getText());
       textVisible = true;
       buttonClicked = true;
     }

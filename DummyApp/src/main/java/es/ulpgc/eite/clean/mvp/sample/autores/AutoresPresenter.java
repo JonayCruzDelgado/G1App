@@ -9,8 +9,6 @@ import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.GenericPresenter;
 import es.ulpgc.eite.clean.mvp.sample.app.Mediator;
 import es.ulpgc.eite.clean.mvp.sample.app.Navigator;
-import es.ulpgc.eite.clean.mvp.sample.autores.Autores;
-import es.ulpgc.eite.clean.mvp.sample.autores.AutoresModel;
 
 public class AutoresPresenter extends GenericPresenter
     <Autores.PresenterToView, Autores.PresenterToModel, Autores.ModelToPresenter, AutoresModel>
@@ -18,9 +16,8 @@ public class AutoresPresenter extends GenericPresenter
 
 
   private boolean toolbarVisible;
-  private boolean buttonClicked;
-  private boolean textVisible;
-  private int posicionListaPulsada;
+  private String generoSelecionado;
+  private int posicionListaAutoresPulsada;
   /**
    * Operation called during VIEW creation in {@link GenericActivity#onResume(Class, Object)}
    * Responsible to initialize MODEL.
@@ -59,7 +56,7 @@ public class AutoresPresenter extends GenericPresenter
       checkTextVisibility();
 
       if (buttonClicked) {
-        getView().setText(getModel().getText());
+        getView().setTituloToolbar(getModel().getText());
       }
     }*/
   }
@@ -91,23 +88,12 @@ public class AutoresPresenter extends GenericPresenter
   ///////////////////////////////////////////////////////////////////////////////////
   // View To Presenter /////////////////////////////////////////////////////////////
 
-  @Override
-  public void onButtonClicked() {
-    Log.d(TAG, "calling onButtonClicked()");
-   /* if(isViewRunning()) {
-      getModel().onChangeMsgByBtnClicked();
-      getView().setText(getModel().getText());
-      textVisible = true;
-      buttonClicked = true;
-    }*/
-    checkTextVisibility();
-  }
 
   @Override
   public void inicializarVista() {
       Mediator app = (Mediator) getApplication();
       getView().actualizarLista(getModel().obtenerAutores(app.getLayaoutClicked()));
-      getView().setText(getModel().obtenerEspecialidad(app.getLayaoutClicked()));
+      getView().setTituloToolbar(getModel().obtenerEspecialidad(app.getLayaoutClicked()));
       getView().hideText();
 
   }
@@ -115,7 +101,7 @@ public class AutoresPresenter extends GenericPresenter
   @Override
   public void onItemClickSelected(int pos) {
     Log.d(TAG,"posicion pulsada" + pos);
-    setPosicionListaPulsada(pos);
+    setPosicionListaAutoresPulsada(pos);
     Navigator app = (Navigator) getView().getApplication();
     app.goToAutorScreen(this);
   }
@@ -139,8 +125,6 @@ public class AutoresPresenter extends GenericPresenter
     toolbarVisible = visible;
   }
 
-
-
   ///////////////////////////////////////////////////////////////////////////////////
   // autores To //////////////////////////////////////////////////////////////////////
 
@@ -161,9 +145,6 @@ public class AutoresPresenter extends GenericPresenter
     return toolbarVisible;
   }
 
-
-
-
   ///////////////////////////////////////////////////////////////////////////////////
 
   private void checkToolbarVisibility(){
@@ -175,24 +156,10 @@ public class AutoresPresenter extends GenericPresenter
     }
   }
 
-  private void checkTextVisibility(){
-    Log.d(TAG, "calling checkTextVisibility()");
-    if(isViewRunning()) {
-      if(!textVisible) {
-        getView().hideText();
-      } else {
-        getView().showText();
-      }
-    }
+  public int getPosicionListaAutoresPulsada() {
+    return posicionListaAutoresPulsada;
   }
-  @Override
-  public int getPosicionListaPulsada() {
-    return posicionListaPulsada;
-
-
-  }
-
-  private void setPosicionListaPulsada(int posicionListaPulsada) {
-    this.posicionListaPulsada = posicionListaPulsada;
+  private void setPosicionListaAutoresPulsada(int posicionListaAutoresPulsada) {
+    this.posicionListaAutoresPulsada = posicionListaAutoresPulsada;
   }
 }

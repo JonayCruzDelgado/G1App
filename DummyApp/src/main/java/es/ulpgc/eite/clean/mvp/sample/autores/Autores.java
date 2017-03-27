@@ -27,7 +27,7 @@ public interface Autores {
     void destroyView();
     boolean isToolbarVisible();
 
-    int getPosicionListaPulsada();
+    int getPosicionListaAutoresPulsada();
   }
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -37,10 +37,7 @@ public interface Autores {
    * Methods offered to VIEW to communicate with PRESENTER
    */
   interface ViewToPresenter extends Presenter<PresenterToView> {
-    void onButtonClicked();
-
     void inicializarVista();
-
     void onItemClickSelected(int pos);
   }
 
@@ -53,19 +50,14 @@ public interface Autores {
     void hideText();
     void actualizarLista(String[] nombresAutores);
     void showText();
-    void setText(String txt);
+    void setTituloToolbar(String txt);
   }
 
   /**
    * Methods offered to MODEL to communicate with PRESENTER
    */
   interface PresenterToModel extends Model<ModelToPresenter> {
-    void onChangeMsgByBtnClicked();
-    String getText();
-    String getLabel();
-
     String [] obtenerAutores(String generoSeleccionado);
-
     String obtenerEspecialidad(String generoSeleccionado);
   }
 

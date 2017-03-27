@@ -17,7 +17,6 @@ public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
   ManejadorBaseDeDatosSim manejadorSim;
   ManejadorBaseDeDatos manejador;
 
-
   /**
    * Method that recovers a reference to the PRESENTER
    * You must ALWAYS call {@link super#onCreate(Object)} here
@@ -31,7 +30,6 @@ public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
     //manejadorSim = ManejadorBaseDeDatosSim.getInstance();
     manejador = ManejadorBaseDeDatos.getInstance();
 
-
   }
 
   /**
@@ -44,8 +42,6 @@ public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
   public void onDestroy(boolean isChangingConfiguration) {
 
   }
-
-
 
   ///////////////////////////////////////////////////////////////////////////////////
   // Presenter To Model ////////////////////////////////////////////////////////////

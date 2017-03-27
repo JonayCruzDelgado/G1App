@@ -16,7 +16,6 @@ public class InicialPresenter extends GenericPresenter
     <Inicial.PresenterToView, Inicial.PresenterToModel, Inicial.ModelToPresenter, InicialModel>
     implements Inicial.ViewToPresenter, Inicial.ModelToPresenter, Inicial.InicialTo, Inicial.ToInicial {
 
-
   private boolean toolbarVisible;
   private String layoutClicked;
 
@@ -80,7 +79,6 @@ public class InicialPresenter extends GenericPresenter
     Log.d(TAG, "calling onDestroy()");
   }
 
-
   ///////////////////////////////////////////////////////////////////////////////////
   // View To Presenter /////////////////////////////////////////////////////////////
 
@@ -108,7 +106,6 @@ public class InicialPresenter extends GenericPresenter
     app.goToAutoresScreen(this);
   }
 
-
   ///////////////////////////////////////////////////////////////////////////////////
   // To Inicial //////////////////////////////////////////////////////////////////////
 
@@ -126,11 +123,8 @@ public class InicialPresenter extends GenericPresenter
     toolbarVisible = visible;
   }
 
-
-
   ///////////////////////////////////////////////////////////////////////////////////
   // Inicial To //////////////////////////////////////////////////////////////////////
-
 
   @Override
   public Context getManagedContext(){
@@ -170,7 +164,4 @@ public class InicialPresenter extends GenericPresenter
     getView().setIconoArquitectura(getModel().getIconoArquitectura(getManagedContext()));
     getView().setIconoEscultura(getModel().getIconoEscultura(getManagedContext()));
   }
-
-
-
 }

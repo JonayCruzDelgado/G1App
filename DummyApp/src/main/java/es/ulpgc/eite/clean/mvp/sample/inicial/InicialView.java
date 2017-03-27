@@ -74,11 +74,7 @@ public class InicialView
       }
     });
     Log.d(TAG, " init realm");
-
     Realm.init(this);
-
-
-
   }
 
   /**
@@ -89,7 +85,6 @@ public class InicialView
   @Override
   protected void onResume() {
     super.onResume(InicialPresenter.class, this);
-
   }
 
   /*
@@ -116,7 +111,6 @@ public class InicialView
   }
   */
 
-
   ///////////////////////////////////////////////////////////////////////////////////
   // Presenter To View /////////////////////////////////////////////////////////////
 
@@ -130,8 +124,6 @@ public class InicialView
     toolbar.setVisibility(View.GONE);
   }
 
-
-
   @Override
   public void setLabelPintura(String txt) {
     labelPintura.setText(txt);
@@ -144,7 +136,6 @@ public class InicialView
   public void setLabelArquitectura(String txt) {
     labelArquitectura.setText(txt);
   }
-
   @Override
   public void setIconoPintura(Bitmap bp) {
     iconoPintura.setImageBitmap(bp);
