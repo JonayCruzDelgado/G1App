@@ -15,7 +15,7 @@ public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
     implements Inicial.PresenterToModel {
 
   ManejadorBaseDeDatosSim manejadorSim;
-  ManejadorBaseDeDatos manejador;
+  //ManejadorBaseDeDatos manejador;
 
   /**
    * Method that recovers a reference to the PRESENTER

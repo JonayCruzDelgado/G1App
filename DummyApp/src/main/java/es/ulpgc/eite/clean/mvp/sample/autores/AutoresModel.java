@@ -9,7 +9,11 @@ public class AutoresModel extends GenericModel<Autores.ModelToPresenter>
         implements Autores.PresenterToModel {
 
   ManejadorBaseDeDatosSim manejadorSim;
+
   //ManejadorBaseDeDatos manejador;
+
+  ManejadorBaseDeDatos manejador;
+
 
   /**
    * Method that recovers a reference to the PRESENTER
