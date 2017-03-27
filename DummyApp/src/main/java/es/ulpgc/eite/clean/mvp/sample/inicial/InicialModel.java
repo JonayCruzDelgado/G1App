@@ -15,7 +15,7 @@ public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
     implements Inicial.PresenterToModel {
 
   ManejadorBaseDeDatosSim manejadorSim;
-  ManejadorBaseDeDatos manejador;
+  //ManejadorBaseDeDatos manejador;
 
   /**
    * Method that recovers a reference to the PRESENTER
@@ -55,7 +55,7 @@ public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
   @Override
   public String getTextBtn2() {
     return manejadorSim.nombreCategoria(1);
-   // return manejador.getNombreCategoria(2);
+    //return manejador.getNombreCategoria(2);
   }
 
   @Override
