@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -28,6 +29,7 @@ public class AutorView
     setContentView(R.layout.activity_autor);
 
     descripcionAutor = (TextView) findViewById(R.id.descripcionAutor);
+    descripcionAutor.setMovementMethod(new ScrollingMovementMethod());
 
     toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);

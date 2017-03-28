@@ -32,6 +32,8 @@
                 android:id="@+id/descripcionAutor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLines = "13"
+                android:scrollbars = "vertical"
                 android:paddingLeft="5dp"
                 android:textSize="14sp"
                 android:text="TextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewv

@@ -149,11 +149,11 @@ public class AutoresPresenter extends GenericPresenter
 
   private void checkToolbarVisibility(){
     Log.d(TAG, "calling checkToolbarVisibility()");
-    if(isViewRunning()) {
+    /*if(isViewRunning()) {
       if (!toolbarVisible) {
         getView().hideToolbar();
       }
-    }
+    }*/
   }
 
   public int getPosicionListaAutoresPulsada() {

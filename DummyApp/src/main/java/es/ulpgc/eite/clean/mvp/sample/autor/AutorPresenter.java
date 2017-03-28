@@ -165,11 +165,11 @@ public class AutorPresenter extends GenericPresenter
 
   private void checkToolbarVisibility(){
     Log.d(TAG, "calling checkToolbarVisibility()");
-    if(isViewRunning()) {
+    /*if(isViewRunning()) {
       if (!toolbarVisible) {
         getView().hideToolbar();
       }
-    }
+    }*/
   }
 
   private void checkTextVisibility(){
