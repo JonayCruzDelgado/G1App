@@ -15,11 +15,15 @@ public interface Mediator {
 
   void startingObraScreen(Inicial.ToInicial presenter);
 
-  String getLayaoutClicked();
+  String getCategoriaClicked();
 
   int getPosicionAutores();
+
+  int getIdAutorSelecionado();
 
   int getPosicionObras();
 
   String getAutorSelecionado();
+
+  int getIdObraSelecionado();
 }

@@ -131,22 +131,28 @@ public class App extends Application implements Mediator, Navigator {
   private class AutoresState{
     int posicionListaAutoresPulsada;
     String categoriaSeleccionada;
+    int idAutorSelecionado;
   }
   private class AutorState{
     String autorSelecionado;
     int posicionListaObrasPulsada;
+      int idObraPulsada;
   }
   private class ObraState{
 
   }
 
   @Override
-  public String getLayaoutClicked(){
+  public String getCategoriaClicked(){
     return inicialToState.layaoutClicked;
   }
   @Override
   public int getPosicionAutores(){
     return autoresToState.posicionListaAutoresPulsada;
+  }
+  @Override
+  public int getIdAutorSelecionado(){
+    return autoresToState.idAutorSelecionado;
   }
   @Override
   public int getPosicionObras(){
@@ -156,4 +162,11 @@ public class App extends Application implements Mediator, Navigator {
   public String getAutorSelecionado(){
     return autorToState.autorSelecionado;
   }
+  @Override
+  public int getIdObraSelecionado(){
+      return autorToState.idObraPulsada;
+  }
+
+
+
 }

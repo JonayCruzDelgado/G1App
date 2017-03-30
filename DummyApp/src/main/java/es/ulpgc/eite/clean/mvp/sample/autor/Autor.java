@@ -63,12 +63,12 @@ public interface Autor {
    */
   interface PresenterToModel extends Model<ModelToPresenter> {
 
-    ///////////////////////////////////////////////////////////////////////////////////
-    // Presenter To Model ////////////////////////////////////////////////////////////
-    int idAutor(String categoria, int pos);
+
+      ///////////////////////////////////////////////////////////////////////////////////
+      // Presenter To Model ////////////////////////////////////////////////////////////
+      int idObraPulsada(String autor, int pos);
 
     String[] getObras(String autor);
-
     String getNombre(int posicion);
     String getDescripcion(int posicion);
     Bitmap getImagen(Context context, int id);

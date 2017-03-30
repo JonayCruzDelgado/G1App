@@ -58,7 +58,9 @@ public interface Autores {
    */
   interface PresenterToModel extends Model<ModelToPresenter> {
     String [] obtenerAutores(String generoSeleccionado);
-    String obtenerEspecialidad(String generoSeleccionado);
+    String obtenerCategoria(String generoSeleccionado);
+
+    int obtenerIdAutorSelecionado(String categoriaSeleccionada, int pos);
   }
 
   /**

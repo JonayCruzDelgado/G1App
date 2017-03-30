@@ -51,7 +51,12 @@ public class AutoresModel extends GenericModel<Autores.ModelToPresenter>
 
   }
   @Override
-  public String obtenerEspecialidad(String categoriaSeleccionada){
+  public String obtenerCategoria(String categoriaSeleccionada){
    return categoriaSeleccionada;
+  }
+  @Override
+  public int obtenerIdAutorSelecionado(String categoriaSeleccionada,int pos){
+    int[] ids = manejadorSim.arrayIdsAutorByCategoria(categoriaSeleccionada);
+    return ids[pos];
   }
 }

@@ -49,8 +49,8 @@ public class AutorModel extends GenericModel<Autor.ModelToPresenter>
   ///////////////////////////////////////////////////////////////////////////////////
   // Presenter To Model ////////////////////////////////////////////////////////////
   @Override
-  public int idAutor(String categoria, int pos){
-    int[] ids = manejadorSim.arrayIdsAutorByCategoria(categoria);
+  public int idObraPulsada(String autor, int pos){
+    int[] ids = manejadorSim.arrayIdsObraByAutor(autor);
     return  ids[pos];
   }
 
@@ -71,7 +71,6 @@ public class AutorModel extends GenericModel<Autor.ModelToPresenter>
   @Override
   public Bitmap getImagen(Context context, int id){
     Bitmap icon = BitmapFactory.decodeResource(context.getResources(), manejadorSim.idImagenAutor(id));
-   // return  null; estas retornando un null.
     return icon;
   }
 }
