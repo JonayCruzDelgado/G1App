@@ -250,8 +250,8 @@ public class ManejadorBaseDeDatos {
 
 
   //  }
-    //pasar el archivo que entra ha un bitmap
-    public Bitmap imagenToBitmap( String fileName){
+    //pasar el archivo que entra a un bitmap
+    public Bitmap imagenToBitmap (String fileName){
         File file1 = new File(fileName);
         Bitmap imagen = BitmapFactory.decodeFile(file1.getAbsolutePath());
         return imagen;

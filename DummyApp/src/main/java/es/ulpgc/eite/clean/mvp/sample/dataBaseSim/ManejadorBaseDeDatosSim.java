@@ -45,7 +45,7 @@ public class ManejadorBaseDeDatosSim {
         addCategoria("Escultura",R.mipmap.ic_escultura);
 
 
-        String nombreAutor ="Miguel Ángel";
+        String nombreAutor ="Miguel Angel";
         String categoriaAutor ="Escultura";
         String descripcionAutor ="Michelangelo Buonarroti (Caprese, 6 de marzo de 1475-Roma, " +
                 "18 de febrero de 1564), conocido en español como Miguel Ángel, fue un arquitecto, " +
@@ -164,18 +164,49 @@ public class ManejadorBaseDeDatosSim {
                 "cuenta con oficinas en Nueva York, Doha y Zúrich.";
         addAutor(nombreAutor,descripcionAutor,categoriaAutor,R.mipmap.calatrava);
 
-        nombreAutor ="Antoni Gaudí";
+        nombreAutor ="Antoni Gaudi";
         categoriaAutor="Arquitectura";
         descripcionAutor="Antoni Gaudí i Cornet, también conocido en español como Antonio Gaudí1 (Reus o Riudoms, 25 de junio de " +
                 "1852-Barcelona, 10 de junio de 1926) fue un arquitecto español, máximo representante del modernismo catalán.";
         addAutor(nombreAutor,descripcionAutor,categoriaAutor,R.mipmap.antoni_gaudi);
 
-       String nombreObra="";
-       String autor="";
-       String descripcionObra ="" ;
-       Double latitud=0.0;
-       Double longitud=0.0;
+        //Obras escultores
+        //Miguel Angel
+
+       String nombreObra="El David";
+       String autor="Miguel Angel";
+       String descripcionObra ="El David es una escultura de mármol blanco de 5,17 metros de altura y 5572 kilogramos de masa," +
+               " realizada por Miguel Ángel Buonarroti entre 1501 y 1504 por encargo de la Opera del Duomo de la catedral" +
+               " de Santa María del Fiore de Florencia." ;
+       Double latitud=43.4636;
+       Double longitud=11.1534;
+        addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.el_david);
+
+
+        nombreObra="La Madonna de Brujas";
+        autor="Miguel Angel";
+        descripcionObra ="La Madonna de Brujas es una escultura realizada en mármol por Miguel Ángel en el año 1504. " +
+                "De 1,23 metros de altura, se encuentra en la iglesia de Nuestra Señora de Brujas (ciudad de la actual Bélgica)." ;
+        latitud=51.1217;
+        longitud=3.1328;
+        addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.la_madonna_de_brujas);
+
+        nombreObra="El Cristo de Minerva";
+        autor="Miguel Angel";
+        descripcionObra ="Cristo de la Minerva es la denominación de una escultura de mármol, obra de Miguel Ángel, finalizada en " +
+                "1521, que representa a un Cristo redentor, desnudo, abrazando la Cruz (el lienzo de pureza que oculta " +
+                "sus genitales es una adición posterior)." ;
+        latitud=41.8989;
+        longitud=12.4761;
+        addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.el_cristo_de_minerva);
+
+        nombreObra="";
+        autor="";
+        descripcionObra ="" ;
+        latitud=0.0;
+        longitud=0.0;
         addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+
     }
 
     public void addCategoria(String nombreCategoria,int idResImagen){
