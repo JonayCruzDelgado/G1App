@@ -1,7 +1,5 @@
 package es.ulpgc.eite.clean.mvp.sample.dataBase;
 
-import android.graphics.Bitmap;
-
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -18,7 +16,7 @@ public class Obra extends RealmObject {
     private int idImagen;
     private Double latitud;
     private Double longitud;
-    private String Autor;
+    private String autor;
 
     public int getId() {
         return id;
@@ -67,11 +65,11 @@ public class Obra extends RealmObject {
         this.longitud = longitud;
     }
     public String getAutor() {
-        return Autor;
+        return autor;
     }
 
     public void setAutor(String autor) {
-        Autor = autor;
+        this.autor = autor;
     }
 
 

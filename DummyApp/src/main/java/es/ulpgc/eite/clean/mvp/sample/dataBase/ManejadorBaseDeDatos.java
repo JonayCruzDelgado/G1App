@@ -60,7 +60,7 @@ public class ManejadorBaseDeDatos {
         return array;
     }
     public int[] getListaIdObras(String nombreAutor){
-        RealmResults<Obra> result =realm.where(Obra.class).equalTo("nombre",nombreAutor).findAll();
+        RealmResults<Obra> result =realm.where(Obra.class).equalTo("autor",nombreAutor).findAll();
 
         int[] array=new int[result.size()];
         int i;
@@ -120,8 +120,8 @@ public class ManejadorBaseDeDatos {
 
             // toca rellener a saco aqui
 
-            RealmResults<Categoria> result =realm.where(Categoria.class).equalTo("categoria","Pintura").findAll();
-            if(realm.isEmpty()){
+        RealmResults<Categoria> result =realm.where(Categoria.class).equalTo("categoria","Pintura").findAll();
+           if(realm.isEmpty()){
             addCategoria("Pintura", R.mipmap.ic_cuadro);
             addCategoria("Escultura", R.mipmap.ic_escultura);
             addCategoria("Arquitectura", R.mipmap.ic_arqui);
