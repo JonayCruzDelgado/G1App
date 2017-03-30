@@ -106,7 +106,7 @@ public class DummyPresenter extends GenericPresenter
     double latitude =20;
     double longitude = -15;
     //tras la %f el ?z=0 indica el nivel de zoom  z establece el nivel de zoom inicial del mapa.
-    // Los valores aceptados varían de 0 todo el planeta a 21 edificios separados
+    // Los valores aceptados varían de 0 que muestra el planeta a 21 que muestra edificios separados
     // El límite superior puede variar según los datos del mapa disponibles en la ubicación seleccionada.
     //geo:latitude,longitude?z=zoom
 

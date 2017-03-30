@@ -27,7 +27,7 @@ public class ManejadorBaseDeDatos {
 
     private ManejadorBaseDeDatos() {
         realm = Realm.getDefaultInstance();
-        realm.deleteAll();
+
         initBaseDeDatos();
     }
 
@@ -115,10 +115,13 @@ public class ManejadorBaseDeDatos {
 
     public void initBaseDeDatos(){
 
-        RealmResults<Categoria> result =realm.where(Categoria.class).equalTo("categoria","Pintura").findAll();//encuentra el 1º elemento que metemos en laDB
+        //encuentra el 1º elemento que metemos en laDB
         //if(result== null) { //si no se encuentra ese elemento  se inicializa la DB, pero si se encuentra no se vuelven a introducir todos los elementos
 
             // toca rellener a saco aqui
+
+            RealmResults<Categoria> result =realm.where(Categoria.class).equalTo("categoria","Pintura").findAll();
+            if(realm.isEmpty()){
             addCategoria("Pintura", R.mipmap.ic_cuadro);
             addCategoria("Escultura", R.mipmap.ic_escultura);
             addCategoria("Arquitectura", R.mipmap.ic_arqui);
@@ -245,7 +248,7 @@ public class ManejadorBaseDeDatos {
             descripcionAutor = "Antoni Gaudí i Cornet, también conocido en español como Antonio Gaudí1 (Reus o Riudoms, 25 de junio de " +
                     "1852-Barcelona, 10 de junio de 1926) fue un arquitecto español, máximo representante del modernismo catalán.";
             addAutor(nombreAutor, descripcionAutor, categoriaAutor, R.mipmap.antoni_gaudi);
-
+        }
         }
 
 
