@@ -18,9 +18,8 @@ public class AutorPresenter extends GenericPresenter
   private boolean toolbarVisible;
   private boolean textVisible;
   private String categoria;
-
-
   private int PosicionListaObrasPulsada;
+  private int idListaObrasPulsada;
 
   /**
    * Operation called during VIEW creation in {@link GenericActivity#onResume(Class, Object)}
@@ -37,9 +36,8 @@ public class AutorPresenter extends GenericPresenter
     Log.d(TAG, "calling onCreate()");
 
     Mediator app = (Mediator) getView().getApplication();
-    Log.d(TAG, "categoria seleccionada "+ app.getLayaoutClicked());
-    categoria = app.getLayaoutClicked();
-
+    Log.d(TAG, "categoria seleccionada "+ app.getCategoriaClicked());
+    categoria = app.getCategoriaClicked();
 
   }
 
@@ -102,11 +100,14 @@ public class AutorPresenter extends GenericPresenter
   @Override
   public void inicializarVista(){
     Mediator app = (Mediator) getView().getApplication();
-    int id=getModel().idAutor(app.getLayaoutClicked(),app.getPosicionAutores());
+    int id= app.getIdAutorSelecionado();
     getView().setDescripcionAutor(getModel().getDescripcion(id));
     getView().setIconoAutor(getModel().getImagen(getManagedContext(),id));
     getView().setNombreAutor(getModel().getNombre(id));
     getView().actualizarListaObras(getModel().getObras(getModel().getNombre(id)));
+    //String[] obras=getModel().getObras(app.getAutorSelecionado());
+     // getView().actualizarListaObras(obras);
+
 
   }
 
@@ -189,5 +190,11 @@ public class AutorPresenter extends GenericPresenter
   }
   public void setPosicionListaObrasPulsada(int posicionListaObrasPulsada) {
     PosicionListaObrasPulsada = posicionListaObrasPulsada;
+  }
+
+  public void setIdObrasPulsada(int posicionListaObrasPulsada) {
+    Mediator app = (Mediator) getView().getApplication();
+    int id= app.getIdAutorSelecionado();
+    idListaObrasPulsada = getModel().idObraPulsada(getModel().getNombre(id),posicionListaObrasPulsada);
   }
 }

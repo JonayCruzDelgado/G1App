@@ -18,6 +18,7 @@ public class AutoresPresenter extends GenericPresenter
   private boolean toolbarVisible;
   private String generoSelecionado;
   private int posicionListaAutoresPulsada;
+  private int idAutorSelecionado;
   /**
    * Operation called during VIEW creation in {@link GenericActivity#onResume(Class, Object)}
    * Responsible to initialize MODEL.
@@ -92,8 +93,8 @@ public class AutoresPresenter extends GenericPresenter
   @Override
   public void inicializarVista() {
       Mediator app = (Mediator) getApplication();
-      getView().actualizarListaAutores(getModel().obtenerAutores(app.getLayaoutClicked()));
-      getView().setTituloToolbar(getModel().obtenerEspecialidad(app.getLayaoutClicked()));
+      getView().actualizarListaAutores(getModel().obtenerAutores(app.getCategoriaClicked()));
+      getView().setTituloToolbar(getModel().obtenerCategoria(app.getCategoriaClicked()));
       getView().hideText();
 
   }
@@ -102,10 +103,11 @@ public class AutoresPresenter extends GenericPresenter
   public void onItemClickSelected(int pos) {
     Log.d(TAG,"posicion pulsada" + pos);
     setPosicionListaAutoresPulsada(pos);
+    Mediator mediator = (Mediator) getApplication();
+    setIdAutorSelecionado(getModel().obtenerIdAutorSelecionado(mediator.getCategoriaClicked(),pos));
     Navigator app = (Navigator) getView().getApplication();
     app.goToAutorScreen(this);
   }
-
 
   ///////////////////////////////////////////////////////////////////////////////////
   // To autores //////////////////////////////////////////////////////////////////////
@@ -159,7 +161,18 @@ public class AutoresPresenter extends GenericPresenter
   public int getPosicionListaAutoresPulsada() {
     return posicionListaAutoresPulsada;
   }
+  public int getIdAutorPulsado() {
+    return idAutorSelecionado;
+  }
   private void setPosicionListaAutoresPulsada(int posicionListaAutoresPulsada) {
     this.posicionListaAutoresPulsada = posicionListaAutoresPulsada;
+  }
+
+  public int getIdAutorSelecionado() {
+    return idAutorSelecionado;
+  }
+
+  public void setIdAutorSelecionado(int idAutorSelecionado) {
+    this.idAutorSelecionado = idAutorSelecionado;
   }
 }

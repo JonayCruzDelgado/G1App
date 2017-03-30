@@ -1,36 +1,40 @@
 package es.ulpgc.eite.clean.mvp.sample.obra;
 
 import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.sample.R;
-import es.ulpgc.eite.clean.mvp.sample.dummy.Dummy;
-import es.ulpgc.eite.clean.mvp.sample.dummy.DummyPresenter;
+import es.ulpgc.eite.clean.mvp.sample.obra.Obra;
+import es.ulpgc.eite.clean.mvp.sample.obra.ObraPresenter;
 
 public class ObraView
-    extends GenericActivity<Dummy.PresenterToView, Dummy.ViewToPresenter, DummyPresenter>
-    implements Dummy.PresenterToView {
+    extends GenericActivity<Obra.PresenterToView, Obra.ViewToPresenter, ObraPresenter>
+    implements Obra.PresenterToView {
 
   private Toolbar toolbar;
-  private Button button;
-  private TextView text;
+  private ImageView button;
+  private TextView descripcion;
+  private ImageView imagen;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_dummy);
-
-    text = (TextView) findViewById(R.id.text);
+    setContentView(R.layout.activity_obra);
 
     toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
-    button = (Button) findViewById(R.id.button);
+    descripcion = (TextView) findViewById(R.id.descripcionObra);
+    imagen =(ImageView)  findViewById(R.id.imagenObra);
+
+    button = (ImageView) findViewById(R.id.btnMapa);
     button.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
@@ -46,14 +50,14 @@ public class ObraView
   @SuppressLint("MissingSuperCall")
   @Override
   protected void onResume() {
-    super.onResume(DummyPresenter.class, this);
+    super.onResume(ObraPresenter.class, this);
   }
 
   /*
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     // Inflate the menu; this adds items to the action bar if it is present.
-    getMenuInflater().inflate(R.menu.menu_dummy, menu);
+    getMenuInflater().inflate(R.menu.menu_obras, menu);
     return true;
   }
 
@@ -87,23 +91,24 @@ public class ObraView
     toolbar.setVisibility(View.GONE);
   }
 
+
+
   @Override
-  public void hideText() {
-    text.setVisibility(View.GONE);
+  public void setDescripcionObra(String txt) {
+    descripcion.setText(txt);
   }
 
   @Override
-  public void showText() {
-    text.setVisibility(View.VISIBLE);
+  public void setImagenObra(Bitmap bp) {
+    imagen.setImageBitmap(bp);
+
   }
 
   @Override
-  public void setText(String txt) {
-    text.setText(txt);
+  public void setNombreObra(String txt) {
+    toolbar.setTitle(txt);
   }
 
-  @Override
-  public void setLabel(String txt) {
-    button.setText(txt);
   }
-}
+
+

@@ -170,11 +170,11 @@ public class ManejadorBaseDeDatosSim {
                 "1852-Barcelona, 10 de junio de 1926) fue un arquitecto español, máximo representante del modernismo catalán.";
         addAutor(nombreAutor,descripcionAutor,categoriaAutor,R.mipmap.antoni_gaudi);
 
-       String nombreObra="";
-       String autor="";
-       String descripcionObra ="" ;
-       Double latitud=0.0;
-       Double longitud=0.0;
+        String nombreObra="";
+        String autor="";
+        String descripcionObra ="" ;
+        Double latitud=0.0;
+        Double longitud=0.0;
         addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
     }
 

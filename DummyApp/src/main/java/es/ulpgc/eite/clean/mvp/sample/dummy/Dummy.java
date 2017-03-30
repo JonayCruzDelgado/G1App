@@ -1,6 +1,7 @@
 package es.ulpgc.eite.clean.mvp.sample.dummy;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 
 import es.ulpgc.eite.clean.mvp.ContextView;
 import es.ulpgc.eite.clean.mvp.Model;
@@ -55,6 +56,7 @@ public interface Dummy {
    * Methods offered to MODEL to communicate with PRESENTER
    */
   interface PresenterToModel extends Model<ModelToPresenter> {
+
     void onChangeMsgByBtnClicked();
     String getText();
     String getLabel();

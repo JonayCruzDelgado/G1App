@@ -119,13 +119,15 @@ public class AutorView
   }
   @Override
   public void actualizarListaObras(String[] nombresObras){
-    ArrayAdapter<String> arrayAdapter = new
-            ArrayAdapter<String>(
-            this,
-            android.R.layout.simple_expandable_list_item_1,
-            nombresObras
-    );
-    listaObras.setAdapter(arrayAdapter);
+
+      ArrayAdapter<String> arrayAdapter = new
+              ArrayAdapter<String>(
+              this,
+              android.R.layout.simple_expandable_list_item_1,
+              nombresObras
+      );
+      listaObras.setAdapter(arrayAdapter);
+
   }
   @Override
   public void setNombreAutor(String txt) {

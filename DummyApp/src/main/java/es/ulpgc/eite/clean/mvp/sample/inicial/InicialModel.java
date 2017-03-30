@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 
+import java.io.File;
+
 import es.ulpgc.eite.clean.mvp.GenericModel;
 import es.ulpgc.eite.clean.mvp.sample.R;
 import es.ulpgc.eite.clean.mvp.sample.dataBase.ManejadorBaseDeDatos;
@@ -15,7 +17,7 @@ public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
     implements Inicial.PresenterToModel {
 
   ManejadorBaseDeDatosSim manejadorSim;
-  //ManejadorBaseDeDatos manejador;
+  ManejadorBaseDeDatos manejador;
 
   /**
    * Method that recovers a reference to the PRESENTER
@@ -28,7 +30,7 @@ public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
     super.onCreate(presenter);
 
     manejadorSim = ManejadorBaseDeDatosSim.getInstance();
-    //manejador = ManejadorBaseDeDatos.getInstance();
+    manejador = ManejadorBaseDeDatos.getInstance();
 
   }
 
@@ -61,7 +63,7 @@ public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
   @Override
   public String getTextBtn3() {
     return manejadorSim.nombreCategoria(2);
-    //return manejador.getNombreCategoria(3);
+   // return manejador.getNombreCategoria(3);
   }
 
   @Override

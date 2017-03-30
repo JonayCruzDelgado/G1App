@@ -82,18 +82,19 @@ public class InicialPresenter extends GenericPresenter
   ///////////////////////////////////////////////////////////////////////////////////
   // View To Presenter /////////////////////////////////////////////////////////////
 
-  @Override
-  public void onButtonClickedArquitectura() {
-    Log.d(TAG, "calling onButtonClickedArquitectura()");
-    layoutClicked = "Arquitectura";
-    Navigator app = (Navigator) getView().getApplication();
-    app.goToAutoresScreen(this);
 
-  }
+
   @Override
   public void onButtonClickedPintura() {
     Log.d(TAG, "calling onButtonClickedPintura()");
-    layoutClicked = "Pintura";
+    layoutClicked = getModel().getTextBtn1();
+    Navigator app = (Navigator) getView().getApplication();
+    app.goToAutoresScreen(this);
+  }
+  @Override
+  public void onButtonClickedArquitectura() {
+    Log.d(TAG, "calling onButtonClickedArquitectura()");
+    layoutClicked = getModel().getTextBtn2();
     Navigator app = (Navigator) getView().getApplication();
     app.goToAutoresScreen(this);
   }
@@ -101,7 +102,7 @@ public class InicialPresenter extends GenericPresenter
   @Override
   public void onButtonClickedEscultura() {
     Log.d(TAG, "calling onButtonClickedEscultura()");
-    layoutClicked = "Escultura";
+    layoutClicked = getModel().getTextBtn3();
     Navigator app = (Navigator) getView().getApplication();
     app.goToAutoresScreen(this);
   }

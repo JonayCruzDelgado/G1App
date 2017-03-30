@@ -1,16 +1,20 @@
 package es.ulpgc.eite.clean.mvp.sample.obra;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 import es.ulpgc.eite.clean.mvp.GenericModel;
+import es.ulpgc.eite.clean.mvp.sample.dataBase.ManejadorBaseDeDatos;
+import es.ulpgc.eite.clean.mvp.sample.dataBaseSim.ManejadorBaseDeDatosSim;
 import es.ulpgc.eite.clean.mvp.sample.dummy.Dummy;
 
 
-public class ObraModel extends GenericModel<Dummy.ModelToPresenter>
-    implements Dummy.PresenterToModel {
+public class ObraModel extends GenericModel<Obra.ModelToPresenter>
+    implements Obra.PresenterToModel {
 
-  private String dummyText;
-  private String dummyLabel;
-  private int numOfTimes;
-  private String msgText;
+  ManejadorBaseDeDatosSim manejadorSim;
+  ManejadorBaseDeDatos manejador;
 
   /**
    * Method that recovers a reference to the PRESENTER
@@ -19,11 +23,11 @@ public class ObraModel extends GenericModel<Dummy.ModelToPresenter>
    * @param presenter Presenter interface
    */
   @Override
-  public void onCreate(Dummy.ModelToPresenter presenter) {
+  public void onCreate(Obra.ModelToPresenter presenter) {
     super.onCreate(presenter);
 
-    dummyLabel = "Click Me!";
-    dummyText = "Hello World!";
+    manejadorSim = ManejadorBaseDeDatosSim.getInstance();
+    //manejador = ManejadorBaseDeDatos.getInstance();
   }
 
   /**
@@ -42,21 +46,25 @@ public class ObraModel extends GenericModel<Dummy.ModelToPresenter>
 
 
   @Override
-  public void onChangeMsgByBtnClicked() {
-    msgText = dummyText;
-    if(numOfTimes > 0) {
-      msgText += ", " + numOfTimes + " times";
-    }
-    numOfTimes++;
+  public String getNombre(int id){
+    return manejadorSim.nombreObra(id);
+  }
+  @Override
+  public String getDescripcion(int id){
+    return  manejadorSim.descripcionObra(id);
+  }
+  @Override
+  public double getLatitud(int id){
+    return  manejadorSim.latitudObra(id);
+  }
+  @Override
+  public double getLongitud(int id){
+    return  manejadorSim.longitudObra(id);
+  }
+  @Override
+  public Bitmap getImagen(Context context, int id){
+    Bitmap icon = BitmapFactory.decodeResource(context.getResources(), manejadorSim.idImagenObra(id));
+    return  icon;
   }
 
-  @Override
-  public String getText() {
-    return msgText;
-  }
-
-  @Override
-  public String getLabel() {
-    return dummyLabel;
-  }
 }

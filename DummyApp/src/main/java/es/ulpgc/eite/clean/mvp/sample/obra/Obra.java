@@ -1,6 +1,7 @@
 package es.ulpgc.eite.clean.mvp.sample.obra;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 
 import es.ulpgc.eite.clean.mvp.ContextView;
 import es.ulpgc.eite.clean.mvp.Model;
@@ -16,17 +17,17 @@ public interface Obra {
   ///////////////////////////////////////////////////////////////////////////////////
   // State /////////////////////////////////////////////////////////////////////////
 
-  interface ToDummy {
+  interface ToObra {
     void onScreenStarted();
     void setToolbarVisibility(boolean visible);
-    void setTextVisibility(boolean visible);
+
   }
 
-  interface DummyTo {
+  interface ObraTo {
     Context getManagedContext();
     void destroyView();
     boolean isToolbarVisible();
-    boolean isTextVisible();
+
   }
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -37,6 +38,7 @@ public interface Obra {
    */
   interface ViewToPresenter extends Presenter<PresenterToView> {
     void onButtonClicked();
+    void inicializarVista();
   }
 
   /**
@@ -45,19 +47,24 @@ public interface Obra {
   interface PresenterToView extends ContextView {
     void finishScreen();
     void hideToolbar();
-    void hideText();
-    void showText();
-    void setText(String txt);
-    void setLabel(String txt);
+
+    void setDescripcionObra(String txt);
+    void setImagenObra(Bitmap bp);
+    void setNombreObra(String txt);
   }
 
   /**
    * Methods offered to MODEL to communicate with PRESENTER
    */
   interface PresenterToModel extends Model<ModelToPresenter> {
-    void onChangeMsgByBtnClicked();
-    String getText();
-    String getLabel();
+    String getNombre(int id);
+    String getDescripcion(int id);
+
+    double getLatitud(int id);
+
+    double getLongitud(int id);
+
+    Bitmap getImagen(Context context, int id);
   }
 
   /**

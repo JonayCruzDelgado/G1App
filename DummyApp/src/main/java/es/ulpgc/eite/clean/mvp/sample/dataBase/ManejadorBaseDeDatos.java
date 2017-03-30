@@ -27,7 +27,7 @@ public class ManejadorBaseDeDatos {
 
     private ManejadorBaseDeDatos() {
         realm = Realm.getDefaultInstance();
-        realm.deleteAll();
+        //realm.deleteAll();
         initBaseDeDatos();
     }
 
@@ -114,9 +114,17 @@ public class ManejadorBaseDeDatos {
     }
 
     public void initBaseDeDatos(){
+        try{
+            RealmResults<Categoria> result =realm.where(Categoria.class).equalTo("categoria","Pintura").findAll();//encuentra el 1º elemento que metemos en laDB
 
-        RealmResults<Categoria> result =realm.where(Categoria.class).equalTo("categoria","Pintura").findAll();//encuentra el 1º elemento que metemos en laDB
-        //if(result== null) { //si no se encuentra ese elemento  se inicializa la DB, pero si se encuentra no se vuelven a introducir todos los elementos
+        }catch(Exception e) {
+            rellenarBaseDeDatos();
+
+        }
+
+    }
+
+    public void rellenarBaseDeDatos(){
 
             // toca rellener a saco aqui
             addCategoria("Pintura", R.mipmap.ic_cuadro);
@@ -250,13 +258,7 @@ public class ManejadorBaseDeDatos {
 
 
   //  }
-    //pasar el archivo que entra ha un bitmap
-    public Bitmap imagenToBitmap( String fileName){
-        File file1 = new File(fileName);
-        Bitmap imagen = BitmapFactory.decodeFile(file1.getAbsolutePath());
-        return imagen;
 
-    }
 // crear categoria, no se añaden autores por que voy a hacer que un autor solo pueda pertenecer a una categoria
 // por lo que se especifica al crear el autor, es mucho mas simple asi, si lo quieren hacer que un autor pertenezca a varias categoria es mas lio
     public void addCategoria(String nombre,int idImagen){
@@ -328,6 +330,14 @@ public class ManejadorBaseDeDatos {
     public Bitmap byteArrayToImagen(byte[] array){
         Bitmap bitmap = BitmapFactory.decodeByteArray(array, 0, array.length);
         return bitmap;
+
+    }
+
+    //pasar el archivo que entra ha un bitmap
+    public Bitmap imagenToBitmap( String fileName){
+        File file1 = new File(fileName);
+        Bitmap imagen = BitmapFactory.decodeFile(file1.getAbsolutePath());
+        return imagen;
 
     }
 
