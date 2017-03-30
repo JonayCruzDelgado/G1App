@@ -61,6 +61,8 @@ public interface Autores {
     String obtenerCategoria(String generoSeleccionado);
 
     int obtenerIdAutorSelecionado(String categoriaSeleccionada, int pos);
+
+      String obtenerNombreAutorSelecionado(String categoriaSeleccionada, int pos);
   }
 
   /**

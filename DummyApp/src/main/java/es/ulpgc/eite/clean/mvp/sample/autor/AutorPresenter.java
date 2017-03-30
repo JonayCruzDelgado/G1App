@@ -18,7 +18,7 @@ public class AutorPresenter extends GenericPresenter
   private boolean toolbarVisible;
   private boolean textVisible;
   private String categoria;
-  private int PosicionListaObrasPulsada;
+  private int posicionListaObrasPulsada;
   private int idListaObrasPulsada;
 
   /**
@@ -89,18 +89,12 @@ public class AutorPresenter extends GenericPresenter
   ///////////////////////////////////////////////////////////////////////////////////
   // View To Presenter /////////////////////////////////////////////////////////////
 
-  @Override
-  public void onItemClickSelected(int pos){
-    Log.d(TAG,"posicion pulsada" + pos);
-    setPosicionListaObrasPulsada(pos);
-    Navigator app = (Navigator) getView().getApplication();
-    app.goToObraScreen(this);
 
-  }
   @Override
   public void inicializarVista(){
     Mediator app = (Mediator) getView().getApplication();
-    int id= app.getIdAutorSelecionado();
+    int id= getModel().getIdAutor(app.getCategoriaClicked(), app.getPosicionAutores());
+
     getView().setDescripcionAutor(getModel().getDescripcion(id));
     getView().setIconoAutor(getModel().getImagen(getManagedContext(),id));
     getView().setNombreAutor(getModel().getNombre(id));
@@ -133,6 +127,17 @@ public class AutorPresenter extends GenericPresenter
   @Override
   public void setTextVisibility(boolean visible) {
     textVisible = visible;
+  }
+
+  @Override
+  public void onItemClickSelected(int pos) {
+    Log.d(TAG,"posicion pulsada" + pos);
+    setPosicionListaObrasPulsada(pos);
+    Mediator mediator = (Mediator) getApplication();
+    setIdObrasPulsada(getModel().idObraPulsada(mediator.getCategoriaClicked(),pos));
+
+    Navigator app = (Navigator) getView().getApplication();
+    app.goToObraScreen(this);
   }
 
 
@@ -189,7 +194,7 @@ public class AutorPresenter extends GenericPresenter
     return categoria;
   }
   public void setPosicionListaObrasPulsada(int posicionListaObrasPulsada) {
-    PosicionListaObrasPulsada = posicionListaObrasPulsada;
+    this.posicionListaObrasPulsada = posicionListaObrasPulsada;
   }
 
   public void setIdObrasPulsada(int posicionListaObrasPulsada) {

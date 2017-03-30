@@ -68,7 +68,9 @@ public interface Autor {
       // Presenter To Model ////////////////////////////////////////////////////////////
       int idObraPulsada(String autor, int pos);
 
-    String[] getObras(String autor);
+      int getIdAutor(String categoria, int pos);
+
+      String[] getObras(String autor);
     String getNombre(int posicion);
     String getDescripcion(int posicion);
     Bitmap getImagen(Context context, int id);

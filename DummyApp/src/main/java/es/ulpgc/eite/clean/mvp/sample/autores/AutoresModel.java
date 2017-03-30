@@ -53,10 +53,17 @@ public class AutoresModel extends GenericModel<Autores.ModelToPresenter>
    return categoriaSeleccionada;
   }
   @Override
-  public int obtenerIdAutorSelecionado(String categoriaSeleccionada,int pos){
+  public int obtenerIdAutorSelecionado(String categoriaSeleccionada, int pos){
    /* int[] ids = manejadorSim.arrayIdsAutorByCategoria(categoriaSeleccionada);
     return ids[pos];*/
     int[] ids = manejador.getListaIdAutores(categoriaSeleccionada);
     return ids[pos];
+  }
+  @Override
+  public String obtenerNombreAutorSelecionado(String categoriaSeleccionada,int pos){
+   /* int[] ids = manejadorSim.arrayIdsAutorByCategoria(categoriaSeleccionada);
+    return ids[pos];*/
+    int[] ids = manejador.getListaIdAutores(categoriaSeleccionada);
+    return manejador.getNombreAutor(ids[pos]);
   }
 }
