@@ -116,14 +116,11 @@ public class ObraPresenter extends GenericPresenter
   @Override
   public void inicializarVista() {
     Mediator app=(Mediator) getView().getApplication();
-    String k = app.getNombreAutorSelecionado();
-    int c = app.getPosicionObras();
+
     int id=getModel().getIdObra(app.getNombreAutorSelecionado(),app.getPosicionObras());
     getView().setDescripcionObra(getModel().getDescripcion(id));
-
     getView().setImagenObra(getModel().getImagen(getManagedContext(),id));
     getView().setNombreObra(getModel().getNombre(id));
-    String t = getModel().getNombre(id);
 
 
    // int idAutor= getModel().getIdAutor(app.getCategoriaClicked(), app.getPosicionAutores());
