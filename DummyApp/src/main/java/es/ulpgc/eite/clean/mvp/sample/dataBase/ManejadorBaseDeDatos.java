@@ -387,6 +387,76 @@ public class ManejadorBaseDeDatos {
                addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.san_marcos);
 
 
+               //Pintores
+               nombreObra="La Última Cena";
+               autor="Leonardo da Vinci";
+               descripcionObra ="La Última Cena de Leonardo da Vinci" +
+                       " (Cenacolo Vinciano) es una de las pinturas más famosas del mundo. El mural original, creado entre 1495 y 1497, aún se puede" +
+                       " contemplar en su primera ubicación, " +
+                       "la pared del comedor del antiguo convento de los dominicos de Santa Maria delle Grazie." ;
+               latitud=45.4659;
+               longitud=9.1708;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.la_ultima_cena);
+
+
+               nombreObra="La Mona Lisa";
+               autor="Leonardo da Vinci";
+               descripcionObra ="El Retrato de Lisa Gherardini, esposa de Francesco del Giocondo, más conocido como " +
+                       "La Gioconda, también conocida como La Mona Lisa, es una obra pictórica del pintor renacentista italiano Leonardo da Vinci." ;
+               latitud=48.8606;
+               longitud=2.3375;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.la_mona_lisa);
+
+
+               nombreObra="La adoración de los magos";
+               autor="Leonardo da Vinci";
+               descripcionObra ="La Adoración de los Magos fue la primera gran obra del pintor renacentista italiano Leonardo" +
+                       " da Vinci. Está pintado al óleo sobre tabla que mide 246 cm de alto y 243 cm de ancho y data del periodo 1481-1482." ;
+               latitud=43.7678;
+               longitud=11.2552;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.la_adoracion_de_los_magos);
+
+
+               nombreObra="";
+               autor="";
+               descripcionObra ="" ;
+               latitud=0.0;
+               longitud=0.0;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+
+
+               nombreObra="";
+               autor="";
+               descripcionObra ="" ;
+               latitud=0.0;
+               longitud=0.0;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+
+
+               nombreObra="";
+               autor="";
+               descripcionObra ="" ;
+               latitud=0.0;
+               longitud=0.0;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+
+
+               nombreObra="";
+               autor="";
+               descripcionObra ="" ;
+               latitud=0.0;
+               longitud=0.0;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+
+
+               nombreObra="";
+               autor="";
+               descripcionObra ="" ;
+               latitud=0.0;
+               longitud=0.0;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+
+
                nombreObra="";
                autor="";
                descripcionObra ="" ;
