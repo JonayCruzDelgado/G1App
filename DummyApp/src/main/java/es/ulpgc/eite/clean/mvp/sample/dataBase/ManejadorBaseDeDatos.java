@@ -250,7 +250,7 @@ public class ManejadorBaseDeDatos {
                     "1852-Barcelona, 10 de junio de 1926) fue un arquitecto español, máximo representante del modernismo catalán.";
             addAutor(nombreAutor, descripcionAutor, categoriaAutor, R.mipmap.antoni_gaudi);
 
-
+                //Escultores
                 String nombreObra="El David";
                 String autor="Miguel Ángel";
                 String descripcionObra ="El David es una escultura de mármol blanco de 5,17 metros de altura y 5572 kilogramos de" +
@@ -281,21 +281,19 @@ public class ManejadorBaseDeDatos {
                 longitud=12.2842;
                 addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.el_cristo_de_minerva);
 
-                nombreObra="Discóbolo";
-                autor="Mirón";
-                descripcionObra ="El Discóbolo es la denominación convencional de una famosa escultura griega realizada " +
-                        "por Mirón de Eléuteras en torno al 450 a. C. Representa a un atleta en un " +
-                        "instante anterior al lanzamiento del disco. Se encuentra en el museo de las Termas de Roma." ;
-                latitud=41.5410;
-                longitud=12.2954;
-                addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+                nombreObra="Cristo y Santo Tomás";
+                autor="Verrocchio";
+                descripcionObra ="blablablablablablablablablablablalblabl" ;
+                latitud=43.7707;
+                longitud=11.2549;
+                addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.cristo_y_santo_tomas);
 
-                nombreObra="";
-                autor="";
-                descripcionObra ="" ;
-                latitud=0.0;
-                longitud=0.0;
-                addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+                nombreObra="Niño alado con delfín";
+                autor="Verrocchio";
+                descripcionObra ="blablablablablablablablablablablalblabl" ;
+                latitud=43.7693;
+                longitud=11.2560;
+                addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.niño_alado_con_delfin);
 
                nombreObra="";
                autor="";
