@@ -123,8 +123,9 @@ public class ManejadorBaseDeDatos {
         RealmResults<Categoria> result =realm.where(Categoria.class).equalTo("categoria","Pintura").findAll();
            if(realm.isEmpty()){
             addCategoria("Pintura", R.mipmap.ic_cuadro);
-            addCategoria("Escultura", R.mipmap.ic_escultura);
             addCategoria("Arquitectura", R.mipmap.ic_arqui);
+            addCategoria("Escultura", R.mipmap.ic_escultura);
+
 
 
             String nombreAutor = "Miguel Ángel";
