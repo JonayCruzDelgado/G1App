@@ -45,7 +45,7 @@ public class ManejadorBaseDeDatosSim {
         addCategoria("Escultura",R.mipmap.ic_escultura);
 
 
-        String nombreAutor ="Miguel Angel";
+        String nombreAutor ="Miguel Ángel";
         String categoriaAutor ="Escultura";
         String descripcionAutor ="Michelangelo Buonarroti (Caprese, 6 de marzo de 1475-Roma, " +
                 "18 de febrero de 1564), conocido en español como Miguel Ángel, fue un arquitecto, " +
@@ -171,7 +171,7 @@ public class ManejadorBaseDeDatosSim {
         addAutor(nombreAutor,descripcionAutor,categoriaAutor,R.mipmap.antoni_gaudi);
 
         String nombreObra="El David";
-        String autor="Miguel Angel";
+        String autor="Miguel Ángel";
         String descripcionObra ="El David es una escultura de mármol blanco de 5,17 metros de altura y 5572 kilogramos de" +
                 " masa, realizada por Miguel Ángel Buonarroti entre 1501 y 1504 por encargo de la Opera del Duomo de la " +
                 "catedral de Santa María del Fiore de Florencia. La escultura representa al rey David bíblico en el momento" +
@@ -185,7 +185,7 @@ public class ManejadorBaseDeDatosSim {
 
 
         nombreObra="La Madonna de Brujas";
-        autor="Miguel Angel";
+        autor="Miguel Ángel";
         descripcionObra ="La Madonna de Brujas es una escultura realizada en mármol por Miguel Ángel en el año 1504." +
                 " De 1,23 metros de altura, se encuentra en la iglesia de Nuestra Señora de Brujas (ciudad de la actual Bélgica)." ;
         latitud=51.1217;
@@ -193,7 +193,7 @@ public class ManejadorBaseDeDatosSim {
         addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.la_madonna_de_brujas);
 
         nombreObra="El Cristo de Minerva";
-        autor="Miguel Angel";
+        autor="Miguel Ángel";
         descripcionObra ="Cristo de la Minerva es la denominación de una escultura de mármol, obra de Miguel " +
                 "Ángel, finalizada en 1521, que representa a un Cristo redentor, desnudo, abrazando la Cruz." ;
         latitud=41.5353;
