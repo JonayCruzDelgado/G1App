@@ -12,6 +12,7 @@ import es.ulpgc.eite.clean.mvp.sample.autores.AutoresView;
 import es.ulpgc.eite.clean.mvp.sample.dummy.Dummy;
 import es.ulpgc.eite.clean.mvp.sample.dummy.DummyView;
 import es.ulpgc.eite.clean.mvp.sample.inicial.Inicial;
+import es.ulpgc.eite.clean.mvp.sample.obra.ObraView;
 
 
 public class App extends Application implements Mediator, Navigator {
@@ -114,7 +115,18 @@ public class App extends Application implements Mediator, Navigator {
 
   @Override
   public void goToObraScreen(Autor.AutorTo presenter){
-    Log.d("APP", "goToAutorScreen() has pulsado: ");
+    Log.d("APP", "goToAutorScreen() has pulsado: "+ presenter.getPosicionListaObrasPulsada());
+    autorToState = new AutorState();
+    autorToState.posicionListaObrasPulsada = presenter.getPosicionListaObrasPulsada();
+    autorToState.nombreAutorSelecionado = autoresToState.nombreAutorSelecionado;
+
+    Log.d("APP", "goToObraScreen()autor seleccionada: "+ autorToState.nombreAutorSelecionado);
+    Context view = presenter.getManagedContext();
+
+    if (view != null) {
+      view.startActivity(new Intent(view, ObraView.class));
+
+    }
 
   }
   ///////////////////////////////////////////////////////////////////////////////////
@@ -131,14 +143,16 @@ public class App extends Application implements Mediator, Navigator {
   private class AutoresState{
     int posicionListaAutoresPulsada;
     String categoriaSeleccionada;
-    int idAutorSelecionado;
+    String nombreAutorSelecionado;
+
   }
   private class AutorState{
-    String autorSelecionado;
+    String nombreAutorSelecionado;
     int posicionListaObrasPulsada;
-      int idObraPulsada;
+
   }
   private class ObraState{
+    String nombreObraSelecionada;
 
   }
 
@@ -150,23 +164,19 @@ public class App extends Application implements Mediator, Navigator {
   public int getPosicionAutores(){
     return autoresToState.posicionListaAutoresPulsada;
   }
-  @Override
-  public int getIdAutorSelecionado(){
-    return autoresToState.idAutorSelecionado;
-  }
+
   @Override
   public int getPosicionObras(){
     return autorToState.posicionListaObrasPulsada;
   }
   @Override
-  public String getAutorSelecionado(){
-    return autorToState.autorSelecionado;
+  public String getNombreAutorSelecionado(){
+    return autorToState.nombreAutorSelecionado;
   }
   @Override
-  public int getIdObraSelecionado(){
-      return autorToState.idObraPulsada;
+  public String getNombreObraSelecionada(){
+    return obraToState.nombreObraSelecionada;
   }
-
 
 
 }

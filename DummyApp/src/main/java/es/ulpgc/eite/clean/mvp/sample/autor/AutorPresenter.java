@@ -20,6 +20,8 @@ public class AutorPresenter extends GenericPresenter
   private String categoria;
   private int posicionListaObrasPulsada;
   private int idListaObrasPulsada;
+  private String nombreObraPulsada;
+  private String nombreAutorSelecionado;
 
   /**
    * Operation called during VIEW creation in {@link GenericActivity#onResume(Class, Object)}
@@ -99,9 +101,6 @@ public class AutorPresenter extends GenericPresenter
     getView().setIconoAutor(getModel().getImagen(getManagedContext(),id));
     getView().setNombreAutor(getModel().getNombre(id));
     getView().actualizarListaObras(getModel().getObras(getModel().getNombre(id)));
-    //String[] obras=getModel().getObras(app.getAutorSelecionado());
-     // getView().actualizarListaObras(obras);
-
 
   }
 
@@ -133,12 +132,11 @@ public class AutorPresenter extends GenericPresenter
   public void onItemClickSelected(int pos) {
     Log.d(TAG,"posicion pulsada" + pos);
     setPosicionListaObrasPulsada(pos);
-    Mediator mediator = (Mediator) getApplication();
-    setIdObrasPulsada(getModel().idObraPulsada(mediator.getCategoriaClicked(),pos));
 
     Navigator app = (Navigator) getView().getApplication();
     app.goToObraScreen(this);
   }
+
 
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -197,9 +195,14 @@ public class AutorPresenter extends GenericPresenter
     this.posicionListaObrasPulsada = posicionListaObrasPulsada;
   }
 
-  public void setIdObrasPulsada(int posicionListaObrasPulsada) {
-    Mediator app = (Mediator) getView().getApplication();
-    int id= app.getIdAutorSelecionado();
-    idListaObrasPulsada = getModel().idObraPulsada(getModel().getNombre(id),posicionListaObrasPulsada);
+ public int getPosicionListaObrasPulsada(){
+   return posicionListaObrasPulsada;
+
   }
+
+  public void setNombreObraPulsada(int posicionListaObrasPulsada) {
+    Mediator app = (Mediator) getView().getApplication();
+    nombreObraPulsada = getModel().nombreObraPulsada(app.getNombreAutorSelecionado(),posicionListaObrasPulsada);
+  }
+
 }

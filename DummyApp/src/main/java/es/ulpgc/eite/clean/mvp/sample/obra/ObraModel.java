@@ -26,8 +26,8 @@ public class ObraModel extends GenericModel<Obra.ModelToPresenter>
   public void onCreate(Obra.ModelToPresenter presenter) {
     super.onCreate(presenter);
 
-    manejadorSim = ManejadorBaseDeDatosSim.getInstance();
-    //manejador = ManejadorBaseDeDatos.getInstance();
+    //manejadorSim = ManejadorBaseDeDatosSim.getInstance();
+    manejador = ManejadorBaseDeDatos.getInstance();
   }
 
   /**
@@ -43,27 +43,31 @@ public class ObraModel extends GenericModel<Obra.ModelToPresenter>
 
   ///////////////////////////////////////////////////////////////////////////////////
   // Presenter To Model ////////////////////////////////////////////////////////////
-
+  @Override
+  public int getIdObra(String autor, int pos){
+    int[] ids=manejador.getListaIdObras(autor);
+    return ids[pos];
+  }
 
   @Override
   public String getNombre(int id){
-    return manejadorSim.nombreObra(id);
+    return manejador.getNombreObra(id);
   }
   @Override
   public String getDescripcion(int id){
-    return  manejadorSim.descripcionObra(id);
+    return  manejador.getDescripcionObra(id);
   }
   @Override
   public double getLatitud(int id){
-    return  manejadorSim.latitudObra(id);
+    return  manejador.getLatitud(id);
   }
   @Override
   public double getLongitud(int id){
-    return  manejadorSim.longitudObra(id);
+    return  manejador.getLongitud(id);
   }
   @Override
   public Bitmap getImagen(Context context, int id){
-    Bitmap icon = BitmapFactory.decodeResource(context.getResources(), manejadorSim.idImagenObra(id));
+    Bitmap icon = BitmapFactory.decodeResource(context.getResources(), manejador.getImagenObra(id));
     return  icon;
   }
 

@@ -28,6 +28,7 @@ public interface Autor {
     void destroyView();
     boolean isToolbarVisible();
     boolean isTextVisible();
+   int getPosicionListaObrasPulsada();
   }
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -67,6 +68,8 @@ public interface Autor {
       ///////////////////////////////////////////////////////////////////////////////////
       // Presenter To Model ////////////////////////////////////////////////////////////
       int idObraPulsada(String autor, int pos);
+
+      String nombreObraPulsada(String autor, int pos);
 
       int getIdAutor(String categoria, int pos);
 
