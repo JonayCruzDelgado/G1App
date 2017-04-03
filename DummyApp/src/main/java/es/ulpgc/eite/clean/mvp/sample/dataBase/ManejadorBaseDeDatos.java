@@ -324,28 +324,36 @@ public class ManejadorBaseDeDatos {
                longitud=12.4942;
                addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.extasis_de_santa_teresa);
 
-               nombreObra="";
-               autor="";
-               descripcionObra ="" ;
-               latitud=0.0;
-               longitud=0.0;
-               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+               nombreObra="Le baiser";
+               autor="Auguste Rodin";
+               descripcionObra ="El beso de Auguste Rodin representa a Paolo y Francesca da Rimini, personajes históricos " +
+                       "que vivieron durante el Medioevo. La tragedia que les tocó vivir está narrada por Dante Alighieri " +
+                       "en la Divina Comedia. Cuñados en vida, los dos fueron asesinados por Gianciotto Malatesta " +
+                       "(esposo de Francesca y hermano de Paolo), quien los descubrió en un beso adultero." +
+                       " Rodin decidió representarlos en el momento en que, leyendo las aventuras de Lanzarote del Lago," +
+                       " se enamoraron y se besaron." ;
+               latitud=48.8555;
+               longitud=2.3154;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.le_basier);
 
 
-               nombreObra="";
-               autor="";
-               descripcionObra ="" ;
-               latitud=0.0;
-               longitud=0.0;
-               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+               nombreObra="El pensador";
+               autor="Auguste Rodin";
+               descripcionObra ="El pensador, en su origen, buscaba representar a Dante en La puerta del Infierno. Rodin deseaba mostrar" +
+                       " en el desnudo de esta escultura a una figura heroica al estilo de Miguel Ángel " +
+                       "para representar tanto el pensar como la poesía." ;
+               latitud=48.8555;
+               longitud=2.3154;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.el_pensador);
 
 
-               nombreObra="";
-               autor="";
-               descripcionObra ="" ;
-               latitud=0.0;
-               longitud=0.0;
-               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+               nombreObra="La puerta del Infierno";
+               autor="Auguste Rodin";
+               descripcionObra ="La puerta del Infierno es un grupo escultórico monumental creado por e" +
+                       "l artista francés Auguste Rodin, con la colaboración de la escultura francesa Camille Claudel, entre 1880 y 1917." ;
+               latitud=48.8555;
+               longitud=2.3154;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.la_puerta_del_infierno);
 
 
                nombreObra="";
