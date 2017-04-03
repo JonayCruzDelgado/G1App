@@ -131,8 +131,7 @@ public class AutorPresenter extends GenericPresenter
   @Override
   public void onItemClickSelected(int pos) {
     Log.d(TAG,"posicion pulsada" + pos);
-    /*setPosicionListaObrasPulsada(pos);
-    setNombreAutorSelecionado();*/
+    setPosicionListaObrasPulsada(pos);
 
     Navigator app = (Navigator) getView().getApplication();
     app.goToObraScreen(this);
@@ -201,13 +200,9 @@ public class AutorPresenter extends GenericPresenter
 
   }
 
-
   public void setNombreObraPulsada(int posicionListaObrasPulsada) {
     Mediator app = (Mediator) getView().getApplication();
     nombreObraPulsada = getModel().nombreObraPulsada(app.getNombreAutorSelecionado(),posicionListaObrasPulsada);
   }
-  private void setNombreAutorSelecionado() {
-    Mediator app = (Mediator) getView().getApplication();
-    nombreAutorSelecionado = app.getNombreAutorSelecionado();
-  }
+
 }
