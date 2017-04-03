@@ -89,7 +89,7 @@ public class ObraPresenter extends GenericPresenter
   public void onButtonClicked() {
     Log.d(TAG, "calling onButtonClicked()");
     Mediator app=(Mediator) getView().getApplication();
-    int id =app.getIdObraSelecionado();
+    int id=getModel().getIdObra(app.getNombreAutorSelecionado(),app.getPosicionObras());
     double latitude =getModel().getLatitud(id);
     double longitude = getModel().getLongitud(id);
     //tras la %f el ?z=0 indica el nivel de zoom  z establece el nivel de zoom inicial del mapa.
@@ -113,10 +113,14 @@ public class ObraPresenter extends GenericPresenter
   @Override
   public void inicializarVista() {
     Mediator app=(Mediator) getView().getApplication();
-    int id= app.getIdObraSelecionado();
+    int id=getModel().getIdObra(app.getNombreAutorSelecionado(),app.getPosicionObras());
     getView().setDescripcionObra(getModel().getDescripcion(id));
     getView().setImagenObra(getModel().getImagen(getManagedContext(),id));
     getView().setNombreObra(getModel().getNombre(id));
+
+
+
+   // int idAutor= getModel().getIdAutor(app.getCategoriaClicked(), app.getPosicionAutores());
 
 
   }

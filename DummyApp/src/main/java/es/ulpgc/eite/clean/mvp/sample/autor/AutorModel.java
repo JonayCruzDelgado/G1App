@@ -55,6 +55,13 @@ public class AutorModel extends GenericModel<Autor.ModelToPresenter>
     int[] ids = manejador.getListaIdObras(autor);
     return ids[pos];
   }
+  @Override
+    public String nombreObraPulsada(String autor, int pos){
+   /* int[] ids = manejadorSim.arrayIdsObraByAutor(autor);
+    return  ids[pos];*/
+        int[] ids = manejador.getListaIdObras(autor);
+        return manejador.getNombreObra(ids[pos]);
+    }
 
   @Override
   public int getIdAutor(String categoria,int pos){

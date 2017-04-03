@@ -57,7 +57,11 @@ public interface Obra {
    * Methods offered to MODEL to communicate with PRESENTER
    */
   interface PresenterToModel extends Model<ModelToPresenter> {
-    String getNombre(int id);
+      ///////////////////////////////////////////////////////////////////////////////////
+      // Presenter To Model ////////////////////////////////////////////////////////////
+      int getIdObra(String autor, int pos);
+
+      String getNombre(int id);
     String getDescripcion(int id);
 
     double getLatitud(int id);

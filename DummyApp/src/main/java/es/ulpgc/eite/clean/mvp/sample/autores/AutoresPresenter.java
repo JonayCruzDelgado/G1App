@@ -19,6 +19,7 @@ public class AutoresPresenter extends GenericPresenter
   private String generoSelecionado;
   private int posicionListaAutoresPulsada;
   private int idAutorSelecionado;
+  private String nombreAutorSelecionado;
   /**
    * Operation called during VIEW creation in {@link GenericActivity#onResume(Class, Object)}
    * Responsible to initialize MODEL.
@@ -103,8 +104,7 @@ public class AutoresPresenter extends GenericPresenter
   public void onItemClickSelected(int pos) {
     Log.d(TAG,"posicion pulsada" + pos);
     setPosicionListaAutoresPulsada(pos);
-    Mediator mediator = (Mediator) getApplication();
-    setIdAutorSelecionado(getModel().obtenerIdAutorSelecionado(mediator.getCategoriaClicked(),pos));
+    setNombreAutorSelecionado(pos);
     Navigator app = (Navigator) getView().getApplication();
     app.goToAutorScreen(this);
   }
@@ -161,18 +161,15 @@ public class AutoresPresenter extends GenericPresenter
   public int getPosicionListaAutoresPulsada() {
     return posicionListaAutoresPulsada;
   }
-  public int getIdAutorPulsado() {
-    return idAutorSelecionado;
-  }
+
   private void setPosicionListaAutoresPulsada(int posicionListaAutoresPulsada) {
     this.posicionListaAutoresPulsada = posicionListaAutoresPulsada;
   }
 
-  public int getIdAutorSelecionado() {
-    return idAutorSelecionado;
+  private  void setNombreAutorSelecionado(int posicionListaAutoresPulsada){
+    Mediator app = (Mediator) getApplication();
+    this.nombreAutorSelecionado =getModel().obtenerNombreAutorSelecionado(app.getCategoriaClicked(),posicionListaAutoresPulsada);
   }
 
-  public void setIdAutorSelecionado(int idAutorSelecionado) {
-    this.idAutorSelecionado = idAutorSelecionado;
-  }
+
 }
