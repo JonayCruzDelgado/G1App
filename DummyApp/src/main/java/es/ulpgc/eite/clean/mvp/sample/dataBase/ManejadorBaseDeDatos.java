@@ -356,28 +356,35 @@ public class ManejadorBaseDeDatos {
                addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.la_puerta_del_infierno);
 
 
-               nombreObra="";
-               autor="";
-               descripcionObra ="" ;
-               latitud=0.0;
-               longitud=0.0;
-               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+               nombreObra="Anunciación Cavalcanti";
+               autor="Donatello";
+               descripcionObra ="La Anunciación Cavalcanti de Donatello es una escultura en piedra arenisca" +
+                       " gris, en algunas partes policromada y dorada. Tiene una medida de 218 x 168 cm." +
+                       " Se encuentra en la nave derecha de la basílica de Santa Cruz (Florencia)." +
+                       " Datada alrededor de 1435 es una de las raras obras del gran escultor que se encuentra todavía en su lugar original." ;
+               latitud=43.7685;
+               longitud=11.2622;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.anunciacion_cavalcanti);
 
 
-               nombreObra="";
-               autor="";
-               descripcionObra ="" ;
-               latitud=0.0;
-               longitud=0.0;
-               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+               nombreObra="San Juan Evangelista";
+               autor="Donatello";
+               descripcionObra ="San Juan Evangelista es una escultura de mármol de Donatello " +
+                       "(210x88x54 cm) esculpida para la antigua fachada del Duomo de Florencia y en la actualidad " +
+                       "se conserva en el Museo dell'Opera del Duomo. Data de 1409-1411 y fue el modelo más directo para el Moisés de Miguel Ángel." ;
+               latitud=43.7732;
+               longitud=11.2579;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.san_juan_evangelista);
 
 
-               nombreObra="";
-               autor="";
-               descripcionObra ="" ;
-               latitud=0.0;
-               longitud=0.0;
-               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+               nombreObra="San Marcos";
+               autor="Donatello";
+               descripcionObra ="La escultura de San Marcos de Donatello forma parte del ciclo de catorce " +
+                       "estatuas de los protectores de las Artes de Florencia, " +
+                       "colocadas en nichos en el exterior de la Iglesia de Orsanmichele." ;
+               latitud=43.7707;
+               longitud=11.2549;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.san_marcos);
 
 
                nombreObra="";
