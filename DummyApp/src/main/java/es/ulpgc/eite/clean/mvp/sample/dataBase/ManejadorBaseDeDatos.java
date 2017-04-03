@@ -280,11 +280,13 @@ public class ManejadorBaseDeDatos {
                 longitud=12.2842;
                 addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.el_cristo_de_minerva);
 
-                nombreObra="";
-                autor="";
-                descripcionObra ="" ;
-                latitud=0.0;
-                longitud=0.0;
+                nombreObra="Discóbolo";
+                autor="Mirón";
+                descripcionObra ="El Discóbolo es la denominación convencional de una famosa escultura griega realizada " +
+                        "por Mirón de Eléuteras en torno al 450 a. C. Representa a un atleta en un " +
+                        "instante anterior al lanzamiento del disco. Se encuentra en el museo de las Termas de Roma." ;
+                latitud=41.5410;
+                longitud=12.2954;
                 addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
 
                 nombreObra="";
@@ -293,6 +295,20 @@ public class ManejadorBaseDeDatos {
                 latitud=0.0;
                 longitud=0.0;
                 addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+
+               nombreObra="";
+               autor="";
+               descripcionObra ="" ;
+               latitud=0.0;
+               longitud=0.0;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+
+               nombreObra="";
+               autor="";
+               descripcionObra ="" ;
+               latitud=0.0;
+               longitud=0.0;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
         }
         }
 
