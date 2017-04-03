@@ -295,12 +295,34 @@ public class ManejadorBaseDeDatos {
                 longitud=11.2560;
                 addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.niño_alado_con_delfin);
 
-               nombreObra="";
-               autor="";
-               descripcionObra ="" ;
-               latitud=0.0;
-               longitud=0.0;
-               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+               nombreObra="Apolo y Dafne";
+               autor="Gian Lorenzo Bernini";
+               descripcionObra ="Apolo y Dafne es un relato perteneciente a la mitología griega que a través del " +
+                       "tiempo ha sido narrado por autores helenísticos y romanos en forma de viñeta literaria. " +
+                       "Ovidio relata el mito en el poema Las metamorfosis." ;
+               latitud=41.9142;
+               longitud=12.4921;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.apolo_y_dafne);
+
+               nombreObra="Busto del rey Luis XIV";
+               autor="Gian Lorenzo Bernini";
+               descripcionObra ="El busto del monarca Luis XIV realizado por el " +
+                       "escultor del barroco Bernini es una de las obras más destacadas del artista; con esta pieza se incorpora al mundo del" +
+                       " arte un nuevo concepto escultórico y resurge la " +
+                       "tipología del busto realista que se había perdido en la etapa renacentista anterior." ;
+               latitud=48.4816;
+               longitud=2.0723;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.busto_del_rey_luis_XIV);
+
+               nombreObra="Extásis de Santa Teresa";
+               autor="Gian Lorenzo Bernini";
+               descripcionObra ="El Éxtasis de Santa Teresa también conocido como la Transverberación de Santa " +
+                       "Teresa (en italiano: L'Estasi di Santa Teresa o Santa Teresa in estasi o Transverberazione " +
+                       "di santa Teresa) es un grupo escultórico en mármol obra del escultor y pintor Gian Lorenzo " +
+                       "Bernini, de estilo barroco. " ;
+               latitud=41.9047;
+               longitud=12.4942;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.extasis_de_santa_teresa);
 
                nombreObra="";
                autor="";
@@ -308,7 +330,58 @@ public class ManejadorBaseDeDatos {
                latitud=0.0;
                longitud=0.0;
                addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
-        }
+
+
+               nombreObra="";
+               autor="";
+               descripcionObra ="" ;
+               latitud=0.0;
+               longitud=0.0;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+
+
+               nombreObra="";
+               autor="";
+               descripcionObra ="" ;
+               latitud=0.0;
+               longitud=0.0;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+
+
+               nombreObra="";
+               autor="";
+               descripcionObra ="" ;
+               latitud=0.0;
+               longitud=0.0;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+
+
+               nombreObra="";
+               autor="";
+               descripcionObra ="" ;
+               latitud=0.0;
+               longitud=0.0;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+
+
+               nombreObra="";
+               autor="";
+               descripcionObra ="" ;
+               latitud=0.0;
+               longitud=0.0;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+
+
+               nombreObra="";
+               autor="";
+               descripcionObra ="" ;
+               latitud=0.0;
+               longitud=0.0;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+
+
+
+           }
         }
 
 
