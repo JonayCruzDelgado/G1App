@@ -92,6 +92,7 @@ public class ObraPresenter extends GenericPresenter
     int id=getModel().getIdObra(app.getNombreAutorSelecionado(),app.getPosicionObras());
     double latitude =getModel().getLatitud(id);
     double longitude = getModel().getLongitud(id);
+    String nombreObra=getModel().getNombre(id);
     //tras la %f el ?z=0 indica el nivel de zoom  z establece el nivel de zoom inicial del mapa.
     // Los valores aceptados varían de 0 todo el planeta a 21 edificios separados
     // El límite superior puede variar según los datos del mapa disponibles en la ubicación seleccionada.
@@ -99,8 +100,10 @@ public class ObraPresenter extends GenericPresenter
 
    /* la q sirbe para para mostrar una marca en un lugar o una dirección en particular, como un punto de referencia, un negocio,
      una función geográfica o una ciudad. Con esto no funciona el parametro zoom*/
+
+   String aux= "geo:0,0?q=%f,%f("+nombreObra+")";
     //geo:0,0?q=latitude,longitude(label)
-    String uri = String.format(Locale.ENGLISH, ("geo:0,0?q=%f,%f(obra)"), latitude, longitude);
+    String uri = String.format(Locale.ENGLISH, (aux), latitude, longitude);
 
     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
     //linea de comando para evitar que la aplicacion crashee si no tiene instalado el google maps
