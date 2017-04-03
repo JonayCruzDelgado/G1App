@@ -51,6 +51,7 @@ public class ObraView
   @Override
   protected void onResume() {
     super.onResume(ObraPresenter.class, this);
+    getPresenter().inicializarVista();
   }
 
   /*

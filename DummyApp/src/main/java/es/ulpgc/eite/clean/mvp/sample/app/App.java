@@ -103,6 +103,7 @@ public class App extends Application implements Mediator, Navigator {
     Log.d("APP", "goToAutorScreen() has pulsado: "+ presenter.getPosicionListaAutoresPulsada());
     autoresToState = new AutoresState();
     autoresToState.posicionListaAutoresPulsada = presenter.getPosicionListaAutoresPulsada();
+    autoresToState.nombreAutorSelecionado = presenter.getNombreAutorSelecionado(); // no cargabas el nombre del autor
     autoresToState.categoriaSeleccionada = inicialToState.layaoutClicked;
     Log.d("APP", "goToAutorScreen() categoria seleccionada: "+ autoresToState.categoriaSeleccionada);
     Context view = presenter.getManagedContext();

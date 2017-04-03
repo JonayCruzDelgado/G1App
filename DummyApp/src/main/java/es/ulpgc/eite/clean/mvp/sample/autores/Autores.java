@@ -28,6 +28,8 @@ public interface Autores {
     boolean isToolbarVisible();
 
     int getPosicionListaAutoresPulsada();
+    public String getNombreAutorSelecionado();
+
   }
 
   ///////////////////////////////////////////////////////////////////////////////////

@@ -157,7 +157,11 @@ public class AutoresPresenter extends GenericPresenter
       }
     }*/
   }
-
+  @Override
+  public String getNombreAutorSelecionado(){
+    return nombreAutorSelecionado;
+  }
+  @Override
   public int getPosicionListaAutoresPulsada() {
     return posicionListaAutoresPulsada;
   }
