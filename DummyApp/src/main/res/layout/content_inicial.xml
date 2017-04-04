@@ -15,8 +15,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="#3D9964"
+        android:background="#5858FA"
         android:gravity="center">
+        <!--android:background="#3D9964"-->
 
 
         <Space

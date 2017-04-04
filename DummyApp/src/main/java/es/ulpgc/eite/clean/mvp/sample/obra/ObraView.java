@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -32,6 +33,7 @@ public class ObraView
     setSupportActionBar(toolbar);
 
     descripcion = (TextView) findViewById(R.id.descripcionObra);
+    descripcion.setMovementMethod(new ScrollingMovementMethod());
     imagen =(ImageView)  findViewById(R.id.imagenObra);
 
     button = (ImageView) findViewById(R.id.btnMapa);

@@ -16,7 +16,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:background="#3D9964"
+        android:background="#81BEF7"
         android:paddingTop="5dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:maxHeight="200dp"
+            android:maxHeight="250dp"
             android:src="@mipmap/ic_cuadro"
             />
 
@@ -36,13 +36,15 @@
             android:id="@+id/descripcionObra"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
+            android:maxLines = "15"
+            android:scrollbars = "vertical"
             android:textAlignment="textStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="texttexttexttexttexttexttexttexttexttexttexttexttexttext
             texttexttexttexttexttexttexttext     texttexttexttexttexttexttexttexttexttexttext
             texttexttexttexttexttexttext"
-            android:textSize="14sp"
+            android:textSize="20sp"
             />
 
 

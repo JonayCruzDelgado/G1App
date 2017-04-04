@@ -283,14 +283,18 @@ public class ManejadorBaseDeDatos {
 
                 nombreObra="Cristo y Santo Tomás";
                 autor="Verrocchio";
-                descripcionObra ="blablablablablablablablablablablalblabl" ;
+                descripcionObra ="blablablablablablablablablablablalblablblablablablablablablablablablablalblablblablablablablablablablablablablalblablblablablablablablablablablablablalblabl" +
+                        "blablablablablablablablablablablalblablblablablablablablablablablablablalblablblablablablablablablablablablablalblablblablablablablablablablablablablalblabl  " +
+                        "blablablablablablablablablablablalblablv" ;
                 latitud=43.7707;
                 longitud=11.2549;
                 addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.cristo_y_santo_tomas);
 
                 nombreObra="Niño alado con delfín";
                 autor="Verrocchio";
-                descripcionObra ="blablablablablablablablablablablalblabl" ;
+                descripcionObra ="blablablablablablablablablablablalblablblablablablablablablablablablablalblabl" +
+                        "blablablablablablablablablablablalblablblablablablablablablablablablablalblablblablablablablablablablablablablalblablblablablablablablablablablablablalblabl" +
+                        "blablablablablablablablablablablalblablblablablablablablablablablablablalblabl" ;
                 latitud=43.7693;
                 longitud=11.2560;
                 addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ninyo_alado_con_delfin);
@@ -471,13 +475,7 @@ public class ManejadorBaseDeDatos {
 
 
   //  }
-    //pasar el archivo que entra a un bitmap
-    public Bitmap imagenToBitmap (String fileName){
-        File file1 = new File(fileName);
-        Bitmap imagen = BitmapFactory.decodeFile(file1.getAbsolutePath());
-        return imagen;
 
-    }
 // crear categoria, no se añaden autores por que voy a hacer que un autor solo pueda pertenecer a una categoria
 // por lo que se especifica al crear el autor, es mucho mas simple asi, si lo quieren hacer que un autor pertenezca a varias categoria es mas lio
     public void addCategoria(String nombre,int idImagen){
@@ -549,6 +547,14 @@ public class ManejadorBaseDeDatos {
     public Bitmap byteArrayToImagen(byte[] array){
         Bitmap bitmap = BitmapFactory.decodeByteArray(array, 0, array.length);
         return bitmap;
+
+    }
+
+    //pasar el archivo que entra a un bitmap
+    public Bitmap imagenToBitmap (String fileName){
+        File file = new File(fileName);
+        Bitmap imagen = BitmapFactory.decodeFile(file.getAbsolutePath());
+        return imagen;
 
     }
 
