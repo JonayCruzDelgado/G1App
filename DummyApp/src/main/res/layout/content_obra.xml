@@ -36,7 +36,7 @@
             android:id="@+id/descripcionObra"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:maxLines = "15"
+            android:maxLines = "10"
             android:scrollbars = "vertical"
             android:textAlignment="textStart"
             android:layout_width="wrap_content"

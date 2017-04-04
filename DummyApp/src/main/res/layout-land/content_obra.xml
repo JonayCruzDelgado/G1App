@@ -45,7 +45,7 @@
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:textAlignment="textStart"
-            android:maxLines = "7"
+            android:maxLines = "6"
             android:scrollbars = "vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
