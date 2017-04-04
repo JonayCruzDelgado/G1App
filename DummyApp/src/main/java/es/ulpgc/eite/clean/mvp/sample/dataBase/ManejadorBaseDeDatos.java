@@ -448,6 +448,90 @@ public class ManejadorBaseDeDatos {
                addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.la_negacion_de_san_pedro);
 
 
+               nombreObra="Los comederos de patatas";
+               autor="Vincent van Gogh";
+               descripcionObra ="Los comedores de patatas, Los comedores de papa o Los campesinos comiendo patatas es un cuadro del pintor Vincent " +
+                       "van Gogh, que creó en abril de 1885 mientras residía en Nuenen, Países Bajos. Se encuentra en el Museo Van Gogh de Ámsterdam. " ;
+               latitud=52.3583;
+               longitud=4.8809;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.los_comedores_de_patatas);
+
+
+               nombreObra="Los girasoles";
+               autor="Vincent van Gogh";
+               descripcionObra ="Los girasoles (en francés, Les Tournesols, en neerlandés, Zonnebloemen) es una " +
+                       "serie de cuadros al óleo realizados por el pintor holandés Vincent van Gogh. " +
+                       "De la serie hay tres cuadros similares con catorce girasoles en un jarrón, dos con doce" +
+                       " girasoles, uno con tres y otro con cinco." ;
+               latitud=48.859;
+               longitud=11.3416;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.los_girasoles);
+
+
+               nombreObra="Autorretrato con la oreja vendada";
+               autor="Vincent van Gogh";
+               descripcionObra ="Esta imagen muestra a Van Gogh con el fuerte vendaje que le colocaron para curar la autolesión que se produjo en diciembre de 1888" ;
+               latitud=52.3583;
+               longitud=4.8809;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.autorretrato_con_oreja_vendada);
+
+
+               nombreObra="";
+               autor="";
+               descripcionObra ="" ;
+               latitud=0.0;
+               longitud=0.0;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+
+
+               nombreObra="";
+               autor="";
+               descripcionObra ="" ;
+               latitud=0.0;
+               longitud=0.0;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+
+
+               nombreObra="";
+               autor="";
+               descripcionObra ="" ;
+               latitud=0.0;
+               longitud=0.0;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+
+
+               nombreObra="";
+               autor="";
+               descripcionObra ="" ;
+               latitud=0.0;
+               longitud=0.0;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+
+
+               nombreObra="";
+               autor="";
+               descripcionObra ="" ;
+               latitud=0.0;
+               longitud=0.0;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+
+
+               nombreObra="";
+               autor="";
+               descripcionObra ="" ;
+               latitud=0.0;
+               longitud=0.0;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+
+
+               nombreObra="";
+               autor="";
+               descripcionObra ="" ;
+               latitud=0.0;
+               longitud=0.0;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+
+
                nombreObra="";
                autor="";
                descripcionObra ="" ;
