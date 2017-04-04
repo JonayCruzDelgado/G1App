@@ -421,28 +421,31 @@ public class ManejadorBaseDeDatos {
                addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.la_adoracion_de_los_magos);
 
 
-               nombreObra="";
-               autor="";
-               descripcionObra ="" ;
-               latitud=0.0;
-               longitud=0.0;
-               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+               nombreObra="El Santo Entierro";
+               autor="Caravaggio";
+               descripcionObra ="El Santo Entierro pintado por Caravaggio, conocido también con otros títulos como Entierro de Cristo, Preparación de Cristo muerto sobre la piedra de unción, Deposición de la cruz o " +
+                       "Descendimiento de la cruz (en italiano conocido como Deposizione) es una de las obras maestras del citado pintor italiano." ;
+               latitud=41.5423;
+               longitud=12.2716;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.el_santo_entierro);
 
 
-               nombreObra="";
-               autor="";
-               descripcionObra ="" ;
-               latitud=0.0;
-               longitud=0.0;
-               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+               nombreObra="El amor victorioso";
+               autor="Caravaggio";
+               descripcionObra ="El amor victorioso, es una obra de Caravaggio, pintada en 1602 para Vincenzo Giustiniani, miembro del círculo social del cardenal " +
+                       "Del Monte. En un diario que data del siglo XVII, el modelo es llamado «Cecco», en italiano, diminutivo de Francesco." ;
+               latitud=52.5090;
+               longitud=13.3660;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.el_amor_victorioso);
 
 
-               nombreObra="";
-               autor="";
-               descripcionObra ="" ;
-               latitud=0.0;
-               longitud=0.0;
-               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ic_cuadro);
+               nombreObra="La negación de San Pedro";
+               autor="Caravaggio";
+               descripcionObra ="La negación de San Pedro es uno de los últimos cuadros de Caravaggio. Actualmente se exhibe en el Metropolitan " +
+                       "Museum [Nueva York]. En el claroscuro, una mujer señala con sus dedos a Pedro, mientras que un soldado completa el trío" ;
+               latitud=40.7792;
+               longitud=-73.9634;
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.la_negacion_de_san_pedro);
 
 
                nombreObra="";
