@@ -293,7 +293,7 @@ public class ManejadorBaseDeDatos {
                 descripcionObra ="blablablablablablablablablablablalblabl" ;
                 latitud=43.7693;
                 longitud=11.2560;
-                addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.niño_alado_con_delfin);
+                addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.ninyo_alado_con_delfin);
 
                nombreObra="Apolo y Dafne";
                autor="Gian Lorenzo Bernini";
@@ -312,7 +312,7 @@ public class ManejadorBaseDeDatos {
                        "tipología del busto realista que se había perdido en la etapa renacentista anterior." ;
                latitud=48.4816;
                longitud=2.0723;
-               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.busto_del_rey_luis_XIV);
+               addObra(nombreObra,descripcionObra,autor,latitud,longitud, R.mipmap.busto_del_rey_luis_14);
 
                nombreObra="Extásis de Santa Teresa";
                autor="Gian Lorenzo Bernini";
