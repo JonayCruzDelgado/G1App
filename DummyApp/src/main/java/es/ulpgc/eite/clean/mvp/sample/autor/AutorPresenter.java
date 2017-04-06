@@ -108,10 +108,11 @@ public class AutorPresenter extends GenericPresenter
   public void onScreenStarted() {
     Log.d(TAG, "calling onScreenStarted()");
     if(isViewRunning()) {
+      inicializarVista();
 
     }
     checkToolbarVisibility();
-    checkTextVisibility();
+
   }
 
   @Override
