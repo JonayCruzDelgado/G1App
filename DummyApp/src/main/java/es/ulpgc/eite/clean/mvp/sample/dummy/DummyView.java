@@ -1,11 +1,18 @@
 package es.ulpgc.eite.clean.mvp.sample.dummy;
 
 import android.annotation.SuppressLint;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.sample.R;
@@ -17,7 +24,7 @@ public class DummyView
   private Toolbar toolbar;
   private Button button;
   private TextView text;
-
+  private ImageView imagen;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -35,6 +42,8 @@ public class DummyView
         getPresenter().onButtonClicked();
       }
     });
+    imagen = (ImageView) findViewById(R.id.imagenDesdeAssets);
+
   }
 
   /**
@@ -45,7 +54,57 @@ public class DummyView
   @Override
   protected void onResume() {
     super.onResume(DummyPresenter.class, this);
+    imagen.setImageBitmap(getBitmapFromAssets("ic_libro.jpg"));
+  }
 
+  // Custom method to get assets folder image as bitmap
+  private Bitmap getBitmapFromAssets(String fileName){
+        /*
+            AssetManager
+                Provides access to an application's raw asset files.
+        */
+
+        /*
+            public final AssetManager getAssets ()
+                Retrieve underlying AssetManager storage for these resources.
+        */
+    AssetManager am = getAssets();
+    InputStream is = null;
+    try{
+            /*
+                public final InputStream open (String fileName)
+                    Open an asset using ACCESS_STREAMING mode. This provides access to files that
+                    have been bundled with an application as assets -- that is,
+                    files placed in to the "assets" directory.
+
+                    Parameters
+                        fileName : The name of the asset to open. This name can be hierarchical.
+                    Throws
+                        IOException
+            */
+      is = am.open(fileName);
+    }catch(IOException e){
+      e.printStackTrace();
+    }
+
+        /*
+            BitmapFactory
+                Creates Bitmap objects from various sources, including files, streams, and byte-arrays.
+        */
+
+        /*
+            public static Bitmap decodeStream (InputStream is)
+                Decode an input stream into a bitmap. If the input stream is null, or cannot
+                be used to decode a bitmap, the function returns null. The stream's
+                position will be where ever it was after the encoded data was read.
+
+                Parameters
+                    is : The input stream that holds the raw data to be decoded into a bitmap.
+                Returns
+                    The decoded bitmap, or null if the image data could not be decoded.
+        */
+    Bitmap bitmap = BitmapFactory.decodeStream(is);
+    return bitmap;
   }
 
   /*

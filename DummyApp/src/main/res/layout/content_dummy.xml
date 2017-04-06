@@ -28,6 +28,12 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:id="@+id/text"/>
 
+        <ImageView
+            android:id="@+id/imagenDesdeAssets"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/antoni_gaudi" />
+
         <Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
