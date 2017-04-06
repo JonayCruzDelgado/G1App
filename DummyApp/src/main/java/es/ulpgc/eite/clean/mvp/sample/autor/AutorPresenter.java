@@ -94,7 +94,7 @@ public class AutorPresenter extends GenericPresenter
     Mediator app = (Mediator) getView().getApplication();
     int id= app.getIdAutorSelecionado();
     getView().setDescripcionAutor(getModel().getDescripcion(id));
-    getView().setIconoAutor(getModel().getImagen(getManagedContext(),id));
+    getView().setIconoAutor(getModel().getImagen(id));
     getView().setNombreAutor(getModel().getNombre(id));
     getView().actualizarListaObras(getModel().getObras(id));
 

@@ -56,7 +56,7 @@ public interface Autor {
     void hideText();
     void showText();
     void setDescripcionAutor(String txt);
-    void setIconoAutor(Bitmap bp);
+    void setIconoAutor(String icono);
     void actualizarListaObras(String[] nombresObras);
     void setNombreAutor(String txt);
   }
@@ -75,7 +75,8 @@ public interface Autor {
     String[] getObras(int idAutor);
     String getNombre(int posicion);
     String getDescripcion(int posicion);
-    Bitmap getImagen(Context context, int id);
+
+    String getImagen(int id);
   }
 
   /**

@@ -49,7 +49,7 @@ public interface Obra {
     void hideToolbar();
 
     void setDescripcionObra(String txt);
-    void setImagenObra(Bitmap bp);
+    void setImagenObra(String icono);
     void setNombreObra(String txt);
   }
 
@@ -68,7 +68,7 @@ public interface Obra {
 
     double getLongitud(int id);
 
-    Bitmap getImagen(Context context, int id);
+    String getImagen(int id);
   }
 
   /**

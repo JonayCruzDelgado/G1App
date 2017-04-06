@@ -159,8 +159,8 @@ public class InicialPresenter extends GenericPresenter
     getView().setLabel1(getModel().getTextBtn1());
     getView().setLabel2(getModel().getTextBtn2());
     getView().setLabel3(getModel().getTextBtn3());
-    getView().setIcono1(getModel().getIconoBtn1(getManagedContext()));
-    getView().setIcono2(getModel().getIconoBtn2(getManagedContext()));
-    getView().setIcono3(getModel().getIconoBtn3(getManagedContext()));
+    getView().setIcono1(getModel().getIconoBtn1());
+    getView().setIcono2(getModel().getIconoBtn2());
+    getView().setIcono3(getModel().getIconoBtn3());
   }
 }

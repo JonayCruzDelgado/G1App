@@ -17,19 +17,9 @@ public class Autor extends RealmObject {
     private int id;
     private String nombre;
     private String descripcion;
-    private int idImagen;
-    private String categoria;
     private int idCategoria;
+    private String imagen;
 
-    public byte[] getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(byte[] imagen) {
-        this.imagen = imagen;
-    }
-
-    private byte[] imagen;
 
     public int getId() {
         return id;
@@ -55,17 +45,6 @@ public class Autor extends RealmObject {
         this.descripcion = descripcion;
     }
 
-    public int getIdImagen() {
-        return idImagen;
-    }
-
-    public void setIdImagen(int idImagen) {
-        this.idImagen = idImagen;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
 
     public int getIdCategoria() {
         return idCategoria;
@@ -75,4 +54,11 @@ public class Autor extends RealmObject {
         this.idCategoria = idCategoria;
     }
 
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
 }

@@ -1,7 +1,9 @@
 package es.ulpgc.eite.clean.mvp.sample.autor;
 
 import android.annotation.SuppressLint;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
@@ -11,6 +13,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.sample.R;
@@ -113,9 +118,9 @@ public class AutorView
     descripcionAutor.setText(txt);
   }
 
-  public void setIconoAutor(Bitmap bp) {
+  public void setIconoAutor(String imagen) {
 
-    iconoAutor.setImageBitmap(bp);
+    iconoAutor.setImageBitmap(getBitmapFromAssets(imagen));
   }
   @Override
   public void actualizarListaObras(String[] nombresObras){
@@ -132,5 +137,19 @@ public class AutorView
   @Override
   public void setNombreAutor(String txt) {
     toolbar.setTitle(txt);
+  }
+
+  private Bitmap getBitmapFromAssets(String fileName){
+    AssetManager am = getAssets();
+    InputStream is = null;
+    try{
+
+      is = am.open(fileName);
+    }catch(IOException e){
+      e.printStackTrace();
+    }
+
+    Bitmap bitmap = BitmapFactory.decodeStream(is);
+    return bitmap;
   }
 }

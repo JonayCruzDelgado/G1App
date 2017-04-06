@@ -61,9 +61,8 @@ public class ObraModel extends GenericModel<Obra.ModelToPresenter>
     return  manejador.getLongitud(id);
   }
   @Override
-  public Bitmap getImagen(Context context, int id){
-    Bitmap icon = BitmapFactory.decodeResource(context.getResources(), manejador.getIdImagenObra(id));
-    return  icon;
+  public String getImagen(int id){
+    return  manejador.getImagenObra(id);
   }
 
 }

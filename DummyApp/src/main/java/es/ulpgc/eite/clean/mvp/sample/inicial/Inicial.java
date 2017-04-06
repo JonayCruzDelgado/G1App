@@ -52,9 +52,9 @@ public interface Inicial {
     void setLabel1(String txt);
     void setLabel3(String txt);
     void setLabel2(String txt);
-    void setIcono1(Bitmap bp);
-    void setIcono2(Bitmap bp);
-    void setIcono3(Bitmap bp);
+    void setIcono1(String icono);
+    void setIcono2(String icono);
+    void setIcono3(String icono);
   }
 
   /**
@@ -64,9 +64,9 @@ public interface Inicial {
     String getTextBtn1();
     String getTextBtn2();
     String getTextBtn3();
-    Bitmap getIconoBtn1(Context context);
-    Bitmap getIconoBtn2(Context context);
-    Bitmap getIconoBtn3(Context context);
+    String getIconoBtn1();
+    String getIconoBtn2();
+    String getIconoBtn3();
   }
 
   /**

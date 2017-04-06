@@ -119,11 +119,9 @@ public class ObraPresenter extends GenericPresenter
 
     int id=app.getIdObraSelecionada();
     getView().setDescripcionObra(getModel().getDescripcion(id));
-    getView().setImagenObra(getModel().getImagen(getManagedContext(),id));
+    getView().setImagenObra(getModel().getImagen(id));
     getView().setNombreObra(getModel().getNombre(id));
 
-
-   // int idAutor= getModel().getIdAutor(app.getCategoriaClicked(), app.getPosicionAutores());
 
 
   }

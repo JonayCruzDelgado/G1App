@@ -34,6 +34,7 @@ public class DummyModel extends GenericModel<Dummy.ModelToPresenter>
   @Override
   public void onDestroy(boolean isChangingConfiguration) {
 
+
   }
 
   ///////////////////////////////////////////////////////////////////////////////////

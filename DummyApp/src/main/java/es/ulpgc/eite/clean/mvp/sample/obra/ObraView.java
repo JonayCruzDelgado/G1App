@@ -1,7 +1,9 @@
 package es.ulpgc.eite.clean.mvp.sample.obra;
 
 import android.annotation.SuppressLint;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
@@ -9,6 +11,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.sample.R;
@@ -102,14 +107,27 @@ public class ObraView
   }
 
   @Override
-  public void setImagenObra(Bitmap bp) {
-    imagen.setImageBitmap(bp);
+  public void setImagenObra(String icono) {
+    imagen.setImageBitmap(getBitmapFromAssets(icono));
 
   }
 
   @Override
   public void setNombreObra(String txt) {
     toolbar.setTitle(txt);
+  }
+  private Bitmap getBitmapFromAssets(String fileName){
+    AssetManager am = getAssets();
+    InputStream is = null;
+    try{
+
+      is = am.open(fileName);
+    }catch(IOException e){
+      e.printStackTrace();
+    }
+
+    Bitmap bitmap = BitmapFactory.decodeStream(is);
+    return bitmap;
   }
 
   }

@@ -57,20 +57,17 @@ public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
   }
 
   @Override
-  public Bitmap getIconoBtn1(Context context) {
-    Bitmap icon = BitmapFactory.decodeResource(context.getResources(), manejador.getIdImagenCategoria(1));
-    return icon;
+  public String getIconoBtn1() {
+    return manejador.getImagenCategoria(1);
   }
 
   @Override
-  public Bitmap getIconoBtn2(Context context) {
-    Bitmap icon = BitmapFactory.decodeResource(context.getResources(), manejador.getIdImagenCategoria(2));
-    return icon;
+  public String getIconoBtn2() {
+    return manejador.getImagenCategoria(2);
   }
 
   @Override
-  public Bitmap getIconoBtn3(Context context) {
-      Bitmap icon = BitmapFactory.decodeResource(context.getResources(), manejador.getIdImagenCategoria(3));
-      return icon;
+  public String getIconoBtn3() {
+      return manejador.getImagenCategoria(3);
   }
 }

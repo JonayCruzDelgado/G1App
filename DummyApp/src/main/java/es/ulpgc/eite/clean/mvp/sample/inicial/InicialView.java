@@ -1,7 +1,9 @@
 package es.ulpgc.eite.clean.mvp.sample.inicial;
 
 import android.annotation.SuppressLint;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -9,6 +11,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.sample.R;
@@ -131,14 +136,28 @@ public class InicialView
   public void setLabel2(String txt) {
     label2.setText(txt);
   }
-  public void setIcono1(Bitmap bp) {
-    icono1.setImageBitmap(bp);
+  public void setIcono1(String icono) {
+    icono1.setImageBitmap(getBitmapFromAssets(icono));
   }
-  public void setIcono2(Bitmap bp) {
-    icono2.setImageBitmap(bp);
+  public void setIcono2(String icono) {
+    icono2.setImageBitmap(getBitmapFromAssets(icono));
   }
-  public void setIcono3(Bitmap bp) {
-    icono3.setImageBitmap(bp);
+  public void setIcono3(String icono) {
+    icono3.setImageBitmap(getBitmapFromAssets(icono));
+  }
+
+  private Bitmap getBitmapFromAssets(String fileName){
+    AssetManager am = getAssets();
+    InputStream is = null;
+    try{
+
+      is = am.open(fileName);
+    }catch(IOException e){
+      e.printStackTrace();
+    }
+
+    Bitmap bitmap = BitmapFactory.decodeStream(is);
+    return bitmap;
   }
 
 }

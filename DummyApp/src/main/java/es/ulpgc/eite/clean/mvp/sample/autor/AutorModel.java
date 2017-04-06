@@ -61,8 +61,7 @@ public class AutorModel extends GenericModel<Autor.ModelToPresenter>
     return  manejador.getDescripcionAutor(id);
   }
   @Override
-  public Bitmap getImagen(Context context, int id){
-    Bitmap icon = BitmapFactory.decodeResource(context.getResources(), manejador.getIdImagenAutor(id));
-    return icon;
+  public String getImagen( int id){
+    return manejador.getImagenAutor(id);
   }
 }
