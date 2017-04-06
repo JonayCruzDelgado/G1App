@@ -7,7 +7,6 @@ import android.graphics.BitmapFactory;
 import es.ulpgc.eite.clean.mvp.GenericModel;
 import es.ulpgc.eite.clean.mvp.sample.dataBase.ManejadorBaseDeDatos;
 import es.ulpgc.eite.clean.mvp.sample.dataBaseSim.ManejadorBaseDeDatosSim;
-import es.ulpgc.eite.clean.mvp.sample.dummy.Dummy;
 
 
 public class ObraModel extends GenericModel<Obra.ModelToPresenter>
@@ -43,11 +42,7 @@ public class ObraModel extends GenericModel<Obra.ModelToPresenter>
 
   ///////////////////////////////////////////////////////////////////////////////////
   // Presenter To Model ////////////////////////////////////////////////////////////
-  @Override
-  public int getIdObra(String autor, int pos){
-    int[] ids=manejador.getListaIdObras(autor);
-    return ids[pos];
-  }
+
 
   @Override
   public String getNombre(int id){
@@ -67,7 +62,7 @@ public class ObraModel extends GenericModel<Obra.ModelToPresenter>
   }
   @Override
   public Bitmap getImagen(Context context, int id){
-    Bitmap icon = BitmapFactory.decodeResource(context.getResources(), manejador.getImagenObra(id));
+    Bitmap icon = BitmapFactory.decodeResource(context.getResources(), manejador.getIdImagenObra(id));
     return  icon;
   }
 

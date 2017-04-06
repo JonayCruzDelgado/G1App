@@ -28,7 +28,9 @@ public interface Autor {
     void destroyView();
     boolean isToolbarVisible();
     boolean isTextVisible();
-   int getPosicionListaObrasPulsada();
+   int getPosicionListaObraSelecionada();
+
+    int getIdObraSelecionada();
   }
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -67,13 +69,10 @@ public interface Autor {
 
       ///////////////////////////////////////////////////////////////////////////////////
       // Presenter To Model ////////////////////////////////////////////////////////////
-      int idObraPulsada(String autor, int pos);
+      int getIdObraPulsada(int idAutor, int pos);
 
-      String nombreObraPulsada(String autor, int pos);
 
-      int getIdAutor(String categoria, int pos);
-
-      String[] getObras(String autor);
+    String[] getObras(int idAutor);
     String getNombre(int posicion);
     String getDescripcion(int posicion);
     Bitmap getImagen(Context context, int id);
@@ -83,6 +82,6 @@ public interface Autor {
    * Required PRESENTER methods available to MODEL
    */
   interface ModelToPresenter {
-    String getCategoria();
+
   }
 }

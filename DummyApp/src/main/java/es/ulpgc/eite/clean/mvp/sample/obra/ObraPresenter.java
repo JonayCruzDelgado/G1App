@@ -89,7 +89,7 @@ public class ObraPresenter extends GenericPresenter
   public void onButtonClicked() {
     Log.d(TAG, "calling onButtonClicked()");
     Mediator app=(Mediator) getView().getApplication();
-    int id=getModel().getIdObra(app.getNombreAutorSelecionado(),app.getPosicionObras());
+    int id=app.getIdObraSelecionada();
     double latitude =getModel().getLatitud(id);
     double longitude = getModel().getLongitud(id);
     String nombreObra=getModel().getNombre(id);
@@ -117,7 +117,7 @@ public class ObraPresenter extends GenericPresenter
   public void inicializarVista() {
     Mediator app=(Mediator) getView().getApplication();
 
-    int id=getModel().getIdObra(app.getNombreAutorSelecionado(),app.getPosicionObras());
+    int id=app.getIdObraSelecionada();
     getView().setDescripcionObra(getModel().getDescripcion(id));
     getView().setImagenObra(getModel().getImagen(getManagedContext(),id));
     getView().setNombreObra(getModel().getNombre(id));

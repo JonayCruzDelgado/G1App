@@ -12,8 +12,6 @@ import android.widget.TextView;
 
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.sample.R;
-import es.ulpgc.eite.clean.mvp.sample.inicial.Inicial;
-import es.ulpgc.eite.clean.mvp.sample.inicial.InicialPresenter;
 import io.realm.Realm;
 
 public class InicialView
@@ -21,15 +19,15 @@ public class InicialView
     implements Inicial.PresenterToView {
 
   private Toolbar toolbar;
-  private LinearLayout layoutPintura;
-  private LinearLayout layoutArquitectura;
-  private LinearLayout layoutEscultura;
-  private TextView labelPintura;
-  private TextView labelArquitectura;
-  private TextView labelEscultura;
-  private ImageView iconoPintura;
-  private ImageView iconoArquitectura;
-  private ImageView iconoEscultura;
+  private LinearLayout layout1;
+  private LinearLayout layout2;
+  private LinearLayout layout3;
+  private TextView label1;
+  private TextView label2;
+  private TextView label3;
+  private ImageView icono1;
+  private ImageView icono2;
+  private ImageView icono3;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -39,37 +37,37 @@ public class InicialView
     toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
-    iconoPintura =(ImageView)  findViewById(R.id.iconoBtnPintura);
-    iconoArquitectura =(ImageView)  findViewById(R.id.iconoBtnArquitectura);
-    iconoEscultura =(ImageView)  findViewById(R.id.iconoBtnEscultura);
+    icono1 =(ImageView)  findViewById(R.id.iconoBtnPintura);
+    icono2 =(ImageView)  findViewById(R.id.iconoBtnArquitectura);
+    icono3 =(ImageView)  findViewById(R.id.iconoBtnEscultura);
 
-    labelPintura = (TextView) findViewById(R.id.textoBtnPintura);
-    labelArquitectura = (TextView) findViewById(R.id.textoBtnArquitectura);
-    labelEscultura = (TextView) findViewById(R.id.textoBtnEscultura);
+    label1 = (TextView) findViewById(R.id.textoBtnPintura);
+    label2 = (TextView) findViewById(R.id.textoBtnArquitectura);
+    label3 = (TextView) findViewById(R.id.textoBtnEscultura);
 
-    layoutPintura =(LinearLayout) findViewById(R.id.btnPintura);
-    layoutPintura.setOnClickListener(new View.OnClickListener() {
+    layout1 =(LinearLayout) findViewById(R.id.btnPintura);
+    layout1.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        getPresenter().onButtonClickedPintura();
+        getPresenter().onButtonClicked1();
 
       }
     });
 
-    layoutArquitectura =(LinearLayout) findViewById(R.id.btnArquitectura);
-    layoutArquitectura.setOnClickListener(new View.OnClickListener() {
+    layout2 =(LinearLayout) findViewById(R.id.btnArquitectura);
+    layout2.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        getPresenter().onButtonClickedArquitectura();
+        getPresenter().onButtonClicked2();
 
       }
     });
 
-    layoutEscultura =(LinearLayout) findViewById(R.id.btnEscultura);
-    layoutEscultura.setOnClickListener(new View.OnClickListener() {
+    layout3 =(LinearLayout) findViewById(R.id.btnEscultura);
+    layout3.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        getPresenter().onButtonClickedEscultura();
+        getPresenter().onButtonClicked3();
 
       }
     });
@@ -124,29 +122,23 @@ public class InicialView
     toolbar.setVisibility(View.GONE);
   }
 
-  @Override
-  public void setLabelPintura(String txt) {
-    labelPintura.setText(txt);
+  public void setLabel1(String txt) {
+    label1.setText(txt);
   }
-  @Override
-  public void setLabelEscultura(String txt) {
-    labelEscultura.setText(txt);
+  public void setLabel3(String txt) {
+    label3.setText(txt);
   }
-  @Override
-  public void setLabelArquitectura(String txt) {
-    labelArquitectura.setText(txt);
+  public void setLabel2(String txt) {
+    label2.setText(txt);
   }
-  @Override
-  public void setIconoPintura(Bitmap bp) {
-    iconoPintura.setImageBitmap(bp);
+  public void setIcono1(Bitmap bp) {
+    icono1.setImageBitmap(bp);
   }
-  @Override
-  public void setIconoArquitectura(Bitmap bp) {
-    iconoArquitectura.setImageBitmap(bp);
+  public void setIcono2(Bitmap bp) {
+    icono2.setImageBitmap(bp);
   }
-  @Override
-  public void setIconoEscultura(Bitmap bp) {
-    iconoEscultura.setImageBitmap(bp);
+  public void setIcono3(Bitmap bp) {
+    icono3.setImageBitmap(bp);
   }
 
 }

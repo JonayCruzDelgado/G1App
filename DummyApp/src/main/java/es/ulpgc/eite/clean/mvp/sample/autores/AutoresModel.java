@@ -8,8 +8,6 @@ import es.ulpgc.eite.clean.mvp.sample.dataBaseSim.ManejadorBaseDeDatosSim;
 public class AutoresModel extends GenericModel<Autores.ModelToPresenter>
         implements Autores.PresenterToModel {
 
-  //ManejadorBaseDeDatosSim manejadorSim;
-
   ManejadorBaseDeDatos manejador;
 
 
@@ -22,8 +20,6 @@ public class AutoresModel extends GenericModel<Autores.ModelToPresenter>
   @Override
   public void onCreate(Autores.ModelToPresenter presenter) {
     super.onCreate(presenter);
-
-    //manejadorSim = ManejadorBaseDeDatosSim.getInstance();
     manejador = ManejadorBaseDeDatos.getInstance();
   }
 
@@ -41,29 +37,19 @@ public class AutoresModel extends GenericModel<Autores.ModelToPresenter>
   // Presenter To Model ////////////////////////////////////////////////////////////
 
   @Override
-  public String [] obtenerAutores(String categoriaSeleccionada){
-    /*int[] ids = manejadorSim.arrayIdsAutorByCategoria(categoriaSeleccionada);
-    return manejadorSim.arrayNombresByIdsAutores(ids);*/
-    int[] ids =manejador.getListaIdAutores(categoriaSeleccionada);
+  public String [] getAutores(int idCategoriaSeleccionada){
+    int[] ids =manejador.getListaIdAutores(idCategoriaSeleccionada);
     return manejador.getNombresByArrayIdsAutores(ids);
 
   }
   @Override
-  public String obtenerCategoria(String categoriaSeleccionada){
-   return categoriaSeleccionada;
+  public String getNombreCategoria(int idCategoriaSeleccionada){
+   return manejador.getNombreCategoria(idCategoriaSeleccionada);
   }
   @Override
-  public int obtenerIdAutorSelecionado(String categoriaSeleccionada, int pos){
-   /* int[] ids = manejadorSim.arrayIdsAutorByCategoria(categoriaSeleccionada);
-    return ids[pos];*/
-    int[] ids = manejador.getListaIdAutores(categoriaSeleccionada);
+  public int getIdAutorSelecionado(int idCategoriaSeleccionada, int pos){
+    int[] ids = manejador.getListaIdAutores(idCategoriaSeleccionada);
     return ids[pos];
   }
-  @Override
-  public String obtenerNombreAutorSelecionado(String categoriaSeleccionada,int pos){
-   /* int[] ids = manejadorSim.arrayIdsAutorByCategoria(categoriaSeleccionada);
-    return ids[pos];*/
-    int[] ids = manejador.getListaIdAutores(categoriaSeleccionada);
-    return manejador.getNombreAutor(ids[pos]);
-  }
+
 }

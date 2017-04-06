@@ -14,12 +14,10 @@ public class AutoresPresenter extends GenericPresenter
     <Autores.PresenterToView, Autores.PresenterToModel, Autores.ModelToPresenter, AutoresModel>
     implements Autores.ViewToPresenter, Autores.ModelToPresenter, Autores.AutoresTo, Autores.ToAutores {
 
-
   private boolean toolbarVisible;
-  private String generoSelecionado;
-  private int posicionListaAutoresPulsada;
+  private int idCategoria;
+  private int posicionListaAutoresSelecionada;
   private int idAutorSelecionado;
-  private String nombreAutorSelecionado;
   /**
    * Operation called during VIEW creation in {@link GenericActivity#onResume(Class, Object)}
    * Responsible to initialize MODEL.
@@ -49,18 +47,14 @@ public class AutoresPresenter extends GenericPresenter
   @Override
   public void onResume(Autores.PresenterToView view) {
     setView(view);
-  /*  Log.d(TAG, "calling onResume()");
+   Log.d(TAG, "calling onResume()");
 
     if(configurationChangeOccurred()) {
-      getView().setLabel(getModel().getLabel());
+      inicializarVista();
 
       checkToolbarVisibility();
-      checkTextVisibility();
 
-      if (buttonClicked) {
-        getView().setTituloToolbar(getModel().getText());
-      }
-    }*/
+    }
   }
 
   /**
@@ -94,8 +88,8 @@ public class AutoresPresenter extends GenericPresenter
   @Override
   public void inicializarVista() {
       Mediator app = (Mediator) getApplication();
-      getView().actualizarListaAutores(getModel().obtenerAutores(app.getCategoriaClicked()));
-      getView().setTituloToolbar(getModel().obtenerCategoria(app.getCategoriaClicked()));
+      getView().actualizarListaAutores(getModel().getAutores(app.getIdBotonCategoriaClicked()));
+      getView().setTituloToolbar(getModel().getNombreCategoria(app.getIdBotonCategoriaClicked()));
       getView().hideText();
 
   }
@@ -103,8 +97,9 @@ public class AutoresPresenter extends GenericPresenter
   @Override
   public void onItemClickSelected(int pos) {
     Log.d(TAG,"posicion pulsada" + pos);
-    setPosicionListaAutoresPulsada(pos);
-    setNombreAutorSelecionado(pos);
+    Mediator mediator = (Mediator) getApplication();
+    setPosicionListaAutoresSelecionada(pos);
+    setIdAutorSelecionado(mediator.getIdBotonCategoriaClicked(),pos);
     Navigator app = (Navigator) getView().getApplication();
     app.goToAutorScreen(this);
   }
@@ -115,11 +110,11 @@ public class AutoresPresenter extends GenericPresenter
   @Override
   public void onScreenStarted() {
     Log.d(TAG, "calling onScreenStarted()");
-/*    if(isViewRunning()) {
-      getView().setLabel(getModel().getLabel());
+   if(isViewRunning()) {
+      inicializarVista();
     }
     checkToolbarVisibility();
-    checkTextVisibility();*/
+
   }
 
   @Override
@@ -157,23 +152,24 @@ public class AutoresPresenter extends GenericPresenter
       }
     }*/
   }
+
   @Override
-  public String getNombreAutorSelecionado(){
-    return nombreAutorSelecionado;
+  public int getPosicionListaAutoresSelecionada() {
+    return posicionListaAutoresSelecionada;
   }
   @Override
-  public int getPosicionListaAutoresPulsada() {
-    return posicionListaAutoresPulsada;
+  public int getIdAutorSelecionado() {
+    return idAutorSelecionado;
   }
 
-  private void setPosicionListaAutoresPulsada(int posicionListaAutoresPulsada) {
-    this.posicionListaAutoresPulsada = posicionListaAutoresPulsada;
+  private void setPosicionListaAutoresSelecionada(int posicionListaAutoresSelecionada) {
+    this.posicionListaAutoresSelecionada = posicionListaAutoresSelecionada;
+  }
+  private void setIdAutorSelecionado(int idCategoria, int posicionListaAutoresSelecionada) {
+    this.posicionListaAutoresSelecionada = getModel().getIdAutorSelecionado(idCategoria,posicionListaAutoresSelecionada);
   }
 
-  private  void setNombreAutorSelecionado(int posicionListaAutoresPulsada){
-    Mediator app = (Mediator) getApplication();
-    this.nombreAutorSelecionado =getModel().obtenerNombreAutorSelecionado(app.getCategoriaClicked(),posicionListaAutoresPulsada);
-  }
+
 
 
 }

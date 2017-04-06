@@ -27,9 +27,8 @@ public interface Autores {
     void destroyView();
     boolean isToolbarVisible();
 
-    int getPosicionListaAutoresPulsada();
-    public String getNombreAutorSelecionado();
-
+    int getPosicionListaAutoresSelecionada();
+    int getIdAutorSelecionado();
   }
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -59,12 +58,10 @@ public interface Autores {
    * Methods offered to MODEL to communicate with PRESENTER
    */
   interface PresenterToModel extends Model<ModelToPresenter> {
-    String [] obtenerAutores(String generoSeleccionado);
-    String obtenerCategoria(String generoSeleccionado);
 
-    int obtenerIdAutorSelecionado(String categoriaSeleccionada, int pos);
-
-      String obtenerNombreAutorSelecionado(String categoriaSeleccionada, int pos);
+    String [] getAutores(int idCategoriaSeleccionada);
+    String getNombreCategoria(int idCategoriaSeleccionada);
+    int getIdAutorSelecionado(int idCategoriaSeleccionada, int pos);
   }
 
   /**

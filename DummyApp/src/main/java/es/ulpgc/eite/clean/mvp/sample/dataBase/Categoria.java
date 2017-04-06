@@ -14,8 +14,9 @@ public class Categoria extends RealmObject {
     private int id;
     private String categoria;
     private int idImagen;
-    private RealmList<Autor> autores;
 
+
+    private byte[] imagen;
 
     public int getId() {
         return id;
@@ -40,11 +41,12 @@ public class Categoria extends RealmObject {
     public void setIdImagen(int idImagen) {
         this.idImagen = idImagen;
     }
-    public RealmList<Autor> getAutores() {
-        return autores;
+    public byte[] getImagen() {
+        return imagen;
     }
 
-    public void setAutores(RealmList<Autor> autores) {
-        this.autores = autores;
+    public void setImagen(byte[] imagen) {
+        this.imagen = imagen;
     }
+
 }

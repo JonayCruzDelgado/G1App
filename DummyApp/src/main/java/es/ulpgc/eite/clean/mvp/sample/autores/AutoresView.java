@@ -48,7 +48,7 @@ public class AutoresView
   @Override
   protected void onResume() {
     super.onResume(AutoresPresenter.class, this);
-    getPresenter().inicializarVista();
+    //getPresenter().inicializarVista();
   }
   /*
   @Override

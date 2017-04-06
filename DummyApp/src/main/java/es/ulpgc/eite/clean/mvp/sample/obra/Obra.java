@@ -59,7 +59,7 @@ public interface Obra {
   interface PresenterToModel extends Model<ModelToPresenter> {
       ///////////////////////////////////////////////////////////////////////////////////
       // Presenter To Model ////////////////////////////////////////////////////////////
-      int getIdObra(String autor, int pos);
+
 
       String getNombre(int id);
     String getDescripcion(int id);

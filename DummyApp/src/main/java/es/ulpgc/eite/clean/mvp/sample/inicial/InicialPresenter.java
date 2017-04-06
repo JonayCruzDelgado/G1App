@@ -9,15 +9,13 @@ import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.GenericPresenter;
 import es.ulpgc.eite.clean.mvp.sample.app.Mediator;
 import es.ulpgc.eite.clean.mvp.sample.app.Navigator;
-import es.ulpgc.eite.clean.mvp.sample.inicial.Inicial;
-import es.ulpgc.eite.clean.mvp.sample.inicial.InicialModel;
 
 public class InicialPresenter extends GenericPresenter
     <Inicial.PresenterToView, Inicial.PresenterToModel, Inicial.ModelToPresenter, InicialModel>
     implements Inicial.ViewToPresenter, Inicial.ModelToPresenter, Inicial.InicialTo, Inicial.ToInicial {
 
   private boolean toolbarVisible;
-  private String layoutClicked;
+  private int idBoton;
 
   /**
    * Operation called during VIEW creation in {@link GenericActivity#onResume(Class, Object)}
@@ -51,7 +49,7 @@ public class InicialPresenter extends GenericPresenter
     Log.d(TAG, "calling onResume()");
 
     if(configurationChangeOccurred()) {
-      cargarEtiquetasPantalla();
+      inicializarVista();
       checkToolbarVisibility();
     }
   }
@@ -85,24 +83,24 @@ public class InicialPresenter extends GenericPresenter
 
 
   @Override
-  public void onButtonClickedPintura() {
-    Log.d(TAG, "calling onButtonClickedPintura()");
-    layoutClicked = getModel().getTextBtn1();
+  public void onButtonClicked1() {
+    Log.d(TAG, "calling onButtonClicked1()");
+    idBoton=1;
     Navigator app = (Navigator) getView().getApplication();
     app.goToAutoresScreen(this);
   }
   @Override
-  public void onButtonClickedArquitectura() {
-    Log.d(TAG, "calling onButtonClickedArquitectura()");
-    layoutClicked = getModel().getTextBtn2();
+  public void onButtonClicked2() {
+    Log.d(TAG, "calling onButtonClicked2()");
+    idBoton=2;
     Navigator app = (Navigator) getView().getApplication();
     app.goToAutoresScreen(this);
   }
 
   @Override
-  public void onButtonClickedEscultura() {
-    Log.d(TAG, "calling onButtonClickedEscultura()");
-    layoutClicked = getModel().getTextBtn3();
+  public void onButtonClicked3() {
+    Log.d(TAG, "calling onButtonClicked3()");
+    idBoton=3;
     Navigator app = (Navigator) getView().getApplication();
     app.goToAutoresScreen(this);
   }
@@ -114,7 +112,7 @@ public class InicialPresenter extends GenericPresenter
   public void onScreenStarted() {
     Log.d(TAG, "calling onScreenStarted()");
     if(isViewRunning()) {
-      cargarEtiquetasPantalla();
+      inicializarVista();
     }
     checkToolbarVisibility();
   }
@@ -143,8 +141,8 @@ public class InicialPresenter extends GenericPresenter
     return toolbarVisible;
   }
   @Override
-  public String getLayoutClicked(){
-    return layoutClicked;
+  public int getIdBoton(){
+    return idBoton;
   }
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -157,12 +155,12 @@ public class InicialPresenter extends GenericPresenter
       }
     }
   }
-  private void cargarEtiquetasPantalla(){
-    getView().setLabelPintura(getModel().getTextBtn1());
-    getView().setLabelArquitectura(getModel().getTextBtn2());
-    getView().setLabelEscultura(getModel().getTextBtn3());
-    getView().setIconoPintura(getModel().getIconoPintura(getManagedContext()));
-    getView().setIconoArquitectura(getModel().getIconoArquitectura(getManagedContext()));
-    getView().setIconoEscultura(getModel().getIconoEscultura(getManagedContext()));
+  private void inicializarVista(){
+    getView().setLabel1(getModel().getTextBtn1());
+    getView().setLabel2(getModel().getTextBtn2());
+    getView().setLabel3(getModel().getTextBtn3());
+    getView().setIcono1(getModel().getIconoBtn1(getManagedContext()));
+    getView().setIcono2(getModel().getIconoBtn2(getManagedContext()));
+    getView().setIcono3(getModel().getIconoBtn3(getManagedContext()));
   }
 }

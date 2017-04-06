@@ -3,13 +3,8 @@ package es.ulpgc.eite.clean.mvp.sample.autor;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
-
-import java.util.ArrayList;
 
 import es.ulpgc.eite.clean.mvp.GenericModel;
-import es.ulpgc.eite.clean.mvp.sample.R;
-import es.ulpgc.eite.clean.mvp.sample.autor.Autor;
 import es.ulpgc.eite.clean.mvp.sample.dataBase.ManejadorBaseDeDatos;
 import es.ulpgc.eite.clean.mvp.sample.dataBaseSim.ManejadorBaseDeDatosSim;
 
@@ -17,7 +12,6 @@ import es.ulpgc.eite.clean.mvp.sample.dataBaseSim.ManejadorBaseDeDatosSim;
 public class AutorModel extends GenericModel<Autor.ModelToPresenter>
     implements Autor.PresenterToModel {
 
-  ManejadorBaseDeDatosSim manejadorSim;
   ManejadorBaseDeDatos manejador;
 
   /**
@@ -30,7 +24,6 @@ public class AutorModel extends GenericModel<Autor.ModelToPresenter>
   public void onCreate(Autor.ModelToPresenter presenter) {
     super.onCreate(presenter);
 
-    //manejadorSim = ManejadorBaseDeDatosSim.getInstance();
     manejador = ManejadorBaseDeDatos.getInstance();
 
   }
@@ -49,34 +42,14 @@ public class AutorModel extends GenericModel<Autor.ModelToPresenter>
   ///////////////////////////////////////////////////////////////////////////////////
   // Presenter To Model ////////////////////////////////////////////////////////////
   @Override
-  public int idObraPulsada(String autor, int pos){
-   /* int[] ids = manejadorSim.arrayIdsObraByAutor(autor);
-    return  ids[pos];*/
-    int[] ids = manejador.getListaIdObras(autor);
-    return ids[pos];
-  }
-  @Override
-    public String nombreObraPulsada(String autor, int pos){
-   /* int[] ids = manejadorSim.arrayIdsObraByAutor(autor);
-    return  ids[pos];*/
-        int[] ids = manejador.getListaIdObras(autor);
-        return manejador.getNombreObra(ids[pos]);
-    }
-
-  @Override
-  public int getIdAutor(String categoria,int pos){
-    /*int[] ids=manejadorSim.arrayIdsAutorByCategoria(categoria);
-    return ids[pos];*/
-    int[] ids=manejador.getListaIdAutores(categoria);
+  public int getIdObraPulsada(int idAutor, int pos){
+    int[] ids = manejador.getListaIdObras(idAutor);
     return ids[pos];
   }
 
-
   @Override
-  public String[] getObras(String autor){
-   /* int[] ids=manejadorSim.arrayIdsObraByAutor(autor);
-    return manejadorSim.arrayNombresByIdsObras(ids);*/
-    int[] ids = manejador.getListaIdObras(autor);
+  public String[] getObras(int idAutor){
+    int[] ids = manejador.getListaIdObras(idAutor);
     return manejador.getNombresByArrayIdsObras(ids);
   }
   @Override
@@ -89,9 +62,7 @@ public class AutorModel extends GenericModel<Autor.ModelToPresenter>
   }
   @Override
   public Bitmap getImagen(Context context, int id){
-    /*Bitmap icon = BitmapFactory.decodeResource(context.getResources(), manejadorSim.idImagenAutor(id));
-    return icon;*/
-    Bitmap icon = BitmapFactory.decodeResource(context.getResources(), manejador.getImagenAutor(id));
+    Bitmap icon = BitmapFactory.decodeResource(context.getResources(), manejador.getIdImagenAutor(id));
     return icon;
   }
 }

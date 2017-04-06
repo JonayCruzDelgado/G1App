@@ -12,6 +12,7 @@ import es.ulpgc.eite.clean.mvp.sample.autores.AutoresView;
 import es.ulpgc.eite.clean.mvp.sample.dummy.Dummy;
 import es.ulpgc.eite.clean.mvp.sample.dummy.DummyView;
 import es.ulpgc.eite.clean.mvp.sample.inicial.Inicial;
+import es.ulpgc.eite.clean.mvp.sample.obra.Obra;
 import es.ulpgc.eite.clean.mvp.sample.obra.ObraView;
 
 
@@ -58,13 +59,13 @@ public class App extends Application implements Mediator, Navigator {
   }
 
   @Override
-  public void startingAutorScreen(Inicial.ToInicial presenter){
+  public void startingAutorScreen(Autor.ToAutor presenter){
 
     presenter.onScreenStarted();
   }
 
   @Override
-  public void startingObraScreen(Inicial.ToInicial presenter){
+  public void startingObraScreen(Obra.ToObra presenter){
 
     presenter.onScreenStarted();
   }
@@ -87,9 +88,9 @@ public class App extends Application implements Mediator, Navigator {
   }
   @Override
   public void goToAutoresScreen(Inicial.InicialTo presenter) {
-    Log.d("APP", "goToAutoresScreen() has pulsado: "+ presenter.getLayoutClicked());
+    Log.d("APP", "goToAutoresScreen() has pulsado el boton: "+ presenter.getIdBoton());
     inicialToState = new InicialState();
-    inicialToState.layaoutClicked= presenter.getLayoutClicked();
+    inicialToState.idBoton= presenter.getIdBoton();
     Context view = presenter.getManagedContext();
 
     if (view != null) {
@@ -100,12 +101,11 @@ public class App extends Application implements Mediator, Navigator {
   }
   @Override
   public void goToAutorScreen(Autores.AutoresTo presenter) {
-    Log.d("APP", "goToAutorScreen() has pulsado: "+ presenter.getPosicionListaAutoresPulsada());
+    Log.d("APP", "goToAutorScreen() has pulsado: "+ presenter.getPosicionListaAutoresSelecionada());
     autoresToState = new AutoresState();
-    autoresToState.posicionListaAutoresPulsada = presenter.getPosicionListaAutoresPulsada();
-    autoresToState.nombreAutorSelecionado = presenter.getNombreAutorSelecionado(); // no cargabas el nombre del autor
-    autoresToState.categoriaSeleccionada = inicialToState.layaoutClicked;
-    Log.d("APP", "goToAutorScreen() categoria seleccionada: "+ autoresToState.categoriaSeleccionada);
+    autoresToState.posicionListaAutoresPulsada = presenter.getPosicionListaAutoresSelecionada();
+    autoresToState.idAutorSelecionado=presenter.getIdAutorSelecionado();
+    Log.d("APP", "goToAutorScreen() id del autor: "+ autoresToState.idAutorSelecionado);
     Context view = presenter.getManagedContext();
 
     if (view != null) {
@@ -116,12 +116,12 @@ public class App extends Application implements Mediator, Navigator {
 
   @Override
   public void goToObraScreen(Autor.AutorTo presenter){
-    Log.d("APP", "goToAutorScreen() has pulsado: "+ presenter.getPosicionListaObrasPulsada());
+    Log.d("APP", "goToAutorScreen() has pulsado: "+ presenter.getPosicionListaObraSelecionada());
     autorToState = new AutorState();
-    autorToState.posicionListaObrasPulsada = presenter.getPosicionListaObrasPulsada();
-    autorToState.nombreAutorSelecionado = autoresToState.nombreAutorSelecionado;
+    autorToState.posicionListaObrasSelecionada = presenter.getPosicionListaObraSelecionada();
+    autorToState.idObraSelecionada = presenter.getIdObraSelecionada();
 
-    Log.d("APP", "goToObraScreen()autor seleccionada: "+ autorToState.nombreAutorSelecionado);
+    Log.d("APP", "goToObraScreen() con id obra: "+ autorToState.idObraSelecionada);
     Context view = presenter.getManagedContext();
 
     if (view != null) {
@@ -139,45 +139,62 @@ public class App extends Application implements Mediator, Navigator {
   }
   private class InicialState{
     boolean textVisibility;
-    String layaoutClicked;
+    //String layaoutClicked;
+    int idBoton;
   }
   private class AutoresState{
     int posicionListaAutoresPulsada;
-    String categoriaSeleccionada;
-    String nombreAutorSelecionado;
+    int idAutorSelecionado;
+    //String categoriaSeleccionada;
+    //String nombreAutorSelecionado;
 
   }
   private class AutorState{
-    String nombreAutorSelecionado;
-    int posicionListaObrasPulsada;
+   // String nombreAutorSelecionado;
+    int posicionListaObrasSelecionada;
+    int idObraSelecionada;
 
   }
   private class ObraState{
-    String nombreObraSelecionada;
+   // String nombreObraSelecionada;
 
   }
 
-  @Override
+ /* @Override
   public String getCategoriaClicked(){
     return inicialToState.layaoutClicked;
+  }*/
+ @Override
+  public int getIdBotonCategoriaClicked(){
+    return inicialToState.idBoton;
   }
   @Override
   public int getPosicionAutores(){
     return autoresToState.posicionListaAutoresPulsada;
   }
+  @Override
+  public int getIdAutorSelecionado(){
+    return autoresToState.idAutorSelecionado;
+  }
 
   @Override
   public int getPosicionObras(){
-    return autorToState.posicionListaObrasPulsada;
-  }
-  @Override
-  public String getNombreAutorSelecionado(){
-    return autorToState.nombreAutorSelecionado;
-  }
-  @Override
-  public String getNombreObraSelecionada(){
-    return obraToState.nombreObraSelecionada;
+    return autorToState.posicionListaObrasSelecionada;
   }
 
+  @Override
+  public int getIdObraSelecionada(){
+    return autorToState.idObraSelecionada;
+  }
+
+
+/*  @Override
+  public String getNombreAutorSelecionado(){
+    return autorToState.nombreAutorSelecionado;
+  }*/
+/*  public String getNombreObraSelecionada(){
+    return obraToState.nombreObraSelecionada;
+  }
+*/
 
 }

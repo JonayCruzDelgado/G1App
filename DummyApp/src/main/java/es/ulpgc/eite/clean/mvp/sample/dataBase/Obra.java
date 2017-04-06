@@ -14,9 +14,13 @@ public class Obra extends RealmObject {
     private String nombre;
     private String descripcion;
     private int idImagen;
+    private byte[] imagen;
     private Double latitud;
     private Double longitud;
     private String autor;
+
+
+    private int idAutor;
 
     public int getId() {
         return id;
@@ -42,11 +46,11 @@ public class Obra extends RealmObject {
         this.descripcion = descripcion;
     }
 
-    public int getImagen() {
+    public int getIdImagen() {
         return idImagen;
     }
 
-    public void setImagen(int idImagen) {
+    public void setIdImagen(int idImagen) {
         this.idImagen = idImagen;
     }
     public Double getLatitud() {
@@ -70,6 +74,20 @@ public class Obra extends RealmObject {
 
     public void setAutor(String autor) {
         this.autor = autor;
+    }
+    public int getIdAutor() {
+        return idAutor;
+    }
+
+    public void setIdAutor(int idAutor) {
+        this.idAutor = idAutor;
+    }
+    public byte[] getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(byte[] imagen) {
+        this.imagen = imagen;
     }
 
 

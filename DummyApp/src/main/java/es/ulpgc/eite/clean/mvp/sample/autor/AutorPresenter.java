@@ -17,11 +17,9 @@ public class AutorPresenter extends GenericPresenter
 
   private boolean toolbarVisible;
   private boolean textVisible;
-  private String categoria;
-  private int posicionListaObrasPulsada;
-  private int idListaObrasPulsada;
-  private String nombreObraPulsada;
-  private String nombreAutorSelecionado;
+  private int posicionListaObraSelecionada;
+  private int idObraSelecionada;
+
 
   /**
    * Operation called during VIEW creation in {@link GenericActivity#onResume(Class, Object)}
@@ -38,8 +36,7 @@ public class AutorPresenter extends GenericPresenter
     Log.d(TAG, "calling onCreate()");
 
     Mediator app = (Mediator) getView().getApplication();
-    Log.d(TAG, "categoria seleccionada "+ app.getCategoriaClicked());
-    categoria = app.getCategoriaClicked();
+    app.startingAutorScreen(this);
 
   }
 
@@ -95,12 +92,11 @@ public class AutorPresenter extends GenericPresenter
   @Override
   public void inicializarVista(){
     Mediator app = (Mediator) getView().getApplication();
-    int id= getModel().getIdAutor(app.getCategoriaClicked(), app.getPosicionAutores());
-
+    int id= app.getIdAutorSelecionado();
     getView().setDescripcionAutor(getModel().getDescripcion(id));
     getView().setIconoAutor(getModel().getImagen(getManagedContext(),id));
     getView().setNombreAutor(getModel().getNombre(id));
-    getView().actualizarListaObras(getModel().getObras(getModel().getNombre(id)));
+    getView().actualizarListaObras(getModel().getObras(id));
 
   }
 
@@ -131,7 +127,9 @@ public class AutorPresenter extends GenericPresenter
   @Override
   public void onItemClickSelected(int pos) {
     Log.d(TAG,"posicion pulsada" + pos);
-    setPosicionListaObrasPulsada(pos);
+    Mediator mediator = (Mediator) getView().getApplication();
+    setPosicionListaObraSelecionada(pos);
+    setIdObraSelecionada(mediator.getIdAutorSelecionado(),pos);
 
     Navigator app = (Navigator) getView().getApplication();
     app.goToObraScreen(this);
@@ -187,22 +185,20 @@ public class AutorPresenter extends GenericPresenter
     }
   }
 
+ @Override
+ public int getPosicionListaObraSelecionada(){
+   return posicionListaObraSelecionada;
+
+  }
+
   @Override
-  public String getCategoria() {
-    return categoria;
+  public int getIdObraSelecionada() {
+    return idObraSelecionada;
   }
-  public void setPosicionListaObrasPulsada(int posicionListaObrasPulsada) {
-    this.posicionListaObrasPulsada = posicionListaObrasPulsada;
-  }
-
- public int getPosicionListaObrasPulsada(){
-   return posicionListaObrasPulsada;
+  public void setPosicionListaObraSelecionada(int pos){
 
   }
-
-  public void setNombreObraPulsada(int posicionListaObrasPulsada) {
-    Mediator app = (Mediator) getView().getApplication();
-    nombreObraPulsada = getModel().nombreObraPulsada(app.getNombreAutorSelecionado(),posicionListaObrasPulsada);
+  public void setIdObraSelecionada(int idAutor,int pos) {
+    this.idObraSelecionada = getModel().getIdObraPulsada(idAutor,pos);
   }
-
 }
