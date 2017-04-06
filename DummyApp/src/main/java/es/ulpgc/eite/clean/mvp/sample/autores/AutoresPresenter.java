@@ -166,7 +166,7 @@ public class AutoresPresenter extends GenericPresenter
     this.posicionListaAutoresSelecionada = posicionListaAutoresSelecionada;
   }
   private void setIdAutorSelecionado(int idCategoria, int posicionListaAutoresSelecionada) {
-    this.posicionListaAutoresSelecionada = getModel().getIdAutorSelecionado(idCategoria,posicionListaAutoresSelecionada);
+    this.idAutorSelecionado = getModel().getIdAutorSelecionado(idCategoria,posicionListaAutoresSelecionada);
   }
 
 
