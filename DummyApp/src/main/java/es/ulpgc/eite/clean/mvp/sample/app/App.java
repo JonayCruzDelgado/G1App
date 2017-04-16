@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
+import es.ulpgc.eite.clean.mvp.sample.addAutor.AddAutorPresenter;
+import es.ulpgc.eite.clean.mvp.sample.addObra.AddObraPresenter;
 import es.ulpgc.eite.clean.mvp.sample.autor.Autor;
 import es.ulpgc.eite.clean.mvp.sample.autor.AutorView;
 import es.ulpgc.eite.clean.mvp.sample.autores.Autores;
@@ -68,6 +70,16 @@ public class App extends Application implements Mediator, Navigator {
   public void startingObraScreen(Obra.ToObra presenter){
 
     presenter.onScreenStarted();
+  }
+
+  @Override
+  public void startingAddAutorScreen(AddAutorPresenter addAutorPresenter) {
+
+  }
+
+  @Override
+  public void startingAddObraScreen(AddObraPresenter addObraPresenter) {
+
   }
   ///////////////////////////////////////////////////////////////////////////////////
   // Navigator /////////////////////////////////////////////////////////////////////

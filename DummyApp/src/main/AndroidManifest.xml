@@ -27,6 +27,16 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
+            android:name=".addAutor.AddAutorView"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".addObra.AddObraView"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
             android:name=".inicial.InicialView"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
