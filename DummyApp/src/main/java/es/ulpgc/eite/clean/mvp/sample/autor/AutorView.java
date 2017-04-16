@@ -28,6 +28,7 @@ public class AutorView
   private TextView descripcionAutor;
   private ListView listaObras;
   private ImageView iconoAutor;
+  private ImageView btnAddObra;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -39,9 +40,17 @@ public class AutorView
     toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
-    listaObras = (ListView) findViewById(R.id.listaObras);
-
     iconoAutor = (ImageView) findViewById(R.id.imagenAutor);
+    btnAddObra=(ImageView) findViewById(R.id.btnAddObra);
+    btnAddObra.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        //getPresenter().onButtonAddObraCliked();
+
+      }
+    });
+
+    listaObras = (ListView) findViewById(R.id.listaObras);
     listaObras.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       @Override
       public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

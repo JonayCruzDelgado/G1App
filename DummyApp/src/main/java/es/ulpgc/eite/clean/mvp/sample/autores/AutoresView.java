@@ -2,11 +2,13 @@ package es.ulpgc.eite.clean.mvp.sample.autores;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,16 +20,25 @@ public class AutoresView
     implements Autores.PresenterToView {
 
   private Toolbar toolbar;
-  private TextView categoriaSelecionada;
+  private FloatingActionButton btnAddAutor;
   private ListView listaAutores;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+
     setContentView(R.layout.activity_autores);
-    listaAutores = (ListView) findViewById(R.id.listaAutores);
-    categoriaSelecionada = (TextView) findViewById(R.id.categoriaSelecionada);
     toolbar = (Toolbar) findViewById(R.id.toolbar);
+    btnAddAutor= (FloatingActionButton) findViewById(R.id.btnAddAutor);
+    btnAddAutor.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        //getPresenter().onButtonAddAutorCliked();
+
+      }
+    });
+
+    listaAutores = (ListView) findViewById(R.id.listaAutores);
     listaAutores.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       @Override
       public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -90,7 +101,7 @@ public class AutoresView
 
   @Override
   public void hideText() {
-    categoriaSelecionada.setVisibility(View.GONE);
+
   }
   @Override
   public void actualizarListaAutores(String[] nombresAutores){
@@ -109,5 +120,6 @@ public class AutoresView
   @Override
   public void showText() {
   }
+
 
 }

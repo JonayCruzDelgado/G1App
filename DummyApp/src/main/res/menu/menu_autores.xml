@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="es.ulpgc.eite.clean.mvp.sample.autor.AutorView">
+    <inset
+        android:id="@+id/action_add"
+        android:drawable="@mipmap/ic_add"
+        android:insetBottom="4dp"
+        android:insetTop="4dp"/>
+</menu>
