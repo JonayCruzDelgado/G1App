@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.Locale;
 
@@ -93,8 +94,11 @@ public class AddAutorPresenter extends GenericPresenter
     String descripcion =getView().getDescripcion();
       if((!nombre.equals("")) && (!descripcion.equals(""))){
           getModel().addAutorSinImagen(nombre, descripcion, idCategoria);
+        getView().finishScreen();
       }
-    getView().finishScreen();
+      getView().toastDatosValidos();
+
+
 
   }
 
