@@ -45,7 +45,6 @@ public interface AddAutor {
   interface PresenterToView extends ContextView {
     void finishScreen();
     void hideToolbar();
-
     String getNombre();
 
     String getDescripcion();
