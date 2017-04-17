@@ -99,6 +99,22 @@ public class AutorPresenter extends GenericPresenter
     getView().actualizarListaObras(getModel().getObras(id));
 
   }
+  @Override
+  public void onItemClickSelected(int pos) {
+    Log.d(TAG,"posicion pulsada" + pos);
+    Mediator mediator = (Mediator) getView().getApplication();
+    setPosicionListaObraSelecionada(pos);
+    setIdObraSelecionada(mediator.getIdAutorSelecionado(),pos);
+
+    Navigator app = (Navigator) getView().getApplication();
+    app.goToObraScreen(this);
+  }
+  @Override
+  public void onButtonAddObraCliked(){
+    Navigator app = (Navigator) getView().getApplication();
+    app.goToAddObraScreen(this);
+
+  }
 
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -125,16 +141,7 @@ public class AutorPresenter extends GenericPresenter
     textVisible = visible;
   }
 
-  @Override
-  public void onItemClickSelected(int pos) {
-    Log.d(TAG,"posicion pulsada" + pos);
-    Mediator mediator = (Mediator) getView().getApplication();
-    setPosicionListaObraSelecionada(pos);
-    setIdObraSelecionada(mediator.getIdAutorSelecionado(),pos);
 
-    Navigator app = (Navigator) getView().getApplication();
-    app.goToObraScreen(this);
-  }
 
 
 

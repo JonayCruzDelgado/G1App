@@ -20,7 +20,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        >
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,7 +47,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:text="Nombre" />
+            android:text="Nombre"
+            android:textColorLink="@android:color/background_dark" />
 
     </LinearLayout>
 
@@ -75,7 +77,8 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textMultiLine"
-                android:text="Descripcion" />
+                android:text="Descripcion"
+                android:textColorLink="@android:color/background_dark"/>
 
         </LinearLayout>
 
@@ -84,6 +87,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="añadir imagen"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/fab_margin"/>
+
+        <Button
+            android:id="@+id/btnDoneAutor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Done"
             android:layout_gravity="center"
             android:layout_margin="@dimen/fab_margin"/>
 

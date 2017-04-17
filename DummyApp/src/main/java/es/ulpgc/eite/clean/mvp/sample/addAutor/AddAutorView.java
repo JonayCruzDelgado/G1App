@@ -26,6 +26,7 @@ public class AddAutorView
   private Button addImagen;
   private EditText nombreIndtroducido;
   private EditText descripcionIndtroducida;
+  private Button btnDone;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,14 @@ public class AddAutorView
 
     nombreIndtroducido = (EditText) findViewById(R.id.nombreAutorIntroducido);
     descripcionIndtroducida = (EditText) findViewById(R.id.descripcionAutorIntroducida);
+
+    btnDone=(Button) findViewById(R.id.btnDoneAutor);
+    addImagen.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        //getPresenter().onButtonDoneClicked();
+      }
+    });
 
     addImagen = (Button) findViewById(R.id.addImagenAutor);
     addImagen.setOnClickListener(new View.OnClickListener() {
