@@ -45,7 +45,7 @@ public class AutorView
     btnAddObra.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        //getPresenter().onButtonAddObraCliked();
+        getPresenter().onButtonAddObraCliked();
 
       }
     });

@@ -45,6 +45,8 @@ public interface Autor {
     void onItemClickSelected(int pos);
 
     void inicializarVista();
+
+      void onButtonAddObraCliked();
   }
 
   /**
