@@ -45,7 +45,7 @@ public class AddObraView
     longitudIndtroducida = (EditText) findViewById(R.id.longitudIntroducida);
 
     btnDone=(Button) findViewById(R.id.btnDoneObra);
-    addImagen.setOnClickListener(new View.OnClickListener() {
+    btnDone.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
         //getPresenter().onButtonDoneClicked();

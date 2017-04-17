@@ -41,7 +41,7 @@ public class AddAutorView
     descripcionIndtroducida = (EditText) findViewById(R.id.descripcionAutorIntroducida);
 
     btnDone=(Button) findViewById(R.id.btnDoneAutor);
-    addImagen.setOnClickListener(new View.OnClickListener() {
+    btnDone.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
         //getPresenter().onButtonDoneClicked();
