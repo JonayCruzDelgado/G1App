@@ -45,10 +45,11 @@ public interface AddAutor {
   interface PresenterToView extends ContextView {
     void finishScreen();
     void hideToolbar();
-    void hideText();
-    void showText();
-    void setText(String txt);
-    void setLabel(String txt);
+
+
+    String getNombre();
+
+    String getDescripcion();
   }
 
   /**

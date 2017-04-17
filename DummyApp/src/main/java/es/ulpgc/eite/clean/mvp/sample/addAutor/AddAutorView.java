@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,27 +23,30 @@ public class AddAutorView
     implements AddAutor.PresenterToView {
 
   private Toolbar toolbar;
-  private Button button;
-  private TextView text;
-  private ImageView imagen;
+  private Button addImagen;
+  private EditText nombreIndtroducido;
+  private EditText descripcionIndtroducida;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_add_autor);
 
-    text = (TextView) findViewById(R.id.text);
 
     toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
-    button = (Button) findViewById(R.id.button);
-    button.setOnClickListener(new View.OnClickListener() {
+    nombreIndtroducido = (EditText) findViewById(R.id.nombreAutorIntroducido);
+    descripcionIndtroducida = (EditText) findViewById(R.id.descripcionAutorIntroducida);
+
+    addImagen = (Button) findViewById(R.id.addImagenAutor);
+    addImagen.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        getPresenter().onButtonClicked();
+        //getPresenter().onButtonClicked();
       }
     });
-    imagen = (ImageView) findViewById(R.id.imagenDesdeAssets);
+
 
   }
 
@@ -54,58 +58,11 @@ public class AddAutorView
   @Override
   protected void onResume() {
     super.onResume(AddAutorPresenter.class, this);
-    imagen.setImageBitmap(getBitmapFromAssets("ic_libro.jpg"));
+
   }
 
   // Custom method to get assets folder image as bitmap
-  private Bitmap getBitmapFromAssets(String fileName){
-        /*
-            AssetManager
-                Provides access to an application's raw asset files.
-        */
 
-        /*
-            public final AssetManager getAssets ()
-                Retrieve underlying AssetManager storage for these resources.
-        */
-    AssetManager am = getAssets();
-    InputStream is = null;
-    try{
-            /*
-                public final InputStream open (String fileName)
-                    Open an asset using ACCESS_STREAMING mode. This provides access to files that
-                    have been bundled with an application as assets -- that is,
-                    files placed in to the "assets" directory.
-
-                    Parameters
-                        fileName : The name of the asset to open. This name can be hierarchical.
-                    Throws
-                        IOException
-            */
-      is = am.open(fileName);
-    }catch(IOException e){
-      e.printStackTrace();
-    }
-
-        /*
-            BitmapFactory
-                Creates Bitmap objects from various sources, including files, streams, and byte-arrays.
-        */
-
-        /*
-            public static Bitmap decodeStream (InputStream is)
-                Decode an input stream into a bitmap. If the input stream is null, or cannot
-                be used to decode a bitmap, the function returns null. The stream's
-                position will be where ever it was after the encoded data was read.
-
-                Parameters
-                    is : The input stream that holds the raw data to be decoded into a bitmap.
-                Returns
-                    The decoded bitmap, or null if the image data could not be decoded.
-        */
-    Bitmap bitmap = BitmapFactory.decodeStream(is);
-    return bitmap;
-  }
 
   /*
   @Override
@@ -145,23 +102,14 @@ public class AddAutorView
     toolbar.setVisibility(View.GONE);
   }
 
-  @Override
-  public void hideText() {
-    text.setVisibility(View.GONE);
-  }
 
   @Override
-  public void showText() {
-    text.setVisibility(View.VISIBLE);
+  public String getNombre(){
+    return nombreIndtroducido.getText().toString();
+  }
+  @Override
+  public String getDescripcion(){
+    return descripcionIndtroducida.getText().toString();
   }
 
-  @Override
-  public void setText(String txt) {
-    text.setText(txt);
-  }
-
-  @Override
-  public void setLabel(String txt) {
-    button.setText(txt);
-  }
 }

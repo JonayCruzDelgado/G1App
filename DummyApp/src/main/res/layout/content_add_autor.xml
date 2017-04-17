@@ -28,7 +28,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/labelNombre"
+            android:id="@+id/labelNombreAutor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nombre:"
@@ -41,7 +41,7 @@
             android:layout_weight="1"/>
 
         <EditText
-            android:id="@+id/nombreIntroducido"
+            android:id="@+id/nombreAutorIntroducido"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -56,7 +56,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/labelDescripcion"
+                android:id="@+id/labelDescripcionAutor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Descripcion:"
@@ -69,7 +69,7 @@
                 android:layout_weight="1"/>
 
             <EditText
-                android:id="@+id/descripcionIntroducida"
+                android:id="@+id/descripcionAutorIntroducida"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -80,7 +80,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/addImagenAutor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="añadir imagen"
