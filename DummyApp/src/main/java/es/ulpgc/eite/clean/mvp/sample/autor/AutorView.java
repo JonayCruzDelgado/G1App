@@ -72,6 +72,7 @@ public class AutorView
   @Override
   protected void onResume() {
     super.onResume(AutorPresenter.class, this);
+    getPresenter().inicializarVista();
 
   }
 

@@ -56,13 +56,13 @@ public class AddObraPresenter extends GenericPresenter
     Log.d(TAG, "calling onResume()");
 
     if(configurationChangeOccurred()) {
-      getView().setLabel(getModel().getLabel());
+
 
       checkToolbarVisibility();
-      checkTextVisibility();
+
 
       if (buttonClicked) {
-        getView().setText(getModel().getText());
+
       }
     }
   }
@@ -135,10 +135,10 @@ public class AddObraPresenter extends GenericPresenter
   public void onScreenStarted() {
     Log.d(TAG, "calling onScreenStarted()");
     if(isViewRunning()) {
-      getView().setLabel(getModel().getLabel());
+
     }
     checkToolbarVisibility();
-    checkTextVisibility();
+
   }
 
   @Override
@@ -189,15 +189,6 @@ public class AddObraPresenter extends GenericPresenter
     }
   }
 
-  private void checkTextVisibility(){
-    Log.d(TAG, "calling checkTextVisibility()");
-    if(isViewRunning()) {
-      if(!textVisible) {
-        getView().hideText();
-      } else {
-        getView().showText();
-      }
-    }
-  }
+
 
 }
