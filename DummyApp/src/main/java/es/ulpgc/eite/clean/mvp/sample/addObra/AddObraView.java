@@ -26,6 +26,7 @@ public class AddObraView
 
   private Toolbar toolbar;
   private Button addImagen;
+  private Button btnDone;
   private EditText nombreIndtroducido;
   private EditText descripcionIndtroducida;
   private EditText latitudIndtroducida;
@@ -42,6 +43,14 @@ public class AddObraView
     descripcionIndtroducida = (EditText) findViewById(R.id.descripcionObraIntroducida);
     latitudIndtroducida = (EditText) findViewById(R.id.latitudIntroducida);
     longitudIndtroducida = (EditText) findViewById(R.id.longitudIntroducida);
+
+    btnDone=(Button) findViewById(R.id.btnDoneObra);
+    addImagen.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        //getPresenter().onButtonDoneClicked();
+      }
+    });
 
     addImagen = (Button) findViewById(R.id.addImagenObra);
     addImagen.setOnClickListener(new View.OnClickListener() {
