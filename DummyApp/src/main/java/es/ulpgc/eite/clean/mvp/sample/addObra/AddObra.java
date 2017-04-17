@@ -18,15 +18,13 @@ public interface AddObra {
 
   interface ToAddObra {
     void onScreenStarted();
-    void setToolbarVisibility(boolean visible);
-    void setTextVisibility(boolean visible);
+
   }
 
   interface AddObraTo {
     Context getManagedContext();
     void destroyView();
-    boolean isToolbarVisible();
-    boolean isTextVisible();
+
   }
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -36,7 +34,7 @@ public interface AddObra {
    * Methods offered to VIEW to communicate with PRESENTER
    */
   interface ViewToPresenter extends Presenter<PresenterToView> {
-    void onButtonClicked();
+
 
       void onButtonDoneClicked();
   }
