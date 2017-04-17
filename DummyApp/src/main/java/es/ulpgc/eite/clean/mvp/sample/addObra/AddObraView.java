@@ -48,7 +48,7 @@ public class AddObraView
     btnDone.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        //getPresenter().onButtonDoneClicked();
+        getPresenter().onButtonDoneClicked();
       }
     });
 

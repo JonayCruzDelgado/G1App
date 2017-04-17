@@ -13,6 +13,7 @@ import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.GenericPresenter;
 import es.ulpgc.eite.clean.mvp.sample.addObra.AddObra;
 import es.ulpgc.eite.clean.mvp.sample.addObra.AddObraModel;
+import es.ulpgc.eite.clean.mvp.sample.app.App;
 import es.ulpgc.eite.clean.mvp.sample.app.Mediator;
 
 public class AddObraPresenter extends GenericPresenter
@@ -125,6 +126,13 @@ public class AddObraPresenter extends GenericPresenter
     getManagedContext().startActivity(intent);
 
 
+  }
+
+  @Override
+  public void onButtonDoneClicked() {
+    Mediator app = (Mediator) getView().getApplication();
+    getModel().addObraSinImagen(getView().getNombre(),getView().getDescripcion(),app.getIdAutorSelecionado(),getView().getLatitud(),getView().getLongitud());
+    getView().finishScreen();
   }
 
 
