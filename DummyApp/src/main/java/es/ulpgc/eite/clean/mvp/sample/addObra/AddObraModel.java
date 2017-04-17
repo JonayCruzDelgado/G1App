@@ -2,15 +2,13 @@ package es.ulpgc.eite.clean.mvp.sample.addObra;
 
 import es.ulpgc.eite.clean.mvp.GenericModel;
 import es.ulpgc.eite.clean.mvp.sample.addObra.AddObra;
+import es.ulpgc.eite.clean.mvp.sample.dataBase.ManejadorBaseDeDatos;
 
 
 public class AddObraModel extends GenericModel<AddObra.ModelToPresenter>
     implements AddObra.PresenterToModel {
 
-  private String addObraText;
-  private String addObraLabel;
-  private int numOfTimes;
-  private String msgText;
+  ManejadorBaseDeDatos manejador;
 
   /**
    * Method that recovers a reference to the PRESENTER
@@ -22,8 +20,7 @@ public class AddObraModel extends GenericModel<AddObra.ModelToPresenter>
   public void onCreate(AddObra.ModelToPresenter presenter) {
     super.onCreate(presenter);
 
-    addObraLabel = "Click Me!";
-    addObraText = "Hello World!";
+    manejador = ManejadorBaseDeDatos.getInstance();;
   }
 
   /**
@@ -43,21 +40,9 @@ public class AddObraModel extends GenericModel<AddObra.ModelToPresenter>
 
 
   @Override
-  public void onChangeMsgByBtnClicked() {
-    msgText = addObraText;
-    if(numOfTimes > 0) {
-      msgText += ", " + numOfTimes + " times";
-    }
-    numOfTimes++;
-  }
+  public void  addObraSinImagen(String nombre,String descripcion,int idAutor,Double latitud,Double longitud){
+    String imgDefault ="ic_cuadro.jpg";
+    manejador.addObra(nombre,descripcion,idAutor,latitud,longitud,imgDefault);
 
-  @Override
-  public String getText() {
-    return msgText;
-  }
-
-  @Override
-  public String getLabel() {
-    return addObraLabel;
   }
 }

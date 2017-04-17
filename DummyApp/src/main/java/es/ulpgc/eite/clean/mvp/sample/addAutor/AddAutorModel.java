@@ -1,15 +1,13 @@
 package es.ulpgc.eite.clean.mvp.sample.addAutor;
 
 import es.ulpgc.eite.clean.mvp.GenericModel;
+import es.ulpgc.eite.clean.mvp.sample.dataBase.ManejadorBaseDeDatos;
 
 
 public class AddAutorModel extends GenericModel<AddAutor.ModelToPresenter>
     implements AddAutor.PresenterToModel {
 
-  private String addAutorText;
-  private String addAutorLabel;
-  private int numOfTimes;
-  private String msgText;
+  ManejadorBaseDeDatos manejador;
 
   /**
    * Method that recovers a reference to the PRESENTER
@@ -21,8 +19,7 @@ public class AddAutorModel extends GenericModel<AddAutor.ModelToPresenter>
   public void onCreate(AddAutor.ModelToPresenter presenter) {
     super.onCreate(presenter);
 
-    addAutorLabel = "Click Me!";
-    addAutorText = "Hello World!";
+    manejador = ManejadorBaseDeDatos.getInstance();
   }
 
   /**
@@ -42,21 +39,9 @@ public class AddAutorModel extends GenericModel<AddAutor.ModelToPresenter>
 
 
   @Override
-  public void onChangeMsgByBtnClicked() {
-    msgText = addAutorText;
-    if(numOfTimes > 0) {
-      msgText += ", " + numOfTimes + " times";
-    }
-    numOfTimes++;
-  }
+  public void  addAutorSinImagen(String nombre,String descripcion,int idCategoria){
+    String imgDefault ="ic_escultura.jpg";
+    manejador.addAutor(nombre,descripcion,idCategoria,imgDefault);
 
-  @Override
-  public String getText() {
-    return msgText;
-  }
-
-  @Override
-  public String getLabel() {
-    return addAutorLabel;
   }
 }

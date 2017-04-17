@@ -60,9 +60,7 @@ public interface AddObra {
    */
   interface PresenterToModel extends Model<ModelToPresenter> {
 
-    void onChangeMsgByBtnClicked();
-    String getText();
-    String getLabel();
+    void  addObraSinImagen(String nombre, String descripcion, int idAutor, Double latitud, Double longitud);
   }
 
   /**

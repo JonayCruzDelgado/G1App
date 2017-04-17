@@ -46,7 +46,6 @@ public interface AddAutor {
     void finishScreen();
     void hideToolbar();
 
-
     String getNombre();
 
     String getDescripcion();
@@ -57,9 +56,7 @@ public interface AddAutor {
    */
   interface PresenterToModel extends Model<ModelToPresenter> {
 
-    void onChangeMsgByBtnClicked();
-    String getText();
-    String getLabel();
+    void  addAutorSinImagen(String nombre, String descripcion, int idCategoria);
   }
 
   /**
