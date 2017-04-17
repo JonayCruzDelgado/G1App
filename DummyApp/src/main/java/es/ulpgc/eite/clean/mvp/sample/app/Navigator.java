@@ -11,4 +11,8 @@ public interface Navigator {
   void goToAutoresScreen(Inicial.InicialTo presenter);
   void goToAutorScreen(Autores.AutoresTo presenter);
   void goToObraScreen(Autor.AutorTo presenter);
+
+  void goToAddAutorScreen(Autores.AutoresTo presenter);
+
+  void goToAddObraScreen(Autor.AutorTo presenter);
 }

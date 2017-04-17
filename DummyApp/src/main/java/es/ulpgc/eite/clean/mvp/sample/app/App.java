@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.util.Log;
 
 import es.ulpgc.eite.clean.mvp.sample.addAutor.AddAutorPresenter;
+import es.ulpgc.eite.clean.mvp.sample.addAutor.AddAutorView;
 import es.ulpgc.eite.clean.mvp.sample.addObra.AddObraPresenter;
+import es.ulpgc.eite.clean.mvp.sample.addObra.AddObraView;
 import es.ulpgc.eite.clean.mvp.sample.autor.Autor;
 import es.ulpgc.eite.clean.mvp.sample.autor.AutorView;
 import es.ulpgc.eite.clean.mvp.sample.autores.Autores;
@@ -24,7 +26,9 @@ public class App extends Application implements Mediator, Navigator {
   private InicialState toInicialState, inicialToState;
   private AutoresState toAutoresState, autoresToState;
   private AutorState toAutorState, autorToState;
-  private ObraState toObrastate, obraToState;
+  private ObraState toObraState, obraToState;
+  private AddObraState toAddObraState, addObraToState;
+  private AddAutorState toAddAutorState, addAutorToState;
 
   @Override
   public void onCreate() {
@@ -73,13 +77,13 @@ public class App extends Application implements Mediator, Navigator {
   }
 
   @Override
-  public void startingAddAutorScreen(AddAutorPresenter addAutorPresenter) {
-
+  public void startingAddAutorScreen(AddAutorPresenter presenter) {
+    presenter.onScreenStarted();
   }
 
   @Override
-  public void startingAddObraScreen(AddObraPresenter addObraPresenter) {
-
+  public void startingAddObraScreen(AddObraPresenter presenter) {
+    presenter.onScreenStarted();
   }
   ///////////////////////////////////////////////////////////////////////////////////
   // Navigator /////////////////////////////////////////////////////////////////////
@@ -142,6 +146,32 @@ public class App extends Application implements Mediator, Navigator {
     }
 
   }
+
+  @Override
+  public void goToAddAutorScreen(Autores.AutoresTo presenter){
+
+    Log.d("APP", "goToAddAutorScreen() ");
+    Context view = presenter.getManagedContext();
+
+    if (view != null) {
+      view.startActivity(new Intent(view, AddAutorView.class));
+
+    }
+
+  }
+
+  @Override
+  public void goToAddObraScreen(Autor.AutorTo presenter){
+
+    Log.d("APP", "goToAddAutorScreen()");
+    Context view = presenter.getManagedContext();
+
+    if (view != null) {
+      view.startActivity(new Intent(view, AddObraView.class));
+
+    }
+
+  }
   ///////////////////////////////////////////////////////////////////////////////////
   // State /////////////////////////////////////////////////////////////////////////
 
@@ -151,24 +181,27 @@ public class App extends Application implements Mediator, Navigator {
   }
   private class InicialState{
     boolean textVisibility;
-    //String layaoutClicked;
     int idBoton;
   }
   private class AutoresState{
     int posicionListaAutoresPulsada;
     int idAutorSelecionado;
-    //String categoriaSeleccionada;
-    //String nombreAutorSelecionado;
+
 
   }
   private class AutorState{
-   // String nombreAutorSelecionado;
     int posicionListaObrasSelecionada;
     int idObraSelecionada;
 
   }
   private class ObraState{
-   // String nombreObraSelecionada;
+
+  }
+  private class AddObraState{
+
+  }
+  private class AddAutorState{
+    // String nombreObraSelecionada;
 
   }
 

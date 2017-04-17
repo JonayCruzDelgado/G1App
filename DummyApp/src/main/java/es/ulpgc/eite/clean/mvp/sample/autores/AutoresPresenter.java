@@ -103,6 +103,10 @@ public class AutoresPresenter extends GenericPresenter
     Navigator app = (Navigator) getView().getApplication();
     app.goToAutorScreen(this);
   }
+  @Override
+  public void onButtonAddAutorCliked(){
+
+  }
 
   ///////////////////////////////////////////////////////////////////////////////////
   // To autores //////////////////////////////////////////////////////////////////////

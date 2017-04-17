@@ -40,6 +40,7 @@ public interface Autores {
   interface ViewToPresenter extends Presenter<PresenterToView> {
     void inicializarVista();
     void onItemClickSelected(int pos);
+    void onButtonAddAutorCliked();
   }
 
   /**
