@@ -91,7 +91,7 @@ public class AddAutorPresenter extends GenericPresenter
     int idCategoria=mediador.getIdBotonCategoriaClicked();
     String nombre=getView().getNombre();
     String descripcion =getView().getDescripcion();
-      if((!nombre.equals("")) || (!descripcion.equals(""))){
+      if((!nombre.equals("")) && (!descripcion.equals(""))){
           getModel().addAutorSinImagen(nombre, descripcion, idCategoria);
       }
     getView().finishScreen();
