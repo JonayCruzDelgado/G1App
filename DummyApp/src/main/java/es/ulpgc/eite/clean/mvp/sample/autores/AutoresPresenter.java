@@ -105,7 +105,9 @@ public class AutoresPresenter extends GenericPresenter
   }
   @Override
   public void onButtonAddAutorCliked(){
-
+      Navigator app = (Navigator) getView().getApplication();
+      app.goToAddAutorScreen(this);
+      //activar el observable.
   }
 
   ///////////////////////////////////////////////////////////////////////////////////
