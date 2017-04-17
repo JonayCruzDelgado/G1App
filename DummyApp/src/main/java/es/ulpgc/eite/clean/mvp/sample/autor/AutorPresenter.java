@@ -113,6 +113,7 @@ public class AutorPresenter extends GenericPresenter
   public void onButtonAddObraCliked(){
     Navigator app = (Navigator) getView().getApplication();
     app.goToAddObraScreen(this);
+    //activar el observable.
 
   }
 

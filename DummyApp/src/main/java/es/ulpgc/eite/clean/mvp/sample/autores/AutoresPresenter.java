@@ -48,7 +48,7 @@ public class AutoresPresenter extends GenericPresenter
   public void onResume(Autores.PresenterToView view) {
     setView(view);
    Log.d(TAG, "calling onResume()");
-
+    inicializarVista();
     if(configurationChangeOccurred()) {
       inicializarVista();
 

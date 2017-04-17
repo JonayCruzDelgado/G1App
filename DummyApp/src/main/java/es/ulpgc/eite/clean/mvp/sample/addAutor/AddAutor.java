@@ -18,15 +18,13 @@ public interface AddAutor {
 
   interface ToAddAutor {
     void onScreenStarted();
-    void setToolbarVisibility(boolean visible);
-    void setTextVisibility(boolean visible);
+
   }
 
   interface AddAutorTo {
     Context getManagedContext();
     void destroyView();
-    boolean isToolbarVisible();
-    boolean isTextVisible();
+
   }
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -36,7 +34,8 @@ public interface AddAutor {
    * Methods offered to VIEW to communicate with PRESENTER
    */
   interface ViewToPresenter extends Presenter<PresenterToView> {
-    void onButtonClicked();
+
+    void onButtonDoneClicked();
   }
 
   /**
@@ -46,15 +45,15 @@ public interface AddAutor {
     void finishScreen();
     void hideToolbar();
     String getNombre();
-
     String getDescripcion();
+
+    void setTitle(String txt);
   }
 
   /**
    * Methods offered to MODEL to communicate with PRESENTER
    */
   interface PresenterToModel extends Model<ModelToPresenter> {
-
     void  addAutorSinImagen(String nombre, String descripcion, int idCategoria);
   }
 

@@ -18,9 +18,6 @@ public class AddAutorPresenter extends GenericPresenter
     implements AddAutor.ViewToPresenter, AddAutor.ModelToPresenter, AddAutor.AddAutorTo, AddAutor.ToAddAutor {
 
 
-  private boolean toolbarVisible;
-  private boolean buttonClicked;
-  private boolean textVisible;
 
   /**
    * Operation called during VIEW creation in {@link GenericActivity#onResume(Class, Object)}
@@ -52,16 +49,11 @@ public class AddAutorPresenter extends GenericPresenter
   public void onResume(AddAutor.PresenterToView view) {
     setView(view);
     Log.d(TAG, "calling onResume()");
+    inicializarVista();
 
     if(configurationChangeOccurred()) {
+      inicializarVista();
 
-
-      checkToolbarVisibility();
-
-
-      if (buttonClicked) {
-
-      }
     }
   }
 
@@ -93,35 +85,16 @@ public class AddAutorPresenter extends GenericPresenter
   // View To Presenter /////////////////////////////////////////////////////////////
 
   @Override
-  public void onButtonClicked() {
+  public void onButtonDoneClicked() {
     Log.d(TAG, "calling onButtonClicked()");
-    /*if(isViewRunning()) {
-      getModel().onChangeMsgByBtnClicked();
-      getView().setTituloToolbar(getModel().getText());
-      textVisible = true;
-      buttonClicked = true;
-    }
-    checkTextVisibility();*/
+    Mediator mediador=(Mediator)getView().getApplication();
+    int idCategoria=mediador.getIdBotonCategoriaClicked();
+    String nombre=getView().getNombre();
+    String descripcion =getView().getDescripcion();
 
-    double latitude =20;
-    double longitude = -15;
-    //tras la %f el ?z=0 indica el nivel de zoom  z establece el nivel de zoom inicial del mapa.
-    // Los valores aceptados varían de 0 que muestra el planeta a 21 que muestra edificios separados
-    // El límite superior puede variar según los datos del mapa disponibles en la ubicación seleccionada.
-    //geo:latitude,longitude?z=zoom
+    getModel().addAutorSinImagen(nombre,descripcion,idCategoria);
 
-   /* la q sirbe para para mostrar una marca en un lugar o una dirección en particular, como un punto de referencia, un negocio,
-     una función geográfica o una ciudad. Con esto no funciona el parametro zoom*/
-   //geo:0,0?q=latitude,longitude(label)
-    String uri = String.format(Locale.ENGLISH, ("geo:0,0?q=%f,%f(obra)"), latitude, longitude);
-
-    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-    //linea de comando para evitar que la aplicacion crashee si no tiene instalado el google maps
-    /*if (intent.resolveActivity(getPackageManager()) != null) {
-      getManagedContext().startActivity(intent);
-    }*/
-    getManagedContext().startActivity(intent);
-
+    getView().finishScreen();
 
   }
 
@@ -133,20 +106,9 @@ public class AddAutorPresenter extends GenericPresenter
   public void onScreenStarted() {
     Log.d(TAG, "calling onScreenStarted()");
     if(isViewRunning()) {
-
+        inicializarVista();
     }
-    checkToolbarVisibility();
 
-  }
-
-  @Override
-  public void setToolbarVisibility(boolean visible) {
-    toolbarVisible = visible;
-  }
-
-  @Override
-  public void setTextVisibility(boolean visible) {
-    textVisible = visible;
   }
 
 
@@ -165,26 +127,11 @@ public class AddAutorPresenter extends GenericPresenter
       getView().finishScreen();
     }
   }
-  @Override
-  public boolean isToolbarVisible() {
-    return toolbarVisible;
-  }
-
-  @Override
-  public boolean isTextVisible() {
-    return textVisible;
-  }
-
 
   ///////////////////////////////////////////////////////////////////////////////////
 
-  private void checkToolbarVisibility(){
-    Log.d(TAG, "calling checkToolbarVisibility()");
-    if(isViewRunning()) {
-      if (!toolbarVisible) {
-        getView().hideToolbar();
-      }
-    }
+  public void inicializarVista(){
+    getView().setTitle("Nueva Obra");
   }
 
 

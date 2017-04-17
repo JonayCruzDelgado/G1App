@@ -150,5 +150,9 @@ public class AddObraView
     }
     return value;
   }
+  @Override
+  public void setTitle(String txt){
+    toolbar.setTitle(txt);
+  }
 
 }

@@ -53,6 +53,8 @@ public interface AddObra {
     Double getLatitud();
 
     Double getLongitud();
+
+      void setTitle(String txt);
   }
 
   /**

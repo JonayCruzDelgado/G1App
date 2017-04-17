@@ -44,7 +44,7 @@ public class AddAutorView
     btnDone.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        //getPresenter().onButtonDoneClicked();
+        getPresenter().onButtonDoneClicked();
       }
     });
 
@@ -120,5 +120,10 @@ public class AddAutorView
   public String getDescripcion(){
     return descripcionIndtroducida.getText().toString();
   }
+  @Override
+  public void setTitle(String txt){
+    toolbar.setTitle(txt);
+  }
+
 
 }
