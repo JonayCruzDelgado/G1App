@@ -48,6 +48,8 @@ public interface AddAutor {
     String getDescripcion();
 
     void setTitle(String txt);
+
+      void toastDatosValidos();
   }
 
   /**

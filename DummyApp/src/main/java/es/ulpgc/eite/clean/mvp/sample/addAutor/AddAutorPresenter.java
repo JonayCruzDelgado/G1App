@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.Locale;
 
@@ -91,10 +92,13 @@ public class AddAutorPresenter extends GenericPresenter
     int idCategoria=mediador.getIdBotonCategoriaClicked();
     String nombre=getView().getNombre();
     String descripcion =getView().getDescripcion();
+      if((!nombre.equals("")) && (!descripcion.equals(""))){
+          getModel().addAutorSinImagen(nombre, descripcion, idCategoria);
+        getView().finishScreen();
+      }
+      getView().toastDatosValidos();
 
-    getModel().addAutorSinImagen(nombre,descripcion,idCategoria);
 
-    getView().finishScreen();
 
   }
 
@@ -131,7 +135,7 @@ public class AddAutorPresenter extends GenericPresenter
   ///////////////////////////////////////////////////////////////////////////////////
 
   public void inicializarVista(){
-    getView().setTitle("Nueva Obra");
+    getView().setTitle("Nuevo Autor");
   }
 
 

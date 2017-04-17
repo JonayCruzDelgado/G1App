@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -123,6 +124,12 @@ public class AddAutorView
   @Override
   public void setTitle(String txt){
     toolbar.setTitle(txt);
+  }
+  @Override
+  public void toastDatosValidos(){
+    Toast toast = Toast.makeText(getActivityContext(), "Introduce datos validos",Toast.LENGTH_SHORT);
+    toast.show();
+
   }
 
 
