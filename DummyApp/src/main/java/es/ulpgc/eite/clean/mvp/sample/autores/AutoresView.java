@@ -33,7 +33,7 @@ public class AutoresView
     btnAddAutor.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        //getPresenter().onButtonAddAutorCliked();
+        getPresenter().onButtonAddAutorCliked();
 
       }
     });
