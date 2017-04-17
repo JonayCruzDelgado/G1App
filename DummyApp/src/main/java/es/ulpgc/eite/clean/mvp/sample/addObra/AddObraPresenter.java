@@ -131,8 +131,13 @@ public class AddObraPresenter extends GenericPresenter
   @Override
   public void onButtonDoneClicked() {
     Mediator app = (Mediator) getView().getApplication();
-    getModel().addObraSinImagen(getView().getNombre(),getView().getDescripcion(),app.getIdAutorSelecionado(),getView().getLatitud(),getView().getLongitud());
-    getView().finishScreen();
+    if((!getView().getNombre().equals(""))&&(!getView().getDescripcion().equals(""))&&
+            (getView().getLatitud()!=0.0)&&(getView().getLongitud()!=0.0)){
+      getModel().addObraSinImagen(getView().getNombre(), getView().getDescripcion(), app.getIdAutorSelecionado(), getView().getLatitud(), getView().getLongitud());
+      getView().finishScreen();
+    }else {
+      getView().alerta();
+    }
   }
 
 

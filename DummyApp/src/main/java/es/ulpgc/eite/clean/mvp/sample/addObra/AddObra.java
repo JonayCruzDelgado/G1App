@@ -57,6 +57,8 @@ public interface AddObra {
     Double getLongitud();
 
       void setTitle(String txt);
+
+    void alerta();
   }
 
   /**
