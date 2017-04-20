@@ -32,7 +32,7 @@
             android:id="@+id/labelNombreAutor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nombre:"
+            android:text="@string/labelNombre"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             />
 
@@ -60,7 +60,7 @@
                 android:id="@+id/labelDescripcionAutor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Descripcion:"
+                android:text="@string/labelDescripcion"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 />
 
@@ -84,15 +84,23 @@
             android:id="@+id/addImagenAutor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="añadir imagen"
+            android:text="@string/labelBtnAddImagen"
             android:layout_gravity="center"
             android:layout_margin="@dimen/fab_margin"/>
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:maxHeight="100dp"
+            android:maxWidth="100dp"
+            app:srcCompat="@mipmap/ic_arqui" />
 
         <Button
             android:id="@+id/btnDoneAutor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Done"
+            android:text="@string/labelBtnAddDone"
             android:layout_gravity="center"
             android:layout_margin="@dimen/fab_margin"/>
 

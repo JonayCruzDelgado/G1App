@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">ArtApp</string>
-    <string name="dummy_screen_title">Dummy</string>
-    <string name="action_settings">Settings</string>
-    <string name="screen_text">Text</string>
-    <string name="button_label">Button</string>
+    <string name="labelNombre">Nombre:</string>
+    <string name="labelDescripcion">Descripcion</string>
+    <string name="labelLatitud">Latitud:</string>
+    <string name="labelLongitud">Longitud:</string>
+    <string name="labelBtnAddImagen">Selecionar Imagen</string>
+    <string name="labelBtnAddDone">DONE</string>
+    <string name="labelObras">Obras</string>
 </resources>
