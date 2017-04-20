@@ -79,12 +79,23 @@ public class AddObraView
     });
   }
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
     if (resultCode == RESULT_OK) {
-      if (requestCode == SELECT_PICTURE) {
-        Uri selectedImageUri = data.getData();
-        //convertir la Uri a url
-      }
+
+      Uri selectedImageUri = data.getData();
+      selectedImagePath = getRealPathFromURI(selectedImageUri);
+      String var = selectedImagePath;
+
     }
+  }
+  public String getRealPathFromURI(Uri uri) {
+    String[] projection = { MediaStore.Images.Media.DATA };
+    @SuppressWarnings("deprecation")
+    Cursor cursor = managedQuery(uri, projection, null, null, null);
+    int column_index = cursor
+            .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+    cursor.moveToFirst();
+    return cursor.getString(column_index);
   }
   /**
    * Method that initialized MVP objects
