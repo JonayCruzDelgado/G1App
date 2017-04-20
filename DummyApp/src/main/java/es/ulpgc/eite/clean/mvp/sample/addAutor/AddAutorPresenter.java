@@ -131,6 +131,9 @@ public class AddAutorPresenter extends GenericPresenter
 
   public void inicializarVista(){
     getView().setTitle("Nuevo Autor");
+    if(true){  //comprobar si ya se no a selecionado imagen
+      getView().hideImagen();
+    }
   }
 
 

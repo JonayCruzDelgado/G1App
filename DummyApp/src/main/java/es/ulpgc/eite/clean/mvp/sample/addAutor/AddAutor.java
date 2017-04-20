@@ -1,6 +1,7 @@
 package es.ulpgc.eite.clean.mvp.sample.addAutor;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 
 import es.ulpgc.eite.clean.mvp.ContextView;
 import es.ulpgc.eite.clean.mvp.Model;
@@ -50,6 +51,12 @@ public interface AddAutor {
     void setTitle(String txt);
 
       void showToast(String txt);
+
+    void setImagen(Bitmap imagen);
+
+    void showImagen();
+
+    void hideImagen();
   }
 
   /**

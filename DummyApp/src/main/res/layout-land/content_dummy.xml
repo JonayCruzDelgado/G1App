@@ -24,7 +24,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/screen_text"
+            android:text=""
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:id="@+id/text"/>
 
@@ -37,7 +37,7 @@
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/button_label"
+            android:text=""
             android:layout_gravity="bottom|right"
             android:layout_margin="@dimen/fab_margin"/>
 

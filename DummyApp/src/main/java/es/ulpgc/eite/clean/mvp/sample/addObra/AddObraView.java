@@ -1,11 +1,13 @@
 package es.ulpgc.eite.clean.mvp.sample.addObra;
 
 import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import es.ulpgc.eite.clean.mvp.GenericActivity;
@@ -22,6 +24,7 @@ public class AddObraView
   private EditText descripcionIndtroducida;
   private EditText latitudIndtroducida;
   private EditText longitudIndtroducida;
+  private ImageView imagenSelecionada;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -34,6 +37,7 @@ public class AddObraView
     descripcionIndtroducida = (EditText) findViewById(R.id.descripcionObraIntroducida);
     latitudIndtroducida = (EditText) findViewById(R.id.latitudIntroducida);
     longitudIndtroducida = (EditText) findViewById(R.id.longitudIntroducida);
+    imagenSelecionada=(ImageView) findViewById(R.id.imagenSeleccionadaObra);
 
     btnDone=(Button) findViewById(R.id.btnDoneObra);
     btnDone.setOnClickListener(new View.OnClickListener() {
@@ -149,6 +153,18 @@ public class AddObraView
     public void showToast(String txt){
       Toast toast = Toast.makeText(getActivityContext(),txt,Toast.LENGTH_SHORT);
     toast.show();
+  }
+  @Override
+  public void setImagen(Bitmap imagen){
+    imagenSelecionada.setImageBitmap(imagen);
+  }
+  @Override
+  public void showImagen(){
+    imagenSelecionada.setVisibility(View.VISIBLE);
+  }
+  @Override
+  public void hideImagen(){
+    imagenSelecionada.setVisibility(View.GONE);
   }
 
 }
