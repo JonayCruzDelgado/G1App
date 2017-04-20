@@ -36,7 +36,11 @@ public interface AddAutor {
    */
   interface ViewToPresenter extends Presenter<PresenterToView> {
 
-    void onButtonDoneClicked();
+      ///////////////////////////////////////////////////////////////////////////////////
+      // View To Presenter /////////////////////////////////////////////////////////////
+      void onButtonAddImagenClicked();
+
+      void onButtonDoneClicked();
   }
 
   /**

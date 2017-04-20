@@ -37,7 +37,11 @@ public interface AddObra {
   interface ViewToPresenter extends Presenter<PresenterToView> {
 
 
-      void onButtonDoneClicked();
+    ///////////////////////////////////////////////////////////////////////////////////
+    // View To Presenter /////////////////////////////////////////////////////////////
+    void onButtonAddImagenClicked();
+
+    void onButtonDoneClicked();
   }
 
   /**

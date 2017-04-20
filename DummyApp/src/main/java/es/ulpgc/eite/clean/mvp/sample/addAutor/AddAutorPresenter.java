@@ -79,6 +79,10 @@ public class AddAutorPresenter extends GenericPresenter
 
   ///////////////////////////////////////////////////////////////////////////////////
   // View To Presenter /////////////////////////////////////////////////////////////
+  @Override
+  public void onButtonAddImagenClicked(){
+
+  }
 
   @Override
   public void onButtonDoneClicked() {
@@ -92,8 +96,6 @@ public class AddAutorPresenter extends GenericPresenter
         getView().finishScreen();
       }
       getView().showToast("Introducir Datos Validos");
-
-
 
   }
 
