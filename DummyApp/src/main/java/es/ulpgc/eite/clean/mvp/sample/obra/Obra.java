@@ -51,6 +51,8 @@ public interface Obra {
     void setDescripcionObra(String txt);
     void setImagenObra(String icono);
     void setNombreObra(String txt);
+
+      void showToast(String txt);
   }
 
   /**

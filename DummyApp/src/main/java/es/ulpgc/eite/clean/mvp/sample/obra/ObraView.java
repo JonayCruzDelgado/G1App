@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -129,7 +130,12 @@ public class ObraView
     Bitmap bitmap = BitmapFactory.decodeStream(is);
     return bitmap;
   }
+  @Override
+  public void showToast(String txt){
+    Toast toast = Toast.makeText(getActivityContext(), txt,Toast.LENGTH_SHORT);
+    toast.show();
 
+  }
   }
 
 
