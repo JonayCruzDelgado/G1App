@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -109,7 +111,12 @@ public class ObraView
 
   @Override
   public void setImagenObra(String icono) {
-    imagen.setImageBitmap(getBitmapFromAssets(icono));
+    try{
+      imagen.setImageBitmap(getBitmapFromAssets(icono));
+    }catch (Exception e){
+
+      Picasso.with(getActivityContext()).load(icono).into(imagen);
+    }
 
   }
 

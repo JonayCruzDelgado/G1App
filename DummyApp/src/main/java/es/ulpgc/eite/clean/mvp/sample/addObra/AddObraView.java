@@ -1,9 +1,14 @@
 package es.ulpgc.eite.clean.mvp.sample.addObra;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +30,16 @@ public class AddObraView
   private EditText latitudIndtroducida;
   private EditText longitudIndtroducida;
   private ImageView imagenSelecionada;
+  private static final int SELECT_PICTURE = 1;
+
+  @Override
+  public String getSelectedImagePath() {
+    return selectedImagePath;
+  }
+
+
+  private String selectedImagePath;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -52,10 +67,25 @@ public class AddObraView
       @Override
       public void onClick(View view) {
         getPresenter().onButtonAddImagenClicked();
+    // in onCreate or any event where your want the user to
+        // select a file
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent,
+                "Select Picture"), SELECT_PICTURE);
+
       }
     });
   }
-
+  public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    if (resultCode == RESULT_OK) {
+      if (requestCode == SELECT_PICTURE) {
+        Uri selectedImageUri = data.getData();
+        //convertir la Uri a url
+      }
+    }
+  }
   /**
    * Method that initialized MVP objects
    * {@link super#onResume(Class, Object)} should always be called

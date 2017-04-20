@@ -2,6 +2,7 @@ package es.ulpgc.eite.clean.mvp.sample.addObra;
 
 
 import android.content.Context;
+import android.net.Uri;
 import android.util.Log;
 
 import es.ulpgc.eite.clean.mvp.ContextView;
@@ -12,6 +13,8 @@ import es.ulpgc.eite.clean.mvp.sample.app.Mediator;
 public class AddObraPresenter extends GenericPresenter
     <AddObra.PresenterToView, AddObra.PresenterToModel, AddObra.ModelToPresenter, AddObraModel>
     implements AddObra.ViewToPresenter, AddObra.ModelToPresenter, AddObra.AddObraTo, AddObra.ToAddObra {
+
+
 
 
 
@@ -93,7 +96,9 @@ public class AddObraPresenter extends GenericPresenter
     Mediator app = (Mediator) getView().getApplication();
     if((!getView().getNombre().equals(""))&&(!getView().getDescripcion().equals(""))&&
             (getView().getLatitud()!=0.0)&&(getView().getLongitud()!=0.0)){
-      getModel().addObraSinImagen(getView().getNombre(), getView().getDescripcion(), app.getIdAutorSelecionado(), getView().getLatitud(), getView().getLongitud());
+      String var = getView().getSelectedImagePath();
+      getModel().addObraConImagen(getView().getNombre(), getView().getDescripcion(), app.getIdAutorSelecionado(), getView().getLatitud(), getView().getLongitud(),getView().getSelectedImagePath());
+
       getView().finishScreen();
     }else {
       getView().showToast("Introducir Datos Validos");

@@ -1,5 +1,7 @@
 package es.ulpgc.eite.clean.mvp.sample.addObra;
 
+import android.util.Log;
+
 import es.ulpgc.eite.clean.mvp.GenericModel;
 import es.ulpgc.eite.clean.mvp.sample.addObra.AddObra;
 import es.ulpgc.eite.clean.mvp.sample.dataBase.ManejadorBaseDeDatos;
@@ -43,6 +45,12 @@ public class AddObraModel extends GenericModel<AddObra.ModelToPresenter>
   public void  addObraSinImagen(String nombre,String descripcion,int idAutor,Double latitud,Double longitud){
     String imgDefault ="ic_cuadro.jpg";
     manejador.addObra(nombre,descripcion,idAutor,latitud,longitud,imgDefault);
+
+  }
+  @Override
+  public void  addObraConImagen(String nombre, String descripcion, int idAutor, Double latitud, Double longitud, String PathImagen){
+    String url = PathImagen;
+    manejador.addObra(nombre,descripcion,idAutor,latitud,longitud,PathImagen);
 
   }
 }
