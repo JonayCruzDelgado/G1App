@@ -2,12 +2,15 @@ package es.ulpgc.eite.clean.mvp.sample.addAutor;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import es.ulpgc.eite.clean.mvp.ContextView;
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.GenericPresenter;
 import es.ulpgc.eite.clean.mvp.sample.app.Mediator;
+
+
 
 public class AddAutorPresenter extends GenericPresenter
     <AddAutor.PresenterToView, AddAutor.PresenterToModel, AddAutor.ModelToPresenter, AddAutorModel>
@@ -133,11 +136,12 @@ public class AddAutorPresenter extends GenericPresenter
 
   public void inicializarVista(){
     getView().setTitle("Nuevo Autor");
-    if(true){  //comprobar si ya se no a selecionado imagen
+    if(true){  //comprobar si no se a selecionado imagen
       getView().hideImagen();
+    }else{
+        getView().showImagen();
     }
   }
-
 
 
 }
