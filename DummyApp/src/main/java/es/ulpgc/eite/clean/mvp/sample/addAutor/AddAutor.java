@@ -49,7 +49,7 @@ public interface AddAutor {
 
     void setTitle(String txt);
 
-      void toastDatosValidos();
+      void showToast(String txt);
   }
 
   /**

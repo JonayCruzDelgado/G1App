@@ -2,12 +2,7 @@ package es.ulpgc.eite.clean.mvp.sample.addAutor;
 
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.util.Log;
-import android.widget.Toast;
-
-import java.util.Locale;
 
 import es.ulpgc.eite.clean.mvp.ContextView;
 import es.ulpgc.eite.clean.mvp.GenericActivity;
@@ -96,7 +91,7 @@ public class AddAutorPresenter extends GenericPresenter
           getModel().addAutorSinImagen(nombre, descripcion, idCategoria);
         getView().finishScreen();
       }
-      getView().toastDatosValidos();
+      getView().showToast("Introducir Datos Validos");
 
 
 

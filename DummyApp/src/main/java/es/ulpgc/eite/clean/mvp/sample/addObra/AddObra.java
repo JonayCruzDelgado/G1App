@@ -56,7 +56,7 @@ public interface AddObra {
 
       void setTitle(String txt);
 
-    void alerta();
+    void showToast(String txt);
   }
 
   /**

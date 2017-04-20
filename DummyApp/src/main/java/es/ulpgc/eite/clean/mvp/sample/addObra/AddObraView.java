@@ -1,25 +1,15 @@
 package es.ulpgc.eite.clean.mvp.sample.addObra;
 
 import android.annotation.SuppressLint;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.sample.R;
-import es.ulpgc.eite.clean.mvp.sample.addObra.AddObra;
-import es.ulpgc.eite.clean.mvp.sample.addObra.AddObraPresenter;
 
 public class AddObraView
     extends GenericActivity<AddObra.PresenterToView, AddObra.ViewToPresenter, AddObraPresenter>
@@ -156,8 +146,8 @@ public class AddObraView
     toolbar.setTitle(txt);
   }
   @Override
-    public void alerta(){
-      Toast toast = Toast.makeText(getActivityContext(),"Introduce datos validos",Toast.LENGTH_SHORT);
+    public void showToast(String txt){
+      Toast toast = Toast.makeText(getActivityContext(),txt,Toast.LENGTH_SHORT);
     toast.show();
   }
 
