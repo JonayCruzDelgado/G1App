@@ -83,7 +83,7 @@ public class AddObraView
     if (resultCode == RESULT_OK) {
 
       Uri selectedImageUri = data.getData();
-      selectedImagePath = getRealPathFromURI(selectedImageUri);
+      selectedImagePath = selectedImageUri.toString();
       String var = selectedImagePath;
 
     }
