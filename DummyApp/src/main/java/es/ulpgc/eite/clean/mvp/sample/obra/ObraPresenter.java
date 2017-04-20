@@ -94,7 +94,7 @@ public class ObraPresenter extends GenericPresenter
     double longitude = getModel().getLongitud(id);
     String nombreObra=getModel().getNombre(id);
     //tras la %f el ?z=0 indica el nivel de zoom  z establece el nivel de zoom inicial del mapa.
-    // Los valores aceptados varían de 0 todo el planeta a 21 edificios separados
+    // Los valores aceptados varían de 0 el planeta completo a 21 edificios separados
     // El límite superior puede variar según los datos del mapa disponibles en la ubicación seleccionada.
     //geo:latitude,longitude?z=zoom
 
@@ -107,10 +107,12 @@ public class ObraPresenter extends GenericPresenter
 
     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
     //linea de comando para evitar que la aplicacion crashee si no tiene instalado el google maps
-    /*if (intent.resolveActivity(getPackageManager()) != null) {
+    if (intent.resolveActivity(getManagedContext().getPackageManager()) != null) {
       getManagedContext().startActivity(intent);
-    }*/
-    getManagedContext().startActivity(intent);
+    }else{
+      getView().showToast("Google Maps necesario");
+    }
+//    getManagedContext().startActivity(intent);
   }
 
   @Override
