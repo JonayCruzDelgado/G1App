@@ -7,6 +7,8 @@ import android.support.test.runner.AndroidJUnit4;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static android.support.test.espresso.Espresso.onData;
+import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.Matchers.allOf;
 import static org.junit.Assert.assertEquals;
@@ -41,4 +43,11 @@ public class RealmTestInicial {
       onView(allOf(withId(R.id.btnEscultura), isDisplayed()));
       onView(allOf(withId(R.id.textoBtnEscultura), withText("Escultura")));
   }
+    @Test
+    public void testCargarlistaAutores() {
+        onView(withId(R.id.btnEscultura)).perform(click());
+        onView(allOf(withId(R.id.listaAutores),isDisplayed()));
+
+
+    }
 }
