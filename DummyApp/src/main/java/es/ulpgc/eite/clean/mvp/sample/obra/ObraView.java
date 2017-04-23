@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
@@ -111,14 +112,19 @@ public class ObraView
 
   @Override
   public void setImagenObra(String icono) {
-    try{
+
+    if (icono.endsWith(".jpg")) {
       imagen.setImageBitmap(getBitmapFromAssets(icono));
-    }catch (Exception e){
-
-      Picasso.with(getActivityContext()).load(icono).into(imagen);
     }
-
+    else {
+      Uri mUri = Uri.parse(icono);
+      //imagen.setImageURI(mUri);
+      Picasso.with(getActivityContext()).load(mUri).into(imagen);
+    }
   }
+
+
+
 
   @Override
   public void setNombreObra(String txt) {
