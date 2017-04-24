@@ -31,7 +31,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 @RunWith(AndroidJUnit4.class)
-public class RealmTestInicial {
+public class BasicTest {
 
   @Rule
   public ActivityTestRule<InicialView> mActivityRule = new ActivityTestRule<InicialView>(InicialView.class);
@@ -73,6 +73,50 @@ public class RealmTestInicial {
                 .inAdapterView(withId(R.id.listaAutores))
                 .atPosition(0)
                 .check(matches(withText("Leonardo Da Vinci")));
+    }
+    @Test
+    public void testDisplayAutorMiguelAngel() {
+        onView(withId(R.id.btnEscultura)).perform(click());
+        onData(anything())
+                .inAdapterView(withId(R.id.listaAutores))
+                .atPosition(0)
+                .perform(click());
+        onView(allOf(withId(R.id.toolbar),withText("Miguel Ángel")));
+        onView(allOf(withId(R.id.listaObras),isDisplayed()));
+        onData(anything())
+                .inAdapterView(withId(R.id.listaObras))
+                .atPosition(0)
+                .check(matches(withText("El David")));
+    }
+    @Test
+    public void testDisplayObraElDavid() {
+        onView(withId(R.id.btnEscultura)).perform(click());
+        onData(anything())
+                .inAdapterView(withId(R.id.listaAutores))
+                .atPosition(0)
+                .perform(click());
+        onData(anything())
+                .inAdapterView(withId(R.id.listaObras))
+                .atPosition(0)
+                .perform(click());
+        onView(allOf(withId(R.id.toolbar),withText("El David")));
+    }
+    @Test
+    public void testDisplayAddAutor() {
+        onView(withId(R.id.btnEscultura)).perform(click());
+        onView(withId(R.id.btnAddAutor)).perform(click());
+        onView(allOf(withId(R.id.toolbar),withText("Nuevo Autor")));
+
+    }
+    @Test
+    public void testDisplayAddObra() {
+        onView(withId(R.id.btnEscultura)).perform(click());
+        onData(anything())
+                .inAdapterView(withId(R.id.listaAutores))
+                .atPosition(0)
+                .perform(click());
+        onView(withId(R.id.btnAddObra)).perform(click());
+        onView(allOf(withId(R.id.toolbar),withText("Nueva Obra")));
 
     }
 
