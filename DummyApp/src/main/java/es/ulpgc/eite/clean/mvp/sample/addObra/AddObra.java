@@ -58,9 +58,9 @@ public interface AddObra {
 
     String getDescripcion();
 
-    Double getLatitud();
+    String getLatitud();
 
-    Double getLongitud();
+    String getLongitud();
 
       void setTitle(String txt);
 

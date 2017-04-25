@@ -94,10 +94,28 @@ public class AddObraPresenter extends GenericPresenter
   @Override
   public void onButtonDoneClicked() {
     Mediator app = (Mediator) getView().getApplication();
-    if((!getView().getNombre().equals(""))&&(!getView().getDescripcion().equals(""))&&
-            (getView().getLatitud()!=0.0)&&(getView().getLongitud()!=0.0)){
+    String nombre= getView().getNombre();
+    String descripcion= getView().getDescripcion();
+    String textoLatitud = getView().getLatitud();
+    Double latitud;
+          if(textoLatitud == null || textoLatitud.isEmpty()) {
+            latitud = 0.0;
+          } else {
+            latitud = Double.parseDouble(textoLatitud);
+          }
+    String textoLongitud= getView().getLongitud();
+          Double longitud;
+          if(textoLongitud == null || textoLongitud.isEmpty()) {
+            longitud = 0.0;
+          } else {
+            longitud = Double.parseDouble(textoLongitud);
+          }
+
+    if((!nombre.equals(""))&&(!descripcion.equals(""))&&
+            (!textoLatitud.equals(""))&&(!textoLongitud.equals(""))){
       String var = getView().getSelectedImagePath();
-      getModel().addObraConImagen(getView().getNombre(), getView().getDescripcion(), app.getIdAutorSelecionado(), getView().getLatitud(), getView().getLongitud(),getView().getSelectedImagePath());
+      getModel().addObraSinImagen(nombre, descripcion, app.getIdAutorSelecionado(), latitud, longitud);
+      //getModel().addObraConImagen(nombre, descripcion, app.getIdAutorSelecionado(), latitud, longitud,getView().getSelectedImagePath());
 
       getView().finishScreen();
     }else {

@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -155,36 +154,14 @@ public class AddObraView
     return descripcionIndtroducida.getText().toString();
   }
   @Override
-  public Double getLatitud(){
-    String texto =latitudIndtroducida.getText().toString();
-    Double value;
+  public String getLatitud(){
+     return latitudIndtroducida.getText().toString();
 
-    if(texto == null || texto.isEmpty()) {
-
-      value = 0.0;
-
-    } else {
-
-      value = Double.parseDouble(texto);
-
-    }
-    return value;
   }
   @Override
-  public Double getLongitud(){
-    String texto =longitudIndtroducida.getText().toString();
-    Double value;
+  public String getLongitud(){
+    return longitudIndtroducida.getText().toString();
 
-    if(texto == null || texto.isEmpty()) {
-
-      value = 0.0;
-
-    } else {
-
-      value = Double.parseDouble(texto);
-
-    }
-    return value;
   }
   @Override
   public void setTitle(String txt){
