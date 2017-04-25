@@ -4,12 +4,15 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
+import org.hamcrest.TypeSafeMatcher;
 import org.junit.Test;
+import org.junit.runner.Description;
 import org.junit.runner.RunWith;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withParent;
@@ -23,6 +26,8 @@ import static org.junit.Assert.assertEquals;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.junit.Rule;
@@ -134,5 +139,66 @@ public class BasicTest {
                 .check(matches(withText("Nueva Obra")));
 
     }
+    @Test
+    public void testAddAutorSinImagen() {
+        onView(withId(R.id.btnEscultura)).perform(click());
+        onView(withId(R.id.btnAddAutor)).perform(click());
+        onView(withId(R.id.nombreAutorIntroducido)).perform(typeText("Autor Nuevo"));
+        onView(withId(R.id.descripcionAutorIntroducida)).perform(typeText("Descripcion del Autor Nuevo"));
+        onView(withId(R.id.btnDoneAutor)).perform(click());
+        //contar los elementos de la lista
+        final int[] counts = new int[1];
+        onView(withId(R.id.listaAutores)).check(matches(new TypeSafeMatcher<View>() {
+            @Override
+            public boolean matchesSafely(View view) {
+                ListView listView = (ListView) view;
+                counts[0] = listView.getCount();
+                return true;
+            }
+            @Override
+            public void describeTo(org.hamcrest.Description description) {
+            }
+        }));
+
+        onData(anything())
+                .inAdapterView(withId(R.id.listaAutores))
+                .atPosition(counts[0] -1)
+                .check(matches(withText("Autor Nuevo")));
+    }
+
+    @Test
+    public void testAddObraSinImagen() {
+        onView(withId(R.id.btnEscultura)).perform(click());
+        onData(anything())
+                .inAdapterView(withId(R.id.listaAutores))
+                .atPosition(0)
+                .perform(click());
+        onView(withId(R.id.btnAddObra)).perform(click());
+        onView(withId(R.id.nombreObraIntroducido)).perform(typeText("Obra Nueva"));
+        onView(withId(R.id.descripcionObraIntroducida)).perform(typeText("Descripcion de la Obra Nueva"));
+        onView(withId(R.id.latitudIntroducida)).perform(typeText("20"));
+        onView(withId(R.id.longitudIntroducida)).perform(typeText("20"));
+        onView(withId(R.id.btnDoneObra)).perform(click());
+        //contar los elementos de la lista
+        final int[] counts = new int[1];
+        onView(withId(R.id.listaObras)).check(matches(new TypeSafeMatcher<View>() {
+            @Override
+            public boolean matchesSafely(View view) {
+                ListView listView = (ListView) view;
+                counts[0] = listView.getCount();
+                return true;
+            }
+            @Override
+            public void describeTo(org.hamcrest.Description description) {
+            }
+        }));
+
+        onData(anything())
+                .inAdapterView(withId(R.id.listaObras))
+                .atPosition(counts[0] -1)
+                .check(matches(withText("Obra Nueva")));
+    }
+
+
 
 }
