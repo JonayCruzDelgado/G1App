@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.sample.R;
 
@@ -84,7 +86,7 @@ public class AddObraView
       Uri selectedImageUri = data.getData();
       selectedImagePath = selectedImageUri.toString();
       String var = selectedImagePath;
-
+      getRealPathFromURI(selectedImageUri);
     }
   }
   public String getRealPathFromURI(Uri uri) {
@@ -94,6 +96,8 @@ public class AddObraView
     int column_index = cursor
             .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
     cursor.moveToFirst();
+    imagenSelecionada.setImageURI(uri);
+    Picasso.with(this).load(cursor.getString(column_index)).into(imagenSelecionada);
     return cursor.getString(column_index);
   }
   /**

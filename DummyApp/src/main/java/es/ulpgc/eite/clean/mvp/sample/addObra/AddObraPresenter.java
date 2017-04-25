@@ -115,7 +115,8 @@ public class AddObraPresenter extends GenericPresenter
             (!textoLatitud.equals(""))&&(!textoLongitud.equals(""))){
       String var = getView().getSelectedImagePath();
       getModel().addObraSinImagen(nombre, descripcion, app.getIdAutorSelecionado(), latitud, longitud);
-      //getModel().addObraConImagen(nombre, descripcion, app.getIdAutorSelecionado(), latitud, longitud,getView().getSelectedImagePath());
+      //getModel().addObraConImagen(nombre, descripcion, app.getIdAutorSelecionado(),
+      // latitud, longitud,getView().getSelectedImagePath());
 
       getView().finishScreen();
     }else {
@@ -165,6 +166,7 @@ public class AddObraPresenter extends GenericPresenter
     }else{
         getView().showImagen();
     }
+
   }
 
 
