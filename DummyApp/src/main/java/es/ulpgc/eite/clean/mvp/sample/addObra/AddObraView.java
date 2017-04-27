@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -15,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
+
+import java.io.File;
 
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.sample.R;
@@ -96,8 +99,15 @@ public class AddObraView
     int column_index = cursor
             .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
     cursor.moveToFirst();
-    imagenSelecionada.setImageURI(uri);
-    Picasso.with(this).load(cursor.getString(column_index)).into(imagenSelecionada);
+    File imgFile = new  File(cursor.getString(column_index));
+
+    //if(imgFile.exists()){
+
+      Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+      imagenSelecionada.setImageBitmap(myBitmap);
+
+    //}
+
     return cursor.getString(column_index);
   }
   /**

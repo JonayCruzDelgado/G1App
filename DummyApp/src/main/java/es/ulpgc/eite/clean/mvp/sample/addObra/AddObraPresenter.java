@@ -161,11 +161,11 @@ public class AddObraPresenter extends GenericPresenter
 
   private void inicializarVista(){
     getView().setTitle("Nueva Obra");
-    if(true){  //comprobar si no se a selecionado imagen
-      getView().hideImagen();
-    }else{
-        getView().showImagen();
-    }
+//    if(true){  //comprobar si no se a selecionado imagen
+//      getView().hideImagen();
+//    }else{
+       getView().showImagen();
+//    }
 
   }
 
