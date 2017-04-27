@@ -88,19 +88,21 @@ public class AddObraView
 
       Uri selectedImageUri = data.getData();
       selectedImagePath = selectedImageUri.toString();
-      String var = selectedImagePath;
       selectedImagePath = getRealPathFromURI(selectedImageUri);
 
     }
   }
-  public String getRealPathFromURI(Uri uri) {
-    String[] projection = { MediaStore.Images.Media.DATA };
-    @SuppressWarnings("deprecation")
-    Cursor cursor = managedQuery(uri, projection, null, null, null);
-    int column_index = cursor
-            .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-    cursor.moveToFirst();
-    File imgFile = new  File(cursor.getString(column_index));
+  public String getRealPathFromURI(Uri contentUri) {
+
+      String res = null;
+      String[] proj = { MediaStore.Images.Media.DATA };
+      Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
+      if(cursor.moveToFirst()){;
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        res = cursor.getString(column_index);
+      }
+      cursor.close();
+    File imgFile = new  File(res);
 
     if(imgFile.exists()){
 
@@ -108,8 +110,7 @@ public class AddObraView
       imagenSelecionada.setImageBitmap(myBitmap);
 
     }
-
-    return cursor.getString(column_index);
+   return res;
   }
   /**
    * Method that initialized MVP objects
