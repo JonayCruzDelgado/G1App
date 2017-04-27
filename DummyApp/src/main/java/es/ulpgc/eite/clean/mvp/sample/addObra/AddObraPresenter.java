@@ -98,6 +98,7 @@ public class AddObraPresenter extends GenericPresenter
     String descripcion= getView().getDescripcion();
     String textoLatitud = getView().getLatitud();
     Double latitud;
+    String path = getView().getSelectedImagePath();
           if(textoLatitud == null || textoLatitud.isEmpty()) {
             latitud = 0.0;
           } else {
@@ -113,11 +114,13 @@ public class AddObraPresenter extends GenericPresenter
 
     if((!nombre.equals(""))&&(!descripcion.equals(""))&&
             (!textoLatitud.equals(""))&&(!textoLongitud.equals(""))){
-      String var = getView().getSelectedImagePath();
-      getModel().addObraSinImagen(nombre, descripcion, app.getIdAutorSelecionado(), latitud, longitud);
-      //getModel().addObraConImagen(nombre, descripcion, app.getIdAutorSelecionado(),
-      // latitud, longitud,getView().getSelectedImagePath());
-
+      if (getView().getSelectedImagePath() == null) {
+        getModel().addObraSinImagen(nombre, descripcion, app.getIdAutorSelecionado(), latitud, longitud);
+      }
+      else {
+        getModel().addObraConImagen(nombre, descripcion, app.getIdAutorSelecionado(),
+                latitud, longitud, path);
+      }
       getView().finishScreen();
     }else {
       getView().showToast("Introducir Datos Validos");

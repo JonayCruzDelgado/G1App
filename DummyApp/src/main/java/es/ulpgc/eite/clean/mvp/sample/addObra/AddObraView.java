@@ -89,7 +89,8 @@ public class AddObraView
       Uri selectedImageUri = data.getData();
       selectedImagePath = selectedImageUri.toString();
       String var = selectedImagePath;
-      getRealPathFromURI(selectedImageUri);
+      selectedImagePath = getRealPathFromURI(selectedImageUri);
+
     }
   }
   public String getRealPathFromURI(Uri uri) {
@@ -101,12 +102,12 @@ public class AddObraView
     cursor.moveToFirst();
     File imgFile = new  File(cursor.getString(column_index));
 
-    //if(imgFile.exists()){
+    if(imgFile.exists()){
 
       Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
       imagenSelecionada.setImageBitmap(myBitmap);
 
-    //}
+    }
 
     return cursor.getString(column_index);
   }
