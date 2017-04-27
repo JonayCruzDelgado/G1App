@@ -18,6 +18,15 @@ public class Obra extends RealmObject {
     private String imagen;
     private int idAutor;
 
+    public Boolean getInitial() {
+        return initial;
+    }
+
+    public void setInitial(Boolean initial) {
+        this.initial = initial;
+    }
+
+    private Boolean initial;
     public int getId() {
         return id;
     }

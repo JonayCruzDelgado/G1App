@@ -53,6 +53,8 @@ public interface Obra {
     void setNombreObra(String txt);
 
       void showToast(String txt);
+
+    void setImagenObraAñadida(String imagen);
   }
 
   /**
@@ -71,6 +73,8 @@ public interface Obra {
     double getLongitud(int id);
 
     String getImagen(int id);
+
+      Boolean getInitial(int id);
   }
 
   /**

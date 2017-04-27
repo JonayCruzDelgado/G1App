@@ -111,7 +111,10 @@ public class ManejadorBaseDeDatos {
         RealmResults<Obra> result= realm.where(Obra.class).equalTo("id",idObra).findAll();
         return result.get(0).getLongitud();
     }
-
+    public  Boolean getInicial(int idObra){
+        RealmResults<Obra> result= realm.where(Obra.class).equalTo("id",idObra).findAll();
+        return result.get(0).getInitial();
+    }
     public void initBaseDeDatos(){
 
            if(realm.isEmpty()){
@@ -137,7 +140,7 @@ public class ManejadorBaseDeDatos {
                                                        "la pared del comedor del antiguo convento de los dominicos de Santa Maria delle Grazie." ;
                                                Double latitud=45.4659;
                                                Double longitud=9.1708;
-                                               addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "la_ultima_cena.jpg");
+                                               addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "la_ultima_cena.jpg",true);
 
 
                                                nombreObra="La Mona Lisa";//id 2
@@ -145,7 +148,7 @@ public class ManejadorBaseDeDatos {
                                                        "La Gioconda, también conocida como La Mona Lisa, es una obra pictórica del pintor renacentista italiano Leonardo da Vinci." ;
                                                latitud=48.8606;
                                                longitud=2.3375;
-                                               addObra(nombreObra,descripcionObra,idAutor,latitud,longitud,"la_mona_lisa.jpg");
+                                               addObra(nombreObra,descripcionObra,idAutor,latitud,longitud,"la_mona_lisa.jpg",true);
 
 
                                                nombreObra="La adoración de los magos";//id 3
@@ -153,7 +156,7 @@ public class ManejadorBaseDeDatos {
                                                        " da Vinci. Está pintado al óleo sobre tabla que mide 246 cm de alto y 243 cm de ancho y data del periodo 1481-1482." ;
                                                latitud=43.7678;
                                                longitud=11.2552;
-                                               addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "la_adoracion_de_los_magos.jpg");
+                                               addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "la_adoracion_de_los_magos.jpg",true);
 
 
                //autor Salvador Dali (id=2)
@@ -167,21 +170,21 @@ public class ManejadorBaseDeDatos {
                                        descripcionObra ="" ;
                                        latitud=0.0;
                                        longitud=0.0;
-                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "");
+                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "",true);
 
 
                                        nombreObra="";//id 5
                                        descripcionObra ="" ;
                                        latitud=0.0;
                                        longitud=0.0;
-                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "");
+                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "",true);
 
 
                                        nombreObra="";//id 6
                                        descripcionObra ="" ;
                                        latitud=0.0;
                                        longitud=0.0;
-                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "");
+                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "",true);
 
                       //autor Caravagio(id=3)
                        nombreAutor = "Caravaggio";
@@ -194,7 +197,7 @@ public class ManejadorBaseDeDatos {
                                                    "Descendimiento de la cruz (en italiano conocido como Deposizione) es una de las obras maestras del citado pintor italiano." ;
                                            latitud=41.5423;
                                            longitud=12.2716;
-                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "el_santo_entierro.jpg");
+                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "el_santo_entierro.jpg",true);
 
 
                                            nombreObra="El amor victorioso";//id 8
@@ -202,7 +205,7 @@ public class ManejadorBaseDeDatos {
                                                    "Del Monte. En un diario que data del siglo XVII, el modelo es llamado «Cecco», en italiano, diminutivo de Francesco." ;
                                            latitud=52.5090;
                                            longitud=13.3660;
-                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "el_amor_victorioso.jpg");
+                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "el_amor_victorioso.jpg",true);
 
 
                                            nombreObra="La negación de San Pedro";//id 9
@@ -210,7 +213,7 @@ public class ManejadorBaseDeDatos {
                                                    "Museum [Nueva York]. En el claroscuro, una mujer señala con sus dedos a Pedro, mientras que un soldado completa el trío" ;
                                            latitud=40.7792;
                                            longitud=-73.9634;
-                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "la_negacion_de_san_pedro.jpg");
+                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "la_negacion_de_san_pedro.jpg",true);
 
                        // autor Vincent van Gogh(id=4)
                        nombreAutor = "Vincent van Gogh";
@@ -223,7 +226,7 @@ public class ManejadorBaseDeDatos {
                                                        "van Gogh, que creó en abril de 1885 mientras residía en Nuenen, Países Bajos. Se encuentra en el Museo Van Gogh de Ámsterdam. " ;
                                                latitud=52.3583;
                                                longitud=4.8809;
-                                               addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "los_comedores_de_patatas.jpg");
+                                               addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "los_comedores_de_patatas.jpg",true);
 
 
                                                nombreObra="Los girasoles";//id 11
@@ -233,14 +236,14 @@ public class ManejadorBaseDeDatos {
                                                        " girasoles, uno con tres y otro con cinco." ;
                                                latitud=48.859;
                                                longitud=11.3416;
-                                               addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "los_girasoles.jpg");
+                                               addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "los_girasoles.jpg",true);
 
 
                                                nombreObra="Autorretrato con la oreja vendada";//id 12
                                                descripcionObra ="Esta imagen muestra a Van Gogh con el fuerte vendaje que le colocaron para curar la autolesión que se produjo en diciembre de 1888" ;
                                                latitud=52.3583;
                                                longitud=4.8809;
-                                               addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "autorretrato_con_oreja_vendada.jpg");
+                                               addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "autorretrato_con_oreja_vendada.jpg",true);
 
                         // autor Francisco de goya (id=5)
                        nombreAutor = "Francisco de Goya";
@@ -255,21 +258,21 @@ public class ManejadorBaseDeDatos {
                                            descripcionObra ="" ;
                                            latitud=0.0;
                                            longitud=0.0;
-                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "");
+                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "",true);
 
 
                                            nombreObra="";//id 14
                                            descripcionObra ="" ;
                                            latitud=0.0;
                                            longitud=0.0;
-                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "");
+                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "",true);
 
 
                                            nombreObra="";//id 15
                                            descripcionObra ="" ;
                                            latitud=0.0;
                                            longitud=0.0;
-                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "");
+                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "",true);
 
                //categoria Arquitectura(id=2)
             addCategoria("Arquitectura", "ic_arqui.jpg");
@@ -286,21 +289,21 @@ public class ManejadorBaseDeDatos {
                                        descripcionObra ="" ;
                                        latitud=0.0;
                                        longitud=0.0;
-                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "");
+                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "",true);
 
 
                                        nombreObra=""; //id 17
                                        descripcionObra ="" ;
                                        latitud=0.0;
                                        longitud=0.0;
-                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "");
+                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "",true);
 
 
                                        nombreObra=""; //id 18
                                        descripcionObra ="" ;
                                        latitud=0.0;
                                        longitud=0.0;
-                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "");
+                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "",true);
 
                         //autor Ludwig...(id=7)
                        nombreAutor = "Ludwig Mies van der Rohe";
@@ -312,21 +315,21 @@ public class ManejadorBaseDeDatos {
                                        descripcionObra ="" ;
                                        latitud=0.0;
                                        longitud=0.0;
-                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "");
+                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "",true);
 
 
                                        nombreObra=""; //id 20
                                        descripcionObra ="" ;
                                        latitud=0.0;
                                        longitud=0.0;
-                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "");
+                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "",true);
 
 
                                        nombreObra=""; //id 21
                                        descripcionObra ="" ;
                                        latitud=0.0;
                                        longitud=0.0;
-                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "");
+                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "",true);
                         //autor Alexandre ... (id=8)
                        nombreAutor = "Alexandre Gustave Eiffel";
                        descripcionAutor = "Alexandre Gustave Eiffel (Dijon, 15 de diciembre de 1832-París, 27 de diciembre de 1923) fue un ingeniero " +
@@ -340,19 +343,19 @@ public class ManejadorBaseDeDatos {
                                            descripcionObra ="" ;
                                            latitud=0.0;
                                            longitud=0.0;
-                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "");
+                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "",true);
 
                                            nombreObra="";//id 23
                                            descripcionObra ="" ;
                                            latitud=0.0;
                                            longitud=0.0;
-                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "");
+                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "",true);
 
                                            nombreObra=""; //id 24
                                            descripcionObra ="" ;
                                            latitud=0.0;
                                            longitud=0.0;
-                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "");
+                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "",true);
                        //autor Santiago Calatrava (id=9)
                        nombreAutor = "Santiago Calatrava";
                        descripcionAutor = "Santiago Calatrava Valls (Benimámet, 28 de julio de 1951) es un arquitecto, ingeniero civil y escultor " +
@@ -365,21 +368,21 @@ public class ManejadorBaseDeDatos {
                                            descripcionObra ="" ;
                                            latitud=0.0;
                                            longitud=0.0;
-                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "");
+                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "",true);
 
 
                                            nombreObra=""; //id 26
                                            descripcionObra ="" ;
                                            latitud=0.0;
                                            longitud=0.0;
-                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "");
+                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "",true);
 
 
                                            nombreObra=""; //id 27
                                            descripcionObra ="" ;
                                            latitud=0.0;
                                            longitud=0.0;
-                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "");
+                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "",true);
                        // autor Santiago gaudi (id=10)
                        nombreAutor = "Antoni Gaudí";
                        descripcionAutor = "Antoni Gaudí i Cornet, también conocido en español como Antonio Gaudí1 (Reus o Riudoms, 25 de junio de " +
@@ -390,21 +393,21 @@ public class ManejadorBaseDeDatos {
                                            descripcionObra ="" ;
                                            latitud=0.0;
                                            longitud=0.0;
-                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "");
+                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "",true);
 
 
                                            nombreObra=""; //id 29
                                            descripcionObra ="" ;
                                            latitud=0.0;
                                            longitud=0.0;
-                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "");
+                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "",true);
 
 
                                            nombreObra=""; //id 30
                                            descripcionObra ="" ;
                                            latitud=0.0;
                                            longitud=0.0;
-                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "");
+                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "",true);
 
 
                //categoria Escultura(id=3)
@@ -429,7 +432,7 @@ public class ManejadorBaseDeDatos {
                                                " los Estados Pontificios." ;
                                        latitud=43.4636;
                                        longitud=11.1534;
-                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "el_david.jpg");
+                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "el_david.jpg",true);
 
 
                                        nombreObra="La Madonna de Brujas"; //id 32
@@ -437,14 +440,14 @@ public class ManejadorBaseDeDatos {
                                                " De 1,23 metros de altura, se encuentra en la iglesia de Nuestra Señora de Brujas (ciudad de la actual Bélgica)." ;
                                        latitud=51.1217;
                                        longitud=3.1328;
-                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "la_madonna_de_brujas.jpg");
+                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "la_madonna_de_brujas.jpg",true);
 
                                        nombreObra="El Cristo de Minerva";//id 33
                                        descripcionObra ="Cristo de la Minerva es la denominación de una escultura de mármol, obra de Miguel " +
                                                "Ángel, finalizada en 1521, que representa a un Cristo redentor, desnudo, abrazando la Cruz." ;
                                        latitud=41.5353;
                                        longitud=12.2842;
-                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "el_cristo_de_minerva.jpg");
+                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "el_cristo_de_minerva.jpg",true);
 
                          //autor Verrochio(id =12)
                         nombreAutor = "Verrocchio";
@@ -462,7 +465,7 @@ public class ManejadorBaseDeDatos {
                                                    "blablablablablablablablablablablalblablv" ;
                                            latitud=43.7707;
                                            longitud=11.2549;
-                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud,"cristo_y_santo_tomas.jpg");
+                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud,"cristo_y_santo_tomas.jpg",true);
 
                                            nombreObra="Niño alado con delfín"; //id 35
                                            descripcionObra ="blablablablablablablablablablablalblablblablablablablablablablablablablalblabl" +
@@ -470,13 +473,13 @@ public class ManejadorBaseDeDatos {
                                                    "blablablablablablablablablablablalblablblablablablablablablablablablablalblabl" ;
                                            latitud=43.7693;
                                            longitud=11.2560;
-                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "ninyo_alado_con_delfin");
+                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "ninyo_alado_con_delfin",true);
 
                                            nombreObra=""; //id 36
                                            descripcionObra ="" ;
                                            latitud=0.0;
                                            longitud=0.0;
-                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud,"");
+                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud,"",true);
                         //autor Gian....(id=13)
                         nombreAutor = "Gian Lorenzo Bernini";
                         descripcionAutor = "Gian Lorenzo Bernini (Nápoles, 7 de diciembre de 1598 - Roma, 28 de noviembre de 1680) fue un escultor, arquitecto " +
@@ -492,7 +495,7 @@ public class ManejadorBaseDeDatos {
                                                "Ovidio relata el mito en el poema Las metamorfosis." ;
                                        latitud=41.9142;
                                        longitud=12.4921;
-                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "apolo_y_dafne.jpg");
+                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "apolo_y_dafne.jpg",true);
 
                                        nombreObra="Busto del rey Luis XIV";//id 38
                                        descripcionObra ="El busto del monarca Luis XIV realizado por el " +
@@ -501,7 +504,7 @@ public class ManejadorBaseDeDatos {
                                                "tipología del busto realista que se había perdido en la etapa renacentista anterior." ;
                                        latitud=48.4816;
                                        longitud=2.0723;
-                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "busto_del_rey_luis_14.jpg");
+                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "busto_del_rey_luis_14.jpg",true);
 
                                        nombreObra="Extásis de Santa Teresa";//id 39
                                        descripcionObra ="El Éxtasis de Santa Teresa también conocido como la Transverberación de Santa " +
@@ -510,7 +513,7 @@ public class ManejadorBaseDeDatos {
                                                "Bernini, de estilo barroco. " ;
                                        latitud=41.9047;
                                        longitud=12.4942;
-                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "extasis_de_santa_teresa.jpg");
+                                       addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "extasis_de_santa_teresa.jpg",true);
                         // autor Auguste Rodin(id=14)
                         nombreAutor = "Auguste Rodin";
                         descripcionAutor = "François-Auguste-René Rodin (París, 12 de noviembre de 1840 - Meudon, 17 de noviembre de 1917) fue un escultor " +
@@ -527,7 +530,7 @@ public class ManejadorBaseDeDatos {
                                                    " se enamoraron y se besaron." ;
                                            latitud=48.8555;
                                            longitud=2.3154;
-                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "le_basier.jpg");
+                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "le_basier.jpg",true);
 
 
                                            nombreObra="El pensador";//id 41
@@ -536,7 +539,7 @@ public class ManejadorBaseDeDatos {
                                                    "para representar tanto el pensar como la poesía." ;
                                            latitud=48.8555;
                                            longitud=2.3154;
-                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "el_pensador.jpg");
+                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "el_pensador.jpg",true);
 
 
                                            nombreObra="La puerta del Infierno"; //id 42
@@ -544,7 +547,7 @@ public class ManejadorBaseDeDatos {
                                                    "l artista francés Auguste Rodin, con la colaboración de la escultura francesa Camille Claudel, entre 1880 y 1917." ;
                                            latitud=48.8555;
                                            longitud=2.3154;
-                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "la_puerta_del_infierno.jpg");
+                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "la_puerta_del_infierno.jpg",true);
                         // autor Donatello (id=15)
                         nombreAutor = "Donatello";
                         descripcionAutor = "Donato di Niccolò di Betto Bardi, conocido como Donatello (Florencia, Italia, 1386-Ibídem, 13 de diciembre de 1466), " +
@@ -562,7 +565,7 @@ public class ManejadorBaseDeDatos {
                                                    " Datada alrededor de 1435 es una de las raras obras del gran escultor que se encuentra todavía en su lugar original." ;
                                            latitud=43.7685;
                                            longitud=11.2622;
-                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "anunciacion_cavalcanti.jpg");
+                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "anunciacion_cavalcanti.jpg",true);
 
                                            nombreObra="San Juan Evangelista"; //id 44
                                            descripcionObra ="San Juan Evangelista es una escultura de mármol de Donatello " +
@@ -570,7 +573,7 @@ public class ManejadorBaseDeDatos {
                                                    "se conserva en el Museo dell'Opera del Duomo. Data de 1409-1411 y fue el modelo más directo para el Moisés de Miguel Ángel." ;
                                            latitud=43.7732;
                                            longitud=11.2579;
-                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "san_juan_evangelista.jpg");
+                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "san_juan_evangelista.jpg",true);
 
                                            nombreObra="San Marcos"; //id 45
                                            descripcionObra ="La escultura de San Marcos de Donatello forma parte del ciclo de catorce " +
@@ -578,7 +581,7 @@ public class ManejadorBaseDeDatos {
                                                    "colocadas en nichos en el exterior de la Iglesia de Orsanmichele." ;
                                            latitud=43.7707;
                                            longitud=11.2549;
-                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "san_marcos.jpg");
+                                           addObra(nombreObra,descripcionObra,idAutor,latitud,longitud, "san_marcos.jpg",true);
 
 
            }
@@ -622,7 +625,7 @@ public class ManejadorBaseDeDatos {
         realm.commitTransaction();
     }
 // crear obra
-    public void addObra(String nombre,String descripcion,int idAutor,Double latitud, Double longitud,String imagen){
+    public void addObra(String nombre,String descripcion,int idAutor,Double latitud, Double longitud,String imagen,Boolean inicial){
         realm.beginTransaction();
 
         Number currentIdNum = realm.where(Obra.class).max("id");
@@ -639,6 +642,7 @@ public class ManejadorBaseDeDatos {
         obra.setLongitud(longitud);
         obra.setImagen(imagen);
         obra.setIdAutor(idAutor);
+        obra.setInitial(inicial);
         realm.commitTransaction();
     }
 

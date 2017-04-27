@@ -113,17 +113,9 @@ public class ObraView
 
   @Override
   public void setImagenObra(String icono) {
-
-    try {
-        File imgFile = new  File(icono);
-        Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-        imagen.setImageBitmap(myBitmap);
-
-    }catch (Exception e){
-      //imagen.setImageURI(mUri);
+          //imagen.setImageURI(mUri);
 
         imagen.setImageBitmap(getBitmapFromAssets(icono));
-    }
   }
 
 
@@ -152,6 +144,13 @@ public class ObraView
     toast.show();
 
   }
+
+  @Override
+  public void setImagenObraAñadida(String icono) {
+    File imgFile = new  File(icono);
+    Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+    imagen.setImageBitmap(myBitmap);
   }
+}
 
 

@@ -64,5 +64,8 @@ public class ObraModel extends GenericModel<Obra.ModelToPresenter>
   public String getImagen(int id){
     return  manejador.getImagenObra(id);
   }
-
+  @Override
+  public Boolean getInitial(int id){
+    return  manejador.getInicial(id);
+  }
 }

@@ -44,13 +44,12 @@ public class AddObraModel extends GenericModel<AddObra.ModelToPresenter>
   @Override
   public void  addObraSinImagen(String nombre,String descripcion,int idAutor,Double latitud,Double longitud){
     String imgDefault ="ic_cuadro.jpg";
-    manejador.addObra(nombre,descripcion,idAutor,latitud,longitud,imgDefault);
+    manejador.addObra(nombre,descripcion,idAutor,latitud,longitud,imgDefault,false);
 
   }
   @Override
   public void  addObraConImagen(String nombre, String descripcion, int idAutor, Double latitud, Double longitud, String PathImagen){
-    String url = PathImagen;
-    manejador.addObra(nombre,descripcion,idAutor,latitud,longitud,PathImagen);
+    manejador.addObra(nombre,descripcion,idAutor,latitud,longitud,PathImagen,false);
 
   }
 }

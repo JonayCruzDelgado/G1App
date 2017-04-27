@@ -120,12 +120,17 @@ public class ObraPresenter extends GenericPresenter
     Mediator app=(Mediator) getView().getApplication();
 
     int id=app.getIdObraSelecionada();
-    getView().setDescripcionObra(getModel().getDescripcion(id));
-    getView().setImagenObra(getModel().getImagen(id));
-    getView().setNombreObra(getModel().getNombre(id));
 
-
-
+      getView().setDescripcionObra(getModel().getDescripcion(id));
+      getView().setNombreObra(getModel().getNombre(id));
+      inicializarImagen(getModel().getInitial(id),id);
+  }
+  private void inicializarImagen(Boolean inicial, int id){
+    if (inicial){
+      getView().setImagenObra(getModel().getImagen(id));
+    }else{
+      getView().setImagenObraAñadida(getModel().getImagen(id));
+    }
   }
 
 
