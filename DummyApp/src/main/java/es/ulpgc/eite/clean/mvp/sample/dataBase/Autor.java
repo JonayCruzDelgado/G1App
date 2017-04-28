@@ -1,9 +1,5 @@
 package es.ulpgc.eite.clean.mvp.sample.dataBase;
 
-import android.graphics.Bitmap;
-
-import es.ulpgc.eite.clean.mvp.sample.obra.*;
-import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -19,7 +15,15 @@ public class Autor extends RealmObject {
     private String descripcion;
     private int idCategoria;
     private String imagen;
+    private Boolean isInAssetsAutor;
 
+    public Boolean getIsInAssetsAutor() {
+        return isInAssetsAutor;
+    }
+
+    public void setIsInAssetsAutor(Boolean inAssetAutor) {
+        isInAssetsAutor = inAssetAutor;
+    }
 
     public int getId() {
         return id;

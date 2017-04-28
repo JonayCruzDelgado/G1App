@@ -1,15 +1,11 @@
 package es.ulpgc.eite.clean.mvp.sample.dataBase;
 
-import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.nio.ByteBuffer;
 
-import es.ulpgc.eite.clean.mvp.sample.R;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
@@ -90,6 +86,10 @@ public class ManejadorBaseDeDatos {
         RealmResults<Autor> result= realm.where(Autor.class).equalTo("id",idAutor).findAll();
         return result.get(0).getImagen();
     }
+    public  Boolean isInAssetsAutor(int idAutor){
+        RealmResults<Autor> result= realm.where(Autor.class).equalTo("id",idAutor).findAll();
+        return result.get(0).getIsInAssetsAutor();
+    }
 
     public String getDescripcionObra(int idObra){
         RealmResults<Obra> result= realm.where(Obra.class).equalTo("id",idObra).findAll();
@@ -111,9 +111,9 @@ public class ManejadorBaseDeDatos {
         RealmResults<Obra> result= realm.where(Obra.class).equalTo("id",idObra).findAll();
         return result.get(0).getLongitud();
     }
-    public  Boolean getInicial(int idObra){
+    public  Boolean isInAssetsObra(int idObra){
         RealmResults<Obra> result= realm.where(Obra.class).equalTo("id",idObra).findAll();
-        return result.get(0).getInitial();
+        return result.get(0).getIsInAssetsObra();
     }
     public void initBaseDeDatos(){
 
@@ -130,7 +130,7 @@ public class ManejadorBaseDeDatos {
                                "célebre pintor florentino Andrea de Verrocchio. Sus primeros trabajos de importancia fueron creados en Milán al servicio del" +
                                " duque Ludovico Sforza. Trabajó a continuación en Roma, Bolonia y Venecia, y pasó los últimos años de su vida en Francia, " +
                                "por invitación del rey Francisco I.";
-                       addAutor(nombreAutor, descripcionAutor, idCategoria, "leonardo_davinci.jpg");
+                       addAutor(nombreAutor, descripcionAutor, idCategoria, "leonardo_davinci.jpg",true);
                         int idAutor=1;
 
                                                String nombreObra="La Última Cena";//id 1
@@ -164,7 +164,7 @@ public class ManejadorBaseDeDatos {
                        descripcionAutor = "Salvador Felipe Jacinto Dalí i Domènech,1 marqués de Dalí de Púbol (Figueras, 11 de mayo de 1904, 23 de enero de 1989), " +
                                "fue un pintor, escultor, grabador, escenógrafo y escritor español del siglo XX. Se le considera uno de los máximos " +
                                "representantes del surrealismo.";
-                       addAutor(nombreAutor, descripcionAutor, idCategoria, "salvador_dali.jpg");
+                       addAutor(nombreAutor, descripcionAutor, idCategoria, "salvador_dali.jpg",true);
                        idAutor=2;
                                        nombreObra="";//id 4
                                        descripcionObra ="" ;
@@ -190,7 +190,7 @@ public class ManejadorBaseDeDatos {
                        nombreAutor = "Caravaggio";
                        descripcionAutor = "Michelangelo Merisi da Caravaggio (Milán, 29 de septiembre de 1571-Porto Ércole, 18 de julio de 1610) fue un pintor italiano " +
                                "activo en Roma, Nápoles, Malta y Sicilia entre los años de 1593 y 1610. Es considerado como el primer gran exponente de la pintura del Barroco.";
-                       addAutor(nombreAutor, descripcionAutor, idCategoria, "caravaggio.jpg");
+                       addAutor(nombreAutor, descripcionAutor, idCategoria, "caravaggio.jpg",true);
                        idAutor=3;
                                            nombreObra="El Santo Entierro";//id 7
                                            descripcionObra ="El Santo Entierro pintado por Caravaggio, conocido también con otros títulos como Entierro de Cristo, Preparación de Cristo muerto sobre la piedra de unción, Deposición de la cruz o " +
@@ -219,7 +219,7 @@ public class ManejadorBaseDeDatos {
                        nombreAutor = "Vincent van Gogh";
                        descripcionAutor = "Vincent Willem van Gogh (Vincent van Gogh) (Zundert, Países Bajos, 30 de marzo de 1853-Auvers-sur-Oise, Francia, 29 de julio de 1890) " +
                                "fue un pintor neerlandés, uno de los principales exponentes del postimpresionismo.";
-                       addAutor(nombreAutor, descripcionAutor,idCategoria, "vincent_van_gogh.jpg");
+                       addAutor(nombreAutor, descripcionAutor,idCategoria, "vincent_van_gogh.jpg",true);
                        idAutor=4;
                                                nombreObra="Los comederos de patatas";//id 10
                                                descripcionObra ="Los comedores de patatas, Los comedores de papa o Los campesinos comiendo patatas es un cuadro del pintor Vincent " +
@@ -252,7 +252,7 @@ public class ManejadorBaseDeDatos {
                                "estilo que inaugura el Romanticismo. El arte goyesco supone, asimismo, el comienzo de la pintura contemporánea y es precursor de las " +
                                "vanguardias pictóricas del siglo XX; por todo ello, se le considera uno de los artistas españoles más relevantes y uno de los grandes " +
                                "maestros de la historia del arte.";
-                       addAutor(nombreAutor, descripcionAutor, idCategoria, "francisco_de_goya.jpg");
+                       addAutor(nombreAutor, descripcionAutor, idCategoria, "francisco_de_goya.jpg",true);
                        idAutor=5;
                                            nombreObra="";//id 13
                                            descripcionObra ="" ;
@@ -283,7 +283,7 @@ public class ManejadorBaseDeDatos {
                                "de Neuchâtel, Suiza, 6 de octubre de 1887-Roquebrune-Cap-Martin, Provenza-Alpes-Costa Azul, Francia, 27 de agosto de 1965), " +
                                "fue un arquitecto y teórico de la arquitectura, urbanista, decorador de interiores, pintor, escultor y hombre de letras suizo " +
                                "nacionalizado francés en 1930.";
-                       addAutor(nombreAutor, descripcionAutor, idCategoria, "le_corbusier.jpg");
+                       addAutor(nombreAutor, descripcionAutor, idCategoria, "le_corbusier.jpg",true);
                         idAutor=6;
                                        nombreObra=""; //id 16
                                        descripcionObra ="" ;
@@ -309,7 +309,7 @@ public class ManejadorBaseDeDatos {
                        nombreAutor = "Ludwig Mies van der Rohe";
                        descripcionAutor = "Ludwig Mies van der Rohe (Aquisgrán, Alemania, 27 de marzo de 1886 – Chicago, Illinois, 17 de agosto de 1969) " +
                                "fue un arquitecto y diseñador industrial. Dirigió la escuela Bauhaus entre 1930 y 1933, año en que fue clausurada.  ";
-                       addAutor(nombreAutor, descripcionAutor, idCategoria, "ludwig_mies_van_der_rohe.jpg");
+                       addAutor(nombreAutor, descripcionAutor, idCategoria, "ludwig_mies_van_der_rohe.jpg",true);
                        idAutor=7;
                                        nombreObra=""; //id 19
                                        descripcionObra ="" ;
@@ -337,7 +337,7 @@ public class ManejadorBaseDeDatos {
                                "varios puentes para la red francesa de ferrocarriles, de los cuales es especialmente notable el viaducto de " +
                                "Garabit. Su fama actual se debe a su proyecto estrella, la mundialmente conocida torre Eiffel, construida para " +
                                "la Exposición Universal de París de 1889.";
-                       addAutor(nombreAutor, descripcionAutor, idCategoria, "alexandre_gustave_eiffel.jpg");
+                       addAutor(nombreAutor, descripcionAutor, idCategoria, "alexandre_gustave_eiffel.jpg",true);
                        idAutor=8;
                                            nombreObra=""; //id 22
                                            descripcionObra ="" ;
@@ -362,7 +362,7 @@ public class ManejadorBaseDeDatos {
                                "español. Entre los premios y reconocimientos que ha recibido destaca el Premio Príncipe de Asturias de las Artes " +
                                "de 1999, el Premio Nacional de Arquitectura de 2005 y el Premio Europeo de Arquitectura de 2015. Actualmente, " +
                                "cuenta con oficinas en Nueva York, Doha y Zúrich.";
-                       addAutor(nombreAutor, descripcionAutor, idCategoria, "calatrava.jpg");
+                       addAutor(nombreAutor, descripcionAutor, idCategoria, "calatrava.jpg",true);
                        idAutor=9;
                                            nombreObra=""; //id 25
                                            descripcionObra ="" ;
@@ -387,7 +387,7 @@ public class ManejadorBaseDeDatos {
                        nombreAutor = "Antoni Gaudí";
                        descripcionAutor = "Antoni Gaudí i Cornet, también conocido en español como Antonio Gaudí1 (Reus o Riudoms, 25 de junio de " +
                                "1852-Barcelona, 10 de junio de 1926) fue un arquitecto español, máximo representante del modernismo catalán.";
-                       addAutor(nombreAutor, descripcionAutor, idCategoria, "antoni_gaudi.jpg");
+                       addAutor(nombreAutor, descripcionAutor, idCategoria, "antoni_gaudi.jpg",true);
                        idAutor=10;
                                            nombreObra=""; //id 28
                                            descripcionObra ="" ;
@@ -421,7 +421,7 @@ public class ManejadorBaseDeDatos {
                                 "sus esculturas como por sus pinturas y obra arquitectónica. Desarrolló su labor artística a lo largo de más de " +
                                 "setenta años entre Florencia y Roma, que era donde vivían sus grandes mecenas, la familia Médici de Florencia y " +
                                 "los diferentes papas romanos.";
-                        addAutor(nombreAutor, descripcionAutor, idCategoria, "miguel_angel.jpg");
+                        addAutor(nombreAutor, descripcionAutor, idCategoria, "miguel_angel.jpg",true);
                         idAutor=11;
                                        nombreObra="El David"; //id 31
                                        descripcionObra ="El David es una escultura de mármol blanco de 5,17 metros de altura y 5572 kilogramos de" +
@@ -456,7 +456,7 @@ public class ManejadorBaseDeDatos {
                                 "y orfebre cuatrocentista italiano. Trabajó en la corte de Lorenzo de' Medici en Florencia. Entre sus " +
                                 "alumnos estuvieron Leonardo da Vinci, Perugino, Ghirlandaio y Sandro Botticelli, pero también influyó en Miguel Ángel. " +
                                 "Trabajó en el estilo serenamente clásico del primer renacimiento florentino.";
-                        addAutor(nombreAutor, descripcionAutor, idCategoria, "verrocchio.jpg");
+                        addAutor(nombreAutor, descripcionAutor, idCategoria, "verrocchio.jpg",true);
                         idAutor=12;
 
                                            nombreObra="Cristo y Santo Tomás"; //id 34
@@ -485,7 +485,7 @@ public class ManejadorBaseDeDatos {
                         descripcionAutor = "Gian Lorenzo Bernini (Nápoles, 7 de diciembre de 1598 - Roma, 28 de noviembre de 1680) fue un escultor, arquitecto " +
                                 "y pintor italiano. Trabajó principalmente en Roma " +
                                 "y es considerado el más destacado escultor de su generación, creador del estilo escultórico barroco.";
-                        addAutor(nombreAutor, descripcionAutor, idCategoria, "gian_lorenzo_bernini.jpg");
+                        addAutor(nombreAutor, descripcionAutor, idCategoria, "gian_lorenzo_bernini.jpg",true);
                         idAutor=13;
 
 
@@ -518,7 +518,7 @@ public class ManejadorBaseDeDatos {
                         nombreAutor = "Auguste Rodin";
                         descripcionAutor = "François-Auguste-René Rodin (París, 12 de noviembre de 1840 - Meudon, 17 de noviembre de 1917) fue un escultor " +
                                 "francés contemporáneo del impresionismo, y considerado como uno de los \"padres de la escultura moderna\".";
-                        addAutor(nombreAutor, descripcionAutor,idCategoria, "auguste_rodin.png");
+                        addAutor(nombreAutor, descripcionAutor,idCategoria, "auguste_rodin.png",true);
                         idAutor=14;
 
                                            nombreObra="Le baiser";//id 40
@@ -555,7 +555,7 @@ public class ManejadorBaseDeDatos {
                                 "Alberti, Brunelleschi y Masaccio. Donatello se convirtió en una fuerza innovadora en el campo de la escultura monumental y " +
                                 "en el tratamiento de los relieves, donde logró representar una gran profundidad " +
                                 "dentro de un mínimo plano, denominándose con el nombre de stiacciato, es decir «relieve aplanado o aplastado».";
-                        addAutor(nombreAutor, descripcionAutor, idCategoria, "donatello.jpg");
+                        addAutor(nombreAutor, descripcionAutor, idCategoria, "donatello.jpg",true);
                         idAutor=15;
 
                                            nombreObra="Anunciación Cavalcanti";//id 43
@@ -608,7 +608,7 @@ public class ManejadorBaseDeDatos {
     }
 
 // crear autor nombre, descripcion, idem que en lo anterior para las obras
-    public void addAutor(String nombre,String descripcion,int idCategoria, String imagen){
+    public void addAutor(String nombre,String descripcion,int idCategoria, String imagen,Boolean isInAssets){
         realm.beginTransaction();
         Number currentIdNum = realm.where(Autor.class).max("id");
         int nextId;
@@ -622,10 +622,11 @@ public class ManejadorBaseDeDatos {
         autor.setDescripcion(descripcion);
         autor.setImagen(imagen);
         autor.setIdCategoria(idCategoria);
+        autor.setIsInAssetsAutor(isInAssets);
         realm.commitTransaction();
     }
 // crear obra
-    public void addObra(String nombre,String descripcion,int idAutor,Double latitud, Double longitud,String imagen,Boolean inicial){
+    public void addObra(String nombre,String descripcion,int idAutor,Double latitud, Double longitud,String imagen,Boolean isInAssets){
         realm.beginTransaction();
 
         Number currentIdNum = realm.where(Obra.class).max("id");
@@ -642,7 +643,7 @@ public class ManejadorBaseDeDatos {
         obra.setLongitud(longitud);
         obra.setImagen(imagen);
         obra.setIdAutor(idAutor);
-        obra.setInitial(inicial);
+        obra.setIsInAssetsObra(isInAssets);
         realm.commitTransaction();
     }
 

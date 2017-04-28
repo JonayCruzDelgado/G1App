@@ -17,16 +17,16 @@ public class Obra extends RealmObject {
     private Double longitud;
     private String imagen;
     private int idAutor;
+    private Boolean isInAssetsObra;
 
-    public Boolean getInitial() {
-        return initial;
+    public Boolean getIsInAssetsObra() {
+        return isInAssetsObra;
     }
 
-    public void setInitial(Boolean initial) {
-        this.initial = initial;
+    public void setIsInAssetsObra(Boolean isInAssetsObra) {
+        this.isInAssetsObra = isInAssetsObra;
     }
 
-    private Boolean initial;
     public int getId() {
         return id;
     }

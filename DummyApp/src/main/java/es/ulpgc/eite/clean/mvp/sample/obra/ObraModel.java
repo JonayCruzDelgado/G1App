@@ -1,9 +1,5 @@
 package es.ulpgc.eite.clean.mvp.sample.obra;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-
 import es.ulpgc.eite.clean.mvp.GenericModel;
 import es.ulpgc.eite.clean.mvp.sample.dataBase.ManejadorBaseDeDatos;
 import es.ulpgc.eite.clean.mvp.sample.dataBaseSim.ManejadorBaseDeDatosSim;
@@ -66,6 +62,6 @@ public class ObraModel extends GenericModel<Obra.ModelToPresenter>
   }
   @Override
   public Boolean getInitial(int id){
-    return  manejador.getInicial(id);
+    return  manejador.isInAssetsObra(id);
   }
 }

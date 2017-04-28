@@ -2,6 +2,7 @@ package es.ulpgc.eite.clean.mvp.sample;
 
 import org.junit.Test;
 
+import es.ulpgc.eite.clean.mvp.sample.dataBase.ManejadorBaseDeDatos;
 import es.ulpgc.eite.clean.mvp.sample.dataBaseSim.ManejadorBaseDeDatosSim;
 
 import static org.junit.Assert.*;
@@ -15,7 +16,7 @@ public class ExampleUnitTest {
 
   @Test
   public void getnombreAutor() throws Exception {
-   assertTrue(ManejadorBaseDeDatosSim.getInstance().nombreAutor(0).equals("Miguel Ángel"));
+   assertTrue(ManejadorBaseDeDatos.getInstance().getNombreAutor(1).equals("Miguel Ángel"));
 
   }
 

@@ -33,7 +33,10 @@ import android.widget.TextView;
 import org.junit.Rule;
 
 import es.ulpgc.eite.clean.mvp.sample.R;
+import es.ulpgc.eite.clean.mvp.sample.dataBase.Categoria;
 import es.ulpgc.eite.clean.mvp.sample.dataBase.ManejadorBaseDeDatos;
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
@@ -45,6 +48,14 @@ public class BasicInstrumentedTest {
 
   @Rule
   public ActivityTestRule<InicialView> mActivityRule = new ActivityTestRule<InicialView>(InicialView.class);
+
+    @Test
+    public void testPruebaRealm(){
+        Realm realm = Realm.getDefaultInstance();
+        RealmResults<Categoria> result= realm.where(Categoria.class).equalTo("id",1).findAll();
+        String nombre = result.get(0).getCategoria();
+        assertEquals(nombre,"Pintura");
+    }
 
   @Test
   public void testBtnsIncialDisplay() {

@@ -68,6 +68,8 @@ public interface AddAutor {
    */
   interface PresenterToModel extends Model<ModelToPresenter> {
     void  addAutorSinImagen(String nombre, String descripcion, int idCategoria);
+
+      void  addAutorConImagen(String nombre, String descripcion, int idCategoria, String PathImagen);
   }
 
   /**
