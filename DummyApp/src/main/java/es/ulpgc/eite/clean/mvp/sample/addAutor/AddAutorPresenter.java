@@ -149,13 +149,22 @@ public class AddAutorPresenter extends GenericPresenter
   ///////////////////////////////////////////////////////////////////////////////////
 
   public void inicializarVista(){
-    getView().setTitle("Nuevo Autor");
+  /*  getView().setTitle("Nuevo Autor");
     if(true){  //comprobar si no se a selecionado imagen
       getView().hideImagen();
     }else{
         getView().showImagen();
+
+    }*/
+    getView().setTitle("Nuevo Autor");
+    if(getImagen().equals("ic_cuadro.jpg")){  // no hay imagen
+      getView().hideImagen();
+    }else{
+      getView().showImagen();
+      getView().setImagen(getImagen());
     }
   }
+
   private String getImagen(){
     Mediator app = (Mediator) getView().getApplication();
     return app.getImagenAutor();

@@ -94,10 +94,17 @@ public class AutorPresenter extends GenericPresenter
     Mediator app = (Mediator) getView().getApplication();
     int id= app.getIdAutorSelecionado();
     getView().setDescripcionAutor(getModel().getDescripcion(id));
-    getView().setIconoAutor(getModel().getImagen(id));
     getView().setNombreAutor(getModel().getNombre(id));
     getView().actualizarListaObras(getModel().getObras(id));
 
+    inicializarImagen(getModel().getInitial(id),id);
+  }
+  private void inicializarImagen(Boolean inicial, int id){
+    if (inicial){
+      getView().setIconoAutor(getModel().getImagen(id));
+    }else{
+      getView().setImagenAutorAñadida(getModel().getImagen(id));
+    }
   }
   @Override
   public void onItemClickSelected(int pos) {

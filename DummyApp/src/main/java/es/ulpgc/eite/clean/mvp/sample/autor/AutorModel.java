@@ -64,4 +64,8 @@ public class AutorModel extends GenericModel<Autor.ModelToPresenter>
   public String getImagen( int id){
     return manejador.getImagenAutor(id);
   }
+  @Override
+  public Boolean getInitial(int id){
+    return  manejador.isInAssetsAutor(id);
+  }
 }

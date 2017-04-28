@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -131,6 +132,12 @@ public class AutorView
   public void setIconoAutor(String imagen) {
 
     iconoAutor.setImageBitmap(getBitmapFromAssets(imagen));
+  }
+  @Override
+  public void setImagenAutorAñadida(String icono) {
+    File imgFile = new  File(icono);
+    Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+    iconoAutor.setImageBitmap(myBitmap);
   }
   @Override
   public void actualizarListaObras(String[] nombresObras){

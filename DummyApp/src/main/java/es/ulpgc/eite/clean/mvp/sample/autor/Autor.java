@@ -59,7 +59,10 @@ public interface Autor {
     void showText();
     void setDescripcionAutor(String txt);
     void setIconoAutor(String icono);
-    void actualizarListaObras(String[] nombresObras);
+
+      void setImagenAutorAñadida(String icono);
+
+      void actualizarListaObras(String[] nombresObras);
     void setNombreAutor(String txt);
   }
 
@@ -79,6 +82,8 @@ public interface Autor {
     String getDescripcion(int posicion);
 
     String getImagen(int id);
+
+    Boolean getInitial(int id);
   }
 
   /**
