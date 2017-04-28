@@ -50,6 +50,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:maxLines = "2"
+            android:scrollbars = "vertical"
             android:ems="10"
             android:textColorLink="@android:color/background_dark" />
 
@@ -78,6 +80,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:maxLines = "5"
+                android:scrollbars = "vertical"
                 android:ems="10"
                 android:inputType="textMultiLine"
                 android:textColorLink="@android:color/background_dark"/>

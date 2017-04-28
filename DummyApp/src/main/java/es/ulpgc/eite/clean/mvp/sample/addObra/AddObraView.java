@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.widget.Toolbar;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -53,9 +54,13 @@ public class AddObraView
     setSupportActionBar(toolbar);
 
     nombreIndtroducido = (EditText) findViewById(R.id.nombreObraIntroducido);
+    nombreIndtroducido.setMovementMethod(new ScrollingMovementMethod());
     descripcionIndtroducida = (EditText) findViewById(R.id.descripcionObraIntroducida);
+    descripcionIndtroducida.setMovementMethod(new ScrollingMovementMethod());
     latitudIndtroducida = (EditText) findViewById(R.id.latitudIntroducida);
+    latitudIndtroducida.setMovementMethod(new ScrollingMovementMethod());
     longitudIndtroducida = (EditText) findViewById(R.id.longitudIntroducida);
+    longitudIndtroducida.setMovementMethod(new ScrollingMovementMethod());
     imagenSelecionada=(ImageView) findViewById(R.id.imagenSeleccionadaObra);
 
     btnDone=(Button) findViewById(R.id.btnDoneObra);

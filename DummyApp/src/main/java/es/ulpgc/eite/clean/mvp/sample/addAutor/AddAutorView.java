@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.widget.Toolbar;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -44,7 +45,9 @@ public class AddAutorView
     setSupportActionBar(toolbar);
 
     nombreIndtroducido = (EditText) findViewById(R.id.nombreAutorIntroducido);
+    nombreIndtroducido.setMovementMethod(new ScrollingMovementMethod());
     descripcionIndtroducida = (EditText) findViewById(R.id.descripcionAutorIntroducida);
+    descripcionIndtroducida.setMovementMethod(new ScrollingMovementMethod());
     imagenSelecionada=(ImageView)  findViewById(R.id.imagenSeleccionadaAutor);
 
     btnDone=(Button) findViewById(R.id.btnDoneAutor);
