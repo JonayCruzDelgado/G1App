@@ -1,14 +1,22 @@
 package es.ulpgc.eite.clean.mvp.sample.addAutor;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import java.io.File;
 
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.sample.R;
@@ -23,6 +31,8 @@ public class AddAutorView
   private EditText descripcionIndtroducida;
   private ImageView imagenSelecionada;
   private Button btnDone;
+  private String selectedImagePath;
+  private static final int SELECT_PICTURE = 1;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +60,74 @@ public class AddAutorView
       @Override
       public void onClick(View view) {
         getPresenter().onButtonAddImagenClicked();
+        // in onCreate or any event where your want the user to
+        // select a file
+
+
+//        Intent intent = new Intent();
+//        intent.setType("image/*");
+//        intent.setAction(Intent.ACTION_GET_CONTENT);
+//        startActivityForResult(Intent.createChooser(intent,
+//                "Select Picture"), SELECT_PICTURE);
+        Intent intent = new Intent(
+                Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+        );
+
+        startActivityForResult(Intent.createChooser(intent,
+                "Select Picture"), SELECT_PICTURE);
       }
     });
+  }
+
+  public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 
+    if (resultCode == RESULT_OK) {
+
+      Uri selectedImageUri = data.getData();
+      Log.d(getClass().getSimpleName() + ".onActivityResult", "selectedImageUri=" + selectedImageUri);
+
+      /*
+      try {
+
+        Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImageUri);
+        imagenSelecionada.setImageBitmap(bitmap);
+
+      } catch (IOException error) {
+        Log.d(getClass().getSimpleName() + ".onActivityResult", "error=" + error);
+      }
+
+      */
+
+      if(selectedImageUri != null){
+        //selectedImagePath = selectedImageUri.toString();
+        selectedImagePath = getRealPathFromURI(selectedImageUri);
+        Log.d(getClass().getSimpleName() + ".onActivityResult", "selectedImagePath=" + selectedImagePath);
+        if(selectedImagePath != null) {
+          getPresenter().setImagen(); // el presentador captura la imagen para manejarla el con los estados
+          getPresenter().onResume(this); // refrescar la pantalla al salir de la galeria para que aparesca la imagen
+        }
+      }
+
+    }
+
+  }
+
+
+  public String getRealPathFromURI(Uri contentUri) {
+
+    String res = null;
+    String[] proj = { MediaStore.Images.Media.DATA };
+    Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
+    if (cursor.moveToFirst()) {
+
+      int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+      res = cursor.getString(column_index);
+    }
+    cursor.close();
+
+    return res;
   }
 
   /**
@@ -65,6 +139,10 @@ public class AddAutorView
   protected void onResume() {
     super.onResume(AddAutorPresenter.class, this);
 
+  }
+  @Override
+  public String getSelectedImagePath() {
+    return selectedImagePath;
   }
 
   // Custom method to get assets folder image as bitmap
@@ -128,9 +206,16 @@ public class AddAutorView
 
   }
   @Override
-  public void setImagen(Bitmap imagen){
-    imagenSelecionada.setImageBitmap(imagen);
+  public void setImagen(String imagen){
+  if( imagen != null) {
+    File imgFile = new File(imagen);
+    if (imgFile.exists()) {
+      Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+
+      imagenSelecionada.setImageBitmap(myBitmap);
+    }
   }
+}
   @Override
   public void showImagen(){
     imagenSelecionada.setVisibility(View.VISIBLE);

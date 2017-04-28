@@ -138,17 +138,6 @@ public class AddObraView
     }
     cursor.close();
 
-    if( res != null) {
-      File imgFile = new File(res);
-
-      if (imgFile.exists()) {
-
-        Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-
-
-      }
-    }
-
     return res;
   }
 
@@ -231,10 +220,14 @@ public class AddObraView
   }
   @Override
   public void setImagen(String imagen){
-    File imgFile = new  File(imagen);
-    Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+    if( imagen != null) {
+      File imgFile = new File(imagen);
+        if (imgFile.exists()) {
+          Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
 
-    imagenSelecionada.setImageBitmap(myBitmap);
+          imagenSelecionada.setImageBitmap(myBitmap);
+      }
+    }
   }
   @Override
   public void showImagen(){

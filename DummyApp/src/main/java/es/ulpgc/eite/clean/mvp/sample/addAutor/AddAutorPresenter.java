@@ -86,20 +86,34 @@ public class AddAutorPresenter extends GenericPresenter
   public void onButtonAddImagenClicked(){
 
   }
+  @Override
+  public void setImagen(){
+    Mediator app = (Mediator) getView().getApplication();
+    String imagen =getView().getSelectedImagePath();
+    app.setImagenAutor(imagen);
 
+
+  }
   @Override
   public void onButtonDoneClicked() {
-    Log.d(TAG, "calling onButtonClicked()");
-    Mediator mediador=(Mediator)getView().getApplication();
-    int idCategoria=mediador.getIdBotonCategoriaClicked();
-    String nombre=getView().getNombre();
-    String descripcion =getView().getDescripcion();
-      if((!nombre.equals("")) && (!descripcion.equals(""))){
-          getModel().addAutorSinImagen(nombre, descripcion, idCategoria);
-        getView().finishScreen();
-      }
-      getView().showToast("Introducir Datos Validos");
+    Mediator app = (Mediator) getView().getApplication();
+    String nombre= getView().getNombre();
+    String descripcion= getView().getDescripcion();
+    String path = getImagen();
 
+    if((!nombre.equals(""))&&(!descripcion.equals(""))
+            ){
+      if (path.equals("ic_cuadro.jpg")){
+        getModel().addAutorSinImagen(nombre, descripcion, app.getIdBotonCategoriaClicked());
+      }
+      else {
+        getModel().addAutorConImagen(nombre, descripcion, app.getIdBotonCategoriaClicked(),
+                path);
+      }
+      getView().finishScreen();
+    }else {
+      getView().showToast("Introducir Datos Validos");
+    }
   }
 
 
@@ -141,6 +155,11 @@ public class AddAutorPresenter extends GenericPresenter
     }else{
         getView().showImagen();
     }
+  }
+  private String getImagen(){
+    Mediator app = (Mediator) getView().getApplication();
+    return app.getImagenAutor();
+
   }
 
 

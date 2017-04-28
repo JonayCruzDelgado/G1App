@@ -40,13 +40,17 @@ public interface AddAutor {
       // View To Presenter /////////////////////////////////////////////////////////////
       void onButtonAddImagenClicked();
 
-      void onButtonDoneClicked();
+    void setImagen();
+
+    void onButtonDoneClicked();
   }
 
   /**
    * Required VIEW methods available to PRESENTER
    */
   interface PresenterToView extends ContextView {
+    String getSelectedImagePath();
+
     void finishScreen();
     void hideToolbar();
     String getNombre();
@@ -56,9 +60,9 @@ public interface AddAutor {
 
       void showToast(String txt);
 
-    void setImagen(Bitmap imagen);
+      void setImagen(String imagen);
 
-    void showImagen();
+      void showImagen();
 
     void hideImagen();
   }
@@ -67,9 +71,10 @@ public interface AddAutor {
    * Methods offered to MODEL to communicate with PRESENTER
    */
   interface PresenterToModel extends Model<ModelToPresenter> {
-    void  addAutorSinImagen(String nombre, String descripcion, int idCategoria);
 
-      void  addAutorConImagen(String nombre, String descripcion, int idCategoria, String PathImagen);
+    void  addAutorSinImagen(String nombre, String descripcion, int idAutor);
+
+    void  addAutorConImagen(String nombre, String descripcion, int idAutor, String PathImagen);
   }
 
   /**
