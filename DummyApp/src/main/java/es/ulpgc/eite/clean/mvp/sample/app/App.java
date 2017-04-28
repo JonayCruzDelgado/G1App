@@ -3,6 +3,7 @@ package es.ulpgc.eite.clean.mvp.sample.app;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.util.Log;
 
 import es.ulpgc.eite.clean.mvp.sample.addAutor.AddAutorPresenter;
@@ -165,9 +166,11 @@ public class App extends Application implements Mediator, Navigator {
 
     Log.d("APP", "goToAddAutorScreen()");
     Context view = presenter.getManagedContext();
-
+    addObraToState = new AddObraState();
+    addObraToState.imagenObra="ic_cuadro.jpg";
     if (view != null) {
       view.startActivity(new Intent(view, AddObraView.class));
+
 
     }
 
@@ -198,17 +201,14 @@ public class App extends Application implements Mediator, Navigator {
 
   }
   private class AddObraState{
+    String imagenObra;
 
   }
   private class AddAutorState{
-    // String nombreObraSelecionada;
+    String imagenAutor;
 
   }
 
- /* @Override
-  public String getCategoriaClicked(){
-    return inicialToState.layaoutClicked;
-  }*/
  @Override
   public int getIdBotonCategoriaClicked(){
     return inicialToState.idBoton;
@@ -232,14 +232,23 @@ public class App extends Application implements Mediator, Navigator {
     return autorToState.idObraSelecionada;
   }
 
-
-/*  @Override
-  public String getNombreAutorSelecionado(){
-    return autorToState.nombreAutorSelecionado;
-  }*/
-/*  public String getNombreObraSelecionada(){
-    return obraToState.nombreObraSelecionada;
+  @Override
+  public String getImagenAutor(){
+    return addAutorToState.imagenAutor;
   }
-*/
+  @Override
+  public String getImagenObra(){
+    return addObraToState.imagenObra;
+
+  }
+  @Override
+  public void setImagenObra(String imagen){
+    addObraToState.imagenObra =imagen;
+  }
+
+  @Override
+  public void setImagenAutor(String imagen){
+    addAutorToState.imagenAutor =imagen;
+  }
 
 }

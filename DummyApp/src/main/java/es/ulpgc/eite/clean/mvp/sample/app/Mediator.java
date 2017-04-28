@@ -1,5 +1,7 @@
 package es.ulpgc.eite.clean.mvp.sample.app;
 
+import android.graphics.Bitmap;
+
 import es.ulpgc.eite.clean.mvp.sample.addAutor.AddAutorPresenter;
 import es.ulpgc.eite.clean.mvp.sample.addObra.AddObraPresenter;
 import es.ulpgc.eite.clean.mvp.sample.autor.Autor;
@@ -25,4 +27,11 @@ public interface Mediator {
   int getIdObraSelecionada();
 
 
+  String getImagenAutor();
+
+  String getImagenObra();
+
+  void setImagenObra(String imagen);
+
+  void setImagenAutor(String imagen);
 }

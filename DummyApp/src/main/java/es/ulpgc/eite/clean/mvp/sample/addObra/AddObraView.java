@@ -15,8 +15,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
-
 import java.io.File;
 
 import es.ulpgc.eite.clean.mvp.GenericActivity;
@@ -36,13 +34,14 @@ public class AddObraView
   private ImageView imagenSelecionada;
   private static final int SELECT_PICTURE = 1;
 
+  private String selectedImagePath;
+
   @Override
   public String getSelectedImagePath() {
     return selectedImagePath;
   }
 
 
-  private String selectedImagePath;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +88,8 @@ public class AddObraView
       Uri selectedImageUri = data.getData();
       selectedImagePath = selectedImageUri.toString();
       selectedImagePath = getRealPathFromURI(selectedImageUri);
+      getPresenter().setImagen(); // el presentador captura la imagen para manejarla el con los estados
+      getPresenter().onResume(this); // refrescar la pantalla al salir de la galeria para que aparesca la imagen
 
     }
   }
@@ -107,7 +108,8 @@ public class AddObraView
     if(imgFile.exists()){
 
       Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-      imagenSelecionada.setImageBitmap(myBitmap);
+
+
 
     }
    return res;
@@ -189,8 +191,11 @@ public class AddObraView
     toast.show();
   }
   @Override
-  public void setImagen(Bitmap imagen){
-    imagenSelecionada.setImageBitmap(imagen);
+  public void setImagen(String imagen){
+    File imgFile = new  File(imagen);
+    Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+
+    imagenSelecionada.setImageBitmap(myBitmap);
   }
   @Override
   public void showImagen(){

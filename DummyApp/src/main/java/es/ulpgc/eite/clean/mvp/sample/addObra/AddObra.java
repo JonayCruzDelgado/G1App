@@ -41,6 +41,7 @@ public interface AddObra {
     ///////////////////////////////////////////////////////////////////////////////////
     // View To Presenter /////////////////////////////////////////////////////////////
     void onButtonAddImagenClicked();
+    void setImagen();
 
     void onButtonDoneClicked();
   }
@@ -66,7 +67,7 @@ public interface AddObra {
 
     void showToast(String txt);
 
-      void setImagen(Bitmap imagen);
+      void setImagen(String imagen);
 
     void showImagen();
 

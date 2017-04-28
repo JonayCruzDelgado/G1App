@@ -2,7 +2,6 @@ package es.ulpgc.eite.clean.mvp.sample.addObra;
 
 
 import android.content.Context;
-import android.net.Uri;
 import android.util.Log;
 
 import es.ulpgc.eite.clean.mvp.ContextView;
@@ -13,9 +12,6 @@ import es.ulpgc.eite.clean.mvp.sample.app.Mediator;
 public class AddObraPresenter extends GenericPresenter
     <AddObra.PresenterToView, AddObra.PresenterToModel, AddObra.ModelToPresenter, AddObraModel>
     implements AddObra.ViewToPresenter, AddObra.ModelToPresenter, AddObra.AddObraTo, AddObra.ToAddObra {
-
-
-
 
 
   /**
@@ -50,8 +46,6 @@ public class AddObraPresenter extends GenericPresenter
     Log.d(TAG, "calling onResume()");
     inicializarVista();
     if(configurationChangeOccurred()) {
-
-
      inicializarVista();
 
 
@@ -88,17 +82,23 @@ public class AddObraPresenter extends GenericPresenter
   public void onButtonAddImagenClicked(){
 
   }
+  @Override
+  public void setImagen(){
+    Mediator app = (Mediator) getView().getApplication();
+    String imagen =getView().getSelectedImagePath();
+    app.setImagenObra(imagen);
 
 
+  }
 
   @Override
   public void onButtonDoneClicked() {
     Mediator app = (Mediator) getView().getApplication();
     String nombre= getView().getNombre();
     String descripcion= getView().getDescripcion();
+    String path = getImagen();
     String textoLatitud = getView().getLatitud();
     Double latitud;
-    String path = getView().getSelectedImagePath();
           if(textoLatitud == null || textoLatitud.isEmpty()) {
             latitud = 0.0;
           } else {
@@ -114,7 +114,7 @@ public class AddObraPresenter extends GenericPresenter
 
     if((!nombre.equals(""))&&(!descripcion.equals(""))&&
             (!textoLatitud.equals(""))&&(!textoLongitud.equals(""))){
-      if (getView().getSelectedImagePath() == null) {
+      if (path.equals("ic_cuadro.jpg")){
         getModel().addObraSinImagen(nombre, descripcion, app.getIdAutorSelecionado(), latitud, longitud);
       }
       else {
@@ -164,14 +164,18 @@ public class AddObraPresenter extends GenericPresenter
 
   private void inicializarVista(){
     getView().setTitle("Nueva Obra");
-//    if(true){  //comprobar si no se a selecionado imagen
-//      getView().hideImagen();
-//    }else{
-       getView().showImagen();
-//    }
-
+    if(getImagen().equals("ic_cuadro.jpg")){  // no hay imagen
+      getView().hideImagen();
+    }else{
+      getView().showImagen();
+      getView().setImagen(getImagen());
+    }
   }
 
+  private String getImagen(){
+    Mediator app = (Mediator) getView().getApplication();
+    return app.getImagenObra();
 
+  }
 
 }
