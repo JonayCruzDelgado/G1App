@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CleanMvpLib/CleanMvpLib.iml" filepath="$PROJECT_DIR$/CleanMvpLib/CleanMvpLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CleanMvpLib/CleanMvpLib.iml" filepath="$PROJECT_DIR$/CleanMvpLib/CleanMvpLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/DummyApp/DummyApp.iml" filepath="$PROJECT_DIR$/DummyApp/DummyApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DummyApp/DummyApp.iml" filepath="$PROJECT_DIR$/DummyApp/DummyApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/G1App.iml" filepath="$PROJECT_DIR$/G1App.iml" />
       <module fileurl="file://$PROJECT_DIR$/G1App.iml" filepath="$PROJECT_DIR$/G1App.iml" />
     </modules>
   </component>

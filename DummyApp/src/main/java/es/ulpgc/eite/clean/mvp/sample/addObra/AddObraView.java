@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -72,48 +73,86 @@ public class AddObraView
         getPresenter().onButtonAddImagenClicked();
     // in onCreate or any event where your want the user to
         // select a file
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent,
-                "Select Picture"), SELECT_PICTURE);
 
+
+//        Intent intent = new Intent();
+//        intent.setType("image/*");
+//        intent.setAction(Intent.ACTION_GET_CONTENT);
+//        startActivityForResult(Intent.createChooser(intent,
+//                "Select Picture"), SELECT_PICTURE);
+
+        Intent intent = new Intent(
+            Intent.ACTION_PICK,
+            android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+        );
+
+        startActivityForResult(Intent.createChooser(intent,
+            "Select Picture"), SELECT_PICTURE);
       }
     });
   }
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+
     if (resultCode == RESULT_OK) {
 
       Uri selectedImageUri = data.getData();
-      selectedImagePath = selectedImageUri.toString();
-      selectedImagePath = getRealPathFromURI(selectedImageUri);
-      getPresenter().setImagen(); // el presentador captura la imagen para manejarla el con los estados
-      getPresenter().onResume(this); // refrescar la pantalla al salir de la galeria para que aparesca la imagen
+      Log.d(getClass().getSimpleName() + ".onActivityResult", "selectedImageUri=" + selectedImageUri);
+
+      /*
+      try {
+
+        Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImageUri);
+        imagenSelecionada.setImageBitmap(bitmap);
+
+      } catch (IOException error) {
+        Log.d(getClass().getSimpleName() + ".onActivityResult", "error=" + error);
+      }
+
+      */
+
+      if(selectedImageUri != null){
+        //selectedImagePath = selectedImageUri.toString();
+        selectedImagePath = getRealPathFromURI(selectedImageUri);
+        Log.d(getClass().getSimpleName() + ".onActivityResult", "selectedImagePath=" + selectedImagePath);
+        if(selectedImagePath != null) {
+          getPresenter().setImagen(); // el presentador captura la imagen para manejarla el con los estados
+          getPresenter().onResume(this); // refrescar la pantalla al salir de la galeria para que aparesca la imagen
+        }
+      }
 
     }
+
   }
+
+
   public String getRealPathFromURI(Uri contentUri) {
 
-      String res = null;
-      String[] proj = { MediaStore.Images.Media.DATA };
-      Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
-      if(cursor.moveToFirst()){;
-        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        res = cursor.getString(column_index);
-      }
-      cursor.close();
-    File imgFile = new  File(res);
+    String res = null;
+    String[] proj = { MediaStore.Images.Media.DATA };
+    Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
+    if (cursor.moveToFirst()) {
 
-    if(imgFile.exists()){
-
-      Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-
-
-
+      int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+      res = cursor.getString(column_index);
     }
-   return res;
+    cursor.close();
+
+    if( res != null) {
+      File imgFile = new File(res);
+
+      if (imgFile.exists()) {
+
+        Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+
+
+      }
+    }
+
+    return res;
   }
+
+
   /**
    * Method that initialized MVP objects
    * {@link super#onResume(Class, Object)} should always be called
@@ -205,5 +244,6 @@ public class AddObraView
   public void hideImagen(){
     imagenSelecionada.setVisibility(View.GONE);
   }
+
 
 }
