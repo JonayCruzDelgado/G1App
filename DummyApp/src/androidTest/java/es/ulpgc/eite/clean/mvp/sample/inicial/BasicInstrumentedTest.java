@@ -33,8 +33,10 @@ import android.widget.TextView;
 import org.junit.Rule;
 
 import es.ulpgc.eite.clean.mvp.sample.R;
+import es.ulpgc.eite.clean.mvp.sample.dataBase.Autor;
 import es.ulpgc.eite.clean.mvp.sample.dataBase.Categoria;
 import es.ulpgc.eite.clean.mvp.sample.dataBase.ManejadorBaseDeDatos;
+import es.ulpgc.eite.clean.mvp.sample.dataBase.Obra;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
@@ -43,19 +45,64 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
+import static org.mockito.Mockito.*;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnit;
+import org.mockito.junit.MockitoRule;
+
 @RunWith(AndroidJUnit4.class)
 public class BasicInstrumentedTest {
 
   @Rule
   public ActivityTestRule<InicialView> mActivityRule = new ActivityTestRule<InicialView>(InicialView.class);
+  public MockitoRule mockitoRule = MockitoJUnit.rule();
 
-    @Test
-    public void testPruebaRealm(){
+  @Test
+  public void testRealmGetNombreCategoria(){
         Realm realm = Realm.getDefaultInstance();
         RealmResults<Categoria> result= realm.where(Categoria.class).equalTo("id",1).findAll();
         String nombre = result.get(0).getCategoria();
         assertEquals(nombre,"Pintura");
-    }
+  }
+
+  @Test
+  public void testRealmGetidsObraPorAutor(){
+        Realm realm = Realm.getDefaultInstance();
+        int idAutor=3;
+        int[] ids={7,8,9};
+
+      RealmResults<Obra> result =realm.where(Obra.class).equalTo("idAutor",idAutor).findAll();
+      int[] array=new int[result.size()];
+      int i;
+      for(i=0; i<result.size();i++){
+          array[i] =result.get(i).getId();
+      }
+      assertEquals(ids[0],array[0]);
+      assertEquals(ids[1],array[1]);
+      assertEquals(ids[2],array[2]);
+  }
+
+  @Test
+  public void testRealmGetNombreObra(){
+        Realm realm = Realm.getDefaultInstance();
+        RealmResults<Obra> result= realm.where(Obra.class).equalTo("id",1).findAll();
+        String nombre = result.get(0).getNombre();
+        assertEquals(nombre,"La Última Cena");
+  }
+
+  @Test
+  public void testMockInicialPresenter(){
+      InicialPresenter presentador =mock(InicialPresenter.class);
+
+      // parametros esperados esperados
+      /*doNothing().when(presentador).
+      doNothing().when(presentador).setLabel1("Pintura");
+      doNothing().when(presentador).setLabel2("Arquitectura");
+      doNothing().when(presentador).setLabel3("Escultura");*/
+
+  }
+
+
 
   @Test
   public void testBtnsIncialDisplay() {
