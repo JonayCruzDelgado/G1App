@@ -1,10 +1,13 @@
 package es.ulpgc.eite.clean.mvp.sample.dataBase;
 
+import io.realm.Realm;
+
 /**
  * Created by Marta on 02/05/2017.
  */
 
 public interface I_ManejadorBaseDeDatos {
+
     String getNombreCategoria(int idCategoria);
     String getImagenCategoria(int idCategoria);
 

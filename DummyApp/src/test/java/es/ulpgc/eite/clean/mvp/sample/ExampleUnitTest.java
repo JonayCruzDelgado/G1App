@@ -3,7 +3,6 @@ package es.ulpgc.eite.clean.mvp.sample;
 import org.junit.Test;
 
 import es.ulpgc.eite.clean.mvp.sample.dataBase.ManejadorBaseDeDatos;
-import es.ulpgc.eite.clean.mvp.sample.dataBaseSim.ManejadorBaseDeDatosSim;
 
 import static org.junit.Assert.*;
 
@@ -14,17 +13,7 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
 
-  @Test
-  public void getnombreAutor() throws Exception {
-   assertTrue(ManejadorBaseDeDatos.getInstance().getNombreAutor(1).equals("Miguel Ángel"));
 
-  }
 
-  @Test
-  public void getNombresCategoria() throws Exception {
-    String[] array={"Pintura","Escultura","Arquitectura"};
-    assertTrue(ManejadorBaseDeDatosSim.getInstance().arrayNombresCategorias().equals(array));
-
-  }
 
 }

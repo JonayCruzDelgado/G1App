@@ -90,7 +90,6 @@ public class AutoresPresenter extends GenericPresenter
       Mediator app = (Mediator) getApplication();
       getView().actualizarListaAutores(getModel().getAutores(app.getIdBotonCategoriaClicked()));
       getView().setTituloToolbar(getModel().getNombreCategoria(app.getIdBotonCategoriaClicked()));
-      getView().hideText();
 
   }
 

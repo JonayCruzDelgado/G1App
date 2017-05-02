@@ -52,9 +52,9 @@ public interface Inicial {
     void setLabel1(String txt);
     void setLabel3(String txt);
     void setLabel2(String txt);
-    void setIcono1(String icono);
-    void setIcono2(String icono);
-    void setIcono3(String icono);
+    void setIcono1(Bitmap imagen);
+    void setIcono2(Bitmap imagen);
+    void setIcono3(Bitmap imagen);
   }
 
   /**

@@ -1,9 +1,7 @@
 package es.ulpgc.eite.clean.mvp.sample.inicial;
 
 import android.annotation.SuppressLint;
-import android.content.res.AssetManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -11,9 +9,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.sample.R;
@@ -126,38 +121,27 @@ public class InicialView
   public void hideToolbar() {
     toolbar.setVisibility(View.GONE);
   }
-
+  @Override
   public void setLabel1(String txt) {
     label1.setText(txt);
   }
+  @Override
   public void setLabel3(String txt) {
     label3.setText(txt);
   }
+  @Override
   public void setLabel2(String txt) {
     label2.setText(txt);
   }
-  public void setIcono1(String icono) {
-    icono1.setImageBitmap(getBitmapFromAssets(icono));
+  @Override
+  public void setIcono1(Bitmap imagen) {
+    icono1.setImageBitmap(imagen);
   }
-  public void setIcono2(String icono) {
-    icono2.setImageBitmap(getBitmapFromAssets(icono));
+  public void setIcono2(Bitmap imagen) {
+    icono2.setImageBitmap(imagen);
   }
-  public void setIcono3(String icono) {
-    icono3.setImageBitmap(getBitmapFromAssets(icono));
-  }
-
-  private Bitmap getBitmapFromAssets(String fileName){
-    AssetManager am = getAssets();
-    InputStream is = null;
-    try{
-
-      is = am.open(fileName);
-    }catch(IOException e){
-      e.printStackTrace();
-    }
-
-    Bitmap bitmap = BitmapFactory.decodeStream(is);
-    return bitmap;
+  public void setIcono3(Bitmap imagen) {
+    icono3.setImageBitmap(imagen);
   }
 
 }

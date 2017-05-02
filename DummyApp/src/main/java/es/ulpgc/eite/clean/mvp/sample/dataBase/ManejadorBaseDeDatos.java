@@ -28,6 +28,7 @@ public class ManejadorBaseDeDatos implements I_ManejadorBaseDeDatos {
         realm = Realm.getDefaultInstance();
         initBaseDeDatos();
     }
+
     @Override
     public String getNombreCategoria(int idCategoria){
         RealmResults<Categoria> result= realm.where(Categoria.class).equalTo("id",idCategoria).findAll();
@@ -602,7 +603,7 @@ public class ManejadorBaseDeDatos implements I_ManejadorBaseDeDatos {
 
 
     @Override
-    public void addCategoria(String nombre,String imagen){
+    public void addCategoria(String nombre, String imagen){
         realm.beginTransaction();
         Number currentIdNum = realm.where(Categoria.class).max("id");
         int nextId;
@@ -617,7 +618,7 @@ public class ManejadorBaseDeDatos implements I_ManejadorBaseDeDatos {
         realm.commitTransaction();
     }
     @Override
-    public void addAutor(String nombre,String descripcion,int idCategoria, String imagen,Boolean isInAssets){
+    public void addAutor(String nombre, String descripcion, int idCategoria, String imagen, Boolean isInAssets){
         realm.beginTransaction();
         Number currentIdNum = realm.where(Autor.class).max("id");
         int nextId;
@@ -635,7 +636,7 @@ public class ManejadorBaseDeDatos implements I_ManejadorBaseDeDatos {
         realm.commitTransaction();
     }
     @Override
-    public void addObra(String nombre,String descripcion,int idAutor,Double latitud, Double longitud,String imagen,Boolean isInAssets){
+    public void addObra(String nombre, String descripcion, int idAutor, Double latitud, Double longitud, String imagen, Boolean isInAssets){
         realm.beginTransaction();
 
         Number currentIdNum = realm.where(Obra.class).max("id");

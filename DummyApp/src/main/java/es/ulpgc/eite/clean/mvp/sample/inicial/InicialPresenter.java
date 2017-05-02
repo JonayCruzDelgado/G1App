@@ -2,7 +2,13 @@ package es.ulpgc.eite.clean.mvp.sample.inicial;
 
 
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 import es.ulpgc.eite.clean.mvp.ContextView;
 import es.ulpgc.eite.clean.mvp.GenericActivity;
@@ -159,8 +165,21 @@ public class InicialPresenter extends GenericPresenter
     getView().setLabel1(getModel().getTextBtn1());
     getView().setLabel2(getModel().getTextBtn2());
     getView().setLabel3(getModel().getTextBtn3());
-    getView().setIcono1(getModel().getIconoBtn1());
-    getView().setIcono2(getModel().getIconoBtn2());
-    getView().setIcono3(getModel().getIconoBtn3());
+    getView().setIcono1(getBitmapFromAssets(getModel().getIconoBtn1()));
+    getView().setIcono2(getBitmapFromAssets(getModel().getIconoBtn2()));
+    getView().setIcono3(getBitmapFromAssets(getModel().getIconoBtn3()));
+  }
+  private Bitmap getBitmapFromAssets(String fileName){
+    AssetManager am = getView().getActivityContext().getAssets();
+    InputStream is = null;
+    try{
+
+      is = am.open(fileName);
+    }catch(IOException e){
+      e.printStackTrace();
+    }
+
+    Bitmap bitmap = BitmapFactory.decodeStream(is);
+    return bitmap;
   }
 }

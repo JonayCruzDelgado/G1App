@@ -57,6 +57,8 @@ public class BasicInstrumentedTest {
   public ActivityTestRule<InicialView> mActivityRule = new ActivityTestRule<InicialView>(InicialView.class);
   public MockitoRule mockitoRule = MockitoJUnit.rule();
 
+    // test "Unitarios" ////////////////////////////////
+
   @Test
   public void testRealmGetNombreCategoria(){
         Realm realm = Realm.getDefaultInstance();
@@ -89,6 +91,7 @@ public class BasicInstrumentedTest {
         String nombre = result.get(0).getNombre();
         assertEquals(nombre,"La Última Cena");
   }
+  /////////////////////////////////////////////////////////////////
 
   @Test
   public void testMockInicialPresenter(){
