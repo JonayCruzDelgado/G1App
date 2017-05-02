@@ -4,17 +4,13 @@ import android.annotation.SuppressLint;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,8 +18,6 @@ import java.io.InputStream;
 
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.sample.R;
-import es.ulpgc.eite.clean.mvp.sample.obra.Obra;
-import es.ulpgc.eite.clean.mvp.sample.obra.ObraPresenter;
 
 public class ObraView
     extends GenericActivity<Obra.PresenterToView, Obra.ViewToPresenter, ObraPresenter>
@@ -99,12 +93,6 @@ public class ObraView
     finish();
   }
 
-  @Override
-  public void hideToolbar() {
-    toolbar.setVisibility(View.GONE);
-  }
-
-
 
   @Override
   public void setDescripcionObra(String txt) {
@@ -112,32 +100,15 @@ public class ObraView
   }
 
   @Override
-  public void setImagenObra(String icono) {
-          //imagen.setImageURI(mUri);
-
-        imagen.setImageBitmap(getBitmapFromAssets(icono));
+  public void setImagenObra(Bitmap imagen) {
+        this.imagen.setImageBitmap(imagen);
   }
-
-
-
 
   @Override
   public void setNombreObra(String txt) {
     toolbar.setTitle(txt);
   }
-  private Bitmap getBitmapFromAssets(String fileName){
-    AssetManager am = getAssets();
-    InputStream is = null;
-    try{
 
-      is = am.open(fileName);
-    }catch(IOException e){
-      e.printStackTrace();
-    }
-
-    Bitmap bitmap = BitmapFactory.decodeStream(is);
-    return bitmap;
-  }
   @Override
   public void showToast(String txt){
     Toast toast = Toast.makeText(getActivityContext(), txt,Toast.LENGTH_SHORT);
@@ -145,12 +116,6 @@ public class ObraView
 
   }
 
-  @Override
-  public void setImagenObraAñadida(String icono) {
-    File imgFile = new  File(icono);
-    Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-    imagen.setImageBitmap(myBitmap);
-  }
 }
 
 

@@ -19,14 +19,12 @@ public interface Obra {
 
   interface ToObra {
     void onScreenStarted();
-    void setToolbarVisibility(boolean visible);
 
   }
 
   interface ObraTo {
     Context getManagedContext();
     void destroyView();
-    boolean isToolbarVisible();
 
   }
 
@@ -46,15 +44,11 @@ public interface Obra {
    */
   interface PresenterToView extends ContextView {
     void finishScreen();
-    void hideToolbar();
 
     void setDescripcionObra(String txt);
-    void setImagenObra(String icono);
+    void setImagenObra(Bitmap imagen);
     void setNombreObra(String txt);
-
-      void showToast(String txt);
-
-    void setImagenObraAñadida(String imagen);
+    void showToast(String txt);
   }
 
   /**
@@ -64,17 +58,12 @@ public interface Obra {
       ///////////////////////////////////////////////////////////////////////////////////
       // Presenter To Model ////////////////////////////////////////////////////////////
 
-
-      String getNombre(int id);
+    String getNombre(int id);
     String getDescripcion(int id);
-
     double getLatitud(int id);
-
     double getLongitud(int id);
-
     String getImagen(int id);
-
-      Boolean getInitial(int id);
+    Boolean getInitial(int id);
   }
 
   /**

@@ -3,9 +3,15 @@ package es.ulpgc.eite.clean.mvp.sample.obra;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.util.Log;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Locale;
 
 import es.ulpgc.eite.clean.mvp.ContextView;
@@ -19,11 +25,6 @@ public class ObraPresenter extends GenericPresenter
     <Obra.PresenterToView, Obra.PresenterToModel, Obra.ModelToPresenter, ObraModel>
     implements Obra.ViewToPresenter, Obra.ModelToPresenter, Obra.ObraTo, Obra.ToObra {
 
-
-  private boolean toolbarVisible;
-  private boolean buttonClicked;
-  
-  
 
   /**
    * Operation called during VIEW creation in {@link GenericActivity#onResume(Class, Object)}
@@ -39,7 +40,6 @@ public class ObraPresenter extends GenericPresenter
     setView(view);
     Log.d(TAG, "calling onCreate()");
 
-   
   }
 
   /**
@@ -126,10 +126,27 @@ public class ObraPresenter extends GenericPresenter
       inicializarImagen(getModel().getInitial(id),id);
   }
   private void inicializarImagen(Boolean inicial, int id){
+    String imagen =getModel().getImagen(id);
     if (inicial){
-      getView().setImagenObra(getModel().getImagen(id));
+      //getView().setImagenObra(getModel().getImagen(id));
+
+      AssetManager am = getView().getActivityContext().getAssets();
+      InputStream is = null;
+      try{
+
+        is = am.open(imagen);
+      }catch(IOException e){
+        e.printStackTrace();
+      }
+
+      Bitmap bitmapAssets = BitmapFactory.decodeStream(is);
+      getView().setImagenObra(bitmapAssets);
     }else{
-      getView().setImagenObraAñadida(getModel().getImagen(id));
+      //getView().setImagenObraAñadida(getModel().getImagen(id));
+
+      File imgFile = new  File(imagen);
+      Bitmap bitmapUsuario = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+      getView().setImagenObra(bitmapUsuario);
     }
   }
 
@@ -143,15 +160,8 @@ public class ObraPresenter extends GenericPresenter
     if(isViewRunning()) {
       inicializarVista();
     }
-    checkToolbarVisibility();
 
   }
-
-  @Override
-  public void setToolbarVisibility(boolean visible) {
-    toolbarVisible = visible;
-  }
-
 
   ///////////////////////////////////////////////////////////////////////////////////
   // Obra To //////////////////////////////////////////////////////////////////////
@@ -168,25 +178,5 @@ public class ObraPresenter extends GenericPresenter
       getView().finishScreen();
     }
   }
-  @Override
-  public boolean isToolbarVisible() {
-    return toolbarVisible;
-  }
-
-
-
-  ///////////////////////////////////////////////////////////////////////////////////
-
-  private void checkToolbarVisibility(){
-    Log.d(TAG, "calling checkToolbarVisibility()");
-    if(isViewRunning()) {
-      if (!toolbarVisible) {
-        getView().hideToolbar();
-      }
-    }
-  }
-
-
-
 
 }
