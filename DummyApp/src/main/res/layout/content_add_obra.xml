@@ -109,7 +109,7 @@
                 android:maxLines = "2"
                 android:scrollbars = "vertical"
                 android:ems="10"
-                android:inputType="numberDecimal"
+                android:inputType="numberSigned|numberDecimal"
                 android:textColorLink="@android:color/background_dark"/>
 
         </LinearLayout>
@@ -140,7 +140,7 @@
                 android:maxLines = "2"
                 android:scrollbars = "vertical"
                 android:ems="10"
-                android:inputType="numberDecimal"
+                android:inputType="numberSigned|numberDecimal"
                 android:textColorLink="@android:color/background_dark"/>
 
         </LinearLayout>
