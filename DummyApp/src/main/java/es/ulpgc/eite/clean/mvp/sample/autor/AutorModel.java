@@ -1,18 +1,17 @@
 package es.ulpgc.eite.clean.mvp.sample.autor;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+
 
 import es.ulpgc.eite.clean.mvp.GenericModel;
+import es.ulpgc.eite.clean.mvp.sample.dataBase.I_ManejadorBaseDeDatos;
 import es.ulpgc.eite.clean.mvp.sample.dataBase.ManejadorBaseDeDatos;
-import es.ulpgc.eite.clean.mvp.sample.dataBaseSim.ManejadorBaseDeDatosSim;
+
 
 
 public class AutorModel extends GenericModel<Autor.ModelToPresenter>
     implements Autor.PresenterToModel {
 
-  ManejadorBaseDeDatos manejador;
+  I_ManejadorBaseDeDatos manejador;
 
   /**
    * Method that recovers a reference to the PRESENTER

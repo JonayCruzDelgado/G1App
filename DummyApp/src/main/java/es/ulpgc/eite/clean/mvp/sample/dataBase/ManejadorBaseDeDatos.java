@@ -13,7 +13,7 @@ import io.realm.RealmResults;
  * Created by Marta on 14/03/2017.
  */
 
-public class ManejadorBaseDeDatos {
+public class ManejadorBaseDeDatos implements I_ManejadorBaseDeDatos {
     private static ManejadorBaseDeDatos ourInstance;
     private Realm realm;
 
@@ -28,16 +28,17 @@ public class ManejadorBaseDeDatos {
         realm = Realm.getDefaultInstance();
         initBaseDeDatos();
     }
-
+    @Override
     public String getNombreCategoria(int idCategoria){
         RealmResults<Categoria> result= realm.where(Categoria.class).equalTo("id",idCategoria).findAll();
         return result.get(0).getCategoria();
     }
+    @Override
     public String getImagenCategoria(int idCategoria){
         RealmResults<Categoria> result= realm.where(Categoria.class).equalTo("id",idCategoria).findAll();
         return result.get(0).getImagen();
     }
-
+    @Override
     public int[] getListaIdAutores(int idCategoria){
         RealmResults<Autor> result =realm.where(Autor.class).equalTo("idCategoria",idCategoria).findAll(); //encuentra los autores de esa categoria
         int[] array=new int[result.size()];
@@ -48,6 +49,7 @@ public class ManejadorBaseDeDatos {
         return array;
 
     }
+    @Override
     public String[] getNombresByArrayIdsAutores(int[] ids){
         String[] array= new String[ids.length];
         int i;
@@ -56,6 +58,7 @@ public class ManejadorBaseDeDatos {
         }
         return array;
     }
+    @Override
     public int[] getListaIdObras(int idAutor){
         RealmResults<Obra> result =realm.where(Obra.class).equalTo("idAutor",idAutor).findAll();
         int[] array=new int[result.size()];
@@ -65,7 +68,7 @@ public class ManejadorBaseDeDatos {
         }
         return array;
     }
-
+    @Override
     public String[] getNombresByArrayIdsObras(int[] ids){
         String[] nombres=new String[ids.length];
         int i;
@@ -74,47 +77,57 @@ public class ManejadorBaseDeDatos {
         }
         return nombres;
     }
+    @Override
     public String getDescripcionAutor(int idAutor){
         RealmResults<Autor> result= realm.where(Autor.class).equalTo("id",idAutor).findAll();
         return result.get(0).getDescripcion();
     }
+    @Override
     public String getNombreAutor(int idAutor){
         RealmResults<Autor> result= realm.where(Autor.class).equalTo("id",idAutor).findAll();
         return result.get(0).getNombre();
     }
+    @Override
     public  String getImagenAutor(int idAutor){
         RealmResults<Autor> result= realm.where(Autor.class).equalTo("id",idAutor).findAll();
         return result.get(0).getImagen();
     }
+    @Override
     public  Boolean isInAssetsAutor(int idAutor){
         RealmResults<Autor> result= realm.where(Autor.class).equalTo("id",idAutor).findAll();
         return result.get(0).getIsInAssetsAutor();
     }
-
+    @Override
     public String getDescripcionObra(int idObra){
         RealmResults<Obra> result= realm.where(Obra.class).equalTo("id",idObra).findAll();
         return result.get(0).getDescripcion();
     }
+    @Override
     public String getNombreObra(int idObra){
         RealmResults<Obra> result= realm.where(Obra.class).equalTo("id",idObra).findAll();
         return result.get(0).getNombre();
     }
+    @Override
     public String getImagenObra(int idObra){
         RealmResults<Obra> result= realm.where(Obra.class).equalTo("id",idObra).findAll();
         return result.get(0).getImagen();
     }
+    @Override
     public  Double getLatitud(int idObra){
         RealmResults<Obra> result= realm.where(Obra.class).equalTo("id",idObra).findAll();
         return result.get(0).getLatitud();
     }
+    @Override
     public  Double getLongitud(int idObra){
         RealmResults<Obra> result= realm.where(Obra.class).equalTo("id",idObra).findAll();
         return result.get(0).getLongitud();
     }
+    @Override
     public  Boolean isInAssetsObra(int idObra){
         RealmResults<Obra> result= realm.where(Obra.class).equalTo("id",idObra).findAll();
         return result.get(0).getIsInAssetsObra();
     }
+
     public void initBaseDeDatos(){
 
            if(realm.isEmpty()){
@@ -588,10 +601,7 @@ public class ManejadorBaseDeDatos {
         }
 
 
-  //  }
-
-// crear categoria, no se añaden autores por que voy a hacer que un autor solo pueda pertenecer a una categoria
-// por lo que se especifica al crear el autor, es mucho mas simple asi, si lo quieren hacer que un autor pertenezca a varias categoria es mas lio
+    @Override
     public void addCategoria(String nombre,String imagen){
         realm.beginTransaction();
         Number currentIdNum = realm.where(Categoria.class).max("id");
@@ -606,8 +616,7 @@ public class ManejadorBaseDeDatos {
         categoria.setImagen(imagen);
         realm.commitTransaction();
     }
-
-// crear autor nombre, descripcion, idem que en lo anterior para las obras
+    @Override
     public void addAutor(String nombre,String descripcion,int idCategoria, String imagen,Boolean isInAssets){
         realm.beginTransaction();
         Number currentIdNum = realm.where(Autor.class).max("id");
@@ -625,7 +634,7 @@ public class ManejadorBaseDeDatos {
         autor.setIsInAssetsAutor(isInAssets);
         realm.commitTransaction();
     }
-// crear obra
+    @Override
     public void addObra(String nombre,String descripcion,int idAutor,Double latitud, Double longitud,String imagen,Boolean isInAssets){
         realm.beginTransaction();
 
@@ -647,33 +656,5 @@ public class ManejadorBaseDeDatos {
         realm.commitTransaction();
     }
 
-
-// dejo este metodo comentado tal cual lo copie y lo pegue, lo de las imagenes es un lio.
-    public byte[] imagenToByteArray(Bitmap b){
-//b is the Bitmap
-//calculate how many bytes our image consists of.
-        int bytes = b.getByteCount();
-//or we can calculate bytes this way. Use a different value than 4 if you don't use 32bit images.
-//int bytes = b.getWidth()*b.getHeight()*4;
-
-        ByteBuffer buffer = ByteBuffer.allocate(bytes); //Create a new buffer
-        b.copyPixelsToBuffer(buffer); //Move the byte data to the buffer
-
-        byte[] array = buffer.array(); //Get the underlying array containing the data.
-        return array;
-    }
-    public Bitmap byteArrayToImagen(byte[] array){
-        Bitmap bitmap = BitmapFactory.decodeByteArray(array, 0, array.length);
-        return bitmap;
-
-    }
-
-    //pasar el archivo que entra a un bitmap
-    public Bitmap imagenToBitmap (String fileName){
-        File file = new File(fileName);
-        Bitmap imagen = BitmapFactory.decodeFile(file.getAbsolutePath());
-        return imagen;
-
-    }
 
 }

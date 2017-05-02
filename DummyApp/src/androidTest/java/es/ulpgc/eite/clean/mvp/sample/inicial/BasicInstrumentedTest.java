@@ -94,11 +94,6 @@ public class BasicInstrumentedTest {
   public void testMockInicialPresenter(){
       InicialPresenter presentador =mock(InicialPresenter.class);
 
-      // parametros esperados esperados
-      /*doNothing().when(presentador).
-      doNothing().when(presentador).setLabel1("Pintura");
-      doNothing().when(presentador).setLabel2("Arquitectura");
-      doNothing().when(presentador).setLabel3("Escultura");*/
 
   }
 

@@ -1,14 +1,15 @@
 package es.ulpgc.eite.clean.mvp.sample.autores;
 
 import es.ulpgc.eite.clean.mvp.GenericModel;
+import es.ulpgc.eite.clean.mvp.sample.dataBase.I_ManejadorBaseDeDatos;
 import es.ulpgc.eite.clean.mvp.sample.dataBase.ManejadorBaseDeDatos;
-import es.ulpgc.eite.clean.mvp.sample.dataBaseSim.ManejadorBaseDeDatosSim;
+
 
 
 public class AutoresModel extends GenericModel<Autores.ModelToPresenter>
         implements Autores.PresenterToModel {
 
-  ManejadorBaseDeDatos manejador;
+  I_ManejadorBaseDeDatos manejador;
 
 
   /**

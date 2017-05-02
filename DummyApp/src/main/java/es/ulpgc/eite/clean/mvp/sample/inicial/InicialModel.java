@@ -1,17 +1,16 @@
 package es.ulpgc.eite.clean.mvp.sample.inicial;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+
 
 import es.ulpgc.eite.clean.mvp.GenericModel;
+import es.ulpgc.eite.clean.mvp.sample.dataBase.I_ManejadorBaseDeDatos;
 import es.ulpgc.eite.clean.mvp.sample.dataBase.ManejadorBaseDeDatos;
 
 
 public class InicialModel extends GenericModel<Inicial.ModelToPresenter>
     implements Inicial.PresenterToModel {
 
-  ManejadorBaseDeDatos manejador;
+  I_ManejadorBaseDeDatos manejador;
 
   /**
    * Method that recovers a reference to the PRESENTER

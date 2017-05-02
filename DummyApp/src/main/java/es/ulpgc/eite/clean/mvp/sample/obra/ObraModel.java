@@ -1,15 +1,15 @@
 package es.ulpgc.eite.clean.mvp.sample.obra;
 
 import es.ulpgc.eite.clean.mvp.GenericModel;
+import es.ulpgc.eite.clean.mvp.sample.dataBase.I_ManejadorBaseDeDatos;
 import es.ulpgc.eite.clean.mvp.sample.dataBase.ManejadorBaseDeDatos;
-import es.ulpgc.eite.clean.mvp.sample.dataBaseSim.ManejadorBaseDeDatosSim;
+
 
 
 public class ObraModel extends GenericModel<Obra.ModelToPresenter>
     implements Obra.PresenterToModel {
 
-  ManejadorBaseDeDatosSim manejadorSim;
-  ManejadorBaseDeDatos manejador;
+  I_ManejadorBaseDeDatos manejador;
 
   /**
    * Method that recovers a reference to the PRESENTER
@@ -21,7 +21,6 @@ public class ObraModel extends GenericModel<Obra.ModelToPresenter>
   public void onCreate(Obra.ModelToPresenter presenter) {
     super.onCreate(presenter);
 
-    //manejadorSim = ManejadorBaseDeDatosSim.getInstance();
     manejador = ManejadorBaseDeDatos.getInstance();
   }
 

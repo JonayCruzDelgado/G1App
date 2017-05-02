@@ -4,13 +4,14 @@ import android.util.Log;
 
 import es.ulpgc.eite.clean.mvp.GenericModel;
 import es.ulpgc.eite.clean.mvp.sample.addObra.AddObra;
+import es.ulpgc.eite.clean.mvp.sample.dataBase.I_ManejadorBaseDeDatos;
 import es.ulpgc.eite.clean.mvp.sample.dataBase.ManejadorBaseDeDatos;
 
 
 public class AddObraModel extends GenericModel<AddObra.ModelToPresenter>
     implements AddObra.PresenterToModel {
 
-  ManejadorBaseDeDatos manejador;
+  I_ManejadorBaseDeDatos manejador;
 
   /**
    * Method that recovers a reference to the PRESENTER

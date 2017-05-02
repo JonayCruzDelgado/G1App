@@ -1,13 +1,14 @@
 package es.ulpgc.eite.clean.mvp.sample.addAutor;
 
 import es.ulpgc.eite.clean.mvp.GenericModel;
+import es.ulpgc.eite.clean.mvp.sample.dataBase.I_ManejadorBaseDeDatos;
 import es.ulpgc.eite.clean.mvp.sample.dataBase.ManejadorBaseDeDatos;
 
 
 public class AddAutorModel extends GenericModel<AddAutor.ModelToPresenter>
     implements AddAutor.PresenterToModel {
 
-  ManejadorBaseDeDatos manejador;
+  I_ManejadorBaseDeDatos manejador;
 
   /**
    * Method that recovers a reference to the PRESENTER
