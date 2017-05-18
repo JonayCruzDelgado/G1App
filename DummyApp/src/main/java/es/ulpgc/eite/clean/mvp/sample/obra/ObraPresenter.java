@@ -92,18 +92,10 @@ public class ObraPresenter extends GenericPresenter
     int id=app.getIdObraSelecionada();
     double latitude =getModel().getLatitud(id);
     double longitude = getModel().getLongitud(id);
-    String nombreObra=getModel().getNombre(id);
-    //tras la %f el ?z=0 indica el nivel de zoom  z establece el nivel de zoom inicial del mapa.
-    // Los valores aceptados varían de 0 el planeta completo a 21 edificios separados
-    // El límite superior puede variar según los datos del mapa disponibles en la ubicación seleccionada.
-    //geo:latitude,longitude?z=zoom
+    String nombreObra = getModel().getNombre(id);
 
-   /* la q sirbe para para mostrar una marca en un lugar o una dirección en particular, como un punto de referencia, un negocio,
-     una función geográfica o una ciudad. Con esto no funciona el parametro zoom*/
-
-   String aux= "geo:0,0?q=%f,%f("+nombreObra+")";
-    //geo:0,0?q=latitude,longitude(label)
-    String uri = String.format(Locale.ENGLISH, (aux), latitude, longitude);
+    //mostrar chincheta en google maps : geo:0,0?q=latitude,longitude(label)
+    String uri = String.format(Locale.ENGLISH, ("geo:0,0?q=%f,%f(%s)"), latitude, longitude,nombreObra);
 
     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
     //linea de comando para evitar que la aplicacion crashee si no tiene instalado el google maps
@@ -112,7 +104,7 @@ public class ObraPresenter extends GenericPresenter
     }else{
       getView().showToast("Google Maps necesario");
     }
-//    getManagedContext().startActivity(intent);
+
   }
 
   @Override
@@ -128,7 +120,6 @@ public class ObraPresenter extends GenericPresenter
   private void inicializarImagen(Boolean inicial, int id){
     String imagen =getModel().getImagen(id);
     if (inicial){
-      //getView().setImagenObra(getModel().getImagen(id));
 
       AssetManager am = getView().getActivityContext().getAssets();
       InputStream is = null;
@@ -142,7 +133,6 @@ public class ObraPresenter extends GenericPresenter
       Bitmap bitmapAssets = BitmapFactory.decodeStream(is);
       getView().setImagenObra(bitmapAssets);
     }else{
-      //getView().setImagenObraAñadida(getModel().getImagen(id));
 
       File imgFile = new  File(imagen);
       Bitmap bitmapUsuario = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
@@ -178,5 +168,6 @@ public class ObraPresenter extends GenericPresenter
       getView().finishScreen();
     }
   }
+  ///////////////////////////////////////////////////////////////////////////////////
 
 }

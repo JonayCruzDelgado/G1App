@@ -2,7 +2,14 @@ package es.ulpgc.eite.clean.mvp.sample.autor;
 
 
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 
 import es.ulpgc.eite.clean.mvp.ContextView;
 import es.ulpgc.eite.clean.mvp.GenericActivity;
@@ -14,9 +21,6 @@ public class AutorPresenter extends GenericPresenter
     <Autor.PresenterToView, Autor.PresenterToModel, Autor.ModelToPresenter, AutorModel>
     implements Autor.ViewToPresenter, Autor.ModelToPresenter, Autor.AutorTo, Autor.ToAutor {
 
-
-  private boolean toolbarVisible;
-  private boolean textVisible;
   private int posicionListaObraSelecionada;
   private int idObraSelecionada;
 
@@ -52,10 +56,7 @@ public class AutorPresenter extends GenericPresenter
     setView(view);
     Log.d(TAG, "calling onResume()");
 
-
     if(configurationChangeOccurred()) {
-
-      checkToolbarVisibility();
 
       }
     }
@@ -100,10 +101,28 @@ public class AutorPresenter extends GenericPresenter
     inicializarImagen(getModel().getInitial(id),id);
   }
   private void inicializarImagen(Boolean inicial, int id){
+    String imagen =getModel().getImagen(id);
+     // la imagen se obtiene desde assets
     if (inicial){
-      getView().setIconoAutor(getModel().getImagen(id));
+
+      AssetManager am = getView().getActivityContext().getAssets();
+      InputStream is = null;
+      try{
+
+        is = am.open(imagen);
+      }catch(IOException e){
+        e.printStackTrace();
+      }
+
+      Bitmap bitmapAssets = BitmapFactory.decodeStream(is);
+      getView().setImagenAutor(bitmapAssets);
+
+      // no se obtiene de assets
     }else{
-      getView().setImagenAutorAñadida(getModel().getImagen(id));
+
+      File imgFile = new  File(imagen);
+      Bitmap bitmapUsuario = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+      getView().setImagenAutor(bitmapUsuario);
     }
   }
   @Override
@@ -120,10 +139,8 @@ public class AutorPresenter extends GenericPresenter
   public void onButtonAddObraCliked(){
     Navigator app = (Navigator) getView().getApplication();
     app.goToAddObraScreen(this);
-    //activar el observable.
 
   }
-
 
   ///////////////////////////////////////////////////////////////////////////////////
   // To Autor //////////////////////////////////////////////////////////////////////
@@ -135,22 +152,8 @@ public class AutorPresenter extends GenericPresenter
       inicializarVista();
 
     }
-    checkToolbarVisibility();
 
   }
-
-  @Override
-  public void setToolbarVisibility(boolean visible) {
-    toolbarVisible = visible;
-  }
-
-  @Override
-  public void setTextVisibility(boolean visible) {
-    textVisible = visible;
-  }
-
-
-
 
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -168,53 +171,23 @@ public class AutorPresenter extends GenericPresenter
       getView().finishScreen();
     }
   }
-  @Override
-  public boolean isToolbarVisible() {
-    return toolbarVisible;
-  }
 
-  @Override
-  public boolean isTextVisible() {
-    return textVisible;
-  }
-
-
-  ///////////////////////////////////////////////////////////////////////////////////
-
-  private void checkToolbarVisibility(){
-    Log.d(TAG, "calling checkToolbarVisibility()");
-    /*if(isViewRunning()) {
-      if (!toolbarVisible) {
-        getView().hideToolbar();
-      }
-    }*/
-  }
-
-  private void checkTextVisibility(){
-    Log.d(TAG, "calling checkTextVisibility()");
-    if(isViewRunning()) {
-      if(!textVisible) {
-        getView().hideText();
-      } else {
-        getView().showText();
-      }
-    }
-  }
 
  @Override
  public int getPosicionListaObraSelecionada(){
    return posicionListaObraSelecionada;
 
   }
-
   @Override
   public int getIdObraSelecionada() {
     return idObraSelecionada;
   }
   public void setPosicionListaObraSelecionada(int pos){
+    this.posicionListaObraSelecionada =pos;
 
   }
   public void setIdObraSelecionada(int idAutor,int pos) {
     this.idObraSelecionada = getModel().getIdObraPulsada(idAutor,pos);
   }
+  ///////////////////////////////////////////////////////////////////////////////////
 }

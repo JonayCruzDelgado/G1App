@@ -29,6 +29,67 @@ public class ManejadorBaseDeDatos implements I_ManejadorBaseDeDatos {
         initBaseDeDatos();
     }
 
+    /// añadir /////////////////////////////////////////////////////////////////////////////////////
+    @Override
+    public void addCategoria(String nombre, String imagen){
+        realm.beginTransaction();
+        // autoincrementar el id
+        Number currentIdNum = realm.where(Categoria.class).max("id");
+        int nextId;
+        if(currentIdNum == null) {
+            nextId = 1;
+        } else {
+            nextId = currentIdNum.intValue() + 1;
+        }
+        Categoria categoria= realm.createObject(Categoria.class,nextId);
+        categoria.setCategoria(nombre);
+        categoria.setImagen(imagen);
+        realm.commitTransaction();
+    }
+    @Override
+    public void addAutor(String nombre, String descripcion, int idCategoria, String imagen, Boolean isInAssets){
+        realm.beginTransaction();
+        Number currentIdNum = realm.where(Autor.class).max("id");
+        int nextId;
+        if(currentIdNum == null) {
+            nextId = 1;
+        } else {
+            nextId = currentIdNum.intValue() + 1;
+        }
+        Autor autor= realm.createObject(Autor.class,nextId);
+        autor.setNombre(nombre);
+        autor.setDescripcion(descripcion);
+        autor.setImagen(imagen);
+        autor.setIdCategoria(idCategoria);
+        autor.setIsInAssetsAutor(isInAssets);
+        realm.commitTransaction();
+    }
+    @Override
+    public void addObra(String nombre, String descripcion, int idAutor, Double latitud, Double longitud, String imagen, Boolean isInAssets){
+        realm.beginTransaction();
+
+        Number currentIdNum = realm.where(Obra.class).max("id");
+        int nextId;
+        if(currentIdNum == null) {
+            nextId = 1;
+        } else {
+            nextId = currentIdNum.intValue() + 1;
+        }
+        Obra obra= realm.createObject(Obra.class,nextId);
+        obra.setNombre(nombre);
+        obra.setDescripcion(descripcion);
+        obra.setLatitud(latitud);
+        obra.setLongitud(longitud);
+        obra.setImagen(imagen);
+        obra.setIdAutor(idAutor);
+        obra.setIsInAssetsObra(isInAssets);
+        realm.commitTransaction();
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //// getters ////////////////////////////////////////////////////////////////////////////////
+
     @Override
     public String getNombreCategoria(int idCategoria){
         RealmResults<Categoria> result= realm.where(Categoria.class).equalTo("id",idCategoria).findAll();
@@ -128,7 +189,9 @@ public class ManejadorBaseDeDatos implements I_ManejadorBaseDeDatos {
         RealmResults<Obra> result= realm.where(Obra.class).equalTo("id",idObra).findAll();
         return result.get(0).getIsInAssetsObra();
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
+    /// datos iniciales ////////////////////////////////////////////////////////////////////////////
     public void initBaseDeDatos(){
 
            if(realm.isEmpty()){
@@ -600,62 +663,6 @@ public class ManejadorBaseDeDatos implements I_ManejadorBaseDeDatos {
 
            }
         }
-
-
-    @Override
-    public void addCategoria(String nombre, String imagen){
-        realm.beginTransaction();
-        Number currentIdNum = realm.where(Categoria.class).max("id");
-        int nextId;
-        if(currentIdNum == null) {
-            nextId = 1;
-        } else {
-            nextId = currentIdNum.intValue() + 1;
-        }
-        Categoria categoria= realm.createObject(Categoria.class,nextId);
-        categoria.setCategoria(nombre);
-        categoria.setImagen(imagen);
-        realm.commitTransaction();
-    }
-    @Override
-    public void addAutor(String nombre, String descripcion, int idCategoria, String imagen, Boolean isInAssets){
-        realm.beginTransaction();
-        Number currentIdNum = realm.where(Autor.class).max("id");
-        int nextId;
-        if(currentIdNum == null) {
-            nextId = 1;
-        } else {
-            nextId = currentIdNum.intValue() + 1;
-        }
-        Autor autor= realm.createObject(Autor.class,nextId);
-        autor.setNombre(nombre);
-        autor.setDescripcion(descripcion);
-        autor.setImagen(imagen);
-        autor.setIdCategoria(idCategoria);
-        autor.setIsInAssetsAutor(isInAssets);
-        realm.commitTransaction();
-    }
-    @Override
-    public void addObra(String nombre, String descripcion, int idAutor, Double latitud, Double longitud, String imagen, Boolean isInAssets){
-        realm.beginTransaction();
-
-        Number currentIdNum = realm.where(Obra.class).max("id");
-        int nextId;
-        if(currentIdNum == null) {
-            nextId = 1;
-        } else {
-            nextId = currentIdNum.intValue() + 1;
-        }
-        Obra obra= realm.createObject(Obra.class,nextId);
-        obra.setNombre(nombre);
-        obra.setDescripcion(descripcion);
-        obra.setLatitud(latitud);
-        obra.setLongitud(longitud);
-        obra.setImagen(imagen);
-        obra.setIdAutor(idAutor);
-        obra.setIsInAssetsObra(isInAssets);
-        realm.commitTransaction();
-    }
 
 
 }

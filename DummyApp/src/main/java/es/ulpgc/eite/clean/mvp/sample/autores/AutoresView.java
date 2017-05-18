@@ -71,11 +71,6 @@ public class AutoresView
     finish();
   }
 
-  @Override
-  public void hideToolbar() {
-    toolbar.setVisibility(View.GONE);
-  }
-
 
   @Override
   public void actualizarListaAutores(String[] nombresAutores){

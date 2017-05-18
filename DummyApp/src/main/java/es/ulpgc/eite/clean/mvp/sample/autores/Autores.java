@@ -18,14 +18,12 @@ public interface Autores {
 
   interface ToAutores {
     void onScreenStarted();
-    void setToolbarVisibility(boolean visible);
 
   }
 
   interface AutoresTo {
     Context getManagedContext();
     void destroyView();
-    boolean isToolbarVisible();
     int getPosicionListaAutoresSelecionada();
     int getIdAutorSelecionado();
   }
@@ -47,7 +45,6 @@ public interface Autores {
    */
   interface PresenterToView extends ContextView {
     void finishScreen();
-    void hideToolbar();
     void actualizarListaAutores(String[] nombresAutores);
     void setTituloToolbar(String txt);
   }

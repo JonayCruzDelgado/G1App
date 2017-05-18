@@ -14,8 +14,7 @@ public class AutoresPresenter extends GenericPresenter
     <Autores.PresenterToView, Autores.PresenterToModel, Autores.ModelToPresenter, AutoresModel>
     implements Autores.ViewToPresenter, Autores.ModelToPresenter, Autores.AutoresTo, Autores.ToAutores {
 
-  private boolean toolbarVisible;
-  private int idCategoria;
+
   private int posicionListaAutoresSelecionada;
   private int idAutorSelecionado;
   /**
@@ -51,8 +50,6 @@ public class AutoresPresenter extends GenericPresenter
     inicializarVista();
     if(configurationChangeOccurred()) {
       inicializarVista();
-
-      checkToolbarVisibility();
 
     }
   }
@@ -118,13 +115,6 @@ public class AutoresPresenter extends GenericPresenter
    if(isViewRunning()) {
       inicializarVista();
     }
-    checkToolbarVisibility();
-
-  }
-
-  @Override
-  public void setToolbarVisibility(boolean visible) {
-    toolbarVisible = visible;
   }
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -142,21 +132,8 @@ public class AutoresPresenter extends GenericPresenter
       getView().finishScreen();
     }
   }
-  @Override
-  public boolean isToolbarVisible() {
-    return toolbarVisible;
-  }
 
   ///////////////////////////////////////////////////////////////////////////////////
-
-  private void checkToolbarVisibility(){
-    Log.d(TAG, "calling checkToolbarVisibility()");
-    /*if(isViewRunning()) {
-      if (!toolbarVisible) {
-        getView().hideToolbar();
-      }
-    }*/
-  }
 
   @Override
   public int getPosicionListaAutoresSelecionada() {

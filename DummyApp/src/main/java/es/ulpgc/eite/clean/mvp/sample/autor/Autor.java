@@ -19,17 +19,13 @@ public interface Autor {
 
   interface ToAutor {
     void onScreenStarted();
-    void setToolbarVisibility(boolean visible);
-    void setTextVisibility(boolean visible);
+
   }
 
   interface AutorTo {
     Context getManagedContext();
     void destroyView();
-    boolean isToolbarVisible();
-    boolean isTextVisible();
    int getPosicionListaObraSelecionada();
-
     int getIdObraSelecionada();
   }
 
@@ -43,10 +39,8 @@ public interface Autor {
 
 
     void onItemClickSelected(int pos);
-
     void inicializarVista();
-
-      void onButtonAddObraCliked();
+    void onButtonAddObraCliked();
   }
 
   /**
@@ -54,15 +48,9 @@ public interface Autor {
    */
   interface PresenterToView extends ContextView {
     void finishScreen();
-    void hideToolbar();
-    void hideText();
-    void showText();
     void setDescripcionAutor(String txt);
-    void setIconoAutor(String icono);
-
-      void setImagenAutorAñadida(String icono);
-
-      void actualizarListaObras(String[] nombresObras);
+    void setImagenAutor(Bitmap imagen);
+    void actualizarListaObras(String[] nombresObras);
     void setNombreAutor(String txt);
   }
 
@@ -71,18 +59,11 @@ public interface Autor {
    */
   interface PresenterToModel extends Model<ModelToPresenter> {
 
-
-      ///////////////////////////////////////////////////////////////////////////////////
-      // Presenter To Model ////////////////////////////////////////////////////////////
-      int getIdObraPulsada(int idAutor, int pos);
-
-
+    int getIdObraPulsada(int idAutor, int pos);
     String[] getObras(int idAutor);
     String getNombre(int posicion);
     String getDescripcion(int posicion);
-
     String getImagen(int id);
-
     Boolean getInitial(int id);
   }
 

@@ -32,7 +32,7 @@
             android:id="@+id/imagenDesdeAssets"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@mipmap/antoni_gaudi" />
+            app:srcCompat="@mipmap/ic_cuadro" />
 
         <Space
             android:layout_width="wrap_content"

@@ -77,30 +77,6 @@ public class AutorView
 
   }
 
-  /*
-  @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
-    // Inflate the menu; this adds items to the action bar if it is present.
-    getMenuInflater().inflate(R.menu.menu_Autor, menu);
-    return true;
-  }
-
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    // Handle action bar item clicks here. The action bar will
-    // automatically handle clicks on the Home/Up button, so long
-    // as you specify a parent activity in AndroidManifest.xml.
-    int id = item.getItemId();
-
-    //noinspection SimplifiableIfStatement
-    if (id == R.id.action_settings) {
-      return true;
-    }
-
-    return super.onOptionsItemSelected(item);
-  }
-  */
-
 
   ///////////////////////////////////////////////////////////////////////////////////
   // Presenter To View /////////////////////////////////////////////////////////////
@@ -111,33 +87,16 @@ public class AutorView
   }
 
   @Override
-  public void hideToolbar() {
-    toolbar.setVisibility(View.GONE);
-  }
-
-  @Override
-  public void hideText() {
-    descripcionAutor.setVisibility(View.GONE);
-  }
-
-  @Override
-  public void showText() {
-    descripcionAutor.setVisibility(View.VISIBLE);
+  public void setNombreAutor(String txt) {
+    toolbar.setTitle(txt);
   }
 
   public void setDescripcionAutor(String txt) {
     descripcionAutor.setText(txt);
   }
 
-  public void setIconoAutor(String imagen) {
-
-    iconoAutor.setImageBitmap(getBitmapFromAssets(imagen));
-  }
-  @Override
-  public void setImagenAutorAñadida(String icono) {
-    File imgFile = new  File(icono);
-    Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-    iconoAutor.setImageBitmap(myBitmap);
+  public void setImagenAutor(Bitmap imagen) {
+    iconoAutor.setImageBitmap(imagen);
   }
   @Override
   public void actualizarListaObras(String[] nombresObras){
@@ -150,23 +109,5 @@ public class AutorView
       );
       listaObras.setAdapter(arrayAdapter);
 
-  }
-  @Override
-  public void setNombreAutor(String txt) {
-    toolbar.setTitle(txt);
-  }
-
-  private Bitmap getBitmapFromAssets(String fileName){
-    AssetManager am = getAssets();
-    InputStream is = null;
-    try{
-
-      is = am.open(fileName);
-    }catch(IOException e){
-      e.printStackTrace();
-    }
-
-    Bitmap bitmap = BitmapFactory.decodeStream(is);
-    return bitmap;
   }
 }
