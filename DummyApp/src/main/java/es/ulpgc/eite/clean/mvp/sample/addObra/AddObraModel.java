@@ -1,9 +1,8 @@
 package es.ulpgc.eite.clean.mvp.sample.addObra;
 
-import android.util.Log;
+
 
 import es.ulpgc.eite.clean.mvp.GenericModel;
-import es.ulpgc.eite.clean.mvp.sample.addObra.AddObra;
 import es.ulpgc.eite.clean.mvp.sample.dataBase.I_ManejadorBaseDeDatos;
 import es.ulpgc.eite.clean.mvp.sample.dataBase.ManejadorBaseDeDatos;
 

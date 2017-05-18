@@ -3,7 +3,6 @@ package es.ulpgc.eite.clean.mvp.sample.app;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.util.Log;
 
 import es.ulpgc.eite.clean.mvp.sample.addAutor.AddAutorPresenter;
@@ -14,8 +13,6 @@ import es.ulpgc.eite.clean.mvp.sample.autor.Autor;
 import es.ulpgc.eite.clean.mvp.sample.autor.AutorView;
 import es.ulpgc.eite.clean.mvp.sample.autores.Autores;
 import es.ulpgc.eite.clean.mvp.sample.autores.AutoresView;
-import es.ulpgc.eite.clean.mvp.sample.dummy.Dummy;
-import es.ulpgc.eite.clean.mvp.sample.dummy.DummyView;
 import es.ulpgc.eite.clean.mvp.sample.inicial.Inicial;
 import es.ulpgc.eite.clean.mvp.sample.obra.Obra;
 import es.ulpgc.eite.clean.mvp.sample.obra.ObraView;
@@ -23,7 +20,7 @@ import es.ulpgc.eite.clean.mvp.sample.obra.ObraView;
 
 public class App extends Application implements Mediator, Navigator {
 
-  private DummyState toDummyState, dummyToState;
+
   private InicialState toInicialState, inicialToState;
   private AutoresState toAutoresState, autoresToState;
   private AutorState toAutorState, autorToState;
@@ -34,46 +31,30 @@ public class App extends Application implements Mediator, Navigator {
   @Override
   public void onCreate() {
     super.onCreate();
-    toDummyState = new DummyState();
-    toDummyState.toolbarVisibility = false;
-    toDummyState.textVisibility = false;
     toInicialState = new InicialState();
-    toInicialState.textVisibility = false;
+    toInicialState.toolbarVisibility = false;
   }
 
   ///////////////////////////////////////////////////////////////////////////////////
   // Mediator //////////////////////////////////////////////////////////////////////
 
   @Override
-  public void startingDummyScreen(Dummy.ToDummy presenter){
-    if(toDummyState != null) {
-      presenter.setToolbarVisibility(toDummyState.toolbarVisibility);
-      presenter.setTextVisibility(toDummyState.textVisibility);
-    }
-    presenter.onScreenStarted();
-  }
-  @Override
   public void startingAutoresScreen(Autores.ToAutores presenter){
-
     presenter.onScreenStarted();
   }
-
 
   @Override
   public void startingInicialScreen(Inicial.ToInicial presenter){
-
     presenter.onScreenStarted();
   }
 
   @Override
   public void startingAutorScreen(Autor.ToAutor presenter){
-
     presenter.onScreenStarted();
   }
 
   @Override
   public void startingObraScreen(Obra.ToObra presenter){
-
     presenter.onScreenStarted();
   }
 
@@ -90,19 +71,6 @@ public class App extends Application implements Mediator, Navigator {
   // Navigator /////////////////////////////////////////////////////////////////////
 
 
-  @Override
-  public void goToNextScreen(Dummy.DummyTo presenter) {
-    dummyToState = new DummyState();
-    dummyToState.toolbarVisibility = presenter.isToolbarVisible();
-    dummyToState.textVisibility = presenter.isTextVisible();
-
-    Context view = presenter.getManagedContext();
-    if (view != null) {
-      view.startActivity(new Intent(view, DummyView.class));
-      presenter.destroyView();
-    }
-
-  }
   @Override
   public void goToAutoresScreen(Inicial.InicialTo presenter) {
     Log.d("APP", "goToAutoresScreen() has pulsado el boton: "+ presenter.getIdBoton());
@@ -178,18 +146,14 @@ public class App extends Application implements Mediator, Navigator {
   ///////////////////////////////////////////////////////////////////////////////////
   // State /////////////////////////////////////////////////////////////////////////
 
-  private class DummyState {
-    boolean toolbarVisibility;
-    boolean textVisibility;
-  }
+
   private class InicialState{
-    boolean textVisibility;
+    boolean toolbarVisibility;
     int idBoton;
   }
   private class AutoresState{
     int posicionListaAutoresPulsada;
     int idAutorSelecionado;
-
 
   }
   private class AutorState{

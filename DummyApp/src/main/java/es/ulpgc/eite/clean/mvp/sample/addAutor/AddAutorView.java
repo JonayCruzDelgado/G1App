@@ -112,11 +112,8 @@ public class AddAutorView
           getPresenter().onResume(this); // refrescar la pantalla al salir de la galeria para que aparesca la imagen
         }
       }
-
     }
-
   }
-
 
   public String getRealPathFromURI(Uri contentUri) {
 
@@ -148,33 +145,6 @@ public class AddAutorView
     return selectedImagePath;
   }
 
-  // Custom method to get assets folder image as bitmap
-
-
-  /*
-  @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
-    // Inflate the menu; this adds items to the action bar if it is present.
-    getMenuInflater().inflate(R.menu.menu_addAutor, menu);
-    return true;
-  }
-
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    // Handle action bar item clicks here. The action bar will
-    // automatically handle clicks on the Home/Up button, so long
-    // as you specify a parent activity in AndroidManifest.xml.
-    int id = item.getItemId();
-
-    //noinspection SimplifiableIfStatement
-    if (id == R.id.action_settings) {
-      return true;
-    }
-
-    return super.onOptionsItemSelected(item);
-  }
-  */
-
 
   ///////////////////////////////////////////////////////////////////////////////////
   // Presenter To View /////////////////////////////////////////////////////////////
@@ -183,12 +153,6 @@ public class AddAutorView
   public void finishScreen() {
     finish();
   }
-
-  @Override
-  public void hideToolbar() {
-    toolbar.setVisibility(View.GONE);
-  }
-
 
   @Override
   public String getNombre(){

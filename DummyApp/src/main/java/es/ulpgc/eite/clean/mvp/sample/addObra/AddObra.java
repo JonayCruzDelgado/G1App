@@ -42,7 +42,6 @@ public interface AddObra {
     // View To Presenter /////////////////////////////////////////////////////////////
     void onButtonAddImagenClicked();
     void setImagen();
-
     void onButtonDoneClicked();
   }
 
@@ -51,27 +50,16 @@ public interface AddObra {
    */
   interface PresenterToView extends ContextView {
     String getSelectedImagePath();
-
     void finishScreen();
-    void hideToolbar();
-
     String getNombre();
-
     String getDescripcion();
-
     String getLatitud();
-
     String getLongitud();
-
-      void setTitle(String txt);
-
-    void showToast(String txt);
-
-      void setImagen(String imagen);
-
+    void setTitle(String txt);
+    void setImagen(String imagen);
     void showImagen();
-
     void hideImagen();
+    void showToast(String txt);
   }
 
   /**
@@ -80,7 +68,6 @@ public interface AddObra {
   interface PresenterToModel extends Model<ModelToPresenter> {
 
     void  addObraSinImagen(String nombre, String descripcion, int idAutor, Double latitud, Double longitud);
-
     void  addObraConImagen(String nombre, String descripcion, int idAutor, Double latitud, Double longitud, String PathImagen);
   }
 

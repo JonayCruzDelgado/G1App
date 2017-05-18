@@ -130,7 +130,6 @@ public class AddObraView
 
   }
 
-
   public String getRealPathFromURI(Uri contentUri) {
 
     String res = null;
@@ -146,7 +145,6 @@ public class AddObraView
     return res;
   }
 
-
   /**
    * Method that initialized MVP objects
    * {@link super#onResume(Class, Object)} should always be called
@@ -159,30 +157,6 @@ public class AddObraView
   }
 
 
-  /*
-  @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
-    // Inflate the menu; this adds items to the action bar if it is present.
-    getMenuInflater().inflate(R.menu.menu_addObra, menu);
-    return true;
-  }
-
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    // Handle action bar item clicks here. The action bar will
-    // automatically handle clicks on the Home/Up button, so long
-    // as you specify a parent activity in AndroidManifest.xml.
-    int id = item.getItemId();
-
-    //noinspection SimplifiableIfStatement
-    if (id == R.id.action_settings) {
-      return true;
-    }
-
-    return super.onOptionsItemSelected(item);
-  }
-  */
-
 
   ///////////////////////////////////////////////////////////////////////////////////
   // Presenter To View /////////////////////////////////////////////////////////////
@@ -192,10 +166,6 @@ public class AddObraView
     finish();
   }
 
-  @Override
-  public void hideToolbar() {
-    toolbar.setVisibility(View.GONE);
-  }
   @Override
   public String getNombre(){
     return nombreIndtroducido.getText().toString();
@@ -242,6 +212,5 @@ public class AddObraView
   public void hideImagen(){
     imagenSelecionada.setVisibility(View.GONE);
   }
-
 
 }
