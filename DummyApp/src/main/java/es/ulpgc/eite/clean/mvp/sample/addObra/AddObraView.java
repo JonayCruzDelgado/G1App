@@ -76,15 +76,7 @@ public class AddObraView
       @Override
       public void onClick(View view) {
         getPresenter().onButtonAddImagenClicked();
-    // in onCreate or any event where your want the user to
-        // select a file
 
-
-//        Intent intent = new Intent();
-//        intent.setType("image/*");
-//        intent.setAction(Intent.ACTION_GET_CONTENT);
-//        startActivityForResult(Intent.createChooser(intent,
-//                "Select Picture"), SELECT_PICTURE);
 
         Intent intent = new Intent(
             Intent.ACTION_PICK,
@@ -98,30 +90,16 @@ public class AddObraView
   }
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-
     if (resultCode == RESULT_OK) {
-
       Uri selectedImageUri = data.getData();
       Log.d(getClass().getSimpleName() + ".onActivityResult", "selectedImageUri=" + selectedImageUri);
-
-      /*
-      try {
-
-        Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImageUri);
-        imagenSelecionada.setImageBitmap(bitmap);
-
-      } catch (IOException error) {
-        Log.d(getClass().getSimpleName() + ".onActivityResult", "error=" + error);
-      }
-
-      */
 
       if(selectedImageUri != null){
         //selectedImagePath = selectedImageUri.toString();
         selectedImagePath = getRealPathFromURI(selectedImageUri);
         Log.d(getClass().getSimpleName() + ".onActivityResult", "selectedImagePath=" + selectedImagePath);
         if(selectedImagePath != null) {
-          getPresenter().setImagen(); // el presentador captura la imagen para manejarla el con los estados
+          getPresenter().setImagenSelecionada(); // el presentador captura la imagen para manejarla el con los estados
           getPresenter().onResume(this); // refrescar la pantalla al salir de la galeria para que aparesca la imagen
         }
       }
@@ -182,27 +160,19 @@ public class AddObraView
   @Override
   public String getLongitud(){
     return longitudIndtroducida.getText().toString();
-
   }
   @Override
   public void setTitle(String txt){
     toolbar.setTitle(txt);
   }
   @Override
-    public void showToast(String txt){
+  public void showToast(String txt){
       Toast toast = Toast.makeText(getActivityContext(),txt,Toast.LENGTH_SHORT);
     toast.show();
   }
   @Override
-  public void setImagen(String imagen){
-    if( imagen != null) {
-      File imgFile = new File(imagen);
-        if (imgFile.exists()) {
-          Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-
-          imagenSelecionada.setImageBitmap(myBitmap);
-      }
-    }
+  public void setImagen(Bitmap imagen){
+     imagenSelecionada.setImageBitmap(imagen);
   }
   @Override
   public void showImagen(){

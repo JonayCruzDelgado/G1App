@@ -41,7 +41,7 @@ public interface AddObra {
     ///////////////////////////////////////////////////////////////////////////////////
     // View To Presenter /////////////////////////////////////////////////////////////
     void onButtonAddImagenClicked();
-    void setImagen();
+    void setImagenSelecionada();
     void onButtonDoneClicked();
   }
 
@@ -56,7 +56,7 @@ public interface AddObra {
     String getLatitud();
     String getLongitud();
     void setTitle(String txt);
-    void setImagen(String imagen);
+    void setImagen(Bitmap imagen);
     void showImagen();
     void hideImagen();
     void showToast(String txt);

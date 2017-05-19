@@ -97,6 +97,7 @@ public class AutorPresenter extends GenericPresenter
     getView().setDescripcionAutor(getModel().getDescripcion(id));
     getView().setNombreAutor(getModel().getNombre(id));
     getView().actualizarListaObras(getModel().getObras(id));
+    getView().setPosicionLista(app.getPosicionObras());
 
     inicializarImagen(getModel().getInitial(id),id);
   }

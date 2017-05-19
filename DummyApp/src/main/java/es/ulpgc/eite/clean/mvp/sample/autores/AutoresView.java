@@ -83,6 +83,11 @@ public class AutoresView
     listaAutores.setAdapter(arrayAdapter);
   }
   @Override
+  public  void setPosicionLista (int pos){
+    listaAutores.setSelection(pos);
+  }
+
+  @Override
   public void setTituloToolbar(String txt) {
     toolbar.setTitle(txt);
   }

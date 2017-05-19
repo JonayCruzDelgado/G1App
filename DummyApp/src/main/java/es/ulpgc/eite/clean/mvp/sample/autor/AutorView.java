@@ -21,6 +21,8 @@ import java.io.InputStream;
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.sample.R;
 
+import static es.ulpgc.eite.clean.mvp.sample.R.id.listaAutores;
+
 public class AutorView
     extends GenericActivity<Autor.PresenterToView, Autor.ViewToPresenter, AutorPresenter>
     implements Autor.PresenterToView {
@@ -109,5 +111,9 @@ public class AutorView
       );
       listaObras.setAdapter(arrayAdapter);
 
+  }
+  @Override
+  public  void setPosicionLista (int pos){
+    listaObras.setSelection(pos);
   }
 }

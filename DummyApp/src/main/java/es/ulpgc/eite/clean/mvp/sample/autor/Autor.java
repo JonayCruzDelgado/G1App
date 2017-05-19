@@ -52,6 +52,8 @@ public interface Autor {
     void setImagenAutor(Bitmap imagen);
     void actualizarListaObras(String[] nombresObras);
     void setNombreAutor(String txt);
+
+      void setPosicionLista(int pos);
   }
 
   /**

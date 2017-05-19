@@ -2,7 +2,12 @@ package es.ulpgc.eite.clean.mvp.sample.addObra;
 
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
+
+import java.io.File;
 
 import es.ulpgc.eite.clean.mvp.ContextView;
 import es.ulpgc.eite.clean.mvp.GenericActivity;
@@ -48,7 +53,6 @@ public class AddObraPresenter extends GenericPresenter
     if(configurationChangeOccurred()) {
      inicializarVista();
 
-
     }
   }
 
@@ -81,13 +85,6 @@ public class AddObraPresenter extends GenericPresenter
   @Override
   public void onButtonAddImagenClicked(){
 
-  }
-  @Override
-  public void setImagen(){
-    Mediator app = (Mediator) getView().getApplication();
-    String imagen =getView().getSelectedImagePath();
-    app.setImagenObra(imagen);
-
 
   }
 
@@ -96,7 +93,7 @@ public class AddObraPresenter extends GenericPresenter
     Mediator app = (Mediator) getView().getApplication();
     String nombre= getView().getNombre();
     String descripcion= getView().getDescripcion();
-    String path = getImagen();
+    String path = getImagenSelecionada();
     String textoLatitud = getView().getLatitud();
     Double latitud;
           if(textoLatitud == null || textoLatitud.isEmpty()) {
@@ -114,14 +111,14 @@ public class AddObraPresenter extends GenericPresenter
 
     if((!nombre.equals(""))&&(!descripcion.equals(""))&&
             (!textoLatitud.equals(""))&&(!textoLongitud.equals(""))){
-      if (path.equals("ic_cuadro.jpg")){
-        getModel().addObraSinImagen(nombre, descripcion, app.getIdAutorSelecionado(), latitud, longitud);
-      }
-      else {
-        getModel().addObraConImagen(nombre, descripcion, app.getIdAutorSelecionado(),
-                latitud, longitud, path);
-      }
-      getView().finishScreen();
+            if (path.equals("ic_cuadro.jpg")){
+              getModel().addObraSinImagen(nombre, descripcion, app.getIdAutorSelecionado(), latitud, longitud);
+            }
+            else {
+              getModel().addObraConImagen(nombre, descripcion, app.getIdAutorSelecionado(),
+                      latitud, longitud, path);
+            }
+            getView().finishScreen();
     }else {
       getView().showToast("Introducir Datos Validos");
     }
@@ -141,7 +138,6 @@ public class AddObraPresenter extends GenericPresenter
   }
 
 
-
   ///////////////////////////////////////////////////////////////////////////////////
   // AddObra To //////////////////////////////////////////////////////////////////////
 
@@ -157,25 +153,39 @@ public class AddObraPresenter extends GenericPresenter
       getView().finishScreen();
     }
   }
+  @Override
+  public void setImagenSelecionada(){
+    Mediator app = (Mediator) getView().getApplication();
+    String imagen =getView().getSelectedImagePath();
+    app.setImagenObra(imagen);
 
-
+  }
 
   ///////////////////////////////////////////////////////////////////////////////////
 
   private void inicializarVista(){
     getView().setTitle("Nueva Obra");
-    if(getImagen().equals("ic_cuadro.jpg")){  // no hay imagen
+    if(getImagenSelecionada().equals("ic_cuadro.jpg")){  // imagen por defecto si no se seleciona ninguna
       getView().hideImagen();
     }else{
       getView().showImagen();
-      getView().setImagen(getImagen());
+      setImagenView(getImagenSelecionada());
     }
   }
 
-  private String getImagen(){
+  private String getImagenSelecionada(){
     Mediator app = (Mediator) getView().getApplication();
     return app.getImagenObra();
+  }
 
+  private void setImagenView(String imagen){
+    if( imagen != null) {
+      File imgFile = new File(imagen);
+      if (imgFile.exists()) {
+        Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+        getView().setImagen(myBitmap);
+      }
+    }
   }
 
 }

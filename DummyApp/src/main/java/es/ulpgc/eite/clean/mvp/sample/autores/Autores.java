@@ -46,7 +46,10 @@ public interface Autores {
   interface PresenterToView extends ContextView {
     void finishScreen();
     void actualizarListaAutores(String[] nombresAutores);
-    void setTituloToolbar(String txt);
+
+      void setPosicionLista(int pos);
+
+      void setTituloToolbar(String txt);
   }
 
   /**

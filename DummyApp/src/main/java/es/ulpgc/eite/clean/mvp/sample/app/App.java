@@ -76,6 +76,9 @@ public class App extends Application implements Mediator, Navigator {
     Log.d("APP", "goToAutoresScreen() has pulsado el boton: "+ presenter.getIdBoton());
     inicialToState = new InicialState();
     inicialToState.idBoton= presenter.getIdBoton();
+
+    autoresToState = new AutoresState();
+    autoresToState.posicionListaAutoresPulsada = 0;
     Context view = presenter.getManagedContext();
 
     if (view != null) {
@@ -87,10 +90,12 @@ public class App extends Application implements Mediator, Navigator {
   @Override
   public void goToAutorScreen(Autores.AutoresTo presenter) {
     Log.d("APP", "goToAutorScreen() has pulsado: "+ presenter.getPosicionListaAutoresSelecionada());
-    autoresToState = new AutoresState();
     autoresToState.posicionListaAutoresPulsada = presenter.getPosicionListaAutoresSelecionada();
     autoresToState.idAutorSelecionado=presenter.getIdAutorSelecionado();
     Log.d("APP", "goToAutorScreen() id del autor: "+ autoresToState.idAutorSelecionado);
+
+    autorToState = new AutorState();
+    autorToState.posicionListaObrasSelecionada = 0;
     Context view = presenter.getManagedContext();
 
     if (view != null) {
