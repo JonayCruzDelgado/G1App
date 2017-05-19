@@ -37,17 +37,12 @@ public class MockitoTest {
     when(modeloInicial.getTextBtn1()).thenReturn("Pintura");
     when(modeloInicial.getTextBtn2()).thenReturn("Arquitectura");
     when(modeloInicial.getTextBtn3()).thenReturn("Escultura");
-    when(modeloInicial.getIconoBtn1()).thenReturn("ImagenPintura");
-    when(modeloInicial.getIconoBtn2()).thenReturn("ImagenArquitectura");
-    when(modeloInicial.getIconoBtn3()).thenReturn("ImagenEscultura");
+
 
 // parametros esperados en la vista
     doNothing().when(vistaInicial).setLabel1("Pintura");
     doNothing().when(vistaInicial).setLabel2("Arquitectura");
     doNothing().when(vistaInicial).setLabel3("Escultura");
-    doNothing().when(vistaInicial).setIcono1("ImagenPintura");
-    doNothing().when(vistaInicial).setIcono2("ImagenArquitectura");
-    doNothing().when(vistaInicial).setIcono3("ImagenEscultura");
 
 
      vistaInicial.setLabel1(modeloInicial.getTextBtn1());

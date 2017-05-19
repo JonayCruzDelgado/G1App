@@ -1,15 +1,13 @@
-package es.ulpgc.eite.clean.mvp.sample.inicial;
+package es.ulpgc.eite.clean.mvp.sample;
 
-import android.content.Context;
-import android.support.test.InstrumentationRegistry;
+import android.content.pm.ActivityInfo;
+import android.os.SystemClock;
 import android.support.test.runner.AndroidJUnit4;
 
 import org.hamcrest.TypeSafeMatcher;
 import org.junit.Test;
-import org.junit.runner.Description;
 import org.junit.runner.RunWith;
 
-import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.typeText;
@@ -17,14 +15,11 @@ import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFro
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withParent;
 import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.any;
 import static org.hamcrest.Matchers.anything;
-import static org.hamcrest.Matchers.instanceOf;
 import static org.junit.Assert.assertEquals;
 
 
 import android.support.test.rule.ActivityTestRule;
-import android.support.test.runner.AndroidJUnit4;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ListView;
@@ -32,11 +27,11 @@ import android.widget.TextView;
 
 import org.junit.Rule;
 
-import es.ulpgc.eite.clean.mvp.sample.R;
-import es.ulpgc.eite.clean.mvp.sample.dataBase.Autor;
+
 import es.ulpgc.eite.clean.mvp.sample.dataBase.Categoria;
-import es.ulpgc.eite.clean.mvp.sample.dataBase.ManejadorBaseDeDatos;
 import es.ulpgc.eite.clean.mvp.sample.dataBase.Obra;
+import es.ulpgc.eite.clean.mvp.sample.inicial.InicialPresenter;
+import es.ulpgc.eite.clean.mvp.sample.inicial.InicialView;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
@@ -46,7 +41,6 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 import static org.mockito.Mockito.*;
-import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
@@ -55,9 +49,9 @@ public class BasicInstrumentedTest {
 
   @Rule
   public ActivityTestRule<InicialView> mActivityRule = new ActivityTestRule<InicialView>(InicialView.class);
-  public MockitoRule mockitoRule = MockitoJUnit.rule();
 
-    // test "Unitarios" ////////////////////////////////
+
+   /// test "Unitarios" de Realm  ////////////////////////////////
 
   @Test
   public void testRealmGetNombreCategoria(){
@@ -84,22 +78,16 @@ public class BasicInstrumentedTest {
       assertEquals(ids[2],array[2]);
   }
 
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////
   @Test
-  public void testRealmGetNombreObra(){
-        Realm realm = Realm.getDefaultInstance();
-        RealmResults<Obra> result= realm.where(Obra.class).equalTo("id",1).findAll();
-        String nombre = result.get(0).getNombre();
-        assertEquals(nombre,"La Última Cena");
+  public void testRotarInicial() {
+    mActivityRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+     SystemClock.sleep(1000);
+      onView(allOf(withId(R.id.btnPintura), isDisplayed()));
+      onView(allOf(withId(R.id.btnArquitectura), isDisplayed()));
+      onView(allOf(withId(R.id.btnEscultura), isDisplayed()));
   }
-  /////////////////////////////////////////////////////////////////
-
-  @Test
-  public void testMockInicialPresenter(){
-      InicialPresenter presentador =mock(InicialPresenter.class);
-
-
-  }
-
 
 
   @Test
