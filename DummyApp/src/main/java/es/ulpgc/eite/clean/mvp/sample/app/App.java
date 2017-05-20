@@ -98,6 +98,7 @@ public class App extends Application implements Mediator, Navigator {
     autorToState.posicionListaObrasSelecionada = 0;
     Context view = presenter.getManagedContext();
 
+
     if (view != null) {
       view.startActivity(new Intent(view, AutorView.class));
 
@@ -107,7 +108,7 @@ public class App extends Application implements Mediator, Navigator {
   @Override
   public void goToObraScreen(Autor.AutorTo presenter){
     Log.d("APP", "goToAutorScreen() has pulsado: "+ presenter.getPosicionListaObraSelecionada());
-    autorToState = new AutorState();
+
     autorToState.posicionListaObrasSelecionada = presenter.getPosicionListaObraSelecionada();
     autorToState.idObraSelecionada = presenter.getIdObraSelecionada();
 

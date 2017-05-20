@@ -18,9 +18,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.util.Observable;
 
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.sample.R;
+import es.ulpgc.eite.clean.mvp.sample.addObra.AddObraView;
 
 public class AddAutorView
     extends GenericActivity<AddAutor.PresenterToView, AddAutor.ViewToPresenter, AddAutorPresenter>
@@ -32,7 +34,7 @@ public class AddAutorView
   private EditText descripcionIndtroducida;
   private ImageView imagenSelecionada;
   private Button btnDone;
-  private String selectedImagePath;
+  private static MyObservable observable;
   private static final int SELECT_PICTURE = 1;
 
   @Override
@@ -63,71 +65,29 @@ public class AddAutorView
       @Override
       public void onClick(View view) {
         getPresenter().onButtonAddImagenClicked();
-        // in onCreate or any event where your want the user to
-        // select a file
+        observable = new MyObservable();
+        observable.addObserver(getPresenter().getObserver());
 
-
-//        Intent intent = new Intent();
-//        intent.setType("image/*");
-//        intent.setAction(Intent.ACTION_GET_CONTENT);
-//        startActivityForResult(Intent.createChooser(intent,
-//                "Select Picture"), SELECT_PICTURE);
-        Intent intent = new Intent(
-                Intent.ACTION_PICK,
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-        );
-
-        startActivityForResult(Intent.createChooser(intent,
-                "Select Picture"), SELECT_PICTURE);
       }
     });
   }
 
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-
+    Log.d(TAG,"on activity result");
     if (resultCode == RESULT_OK) {
-
       Uri selectedImageUri = data.getData();
-      Log.d(getClass().getSimpleName() + ".onActivityResult", "selectedImageUri=" + selectedImageUri);
+      observable.imagenSelecionada(selectedImageUri);
 
-      /*
-      try {
-
-        Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImageUri);
-        imagenSelecionada.setImageBitmap(bitmap);
-
-      } catch (IOException error) {
-        Log.d(getClass().getSimpleName() + ".onActivityResult", "error=" + error);
-      }
-
-      */
-
-      if(selectedImageUri != null){
-        //selectedImagePath = selectedImageUri.toString();
-        selectedImagePath = getRealPathFromURI(selectedImageUri);
-        Log.d(getClass().getSimpleName() + ".onActivityResult", "selectedImagePath=" + selectedImagePath);
-        if(selectedImagePath != null) {
-          getPresenter().setImagen(); // el presentador captura la imagen para manejarla el con los estados
-          getPresenter().onResume(this); // refrescar la pantalla al salir de la galeria para que aparesca la imagen
-        }
-      }
     }
   }
 
-  public String getRealPathFromURI(Uri contentUri) {
 
-    String res = null;
-    String[] proj = { MediaStore.Images.Media.DATA };
-    Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
-    if (cursor.moveToFirst()) {
-
-      int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-      res = cursor.getString(column_index);
+  class MyObservable extends Observable {
+    public void imagenSelecionada(Uri uri){
+      Log.d(TAG,"on observable");
+      setChanged();
+      notifyObservers(uri);
     }
-    cursor.close();
-
-    return res;
   }
 
   /**
@@ -140,10 +100,6 @@ public class AddAutorView
     super.onResume(AddAutorPresenter.class, this);
 
   }
-  @Override
-  public String getSelectedImagePath() {
-    return selectedImagePath;
-  }
 
 
   ///////////////////////////////////////////////////////////////////////////////////
@@ -153,7 +109,11 @@ public class AddAutorView
   public void finishScreen() {
     finish();
   }
+  @Override
+  public void startGaleria(Intent intent){
+    startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_PICTURE);
 
+  }
   @Override
   public String getNombre(){
     return nombreIndtroducido.getText().toString();
@@ -173,16 +133,9 @@ public class AddAutorView
 
   }
   @Override
-  public void setImagen(String imagen){
-  if( imagen != null) {
-    File imgFile = new File(imagen);
-    if (imgFile.exists()) {
-      Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-
-      imagenSelecionada.setImageBitmap(myBitmap);
-    }
+  public void setImagen(Bitmap imagen){
+      imagenSelecionada.setImageBitmap(imagen);
   }
-}
   @Override
   public void showImagen(){
     imagenSelecionada.setVisibility(View.VISIBLE);

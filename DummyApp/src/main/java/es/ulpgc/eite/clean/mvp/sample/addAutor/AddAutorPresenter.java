@@ -3,11 +3,20 @@ package es.ulpgc.eite.clean.mvp.sample.addAutor;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.util.Log;
+
+import java.io.File;
+import java.util.Observable;
 
 import es.ulpgc.eite.clean.mvp.ContextView;
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.GenericPresenter;
+import es.ulpgc.eite.clean.mvp.sample.addObra.AddObraPresenter;
 import es.ulpgc.eite.clean.mvp.sample.app.Mediator;
 
 
@@ -16,7 +25,9 @@ public class AddAutorPresenter extends GenericPresenter
     <AddAutor.PresenterToView, AddAutor.PresenterToModel, AddAutor.ModelToPresenter, AddAutorModel>
     implements AddAutor.ViewToPresenter, AddAutor.ModelToPresenter, AddAutor.AddAutorTo, AddAutor.ToAddAutor {
 
-
+  private String imagenPath;
+  private static MyObserver observer;
+  private Uri uri;
 
   /**
    * Operation called during VIEW creation in {@link GenericActivity#onResume(Class, Object)}
@@ -49,7 +60,6 @@ public class AddAutorPresenter extends GenericPresenter
     setView(view);
     Log.d(TAG, "calling onResume()");
     inicializarVista();
-
     if(configurationChangeOccurred()) {
       inicializarVista();
 
@@ -84,26 +94,48 @@ public class AddAutorPresenter extends GenericPresenter
   // View To Presenter /////////////////////////////////////////////////////////////
   @Override
   public void onButtonAddImagenClicked(){
+    observer = new MyObserver();
+    Intent intent = new Intent(
+            Intent.ACTION_PICK,
+            android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+    );
+    getView().startGaleria(intent);
 
   }
+
+  class MyObserver implements java.util.Observer{
+
+    @Override
+    public void update(Observable o, Object arg) {
+      Log.d(TAG,"update observer");
+      uri =(Uri)arg;
+      if(uri != null){
+        imagenPath = getRealPathFromURI(uri);
+        if(imagenPath != null) {
+          setImagenSelecionada();
+          setImagenView(imagenPath);
+          getView().showImagen();
+        }
+      }
+    }
+  }
+
   @Override
-  public void setImagen(){
-    Mediator app = (Mediator) getView().getApplication();
-    String imagen =getView().getSelectedImagePath();
-    app.setImagenAutor(imagen);
-
+  public MyObserver getObserver(){
+    return observer;
 
   }
+
   @Override
   public void onButtonDoneClicked() {
     Mediator app = (Mediator) getView().getApplication();
     String nombre= getView().getNombre();
     String descripcion= getView().getDescripcion();
-    String path = getImagen();
+    String path = getImagenSelecionada();
 
     if((!nombre.equals(""))&&(!descripcion.equals(""))
             ){
-      if (path.equals("ic_cuadro.jpg")){
+      if (path.equals("ic_escultura.png")){
         getModel().addAutorSinImagen(nombre, descripcion, app.getIdBotonCategoriaClicked());
       }
       else {
@@ -145,30 +177,54 @@ public class AddAutorPresenter extends GenericPresenter
       getView().finishScreen();
     }
   }
+  @Override
+  public void setImagenSelecionada(){
+    Mediator app = (Mediator) getView().getApplication();
+    String imagen = imagenPath;
+    app.setImagenObra(imagen);
+
+  }
 
   ///////////////////////////////////////////////////////////////////////////////////
 
   public void inicializarVista(){
-  /*  getView().setTitle("Nuevo Autor");
-    if(true){  //comprobar si no se a selecionado imagen
-      getView().hideImagen();
-    }else{
-        getView().showImagen();
-
-    }*/
     getView().setTitle("Nuevo Autor");
-    if(getImagen().equals("ic_cuadro.jpg")){  // no hay imagen
+    if(getImagenSelecionada().equals("ic_escultura.png")){ // imagen por defecto si no se seleciona ninguna
       getView().hideImagen();
     }else{
       getView().showImagen();
-      getView().setImagen(getImagen());
+      setImagenView(getImagenSelecionada());
     }
   }
 
-  private String getImagen(){
+  private String getImagenSelecionada(){
     Mediator app = (Mediator) getView().getApplication();
     return app.getImagenAutor();
 
+  }
+
+  private void setImagenView(String imagen){
+    if( imagen != null) {
+      File imgFile = new File(imagen);
+      if (imgFile.exists()) {
+        Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+        getView().setImagen(myBitmap);
+      }
+    }
+  }
+  public String getRealPathFromURI(Uri contentUri) {
+
+    String res = null;
+    String[] proj = { MediaStore.Images.Media.DATA };
+    Cursor cursor = getActivityContext().getContentResolver().query(contentUri, proj, null, null, null);
+    if (cursor.moveToFirst()) {
+
+      int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+      res = cursor.getString(column_index);
+    }
+    cursor.close();
+
+    return res;
   }
 
 

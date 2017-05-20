@@ -1,6 +1,7 @@
 package es.ulpgc.eite.clean.mvp.sample.addObra;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 
@@ -26,6 +27,7 @@ public interface AddObra {
   interface AddObraTo {
     Context getManagedContext();
     void destroyView();
+    void setImagenSelecionada();
 
   }
 
@@ -41,15 +43,16 @@ public interface AddObra {
     ///////////////////////////////////////////////////////////////////////////////////
     // View To Presenter /////////////////////////////////////////////////////////////
     void onButtonAddImagenClicked();
-    void setImagenSelecionada();
     void onButtonDoneClicked();
+    AddObraPresenter.MyObserver getObserver();
   }
 
   /**
    * Required VIEW methods available to PRESENTER
    */
   interface PresenterToView extends ContextView {
-    String getSelectedImagePath();
+
+    void startGaleria(Intent intent);
     void finishScreen();
     String getNombre();
     String getDescripcion();

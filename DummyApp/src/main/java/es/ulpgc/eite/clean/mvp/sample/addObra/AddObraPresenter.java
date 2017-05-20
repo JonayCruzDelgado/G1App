@@ -3,11 +3,16 @@ package es.ulpgc.eite.clean.mvp.sample.addObra;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.util.Log;
 
 import java.io.File;
+import java.util.Observable;
+import java.util.Observer;
 
 import es.ulpgc.eite.clean.mvp.ContextView;
 import es.ulpgc.eite.clean.mvp.GenericActivity;
@@ -17,6 +22,10 @@ import es.ulpgc.eite.clean.mvp.sample.app.Mediator;
 public class AddObraPresenter extends GenericPresenter
     <AddObra.PresenterToView, AddObra.PresenterToModel, AddObra.ModelToPresenter, AddObraModel>
     implements AddObra.ViewToPresenter, AddObra.ModelToPresenter, AddObra.AddObraTo, AddObra.ToAddObra {
+
+  private String imagenPath;
+  private static MyObserver observer;
+  private Uri uri;
 
 
   /**
@@ -84,9 +93,39 @@ public class AddObraPresenter extends GenericPresenter
   // View To Presenter /////////////////////////////////////////////////////////////
   @Override
   public void onButtonAddImagenClicked(){
-
+    observer = new MyObserver();
+    Intent intent = new Intent(
+            Intent.ACTION_PICK,
+            android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+    );
+    getView().startGaleria(intent);
 
   }
+
+  class MyObserver implements java.util.Observer{
+
+    @Override
+    public void update(Observable o, Object arg) {
+      Log.d(TAG,"update observer");
+      uri =(Uri)arg;
+      if(uri != null){
+        imagenPath = getRealPathFromURI(uri);
+        if(imagenPath != null) {
+          setImagenSelecionada();
+          setImagenView(imagenPath);
+          getView().showImagen();
+        }
+      }
+    }
+  }
+
+  @Override
+  public MyObserver getObserver(){
+    return observer;
+
+  }
+
+
 
   @Override
   public void onButtonDoneClicked() {
@@ -156,10 +195,12 @@ public class AddObraPresenter extends GenericPresenter
   @Override
   public void setImagenSelecionada(){
     Mediator app = (Mediator) getView().getApplication();
-    String imagen =getView().getSelectedImagePath();
+    String imagen = imagenPath;
     app.setImagenObra(imagen);
 
   }
+
+
 
   ///////////////////////////////////////////////////////////////////////////////////
 
@@ -186,6 +227,22 @@ public class AddObraPresenter extends GenericPresenter
         getView().setImagen(myBitmap);
       }
     }
+  }
+
+
+  public String getRealPathFromURI(Uri contentUri) {
+
+    String res = null;
+    String[] proj = { MediaStore.Images.Media.DATA };
+    Cursor cursor = getActivityContext().getContentResolver().query(contentUri, proj, null, null, null);
+    if (cursor.moveToFirst()) {
+
+      int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+      res = cursor.getString(column_index);
+    }
+    cursor.close();
+
+    return res;
   }
 
 }

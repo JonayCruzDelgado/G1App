@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.util.Observable;
 
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.sample.R;
@@ -34,14 +35,8 @@ public class AddObraView
   private EditText latitudIndtroducida;
   private EditText longitudIndtroducida;
   private ImageView imagenSelecionada;
+  private static MyObservable observable;
   private static final int SELECT_PICTURE = 1;
-
-  private String selectedImagePath;
-
-  @Override
-  public String getSelectedImagePath() {
-    return selectedImagePath;
-  }
 
 
 
@@ -61,9 +56,9 @@ public class AddObraView
     latitudIndtroducida.setMovementMethod(new ScrollingMovementMethod());
     longitudIndtroducida = (EditText) findViewById(R.id.longitudIntroducida);
     longitudIndtroducida.setMovementMethod(new ScrollingMovementMethod());
-    imagenSelecionada=(ImageView) findViewById(R.id.imagenSeleccionadaObra);
+    imagenSelecionada = (ImageView) findViewById(R.id.imagenSeleccionadaObra);
 
-    btnDone=(Button) findViewById(R.id.btnDoneObra);
+    btnDone = (Button) findViewById(R.id.btnDoneObra);
     btnDone.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
@@ -76,52 +71,30 @@ public class AddObraView
       @Override
       public void onClick(View view) {
         getPresenter().onButtonAddImagenClicked();
+        observable = new MyObservable();
+        observable.addObserver(getPresenter().getObserver());
 
-
-        Intent intent = new Intent(
-            Intent.ACTION_PICK,
-            android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-        );
-
-        startActivityForResult(Intent.createChooser(intent,
-            "Select Picture"), SELECT_PICTURE);
       }
     });
   }
-  public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+  public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    Log.d(TAG,"on activity result");
     if (resultCode == RESULT_OK) {
       Uri selectedImageUri = data.getData();
-      Log.d(getClass().getSimpleName() + ".onActivityResult", "selectedImageUri=" + selectedImageUri);
-
-      if(selectedImageUri != null){
-        //selectedImagePath = selectedImageUri.toString();
-        selectedImagePath = getRealPathFromURI(selectedImageUri);
-        Log.d(getClass().getSimpleName() + ".onActivityResult", "selectedImagePath=" + selectedImagePath);
-        if(selectedImagePath != null) {
-          getPresenter().setImagenSelecionada(); // el presentador captura la imagen para manejarla el con los estados
-          getPresenter().onResume(this); // refrescar la pantalla al salir de la galeria para que aparesca la imagen
-        }
-      }
+      observable.imagenSelecionada(selectedImageUri);
 
     }
-
   }
 
-  public String getRealPathFromURI(Uri contentUri) {
-
-    String res = null;
-    String[] proj = { MediaStore.Images.Media.DATA };
-    Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
-    if (cursor.moveToFirst()) {
-
-      int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-      res = cursor.getString(column_index);
+  class MyObservable extends Observable{
+    public void imagenSelecionada(Uri uri){
+      Log.d(TAG,"on observable");
+      setChanged();
+      notifyObservers(uri);
     }
-    cursor.close();
-
-    return res;
   }
+
 
   /**
    * Method that initialized MVP objects
@@ -135,7 +108,6 @@ public class AddObraView
   }
 
 
-
   ///////////////////////////////////////////////////////////////////////////////////
   // Presenter To View /////////////////////////////////////////////////////////////
 
@@ -143,7 +115,11 @@ public class AddObraView
   public void finishScreen() {
     finish();
   }
+  @Override
+  public void startGaleria(Intent intent){
+    startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_PICTURE);
 
+  }
   @Override
   public String getNombre(){
     return nombreIndtroducido.getText().toString();
@@ -182,5 +158,7 @@ public class AddObraView
   public void hideImagen(){
     imagenSelecionada.setVisibility(View.GONE);
   }
+
+
 
 }
