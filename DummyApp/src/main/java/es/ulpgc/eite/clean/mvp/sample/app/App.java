@@ -128,7 +128,7 @@ public class App extends Application implements Mediator, Navigator {
     Log.d("APP", "goToAddAutorScreen() ");
     Context view = presenter.getManagedContext();
     addAutorToState = new AddAutorState();
-    addAutorToState.imagenAutor="ic_cuadro.jpg";
+    addAutorToState.imagenAutor="ic_escultura.png";
     if (view != null) {
       view.startActivity(new Intent(view, AddAutorView.class));
     }
