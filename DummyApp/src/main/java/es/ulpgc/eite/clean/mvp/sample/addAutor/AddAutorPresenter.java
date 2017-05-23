@@ -16,7 +16,6 @@ import java.util.Observable;
 import es.ulpgc.eite.clean.mvp.ContextView;
 import es.ulpgc.eite.clean.mvp.GenericActivity;
 import es.ulpgc.eite.clean.mvp.GenericPresenter;
-import es.ulpgc.eite.clean.mvp.sample.addObra.AddObraPresenter;
 import es.ulpgc.eite.clean.mvp.sample.app.Mediator;
 
 
@@ -181,7 +180,7 @@ public class AddAutorPresenter extends GenericPresenter
   public void setImagenSelecionada(){
     Mediator app = (Mediator) getView().getApplication();
     String imagen = imagenPath;
-    app.setImagenObra(imagen);
+    app.setImagenAutor(imagen);
 
   }
 
