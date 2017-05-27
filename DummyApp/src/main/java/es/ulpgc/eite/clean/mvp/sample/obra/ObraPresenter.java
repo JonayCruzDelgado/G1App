@@ -106,6 +106,9 @@ public class ObraPresenter extends GenericPresenter
     }
 
   }
+/*
+pide al modelo la informacion del Idobra que se recupera del mediador y lo introduce en AutorView
+*/
 
   @Override
   public void inicializarVista() {
@@ -117,6 +120,9 @@ public class ObraPresenter extends GenericPresenter
       getView().setNombreObra(getModel().getNombre(id));
       inicializarImagen(getModel().getInitial(id),id);
   }
+  /*se pasa por parametros el id del autor, e inicial que determinara si el autor esta inicializado por
+  la aplicacion o lo añadio el usuario. Esto ultimo es necesario porque es diferente la forma de cargar
+  la imagen. El parametr inicio esta guardado en la base de datos*/
   private void inicializarImagen(Boolean inicial, int id){
     String imagen =getModel().getImagen(id);
     if (inicial){

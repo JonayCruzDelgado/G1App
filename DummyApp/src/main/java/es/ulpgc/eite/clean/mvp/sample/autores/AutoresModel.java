@@ -47,6 +47,8 @@ public class AutoresModel extends GenericModel<Autores.ModelToPresenter>
   public String getNombreCategoria(int idCategoriaSeleccionada){
    return manejador.getNombreCategoria(idCategoriaSeleccionada);
   }
+  /*  recibe por parametros el id de la categoria y la posicion que se ha pulsado en la lista ,
+* con esto se devuelve el id que tiene el autor en la base de datos*/
   @Override
   public int getIdAutorSelecionado(int idCategoriaSeleccionada, int pos){
     int[] ids = manejador.getListaIdAutores(idCategoriaSeleccionada);
