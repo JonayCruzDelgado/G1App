@@ -91,6 +91,8 @@ public class AddObraPresenter extends GenericPresenter
 
   ///////////////////////////////////////////////////////////////////////////////////
   // View To Presenter /////////////////////////////////////////////////////////////
+  /*metodo que al que se llama por pulsar el boton addimagen
+   que prepara el intent para abrir la galeria*/
   @Override
   public void onButtonAddImagenClicked(){
     observer = new MyObserver();
@@ -101,7 +103,9 @@ public class AddObraPresenter extends GenericPresenter
     getView().startGaleria(intent);
 
   }
-
+  /*
+    recupera la imagen del intent de onButtonAddImagenCliked a traves del observador.
+    una ves recuperada la uri se pasa a formato path y se almacenan en el mediador y se cambia en la vista*/
   class MyObserver implements java.util.Observer{
 
     @Override
@@ -125,7 +129,9 @@ public class AddObraPresenter extends GenericPresenter
 
   }
 
-
+/*
+  se comprueban que los datos introducidos son validos, si no lo son se presenta un mensaje diciendo
+  introducir datos validos. Si son validos se recuperan los datos y se almacen en la base de datos.*/
 
   @Override
   public void onButtonDoneClicked() {
@@ -203,7 +209,7 @@ public class AddObraPresenter extends GenericPresenter
 
 
   ///////////////////////////////////////////////////////////////////////////////////
-
+/*se comprueba la imagen por defecto (ic_cuadro.png), se oculta si coincide y se muestra si hay una imagen diferente*/
   private void inicializarVista(){
     getView().setTitle("Nueva Obra");
     if(getImagenSelecionada().equals("ic_cuadro.jpg")){  // imagen por defecto si no se seleciona ninguna
@@ -218,6 +224,7 @@ public class AddObraPresenter extends GenericPresenter
     Mediator app = (Mediator) getView().getApplication();
     return app.getImagenObra();
   }
+  /*forma de pasar una path de una imagen a un Bitmap*/
 
   private void setImagenView(String imagen){
     if( imagen != null) {
@@ -229,6 +236,7 @@ public class AddObraPresenter extends GenericPresenter
     }
   }
 
+  /*forma de pasar una uri de una imagen a un path de la imagen*/
 
   public String getRealPathFromURI(Uri contentUri) {
 

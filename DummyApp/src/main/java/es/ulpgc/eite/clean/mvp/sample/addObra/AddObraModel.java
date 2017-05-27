@@ -40,13 +40,15 @@ public class AddObraModel extends GenericModel<AddObra.ModelToPresenter>
   ///////////////////////////////////////////////////////////////////////////////////
   // Presenter To Model ////////////////////////////////////////////////////////////
 
-
+  /*añadir autor a la base de datos con imagen por defecto ic_cuadro.png
+            */
   @Override
   public void  addObraSinImagen(String nombre,String descripcion,int idAutor,Double latitud,Double longitud){
     String imgDefault ="ic_cuadro.jpg";
     manejador.addObra(nombre,descripcion,idAutor,latitud,longitud,imgDefault,true);
 
   }
+  /* añadir autor a la base de datos con la imagen pasada por parametros en el formato Path*/
   @Override
   public void  addObraConImagen(String nombre, String descripcion, int idAutor, Double latitud, Double longitud, String PathImagen){
     manejador.addObra(nombre,descripcion,idAutor,latitud,longitud,PathImagen,false);
