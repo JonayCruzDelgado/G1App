@@ -40,6 +40,8 @@ public class AutorModel extends GenericModel<Autor.ModelToPresenter>
 
   ///////////////////////////////////////////////////////////////////////////////////
   // Presenter To Model ////////////////////////////////////////////////////////////
+/*  recibe por parametros el id del autor y la posicion de la lista de la obra,
+* con esto devuelve el id que tiene la obra pulsada en la base de datos*/
   @Override
   public int getIdObraPulsada(int idAutor, int pos){
     int[] ids = manejador.getListaIdObras(idAutor);
