@@ -93,7 +93,7 @@ public class AddAutorPresenter extends GenericPresenter
   // View To Presenter /////////////////////////////////////////////////////////////
 
   /*metodo que al que se llama por pulsar el boton addimagen
-   hace una busqueda de las imagenes presentes en la galeria del dispositivo*/
+   que prepara el intent para abrir la galeria*/
   @Override
   public void onButtonAddImagenClicked(){
     observer = new MyObserver();
@@ -193,7 +193,7 @@ public class AddAutorPresenter extends GenericPresenter
   }
 
   ///////////////////////////////////////////////////////////////////////////////////
-/*se comprueba la imagen por defecto, se oculta si coincide y se muestra si hay una imagen diferente*/
+/*se comprueba la imagen por defecto (ic_escultura.png), se oculta si coincide y se muestra si hay una imagen diferente*/
   public void inicializarVista(){
     getView().setTitle("Nuevo Autor");
     if(getImagenSelecionada().equals("ic_escultura.png")){

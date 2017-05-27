@@ -111,7 +111,7 @@ public class AddAutorView
     finish();
   }
 
-  /*inicializacion de la nueva activity que permite seleccionar la imagen*/
+  /*lanzar nueva activity que permite seleccionar la imagen*/
   @Override
   public void startGaleria(Intent intent){
     startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_PICTURE);
