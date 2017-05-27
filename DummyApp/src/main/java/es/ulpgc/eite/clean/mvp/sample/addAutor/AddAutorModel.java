@@ -37,14 +37,15 @@ public class AddAutorModel extends GenericModel<AddAutor.ModelToPresenter>
 
   ///////////////////////////////////////////////////////////////////////////////////
   // Presenter To Model ////////////////////////////////////////////////////////////
-
+/*añadir autor a la base de datos con imagen por defecto ic_escultura.png
+          */
   @Override
   public void  addAutorSinImagen(String nombre,String descripcion,int idCategoria){
     String imgDefault ="ic_escultura.png";
     manejador.addAutor(nombre,descripcion,idCategoria,imgDefault,true);
 
   }
-
+ /* añadir autor a la base de datos con la imagen pasada por parametros en el formato Path*/
   @Override
   public void  addAutorConImagen(String nombre, String descripcion, int idCategoria, String PathImagen){
     manejador.addAutor(nombre,descripcion,idCategoria,PathImagen,false);

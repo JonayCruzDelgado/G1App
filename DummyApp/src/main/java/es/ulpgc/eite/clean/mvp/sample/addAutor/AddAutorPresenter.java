@@ -91,6 +91,9 @@ public class AddAutorPresenter extends GenericPresenter
 
   ///////////////////////////////////////////////////////////////////////////////////
   // View To Presenter /////////////////////////////////////////////////////////////
+
+  /*metodo que al que se llama por pulsar el boton addimagen
+   hace una busqueda de las imagenes presentes en la galeria del dispositivo*/
   @Override
   public void onButtonAddImagenClicked(){
     observer = new MyObserver();
@@ -101,6 +104,9 @@ public class AddAutorPresenter extends GenericPresenter
     getView().startGaleria(intent);
 
   }
+  /*
+  recupera la imagen del intent de onButtonAddImagenCliked a traves del observador.
+  una ves recuperada la uri se pasa a formato path y se almacenan en el mediador y se cambia en la vista*/
 
   class MyObserver implements java.util.Observer{
 
@@ -123,8 +129,9 @@ public class AddAutorPresenter extends GenericPresenter
   public MyObserver getObserver(){
     return observer;
 
-  }
-
+  }/*
+  se comprueban que los datos introducidos son validos, si no lo son se presenta un mensaje diciendo
+  introducir datos validos. Si son validos se recuperan los datos y se almacen en la base de datos.*/
   @Override
   public void onButtonDoneClicked() {
     Mediator app = (Mediator) getView().getApplication();
@@ -176,6 +183,7 @@ public class AddAutorPresenter extends GenericPresenter
       getView().finishScreen();
     }
   }
+
   @Override
   public void setImagenSelecionada(){
     Mediator app = (Mediator) getView().getApplication();
@@ -185,10 +193,10 @@ public class AddAutorPresenter extends GenericPresenter
   }
 
   ///////////////////////////////////////////////////////////////////////////////////
-
+/*se comprueba la imagen por defecto, se oculta si coincide y se muestra si hay una imagen diferente*/
   public void inicializarVista(){
     getView().setTitle("Nuevo Autor");
-    if(getImagenSelecionada().equals("ic_escultura.png")){ // imagen por defecto si no se seleciona ninguna
+    if(getImagenSelecionada().equals("ic_escultura.png")){
       getView().hideImagen();
     }else{
       getView().showImagen();
@@ -201,7 +209,7 @@ public class AddAutorPresenter extends GenericPresenter
     return app.getImagenAutor();
 
   }
-
+  /*forma de pasar una path de una imagen a un Bitmap*/
   private void setImagenView(String imagen){
     if( imagen != null) {
       File imgFile = new File(imagen);
@@ -211,6 +219,7 @@ public class AddAutorPresenter extends GenericPresenter
       }
     }
   }
+  /*forma de pasar una uri de una imagen a un path de la imagen*/
   public String getRealPathFromURI(Uri contentUri) {
 
     String res = null;

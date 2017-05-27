@@ -71,15 +71,16 @@ public class AddAutorView
       }
     });
   }
-
+ /* resultado de la actity para optener la imagen. Se obtiene la uri que devuelve la actity lanzada
+    anteriormente y se notifica al observador*/
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     Log.d(TAG,"on activity result");
     if (resultCode == RESULT_OK) {
       Uri selectedImageUri = data.getData();
       observable.imagenSelecionada(selectedImageUri);
-
     }
   }
+
 
 
   class MyObservable extends Observable {
@@ -109,6 +110,8 @@ public class AddAutorView
   public void finishScreen() {
     finish();
   }
+
+  /*inicializacion de la nueva activity que permite seleccionar la imagen*/
   @Override
   public void startGaleria(Intent intent){
     startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_PICTURE);
